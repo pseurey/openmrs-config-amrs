@@ -43,6 +43,70 @@
 							"questionOptions": {
 								"rendering": "ui-select-extended"
 							}
+						},
+						{
+							"type": "obs",
+							"label": "Service delivery point:",
+							"id": "sdp",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a8a17e48-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+										"label": "OPD:Out-patient department"
+									},
+									{
+										"concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
+										"label": "IPD:In-patient department"
+									},
+									{
+										"concept": "9f696a25-3a42-41af-bbad-e73241d7ad98",
+										"label": "Emergency"
+									},
+									{
+										"concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
+										"label": "PMTCT"
+									},
+									{
+										"concept": "a8a17b3c-1350-11df-a1f1-0026b9348838",
+										"label": "VCT"
+									},
+									{
+										"concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+										"label": "Community"
+									}
+								]
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Tier:",
+							"required": "true",
+							"id": "tier",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6335d36f-0d9e-4936-a3ce-7181af1bcc50",
+								"answers": [
+									{
+										"concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+										"label": " Tier 1: Community"
+									},
+									{
+										"concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+										"label": "Tier 2: Primary care level"
+									},
+									{
+										"concept": "35d25c3e-27e6-4fb2-b70d-fb9c69ce7cea",
+										"label": "Tier 3: County level"
+									},
+									{
+										"concept": "0243bc07-5727-4ce3-b8fa-a1aaddf3f284",
+										"label": " Tier 4: National level"
+									}
+								]
+							}
 						}
 					]
 				}
@@ -53,9 +117,10 @@
 			"sections": [
 				{
 					"label": "Client Profile",
+					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "If age <19, in school:",
+							"label": "In school:",
 							"id": "schoolAttend",
 							"questionOptions": {
 								"rendering": "select",
@@ -84,11 +149,7 @@
 								"answers": [
 									{
 										"concept": "a8aa76b0-1350-11df-a1f1-0026b9348838",
-										"label": "Married monogamous"
-									},
-									{
-										"concept": "a8b03712-1350-11df-a1f1-0026b9348838",
-										"label": "Married polygamous"
+										"label": "Married"
 									},
 									{
 										"concept": "a899ae34-1350-11df-a1f1-0026b9348838",
@@ -118,10 +179,6 @@
 							"questionOptions": {
 								"concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
 								"answers": [
-									{
-										"concept": "79ab66e0-4248-491e-be7c-cddaa89bb0d7",
-										"label": "General population"
-									},
 									{
 										"concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
 										"label": "Discordant couple"
@@ -178,18 +235,13 @@
 								"rendering": "select"
 							},
 							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(hivRapid) && hivRapid === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue)",
-									"message": "Patient HIV test results marked as positive. A positive client should not be enrolled in PrEP."
-								}
-							]
+							"validators": []
 						}
 					]
 				},
 				{
 					"label": "Transfer Status",
+					"isExpanded": "true",
 					"questions": [
 						{
 							"label": "Transferred in?",
@@ -242,7 +294,7 @@
 						},
 						{
 							"label": "Method:",
-							"id": "prepMethod",
+							"id": "prepMethodMale",
 							"questionOptions": {
 								"rendering": "select",
 								"concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
@@ -254,6 +306,29 @@
 									{
 										"concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
 										"label": "Event driven oral prep"
+									},
+									{
+										"concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+										"label": "Cabotegravir"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Method:",
+							"id": "prepMethodFem",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+								"answers": [
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
 									},
 									{
 										"concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
@@ -268,7 +343,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "sex !== 'F' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -320,8 +395,8 @@
 										"concept": "35ed8aad-d6fa-429e-961a-c877e1ad4953",
 										"answers": [
 											{
-												"concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
-												"label": "AMPATH"
+												"concept": "7e381b07-81d5-4425-be84-f188b61b4bd1",
+												"label": "AMPATH NON-AMRS"
 											},
 											{
 												"concept": "a89c301e-1350-11df-a1f1-0026b9348838",
@@ -337,7 +412,7 @@
 								},
 								{
 									"type": "personAttribute",
-									"label": "If transfer in from other AMPATH clinic (specify):",
+									"label": "If transfer in from other AMPATH non-AMRS clinic (specify):",
 									"id": "transfered_in_to_ampath",
 									"required": "false",
 									"default": "",
@@ -347,7 +422,7 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "transferIn !== 'a89c2f42-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "transferIn !== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
 									}
 								},
 								{
@@ -388,9 +463,11 @@
 			"sections": [
 				{
 					"label": "Behaviour risk assessment",
+					"isExpanded": "true",
 					"questions": [
 						{
 							"label": "Client at risk:",
+							"required": "true",
 							"id": "atRisk",
 							"questionOptions": {
 								"rendering": "select",
@@ -476,7 +553,13 @@
 										]
 									},
 									"type": "obs",
-									"validators": [],
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(atRisk) && atRisk === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+											"message": "Required."
+										}
+									],
 									"hide": {
 										"hideWhenExpression": "atRisk !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 									}
@@ -571,120 +654,12 @@
 							"hide": {
 								"hideWhenExpression": "isEmpty(partnerEnrolled) || partnerEnrolled !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
-						},
-						{
-							"label": "HIV positive Partner on ART at initial visit?",
-							"id": "partnerOnArt",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "a89ae254-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							},
-							"type": "obs",
-							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
-							}
-						},
-						{
-							"label": "HIV positive partner ART start date:",
-							"type": "obs",
-							"id": "partnerArtStart",
-							"questionOptions": {
-								"concept": "a89d200a-1350-11df-a1f1-0026b9348838",
-								"rendering": "date"
-							},
-							"validators": [
-								{
-									"type": "date",
-									"allowFutureDates": "false"
-								},
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') ",
-									"message": "ARV start date should be before the encounter date."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "isEmpty(partnerOnArt) || partnerOnArt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Time known to be HIV negative serodiscordant in years:",
-							"id": "timeDiscordantYears",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "92ef7630-14d2-4dbc-986d-5f33c03d37c4"
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
-							}
-						},
-						{
-							"label": "Time known to be HIV negative serodiscordant in months:",
-							"id": "timeDiscordantMonths",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "01f1eab0-115d-487f-8359-e4e3dce50eed"
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
-							}
-						},
-						{
-							"label": "Sex without a condom with HIV positive partner in the past 30 days?",
-							"id": "sexWithoutCondom",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "01ca8654-febc-44ff-ae0e-99d7fe8356b7",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
-							}
-						},
-						{
-							"label": "Number of living children with HIV positive partner:",
-							"id": "livingChildren",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a89eed5e-1350-11df-a1f1-0026b9348838",
-								"max": "20",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
-							}
 						}
 					]
 				},
 				{
 					"label": "Medical Assessment",
+					"isExpanded": "true",
 					"questions": [
 						{
 							"label": "BP systolic:",
@@ -809,7 +784,7 @@
 							}
 						},
 						{
-							"label": "On family planning?",
+							"label": "On contraceptives:",
 							"id": "familyPlan",
 							"questionOptions": {
 								"concept": "a8a70fde-1350-11df-a1f1-0026b9348838",
@@ -827,159 +802,6 @@
 							},
 							"type": "obs",
 							"validators": []
-						},
-						{
-							"label": "Family planning method:",
-							"required": "true",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')",
-							"id": "fpMethod",
-							"questionOptions": {
-								"concept": "a894b1cc-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a893516a-1350-11df-a1f1-0026b9348838",
-										"label": "Condoms"
-									},
-									{
-										"concept": "a8a713f8-1350-11df-a1f1-0026b9348838",
-										"label": "Tubal ligation/female sterilization"
-									},
-									{
-										"concept": "a8aff284-1350-11df-a1f1-0026b9348838",
-										"label": "Fertility awareness method/periodic abstinence"
-									},
-									{
-										"concept": "a8a71588-1350-11df-a1f1-0026b9348838",
-										"label": "Diaphragm/cervical cap"
-									},
-									{
-										"concept": "4a740e33-fee5-4a2b-b679-1904722e3d9e",
-										"label": "Lactational amenorrhea method"
-									},
-									{
-										"concept": "a8a71330-1350-11df-a1f1-0026b9348838",
-										"label": "Intra uterine device"
-									},
-									{
-										"concept": "a8aff356-1350-11df-a1f1-0026b9348838",
-										"label": "Implant"
-									},
-									{
-										"concept": "a8988b44-1350-11df-a1f1-0026b9348838",
-										"label": "Injectables (Depo)"
-									},
-									{
-										"concept": "a897dbd6-1350-11df-a1f1-0026b9348838",
-										"label": "Oral contaceptive pills (OCP)"
-									},
-									{
-										"concept": "b75702a6-908d-491b-9399-6495712c81cc",
-										"label": "Emergency contraceptive pills"
-									},
-									{
-										"concept": "eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc",
-										"label": "Vasectomy"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "familyPlan !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Do you have any signs or symptoms of STI?",
-							"required": "true",
-							"id": "stiSymptoms",
-							"questionOptions": {
-								"concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "If yes, what signs or symptoms do you have?",
-							"questionOptions": {
-								"concept": "a8b00562-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a8982b54-1350-11df-a1f1-0026b9348838",
-										"label": "Genital ulcers disease"
-									},
-									{
-										"concept": "a892ea2c-1350-11df-a1f1-0026b9348838",
-										"label": "Vaginitis"
-									},
-									{
-										"concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
-										"label": "Vaginal discharge"
-									},
-									{
-										"concept": "a8931cf4-1350-11df-a1f1-0026b9348838",
-										"label": "Cervicitis"
-									},
-									{
-										"concept": "d31e0260-cd5d-44ec-9341-1b837c8675aa",
-										"label": "Cervical discharge"
-									},
-									{
-										"concept": "a8986754-1350-11df-a1f1-0026b9348838",
-										"label": "Pelvic inflammatory disease"
-									},
-									{
-										"concept": "a8ad3062-1350-11df-a1f1-0026b9348838",
-										"label": "Urethral discharge"
-									},
-									{
-										"concept": "6201b563-716f-4c75-bb61-ec92864d2e53",
-										"label": "Anal discharge"
-									},
-									{
-										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-										"label": "Other"
-									}
-								],
-								"rendering": "multiCheckbox"
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "stiSymptoms !== 'a899b35c-1350-11df-a1f1-0026b9348838' || !arrayContains(['d164c76c-cc91-4ac2-89e9-ab7c29152ee0','824cf3e6-dd16-4767-ba41-2e04dede349e'], visitType.uuid)"
-							},
-							"id": "stiSigns"
-						},
-						{
-							"label": "Do you have acute HIV signs?",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "39220cda-f62a-4514-8d73-013585e59770",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"validators": [],
-							"id": "hivSigns"
 						}
 					]
 				},
@@ -1105,116 +927,6 @@
 								}
 							],
 							"id": "otherIllness"
-						}
-					]
-				},
-				{
-					"label": "Fertility Intentions",
-					"isExpanded": "true",
-					"questions": [
-						
-						{
-							"label": "Is the patient pregnant?",
-							"id": "pregnant",
-							"questionOptions": {
-								"concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && moment(encDate).diff(moment(lmpDate1), 'days') >= 35",
-									"message": "Last LMP is greater than 35 days. Please indicate patient's pregnancy status."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "sex !== 'F' || menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "If pregnant, was it planned?",
-							"id": "plannedPregnancy",
-							"questionOptions": {
-								"concept": "d8e84bcc-1b6b-41c6-9465-9f19bedc059a",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "pregnant !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Breastfeeding?",
-							"id": "childBreFeeding",
-							"questionOptions": {
-								"concept": "a8aafc70-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "sex !== 'F'"
-							}
-						},
-						{
-							"label": "Plan to have children?",
-							"type": "obs",
-							"id": "planToHaveChildren",
-							"questionOptions": {
-								"concept": "81faf4e1-112d-4f44-9699-adccf7d68642",
-								"answers": [
-									{
-										"label": "Trying to conceive",
-										"concept": "2e78504f-1946-479b-8cd1-d9ded0a68bd5"
-									},
-									{
-										"label": "Future",
-										"concept": "fb82f3b4-bcec-4cd2-a0a4-545b02d28a4d"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "Don't know",
-										"concept": "a89e6ae6-1350-11df-a1f1-0026b9348838"
-									}
-								],
-								"rendering": "select"
-							},
-							"validators": []
 						},
 						{
 							"label": "Clinical notes:",
@@ -1266,7 +978,24 @@
 									}
 								}
 							},
-							"validators": []
+							"validators": [],
+							"alert": {
+								"alertWhenExpression": "!isEmpty(myValue) && hivRapid === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+								"message": "Prep patients should be HIV negative, If Positive please refer to HIV clinic."
+							}
+						},
+						{
+							"label": "Names of HTS provider that tested the patient? (Record at least 2 names)",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
+							},
+							"id": "htsname",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "isEmpty(hivRapid)"
+							}
 						},
 						{
 							"label": "Hepatitis B(HBsAg)",
@@ -1485,7 +1214,13 @@
 								"rendering": "select"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(hivRapid) && hivRapid === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue)",
+									"message": "Patient's HIV test marked as positive, therefore should not be enrolled to PrEP."
+								}
+							]
 						}
 					]
 				}
@@ -1516,6 +1251,9 @@
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
 									}
 								]
+							},
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1536,6 +1274,9 @@
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
 									}
 								]
+							},
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1556,6 +1297,9 @@
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
 									}
 								]
+							},
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1576,6 +1320,9 @@
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
 									}
 								]
+							},
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1593,7 +1340,10 @@
 									"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
 									"message": "Patient screened positive for GBV/IPV. Please provide notes."
 								}
-							]
+							],
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						}
 					]
 				}
@@ -1624,7 +1374,10 @@
 								]
 							},
 							"validators": [],
-							"id": "adherenceDone"
+							"id": "adherenceDone",
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"label": "Signs/symptoms of acute HIV:",
@@ -1644,7 +1397,10 @@
 								]
 							},
 							"validators": [],
-							"id": "acuteHiv"
+							"id": "acuteHiv",
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"label": "Contraindications for any drug used for PrEP:",
@@ -1665,7 +1421,10 @@
 								"rendering": "select"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"label": "Prescribed PrEP at initial visit:",
@@ -1692,7 +1451,7 @@
 						},
 						{
 							"label": "Types:",
-							"id": "prepType",
+							"id": "prepTypeF",
 							"type": "obs",
 							"questionOptions": {
 								"concept": "25345dff-45f6-481b-87ca-08bebe1d6bc6",
@@ -1720,7 +1479,36 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "sex !== 'F'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Types:",
+							"id": "prepTypeM",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "25345dff-45f6-481b-87ca-08bebe1d6bc6",
+								"answers": [
+									{
+										"concept": "db0c5937-3874-4eae-9566-9a645ad7ac65",
+										"label": "Oral"
+									},
+									{
+										"concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+										"label": "CAB-LA"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(prescribedPrepInitial) && prescribedPrepInitial === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Patient on PrEP.Kindly provide regimen"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1749,7 +1537,32 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Dosing strategy:",
+							"id": "doseStrategyF",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
+								"answers": [
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(prescribedPrepInitial) && prescribedPrepInitial === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Patient on PrEP.Kindly provide regimen"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "sex !== 'F'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1767,7 +1580,6 @@
 										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
 										"label": "TDF/3TC"
 									}
-									
 								],
 								"rendering": "multiCheckbox"
 							},
@@ -1814,7 +1626,19 @@
 								"concept": "3560e1f8-f3c1-4468-969c-25f7467c41e2"
 							},
 							"hide": {
-								"hideWhenExpression": "prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "doseStrategy !== 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'"
+							}
+						},
+						{
+							"label": "Number of days:",
+							"id": "noDays",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "a89fca44-1350-11df-a1f1-0026b9348838"
+							},
+							"hide": {
+								"hideWhenExpression": "doseStrategy !== '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'"
 							}
 						},
 						{
@@ -1835,7 +1659,10 @@
 								]
 							},
 							"validators": [],
-							"id": "condomIssue"
+							"id": "condomIssue",
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"label": "Circumcised?",
@@ -1861,7 +1688,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "sex !== 'M'"
+								"hideWhenExpression": "sex !== 'M' || hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -1911,7 +1738,10 @@
 									"message": "Patient screened positive for GBV/IPV. Please indicate service provided."
 								}
 							],
-							"id": "gbvServices"
+							"id": "gbvServices",
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						}
 					]
 				},
@@ -1966,7 +1796,10 @@
 											"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
 											"message": "Patient screened positive for GBV/IPV. Please indicate referral ordered."
 										}
-									]
+									],
+									"hide": {
+										"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									}
 								},
 								{
 									"label": "Patient referred to other, (specify):",
@@ -1999,6 +1832,9 @@
 								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
 								"rendering": "textarea",
 								"rows": 5
+							},
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -2006,10 +1842,10 @@
 			]
 		},
 		{
-			"label": "Next Appointment Date",
+			"label": "Next Appointment",
 			"sections": [
 				{
-					"label": "Next Appointment Date",
+					"label": "Next Appointment",
 					"isExpanded": "true",
 					"questions": [
 						{
@@ -2041,7 +1877,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "tca"
 						}
@@ -2049,5 +1885,8 @@
 				}
 			]
 		}
-	]
+	],
+	"version": "1.3",
+	"description": "AMPATH POC Pre Exposure Prophylaxis Initial Form v1.3",
+	"encounterType": "00ee2fd6-9c95-4ffc-ab31-6b1ce2dede4d"
 }

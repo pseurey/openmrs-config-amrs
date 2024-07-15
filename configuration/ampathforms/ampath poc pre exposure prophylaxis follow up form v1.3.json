@@ -11,7 +11,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Visit date",
+							"label": "Visit date:",
 							"type": "encounterDatetime",
 							"required": "true",
 							"default": "",
@@ -27,7 +27,7 @@
 						},
 						{
 							"type": "encounterProvider",
-							"label": "Provider",
+							"label": "Provider:",
 							"id": "provider",
 							"required": "true",
 							"default": "",
@@ -43,18 +43,7 @@
 							"questionOptions": {
 								"rendering": "ui-select-extended"
 							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Pre-Clinic Review",
-			"sections": [
-				{
-					"label": "Pre-clinic Review",
-					"isExpanded": "true",
-					"questions": [
+						},
 						{
 							"label": "Place of refill:",
 							"required": "true",
@@ -105,10 +94,11 @@
 			]
 		},
 		{
-			"label": "Medical Assessment And Fertility Intentions",
+			"label": "Medical Assessment",
 			"sections": [
 				{
 					"label": "Summary Of Findings",
+					"isExpanded": "true",
 					"questions": [
 						{
 							"label": "BP systolic:",
@@ -198,7 +188,7 @@
 							}
 						},
 						{
-							"label": "On family planning?",
+							"label": "On contraceptives:",
 							"id": "familyPlan",
 							"questionOptions": {
 								"concept": "a8a70fde-1350-11df-a1f1-0026b9348838",
@@ -218,67 +208,6 @@
 							"validators": [],
 							"hide": {
 								"hideWhenExpression": "sex !== 'F'"
-							}
-						},
-						{
-							"label": "Family planning method:",
-							"required": "true",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')",
-							"id": "fpMethod",
-							"questionOptions": {
-								"concept": "a894b1cc-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a893516a-1350-11df-a1f1-0026b9348838",
-										"label": "Condom"
-									},
-									{
-										"concept": "a8a713f8-1350-11df-a1f1-0026b9348838",
-										"label": "Tubal ligation/female sterilization"
-									},
-									{
-										"concept": "a8aff284-1350-11df-a1f1-0026b9348838",
-										"label": "Fertility awareness method/periodic abstinence"
-									},
-									{
-										"concept": "a8a71588-1350-11df-a1f1-0026b9348838",
-										"label": "Diaphragm/cervical cap"
-									},
-									{
-										"concept": "4a740e33-fee5-4a2b-b679-1904722e3d9e",
-										"label": "Lactational amenorrhea method"
-									},
-									{
-										"concept": "a8a71330-1350-11df-a1f1-0026b9348838",
-										"label": "Intra uterine device"
-									},
-									{
-										"concept": "a8aff356-1350-11df-a1f1-0026b9348838",
-										"label": "Implant"
-									},
-									{
-										"concept": "a8988b44-1350-11df-a1f1-0026b9348838",
-										"label": "Injectables (Depo)"
-									},
-									{
-										"concept": "a897dbd6-1350-11df-a1f1-0026b9348838",
-										"label": "Oral contaceptive pills (OCP)"
-									},
-									{
-										"concept": "b75702a6-908d-491b-9399-6495712c81cc",
-										"label": "Emergency contraceptive pills"
-									},
-									{
-										"concept": "eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc",
-										"label": "Vasectomy"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "familyPlan !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -374,30 +303,12 @@
 							"id": "acuteHiv"
 						},
 						{
-							"label": "Circumcised since last visit?",
-							"id": "circumcisedSinceLastVisit",
-							"questionOptions": {
-								"concept": "b0350842-cd72-417f-9772-86aca874ecdb",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									},
-									{
-										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-										"label": "N/A (Already circumcised)"
-									}
-								],
-								"rendering": "select"
-							},
+							"label": "Clinical notes:",
 							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "sex !== 'M'"
+							"id": "hpiText",
+							"questionOptions": {
+								"concept": "a89ffbf4-1350-11df-a1f1-0026b9348838",
+								"rendering": "textarea"
 							}
 						}
 					]
@@ -584,7 +495,7 @@
 								},
 								{
 									"id": "action",
-									"label": "Action:",
+									"label": "Action (Mark all that apply):",
 									"questionOptions": {
 										"concept": "01fb96f5-8dc5-4481-8a11-240994b3b795",
 										"answers": [
@@ -898,7 +809,7 @@
 							"validators": []
 						},
 						{
-							"label": "Initiated on ART",
+							"label": "Client initiated on ART:",
 							"type": "obs",
 							"id": "linkCare",
 							"questionOptions": {
@@ -1222,7 +1133,26 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a8a00220-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'],prepStatus)"
+								"hideWhenExpression": "sex !== 'M' || !arrayContains(['a8a00220-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'],prepStatus)"
+							}
+						},
+						{
+							"label": "Dosing strategy:",
+							"id": "doseStrategyF",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
+								"answers": [
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sex !== 'F' || !arrayContains(['a8a00220-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'],prepStatus)"
 							}
 						},
 						{
@@ -1264,7 +1194,23 @@
 										"label": "No",
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
 									}
-								]
+								],
+								"showDate": "true",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(prepSwitch) && isEmpty(myValue)",
+											"message": "Date is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(prepSwitch)"
+									}
+								}
 							},
 							"validators": [],
 							"hide": {
@@ -1349,7 +1295,22 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(PrepDrugsPlan)"
+								"hideWhenExpression": "doseStrategy !== 'fa8e484e-3f90-4a35-b64f-c60f256c3faf' && doseStrategyF !== 'fa8e484e-3f90-4a35-b64f-c60f256c3faf' || prepPrescribed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Number of days:",
+							"id": "prepDurationDays",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "a89fca44-1350-11df-a1f1-0026b9348838",
+								"answers": [],
+								"min": "0",
+								"rendering": "number"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": " doseStrategy !== '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6' ||  prepPrescribed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1422,6 +1383,59 @@
 							}
 						},
 						{
+							"label": "Missed medication pick up, reasons:",
+							"id": "missedMedReasons",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "a89ebbc2-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a89dec06-1350-11df-a1f1-0026b9348838",
+										"label": "Not reachable on Phone"
+									},
+									{
+										"concept": "fdd18cec-11ba-4512-ab3c-b66066847f58",
+										"label": "Not picking phone calls"
+									},
+									{
+										"concept": "a89e2a54-1350-11df-a1f1-0026b9348838",
+										"label": "Busy work schedule"
+									},
+									{
+										"concept": "a897fdaa-1350-11df-a1f1-0026b9348838",
+										"label": "Transport Challenge"
+									},
+									{
+										"concept": "a89ded8c-1350-11df-a1f1-0026b9348838",
+										"label": "Relocated"
+									},
+									{
+										"concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
+										"label": "Sick at a point of appointment"
+									},
+									{
+										"concept": "a89de152-1350-11df-a1f1-0026b9348838",
+										"label": "Travelled"
+									},
+									{
+										"concept": "5be50fc2-9e50-4d64-8a0c-f08ed7a34bb9",
+										"label": "Client request"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && discontinuedReasons  === 'a89cefd6-1350-11df-a1f1-0026b9348838'",
+									"message": "Please indicate reason for missed medication pick up."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(discontinuedReasons) || !arrayContainsAny(['a89cefd6-1350-11df-a1f1-0026b9348838'],discontinuedReasons)"
+							}
+						},
+						{
 							"label": "Other reason to discontinue, specify:",
 							"type": "obs",
 							"id": "OtherDiscontReasonSpecify",
@@ -1431,7 +1445,7 @@
 								"answers": []
 							},
 							"hide": {
-								"hideWhenExpression": "isEmpty(discontinuedReasons) || arrayContains(['a89cefd6-1350-11df-a1f1-0026b9348838','5520f234-258e-49f0-97ab-701b98fab608','a89e39f4-1350-11df-a1f1-0026b9348838','a54ea51a-08be-4d89-a7eb-d0b235764a1e','a54ea51a-08be-4d89-a7eb-d0b235764a1e','0d57a3e4-5f9b-4a0f-9784-4970d7eeb57d','243dbae3-326e-4919-9b0d-22a1567e477f','a89ce50e-1350-11df-a1f1-0026b9348838','a89eb8c0-1350-11df-a1f1-0026b9348838','d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb','a89ace7c-1350-11df-a1f1-0026b9348838'],discontinuedReasons)"
+								"hideWhenExpression": "isEmpty(discontinuedReasons) || !arrayContainsAny(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],discontinuedReasons)"
 							}
 						}
 					]

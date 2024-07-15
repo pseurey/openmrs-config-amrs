@@ -1,0 +1,2063 @@
+{
+	"name": "Ampath POC Retention Locator Form v1.0",
+	"processor": "EncounterFormProcessor",
+	"uuid": "xxxx",
+	"referencedForms": [],
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Date completed:",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider:",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				},
+				{
+					"label": "Client/Patient's information",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Marital status:",
+							"type": "obs",
+							"id": "maritalStatus",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a899a9f2-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "Married",
+										"concept": "a8aa76b0-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Single",
+										"concept": "a899ac7c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Divorced",
+										"concept": "a899ad58-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Widowed",
+										"concept": "a899ae34-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Seperated",
+										"concept": "a899aba0-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Cohabiting",
+										"concept": "a899af10-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Not Applicable",
+										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"label": "Place of work:",
+							"type": "personAttribute",
+							"id": "workPlace",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "4dae5b87-884d-4f88-b2fb-85cda2be37d6",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"label": "Religious affiliation and location:",
+							"type": "obs",
+							"id": "religious",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a8b03352-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "None",
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Catholic",
+										"concept": "0f8569b7-800c-4f6a-be1f-b8e052fc96cf"
+									},
+									{
+										"label": "Protestant",
+										"concept": "4aec262f-08a5-4ed9-9c0d-39fa1a9bd81b"
+									},
+									{
+										"label": "Muslim",
+										"concept": "a0c91995-926e-421d-a5fe-44fdab3dfb27"
+									},
+									{
+										"label": "Traditionalist",
+										"concept": "975f809d-fa55-4b8a-9086-9d63e68728b1"
+									},
+									{
+										"label": "Hindu",
+										"concept": "d6601939-e81e-412e-ae36-373efd7f32fe"
+									},
+									{
+										"label": "Buddhist",
+										"concept": "f3ee48c2-3792-40ed-a400-aa5016784e9c"
+									},
+									{
+										"label": "Other",
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"label": "Patient/Client category:",
+							"type": "obs",
+							"required": "true",
+							"id": "patienCat",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89eea66-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "Adult",
+										"concept": "a89ee8ea-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Paediatric",
+										"concept": "a89ee9a8-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"label": "Are any parents dead?",
+							"type": "obs",
+							"id": "parentDead",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89fd6ec-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "Mother dead",
+										"concept": "a89fd566-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Father dead",
+										"concept": "a89fd62e-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Both dead",
+										"concept": "a89ff05a-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "None dead",
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee9a8-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Who does the patient live with?",
+							"type": "obs",
+							"id": "livingWhom",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a8a35bf0-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "Mother",
+										"concept": "a898c0dc-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Father",
+										"concept": "a898c1a4-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Relative",
+										"concept": "a8aaf234-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Guardian",
+										"concept": "a8a35b28-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Institution ",
+										"concept": "9c78d916-5ad1-42ba-83c3-e3355e9963e4"
+									},
+									{
+										"label": "Children's home",
+										"concept": "a8a171a0-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee9a8-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Where is the child living,temporarily (Specify):",
+							"type": "obs",
+							"id": "LiveTemp",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "adb5fffc-dea8-485f-a25d-29b0c99769c0"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee9a8-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Where is the child living,Permanent residence(Specify:",
+							"type": "obs",
+							"id": "LivePam",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "68d470e1-cc1d-4fb2-8e48-ef04243925ab"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee9a8-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Residence and Personal Information",
+			"sections": [
+				{
+					"label": "Personal Information (For both adults and paediatrics)",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Tick one of the following to identify to whom the information belongs:",
+							"type": "obs",
+							"id": "info",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9e496932-353d-495b-bc87-987a3e615c6a",
+								"answers": [
+									{
+										"label": "Parent",
+										"concept": "a89ebec4-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Guardian",
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee9a8-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Official name of client, parent, guardian:",
+							"id": "nameParent",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "48876f06-7493-416e-855d-8413d894ea93",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Name commonly called:",
+							"id": "commonNamect",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "cc61b5f3-9071-463d-939c-0e444073a09f",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Tribe:",
+							"id": "tribect",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "fb74a24a-13a9-11df-a1f1-0026b9348838",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Phone number:",
+							"id": "phoneNumberct",
+							"questionOptions": {
+								"rendering": "number",
+								"attributeType": "bb8684a5-ac0b-4c2c-b9a5-1203e99952c2",
+								"isSimpleValue": true
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(myValue).length > 10",
+									"message": "Phone number digits should not be more than 10"
+								}
+							]
+						},
+						{
+							"type": "personAttribute",
+							"label": "Alternative phone number:",
+							"id": "altphoneNumberct",
+							"questionOptions": {
+								"rendering": "number",
+								"attributeType": "9df565d9-125d-4141-9d87-7d528b65acb9",
+								"isSimpleValue": true
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(myValue).length > 10",
+									"message": "Phone number digits should not be more than 10"
+								}
+							]
+						},
+						{
+							"type": "personAttribute",
+							"label": "Occupation:",
+							"id": "occupationct",
+							"questionOptions": {
+								"rendering": "select",
+								"attributeType": "145db77e-631b-46f8-97ae-88721f5ca5ca",
+								"answers": [
+									{
+										"label": "Teacher",
+										"concept": "a8a09d0c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Casual worker",
+										"concept": "a8a09b90-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Police",
+										"concept": "a8a09e92-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Hawker",
+										"concept": "e37dcb06-07f5-49d4-8383-c8dea87e05c5"
+									},
+									{
+										"label": "Conductor",
+										"concept": "202bc5f1-f337-4246-bed5-4030f114e7a0"
+									},
+									{
+										"label": "Mechanic",
+										"concept": "42ba6ccd-81d5-436b-b244-b49fde95277e"
+									},
+									{
+										"label": "Truck driver",
+										"concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e"
+									},
+									{
+										"label": "Bodaboda rider",
+										"concept": "16281ca7-8cb2-4d80-851c-0485f3d55aaa"
+									},
+									{
+										"label": "Herdsman",
+										"concept": "76cc0ab6-81e3-4040-b57f-fcf118b6173d"
+									},
+									{
+										"label": "Househelp",
+										"concept": "193211aa-9dbb-4602-a567-1b1b67f5827b"
+									},
+									{
+										"label": "Farmer",
+										"concept": "a8a09c4e-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Health care provider",
+										"concept": "a8aaf158-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Other",
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Relationship:",
+							"id": "relationct",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "06b0da36-e133-4be6-aec0-31e7ed0e1ac2",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Location:",
+							"id": "locationct",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "70a4a229-7ce2-4b34-a2d2-baa7f772b511",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Place Of Work",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Town:",
+							"id": "workplaceTown",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "4dae5b87-884d-4f88-b2fb-85cda2be37d6",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Institution/Business:",
+							"id": "workplaceInstitute",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "32d73d9b-ec96-410c-ab20-a585609e5652",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Location:",
+							"id": "workplaceLocation",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "9bb732db-703d-470f-a097-69a9f1fe4b9b",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Department/section:",
+							"id": "workplaceDept",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "3b0c64e6-8e60-467b-a487-230647491c29",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Well known name:",
+							"id": "workplacename",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "0a5948ea-39c0-4708-a52f-40ac6cb9e485",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Urban Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Town:",
+							"id": "urbanTown",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "1b704e24-f240-44a6-8dd2-6c2d1678c1f5",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Estate:",
+							"id": "urbanEstate",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "28861074-679f-40b4-ac16-c2733734e657",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "urbanStage",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "52295027-5f9c-452d-aa13-67c5c2b7bf9c",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Section:",
+							"id": "urbanSection",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "68b20b9f-4ddd-41b3-a557-fb8ae6b16de5",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "urbanLandmark",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "254e3b6a-eeec-4714-9c5f-776cc4d30191",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Plot name:",
+							"id": "urbanplot",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "fa2bac0e-524b-4d52-9773-e368d1dbe86b",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Landlord:",
+							"id": "urbanLandlord",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "edacfe95-07c5-484f-9627-18dd9f20bde4",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest well known neighbor:",
+							"id": "urbanneighbor",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "38f592c5-9e44-4629-8561-c2429bc6062d",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "urbanWho",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "5fe74d99-6a27-4d82-b2a5-938da9b6ce2d",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "urbanDir",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "c3a57877-f810-486c-a353-80107112e250",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Rural Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "General route:",
+							"id": "routeRural",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "78471c68-6229-4de0-ab3b-1c2a4d026e97",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest centre:",
+							"id": "centreRural",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "66c51c21-7cfc-4198-a8e2-50624be69bae",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "stageRural",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "10fb9cad-acfb-49ed-8e99-eda4b5896aca",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Village:",
+							"id": "villageRural",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "4551733d-cff9-4bcc-8d12-079c3922b642",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "landmarkRural",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "7c409ec0-2024-48ee-99e0-683d3dd22964",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Homestead name:",
+							"id": "homesteadRural",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "f33a4f73-3c82-4729-9e68-0d24e06ae719",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "whomRural",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "dc2c139b-82d7-41f2-a7d7-23ec517c7522",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "ruralDir",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "8d5b56de-73d0-44d8-a18f-039f853b94f9",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Spouse Details",
+			"sections": [
+				{
+					"label": "Spouse Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Name of Spouse:",
+							"id": "nameSpouse",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "de7d9390-7e11-4314-94d4-0c78d646329c",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Name commonly called:",
+							"id": "commonnameSpouse",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "cd27de6c-13ff-45c2-ba5e-fb97ef4c0b2b",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Tribe:",
+							"id": "tribeSpouse",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "1128714a-d79c-414f-b865-159f6ce80c6f",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Phone number:",
+							"id": "phoneNumberSpouse",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "b0a08406-09c0-4f8b-8cb5-b22b6d4a8e46",
+								"isSimpleValue": true
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(myValue).length > 10",
+									"message": "Phone number digits should not be more than 10"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				},
+				{
+					"label": "Urban Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Town:",
+							"id": "urbanTownsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "4441adaa-fc3e-4c8a-a27a-a57cb3983a85",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Estate:",
+							"id": "urbanEstatesp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "9b4103c5-baeb-4218-9c3a-7efb66f5cba7",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "urbanStagesp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "e80151f5-6adc-4af9-a3a2-dcce73002b88",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Section:",
+							"id": "urbanSectionsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "2bf5e3fb-d30f-40d4-8d38-fa2f57170fc4",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "urbanLandmarksp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "897f461d-facf-425d-ae33-eb5a7a523579",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Plot name:",
+							"id": "urbanplotsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "47416f73-b88b-4112-9235-d5999481ba3d",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Landlord:",
+							"id": "urbanLandlordsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "6265e7b9-7d31-4aba-b287-88b319a370e4",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest well known neighbor:",
+							"id": "urbanneighborsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "523d79c0-0664-4d59-8b55-9e4fe75d99c0",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "urbanWhosp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "f199f531-fac3-458b-b419-a23cfce7deca",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "urbanDirsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "b5e63732-134b-485d-9dbf-c51f7bd32bda",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				},
+				{
+					"label": "Rural Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "General route:",
+							"id": "routeRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "25899242-11a5-4ef7-81d7-4f593816746d",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest centre:",
+							"id": "centreRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "277895d8-1ce7-4834-85fc-b80cbf9439c4",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "stageRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "11f9bd3b-f973-4b9b-9307-2047cd58808a",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Village:",
+							"id": "villageRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "0d246ee6-0964-4e68-92c0-24a6b2232abc",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "landmarkRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "2ebbcf23-045a-4a00-a5a1-40ab1eb103f7",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Homestead name:",
+							"id": "homesteadRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "1c3b4886-3de6-4284-b155-85a496fc9c53",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "whomRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "ce34c025-90fb-4045-8492-3e5368a13759",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "dirRuralsp",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "d5ea7914-7d19-4f3a-9ad7-31e02c10200c",
+								"isSimpleValue": true
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "patienCat !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Next Of Kin",
+			"sections": [
+				{
+					"label": "Next Of Kin Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Name of next of kin:",
+							"id": "nameKin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "72a75bec-1359-11df-a1f1-0026b9348838",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Name commonly called:",
+							"id": "commonnameKin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "632029e2-1bf0-49fa-9738-15d791b48e13",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Tribe:",
+							"id": "tribeKin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "5a9034e8-2e36-4c4f-bb19-fcc9a9fc448e",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Phone number:",
+							"id": "phoneNumberKin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "a657a4f1-9c0f-444b-a1fd-445bb91dd12d",
+								"isSimpleValue": true
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(myValue).length > 10",
+									"message": "Phone number digits should not be more than 10"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Urban Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Town:",
+							"id": "urbanTownkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "f38bd1be-c54c-4863-8497-3670292881eb",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Estate:",
+							"id": "urbanEstatekin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "173e1e97-1daa-4465-be04-863a417688d0",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "urbanStagekin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "ea6dbf95-dd47-41c3-a616-6ef751029d6a",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Section:",
+							"id": "urbanSectionkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "9f44ee3b-2939-4fea-91b3-6fe4fea1c3c0",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "urbanLandmarkkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "33b60230-06b1-4c30-a7d8-ee5ff99e2b99",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Plot name:",
+							"id": "urbanplotkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "316e4137-8bb5-4184-80ed-80c87694b380",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Landlord:",
+							"id": "urbanLandlordkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "bdfd1a90-d392-41b4-b190-a3648a6bed77",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest well known neighbor:",
+							"id": "urbanneighborkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "c895a803-93c8-4217-8452-f8b235632145",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "urbanWhokin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "fbfe2bde-b621-4770-82cb-712b80678acb",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "urbanDirkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "8af78c58-14b6-4eb7-81e5-df947296fc92",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Rural Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "General route:",
+							"id": "routeRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "1a94ea89-9306-4dfa-a257-dd705d08ff5b",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest centre:",
+							"id": "centreRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "25c0202e-e877-4dd7-952b-9982ed2771ec",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "stageRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "2e925694-4af9-4ab7-9332-3aa1da3cac91",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Village:",
+							"id": "villageRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "a4e4028d-07fe-42e0-8a56-060562e630fb",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "landmarkRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "5d35d34e-f89c-453a-b94e-1ed82857f527",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Homestead name:",
+							"id": "homesteadRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "9620e4b0-71d1-41fb-b5de-5aea43c8f6eb",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "whomRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "90cd6c7d-b562-408e-94d6-fc68828f2b43",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "dirRuralkin",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "8ba14d31-50a0-4821-a697-2966e8472369",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Treatment Supporter",
+			"sections": [
+				{
+					"label": "Treatment Supporter Details(Person who supports the client)",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Treatment supporter name:",
+							"id": "nametxsupport",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "573af09d-4c3e-47c2-9a9d-4d78aff35312",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Common name:",
+							"id": "cntxsupport",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "20360c21-2241-47b6-8442-04aa3594544b",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Tribe:",
+							"id": "tribetxsupport",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "3b381fee-b267-4b17-a375-94c374556e75",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Phone number:",
+							"id": "numbertxsupport",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "85d1ecb6-031f-4114-8bf4-321eadf0fc3f",
+								"isSimpleValue": true
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(myValue).length > 10",
+									"message": "Phone number digits should not be more than 10"
+								}
+							]
+						},
+						{
+							"type": "personAttribute",
+							"label": "Relationship:",
+							"id": "rshiptxsupport",
+							"questionOptions": {
+								"rendering": "select",
+								"attributeType": "1c5a58a8-fb62-48ff-ada1-1f70dcaf350a",
+								"answers": [
+									{
+										"label": "Parent",
+										"concept": "a89ebec4-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "grandParent",
+										"concept": "a898c32a-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Sibling",
+										"concept": "a898c262-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Spouse",
+										"concept": "a89ebc80-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Guardian",
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Child",
+										"concept": "a89defe4-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Aunt",
+										"concept": "a8a17772-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Uncle",
+										"concept": "a898c3e8-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Other",
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Religious affiliation:",
+							"id": "religiontxsupport",
+							"questionOptions": {
+								"rendering": "select",
+								"attributeType": "e0c62ad4-87f6-4143-8a6e-a917a2bb4644",
+								"answers": [
+									{
+										"label": "None",
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Catholic",
+										"concept": "0f8569b7-800c-4f6a-be1f-b8e052fc96cf"
+									},
+									{
+										"label": "Protestant",
+										"concept": "4aec262f-08a5-4ed9-9c0d-39fa1a9bd81b"
+									},
+									{
+										"label": "Muslim",
+										"concept": "a0c91995-926e-421d-a5fe-44fdab3dfb27"
+									},
+									{
+										"label": "Traditionalist",
+										"concept": "975f809d-fa55-4b8a-9086-9d63e68728b1"
+									},
+									{
+										"label": "Hindu",
+										"concept": "d6601939-e81e-412e-ae36-373efd7f32fe"
+									},
+									{
+										"label": "Buddhist",
+										"concept": "f3ee48c2-3792-40ed-a400-aa5016784e9c"
+									},
+									{
+										"label": "Other",
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Urban Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Town:",
+							"id": "urbanTowntx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "8decb880-ca5d-4d7c-af13-7f191cc696c3",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Estate:",
+							"id": "urbanEstatetx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "ddea3f74-9682-4fbb-8901-f4ac700bcc02",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "urbanStagetx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "8b5603ae-0000-47fe-94fd-ae3a960edaf9",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Section:",
+							"id": "urbanSectiontx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "44847074-9ae1-48d2-8e6b-9111a31af0ed",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "urbanLandmarktx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "eafff308-1a15-429b-800c-811ab4c800bd",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Plot name:",
+							"id": "urbanplottx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "d084d24a-132b-4f59-96ff-fa493d1261e9",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Landlord:",
+							"id": "urbanLandlordtx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "eccef49e-1300-44aa-b269-5a94a4a368b5",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest well known neighbor:",
+							"id": "urbanneighbortx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "75bcd805-6dad-421f-b9e9-3f1745621551",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "urbanWhotx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "50cab9b5-3810-47ce-ac15-d9999d03c1eb",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "urbanDirtx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "e9f05776-68ea-45cb-bb09-e76cd67c46b4",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Rural Direction",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "General route:",
+							"id": "routeRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "3c987f0e-5718-4feb-810a-b929c8da2adf",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest centre:",
+							"id": "centreRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "82295f79-94c4-4e38-93a3-318f05778e4b",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Stage:",
+							"id": "stageRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "98e5a15d-0944-44dd-9ef1-da8784cbbaa9",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Village:",
+							"id": "villageRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "31c9f4f0-80bf-4f09-89be-930b21f528a4",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Nearest landmark:",
+							"id": "landmarkRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "4794af42-2886-41a6-9627-8c9440aff78e",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Homestead name:",
+							"id": "homesteadRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "97f44b8e-6a05-4a60-816e-4a6a99b8536a",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Whom to ask:",
+							"id": "whomRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "1e87dd1d-8f17-4c76-8d06-5255fe2f0cb9",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Direction:",
+							"id": "dirRuraltx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "2a473d3c-89d1-43be-871a-35565d118126",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Place Of Work",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "personAttribute",
+							"label": "Town:",
+							"id": "workplaceTowntx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "639a37e4-7cf3-4071-ac9d-e64e8307b890",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Institution/Business:",
+							"id": "workplaceInstitutetx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "6e9f4f3a-30cb-41f2-837b-521a4518964a",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Location:",
+							"id": "workplaceLocationtx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "49f48ef7-8cf8-4a42-bdcb-fb032e187545",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Department/section:",
+							"id": "workplaceDepttx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "a94a1f6d-54c4-4711-8fab-4b27f4c6f7ec",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Well known name:",
+							"id": "workplacenametx",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "8cc3473e-d02c-46bf-8d15-1e155f4c6429",
+								"isSimpleValue": true
+							},
+							"validators": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Other Personnal Information",
+			"sections": [
+				{
+					"label": "Other Personnal Information Data( Clients patient demographics)",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "obs",
+							"label": "No of children:",
+							"id": "noChildren",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "a89eed5e-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Name of well known child:",
+							"id": "nameChild",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "4dcc4901-d4a1-422a-b6a0-2b24594a0dc6",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"type": "obs",
+							"label": "No of siblings:",
+							"id": "noSibling",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "a8aac976-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": []
+						},
+						{
+							"type": "personAttribute",
+							"label": "Name of well known sibling:",
+							"id": "nameSibling",
+							"questionOptions": {
+								"rendering": "text",
+								"attributeType": "97011b6f-368a-4572-a049-21fe22905264",
+								"isSimpleValue": true
+							},
+							"validators": []
+						},
+						{
+							"label": "Who does the patient/client/guardian(if patient is paediatric) stay with?",
+							"type": "obs",
+							"id": "patStay",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a8a35bf0-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "Father",
+										"concept": "a898c1a4-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Mother",
+										"concept": "a898c0dc-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Grandparent",
+										"concept": "a898c32a-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Guardian",
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Other",
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"type": "obs",
+							"label": "Names of family members who know about the status of the client / patient (List at most three):",
+							"id": "statusDisclosure",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "7e6be6a3-d7eb-4347-9f3d-620b8126ad31"
+							},
+							"validators": []
+						},
+						{
+							"type": "obsGroup",
+							"label": "Details of members attending AMPATH clinic",
+							"questionOptions": {
+								"concept": "aeddf768-5ac0-45e4-934b-bf69730a8c2d",
+								"rendering": "repeating"
+							},
+							"questions": [
+								{
+									"label": "Name:",
+									"id": "nameStatus",
+									"questionOptions": {
+										"concept": "58fd4938-8976-4c43-b01a-6ce794d4f80b",
+										"rendering": "text"
+									},
+									"type": "obs"
+								},
+								{
+									"label": "CCC number:",
+									"id": "ccc",
+									"questionOptions": {
+										"concept": "45821d60-95fb-45f5-a267-c7e04cb25480",
+										"rendering": "text"
+									},
+									"type": "obs"
+								},
+								{
+									"label": "Relationship:",
+									"id": "relationshipO",
+									"questionOptions": {
+										"concept": "2ec6c229-afb6-4d95-89d2-c2f5e2715e9a",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Parent",
+												"concept": "a89ebec4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "grandParent",
+												"concept": "a898c32a-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Sibling",
+												"concept": "a898c262-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Spouse",
+												"concept": "a89ebc80-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Guardian",
+												"concept": "a89cd280-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Child",
+												"concept": "a89defe4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"type": "obs"
+								}
+							],
+							"id": "membershivStatusdet"
+						}
+					]
+				},
+				{
+					"label": "Locator Information",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Client/Parent/Guardians preferred place of contact:",
+							"id": "peferPlace",
+							"questionOptions": {
+								"concept": "3827a331-80ac-4a49-ac88-4d052c223993",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+										"label": "Home"
+									},
+									{
+										"concept": "a8a087c2-1350-11df-a1f1-0026b9348838",
+										"label": "Work"
+									}
+								]
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Time:",
+							"id": "timeClient",
+							"questionOptions": {
+								"concept": "1b355f7d-4312-4960-9c06-73954616c905",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "810ea450-dbea-4c25-baa9-086cfa1c1f8c",
+										"label": "Early morning"
+									},
+									{
+										"concept": "a5b13310-806a-4735-a192-54a4347d3973",
+										"label": "Mid Morning"
+									},
+									{
+										"concept": "a89ea538-1350-11df-a1f1-0026b9348838",
+										"label": "Morning"
+									},
+									{
+										"concept": "a89ea77c-1350-11df-a1f1-0026b9348838",
+										"label": "Afternoon"
+									},
+									{
+										"concept": "a89eeeda-1350-11df-a1f1-0026b9348838",
+										"label": "Evening"
+									},
+									{
+										"concept": "a89ea83a-1350-11df-a1f1-0026b9348838",
+										"label": "Nighttime"
+									},
+									{
+										"concept": "d067da45-9f28-41c3-9873-c85c58a930e3",
+										"label": "Saturday"
+									},
+									{
+										"concept": "6fbbf0ac-b257-4740-900c-d03177655f4b",
+										"label": "Sunday"
+									}
+								]
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Directions- locator map:",
+							"type": "obs",
+							"default": "",
+							"id": "locatorMap",
+							"questionOptions": {
+								"concept": "79b344df-d6ee-4db7-a0f5-615e407cff26",
+								"rendering": "file"
+							},
+							"validators": []
+						},
+						{
+							"label": "Client/Parent/Guardians preferred place of contact:",
+							"id": "peferPlace",
+							"questionOptions": {
+								"concept": "3827a331-80ac-4a49-ac88-4d052c223993",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+										"label": "Home"
+									},
+									{
+										"concept": "a8a087c2-1350-11df-a1f1-0026b9348838",
+										"label": "Work"
+									}
+								]
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Give a short physical description of the patient/client/Guardian:",
+							"id": "physiscalDes",
+							"questionOptions": {
+								"concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+								"rendering": "text"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Additional comments:",
+							"id": "additionalCom",
+							"questionOptions": {
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+								"rendering": "text"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Indicate if patient is from AMPATH catchment area:",
+							"id": "catchmentArea",
+							"required": "true",
+							"questionOptions": {
+								"concept": "65c5071a-0cf8-49d4-99d1-5f7da6ef6503",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "5066b630-842b-4105-a66d-74f8aa50aacb",
+										"label": "In AMPATH catchment area"
+									},
+									{
+										"concept": "83df5f26-f97a-4cda-9c05-d0bdc6e4ebee",
+										"label": "Out of AMPATH Catchment area"
+									}
+								]
+							},
+							"type": "obs"
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -2081,6 +2081,133 @@
 							}
 						},
 						{
+							"type": "obsGroup",
+							"label": "stopping reason",
+							"questionOptions": {
+								"concept": "a8a0780e-1350-11df-a1f1-0026b9348838",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "If stopping, reason:",
+									"required": "true",
+									"id": "tbpropreasonstop",
+									"questionOptions": {
+										"concept": "a89c1e12-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a890a96a-1350-11df-a1f1-0026b9348838",
+												"label": "Active TB"
+											},
+											{
+												"concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+												"label": "Completed"
+											},
+											{
+												"concept": "ecafa614-49c5-4eba-84c7-b85b0d9e2c46",
+												"label": "Pill burden"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											},
+											{
+												"concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
+												"label": "Toxicity"
+											},
+											{
+												"concept": "a89eb744-1350-11df-a1f1-0026b9348838",
+												"label": "Lack of drugs"
+											},
+											{
+												"concept": "a89ce50e-1350-11df-a1f1-0026b9348838",
+												"label": "Poor adherence"
+											},
+											{
+												"concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+												"label": "Side effects (Adverse drug reaction)"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "tbpropplan !== 'a89b7d36-1350-11df-a1f1-0026b9348838' || !arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201', 'fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+									}
+								},
+								{
+									"label": "If toxicity, please provide cause:",
+									"id": "toxCause",
+									"questionOptions": {
+										"concept": "a8a032fe-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a877c7f6-1350-11df-a1f1-0026b9348838",
+												"label": "Anaemia"
+											},
+											{
+												"concept": "a8909060-1350-11df-a1f1-0026b9348838",
+												"label": "Hepatitis"
+											},
+											{
+												"concept": "a89d0c0a-1350-11df-a1f1-0026b9348838",
+												"label": "IRIS"
+											},
+											{
+												"concept": "a8a01dfa-1350-11df-a1f1-0026b9348838",
+												"label": "Lactic Acidosis"
+											},
+											{
+												"concept": "a89cee50-1350-11df-a1f1-0026b9348838",
+												"label": "Lipo-dystrophy"
+											},
+											{
+												"concept": "a897fe86-1350-11df-a1f1-0026b9348838",
+												"label": "Neuropathy"
+											},
+											{
+												"concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+												"label": "Persistent vomiting"
+											},
+											{
+												"concept": "a895776a-1350-11df-a1f1-0026b9348838",
+												"label": "Rash"
+											},
+											{
+												"concept": "a8a16d0e-1350-11df-a1f1-0026b9348838",
+												"label": "Steven-Johnson syndrome"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "tbpropreasonstop !== 'a890d1ba-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "If toxicity, please provide cause: Other (specify):",
+									"id": "toxcauseOther",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "toxCause !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__DM6tFuGJq"
+						},
+						{
 							"label": "TB prophylaxis regimen started:",
 							"questionOptions": {
 								"concept": "a89b83bc-1350-11df-a1f1-0026b9348838",

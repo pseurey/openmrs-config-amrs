@@ -2,280 +2,6 @@
 	"name": "ampath_poc_anc_return_visit_form_v1.0",
 	"uuid": "xxxx",
 	"processor": "EncounterFormProcessor",
-	"referencedForms": [
-		{
-			"formName": "component_hospitalization",
-			"alias": "hosp",
-			"ref": {
-				"uuid": "77d6652f-4653-4434-af6b-6dab84117044",
-				"display": "Hospitalization Component"
-			}
-		},
-		{
-			"formName": "component_immunization-v1.0",
-			"alias": "immn1",
-			"ref": {
-				"uuid": "11b15110-e325-4d0d-bd54-5f55b21301f5",
-				"display": "Immunization v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_art-v1.2",
-			"alias": "art12",
-			"ref": {
-				"uuid": "49eb4af7-7e05-4b3f-aeb0-d1931e27909b",
-				"display": "Art v1.2 Component"
-			}
-		},
-		{
-			"formName": "component_art-v1.4",
-			"alias": "art14",
-			"ref": {
-				"uuid": "fe2cc2aa-ea65-42a1-a1fc-560fff8d5480",
-				"display": "Art v1.4 DTG Component"
-			}
-		},
-		{
-			"formName": "component_pcp-prophy-v1.2",
-			"alias": "pcp12",
-			"ref": {
-				"uuid": "6493a2dd-d3c3-4ff5-9b2d-02ac6c30fe39",
-				"display": "Pcp v1.2 Prophy Component"
-			}
-		},
-		{
-			"formName": "component_tb-prophy-v1.2",
-			"alias": "tbp12",
-			"ref": {
-				"uuid": "f48291ac-40c5-466b-83ee-62758e804b32",
-				"display": "Tb Prophy Component"
-			}
-		},
-		{
-			"formName": "component_tb-treatment-v1.3",
-			"alias": "tbt13",
-			"ref": {
-				"uuid": "e04b6b46-1682-4804-aa3c-895347c8f402",
-				"display": "Tb Treatment Component"
-			}
-		},
-		{
-			"formName": "component_other-medication",
-			"alias": "omed",
-			"ref": {
-				"uuid": "46205439-ccbf-4f60-80e1-d765861f6257",
-				"display": "Other Medication Component"
-			}
-		},
-		{
-			"formName": "component_side-effect-v1.1",
-			"alias": "se11",
-			"ref": {
-				"uuid": "c45f02b4-12bb-4611-9920-aa2df3b6bd3d",
-				"display": "Side Effect v 1.1 Component"
-			}
-		},
-		{
-			"formName": "component_nutrition",
-			"alias": "nut",
-			"ref": {
-				"uuid": "e421b750-e7fc-4194-b55e-6f2c978e1af5",
-				"display": "Nutrition Component"
-			}
-		},
-		{
-			"formName": "component_vitals",
-			"alias": "vt",
-			"ref": {
-				"uuid": "7f5e06a4-92d1-4fc9-9e05-03b414457d69",
-				"display": "Vitals Component"
-			}
-		},
-		{
-			"formName": "component_hpi",
-			"alias": "hpi",
-			"ref": {
-				"uuid": "b91aef27-cd94-4934-94ac-c168ce539cb3",
-				"display": "Hpi Component"
-			}
-		},
-		{
-			"formName": "component_who-staging",
-			"alias": "who",
-			"ref": {
-				"uuid": "fdf950e0-ff0a-4d7d-a52b-33a8d5b98fb7",
-				"display": "Who Staging Component"
-			}
-		},
-		{
-			"formName": "component_assessment",
-			"alias": "ass",
-			"ref": {
-				"uuid": "98e061d2-4a16-4665-b0dc-fc0266ee689c",
-				"display": "Assessment Component"
-			}
-		},
-		{
-			"formName": "component_sti-v1.0",
-			"alias": "sti1",
-			"ref": {
-				"uuid": "6515b019-5264-4a61-a7fd-e891ea03b5f4",
-				"display": "STI v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_lab-orders-v1.0",
-			"alias": "to",
-			"ref": {
-				"uuid": "61a262b6-3238-4187-9740-dea29ea4f7e4",
-				"display": "Lab Orders v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_referral",
-			"alias": "ref",
-			"ref": {
-				"uuid": "f18a6b65-f55b-4d53-afe2-b929bbb66a70",
-				"display": "Referral Component"
-			}
-		},
-		{
-			"formName": "component_positive-health-dignity-&-prevention-services-v1.0",
-			"alias": "phdp",
-			"ref": {
-				"uuid": "4da1548d-e098-4658-a847-8d42f45059f4",
-				"display": "PHDP Component"
-			}
-		},
-		{
-			"formName": "component_vl-justification",
-			"alias": "vljust",
-			"ref": {
-				"uuid": "c47dd152-9996-4ec9-94bb-434f85a6a2b5",
-				"display": "VL Justification Component"
-			}
-		},
-		{
-			"formName": "component_family-planning-v1.0",
-			"alias": "fp1",
-			"ref": {
-				"uuid": "68363308-0a91-4541-9934-c3e770416d51",
-				"display": "Family Planning v1.0 Component"
-			}
-		},
-		{
-			"ref": {
-				"uuid": "a472864e-ddb4-4741-be6f-20d1b2a9be2b",
-				"display": "component_morisky-adherence-score-v1.0"
-			},
-			"formName": "component_morisky-adherence-score-v1.0",
-			"alias": "mmas1"
-		},
-		{
-			"ref": {
-				"uuid": "10fb1c84-84d8-43b3-8683-2fbe2bc9962a",
-				"display": "Feeding v1.1 Compent"
-			},
-			"formName": "component_feeding-v1.1",
-			"alias": "feed11"
-		},
-		{
-			"ref": {
-				"uuid": "df2529c9-3679-4dc1-b747-d753cdb8b774",
-				"display": "Vitals v1.3 Component"
-			},
-			"formName": "component_vitals-v1.3",
-			"alias": "vt13"
-		},
-		{
-			"ref": {
-				"uuid": "4491d2dc-abc7-45f5-b724-ef534f00d144",
-				"display": "Preclinic v1.4"
-			},
-			"formName": "component_preclinic-review-v1.4",
-			"alias": "pcr14"
-		},
-		{
-			"ref": {
-				"uuid": "68cb1748-94ea-48b2-bfd0-cda5c1a7b7d1",
-				"display": "Reproductive history v1.5"
-			},
-			"formName": "component_reproductive-history-v1.5",
-			"alias": "repro15"
-		},
-		{
-			"ref": {
-				"uuid": "64d07d7c-b82b-4245-ae0a-9e4af907eab7",
-				"display": "Crypto v1.1"
-			},
-			"formName": "component_crypto-v1.1",
-			"alias": "crypto11"
-		},
-		{
-			"ref": {
-				"uuid": "b9e18c55-6547-49ed-8025-f18bacb22e7c",
-				"display": "Lab Results v1.5"
-			},
-			"formName": "component_lab-results-v1.5",
-			"alias": "lr5"
-		},
-		{
-			"ref": {
-				"uuid": "4caf221a-1451-4331-8256-50d37f0d02c6",
-				"display": "OB-History v1.5"
-			},
-			"formName": "component_ob-history-1.5",
-			"alias": "obgynhist15"
-		},
-		{
-			"ref": {
-				"uuid": "c297210f-a151-49a5-bf51-d2d726fe459d",
-				"display": "Enhanced Adherence 1.0"
-			},
-			"formName": "component_enhanced-adherence-v1.0",
-			"alias": "enhadhere1"
-		},
-		{
-			"ref": {
-				"uuid": "83eaa418-9d70-4a27-b5cd-f7eed9e11f6f",
-				"display": "DC Plan"
-			},
-			"formName": "component_dc-plan",
-			"alias": "dcPlan"
-		},
-		{
-			"ref": {
-				"uuid": "ad50a94d-4edb-463d-b6e6-ac83eecffa7c",
-				"display": "component_gender-based-violence"
-			},
-			"formName": "component_gender-based-violence-v1.0",
-			"alias": "gbv10"
-		},
-		{
-			"ref": {
-				"uuid": "1d265294-3a62-4ab4-bc64-038cbd4a8a14",
-				"display": "component_positive-health-dignity-&-prevention-services-v12"
-			},
-			"formName": "component_positive-health-dignity-&-prevention-services-v1.2",
-			"alias": "phdp12"
-		},
-		{
-			"ref": {
-				"uuid": "3b56db77-167f-49ee-b52f-7511ac71294f",
-				"display": "component_referral-v1.4"
-			},
-			"formName": "component_referral-v1.4",
-			"alias": "ref14"
-		},
-		{
-			"ref": {
-				"uuid": "d79f082c-6945-4ce4-940d-ec911c909684",
-				"display": "component_test-reproductive-history-v1.5"
-			},
-			"formName": "component_test-reproductive-history-v1.5",
-			"alias": "testRH15"
-		}
-	],
 	"pages": [
 		{
 			"label": "Encounter Details",
@@ -480,6 +206,38 @@
 									{
 										"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
 										"label": "Moderate  acute malnutrition"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Nutrition intervention:",
+							"id": "nutritionIntervention",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "42c0032e-e404-4e64-9564-06cc1473d5d0",
+										"label": "Nutrition counselling"
+									},
+									{
+										"concept": "a8a488d6-1350-11df-a1f1-0026b9348838",
+										"label": "Supplememntary feeding program"
+									},
+									{
+										"concept": "55f41f90-5650-4292-8fb2-8c1eadd95cb1",
+										"label": "Outpatient therapeutic program"
+									},
+									{
+										"concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
+										"label": "Inpatient management"
+									},
+									{
+										"concept": "c6b6915a-8bc0-4420-8d3b-ae6282b4be68",
+										"label": "Weight management"
 									}
 								]
 							},
@@ -768,12 +526,12 @@
 								"concept": "b33dd937-9ad5-435b-b86b-9469b533d122",
 								"answers": [
 									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
+										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+										"label": "Normal"
 									},
 									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
+										"concept": "a899e890-1350-11df-a1f1-0026b9348838",
+										"label": "Abnormal"
 									}
 								]
 							},
@@ -1086,6 +844,103 @@
 								}
 							],
 							"id": "test2Detailed"
+						},
+						{
+							"label": "HIV Test Results 3:",
+							"type": "obsGroup",
+							"questionOptions": {
+								"rendering": "group",
+								"concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+							},
+							"questions": [
+								{
+									"label": "HIV test 3 results",
+									"id": "test3",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Positive",
+												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											},
+											{
+												"label": "Negative",
+												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											},
+											{
+												"label": "N/A",
+												"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Kit name:",
+									"id": "rapidTest3",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Determine",
+												"concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											},
+											{
+												"label": "First response",
+												"concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+												"conceptMappings": []
+											},
+											{
+												"label": "Dual kit",
+												"concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
+												"conceptMappings": []
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Lot number:",
+									"id": "lotNumber3",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									},
+									"type": "obs"
+								},
+								{
+									"label": "Expiry date:",
+									"id": "expiryDate2",
+									"questionOptions": {
+										"rendering": "date",
+										"concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									},
+									"type": "obs"
+								}
+							],
+							"id": "test3Detailed"
 						},
 						{
 							"label": "Final results:",
@@ -1878,6 +1733,18 @@
 									{
 										"concept": "a8a70746-1350-11df-a1f1-0026b9348838",
 										"label": "Flu"
+									},
+									{
+										"concept": "a890a654-1350-11df-a1f1-0026b9348838",
+										"label": "Tetanus booster"
+									},
+									{
+										"concept": "a6678857-3e09-42ab-ad38-9680335b71cd",
+										"label": "Covid -19 vaccine"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
 									}
 								]
 							},
@@ -8249,6 +8116,36 @@
 					]
 				},
 				{
+					"label": "Categorization",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Patient establishment categorization:",
+							"type": "obs",
+							"required": "true",
+							"id": "establishCategory",
+							"questionOptions": {
+								"concept": "0c61f19e-e1d0-4808-8612-07663ac08cc9",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "8f2d9ee8-ad95-4f37-b81d-7eff531ad80b",
+										"label": "Established"
+									},
+									{
+										"concept": "dc8eb4d5-8e3c-4c48-bec9-340cf125ff55",
+										"label": "Not Established"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				},
+				{
 					"label": "Referrals",
 					"questions": [
 						{
@@ -8522,9 +8419,6 @@
 										"label": "No"
 									}
 								]
-							},
-							"hide": {
-								"hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
