@@ -859,6 +859,10 @@
 									{
 										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
 										"label": "Negative"
+									},
+									{
+										"concept": "6bad2971-c776-4f0e-ae15-a3fc0cbd7d0f",
+										"label": "Unknown"
 									}
 								]
 							},
@@ -6132,6 +6136,10 @@
 												"label": "Steven-Johnson syndrome"
 											},
 											{
+												"concept": "5d08b98f-5123-4d6d-9972-825b6aa2f4ed",
+												"label": "Fanconi syndrome"
+											},
+											{
 												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
 												"label": "Other"
 											}
@@ -6765,6 +6773,14 @@
 											{
 												"concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
 												"label": "Side effects (Adverse drug reaction)"
+											},
+											{
+												"concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+												"label": "Change of regimen"
+											},
+											{
+												"concept": "a8af61e8-1350-11df-a1f1-0026b9348838",
+												"label": "LTFU"
 											}
 										],
 										"rendering": "select"
@@ -7399,12 +7415,12 @@
 								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
 								"answers": [
 									{
-										"concept": "a8a4bd42-1350-11df-a1f1-0026b9348838",
-										"label": "Present"
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
 									},
 									{
-										"concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
-										"label": "Absent"
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
 									}
 								],
 								"showDate": "true",
@@ -7648,50 +7664,74 @@
 					"label": "Comorbidities And Additional Medication Orders",
 					"questions": [
 						{
-							"label": "Comorbid illness:",
-							"required": "true",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')) ? undefined : HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
-							"id": "comorbidIllness",
+							"type": "obsGroup",
+							"label": "Comorbid illness",
 							"questionOptions": {
-								"concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
-								"answers": [
-									{
-										"concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
-										"label": "Convulsive disease"
-									},
-									{
-										"concept": "a890b810-1350-11df-a1f1-0026b9348838",
-										"label": "Mental health disorders"
-									},
-									{
-										"concept": "a893436e-1350-11df-a1f1-0026b9348838",
-										"label": "Diabetes"
-									},
-									{
-										"concept": "a8ad5254-1350-11df-a1f1-0026b9348838",
-										"label": "Renal disease"
-									},
-									{
-										"concept": "a8ad516e-1350-11df-a1f1-0026b9348838",
-										"label": "Liver disease"
-									},
-									{
-										"concept": "a8986880-1350-11df-a1f1-0026b9348838",
-										"label": "Hypertension"
-									},
-									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-										"label": "None"
-									},
-									{
-										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-										"label": "Other"
-									}
-								],
-								"rendering": "multiCheckbox"
+								"rendering": "group",
+								"concept": "ebf02efb-b28c-49e8-9caf-65e96dbfa0a9"
 							},
-							"type": "obs",
-							"validators": []
+							"questions": [
+								{
+									"label": "Comorbid illness:",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')) ? undefined : HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
+									"id": "comorbidIllness",
+									"questionOptions": {
+										"concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
+										"answers": [
+											{
+												"concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
+												"label": "Convulsive disease"
+											},
+											{
+												"concept": "a890b810-1350-11df-a1f1-0026b9348838",
+												"label": "Mental health disorders"
+											},
+											{
+												"concept": "a893436e-1350-11df-a1f1-0026b9348838",
+												"label": "Diabetes"
+											},
+											{
+												"concept": "a8ad5254-1350-11df-a1f1-0026b9348838",
+												"label": "Renal disease"
+											},
+											{
+												"concept": "a8ad516e-1350-11df-a1f1-0026b9348838",
+												"label": "Liver disease"
+											},
+											{
+												"concept": "a8986880-1350-11df-a1f1-0026b9348838",
+												"label": "Hypertension"
+											},
+											{
+												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+												"label": "None"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Other specify:",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"type": "obs",
+									"id": "comorbidOther",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8aaf3e2-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
+									}
+								}
+							],
+							"id": "__qxL9JJy92"
 						},
 						{
 							"label": "Hypertension treatment:",
@@ -8391,6 +8431,10 @@
 												"label": "CXR"
 											},
 											{
+												"concept": "a8a46fd6-1350-11df-a1f1-0026b9348838",
+												"label": "HPV"
+											},
+											{
 												"concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
 												"label": "Sputum AFB"
 											},
@@ -8439,6 +8483,10 @@
 												"label": "TB Culture"
 											},
 											{
+												"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
+												"label": "TB Urine Lam"
+											},
+											{
 												"concept": "a8945678-1350-11df-a1f1-0026b9348838",
 												"label": "VDRL"
 											},
@@ -8473,6 +8521,10 @@
 											{
 												"concept": "a89dd9aa-1350-11df-a1f1-0026b9348838",
 												"label": "Echo"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
 											}
 										]
 									}
@@ -8485,10 +8537,209 @@
 									},
 									"type": "obs",
 									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+									},
 									"id": "otherTestOrder"
 								}
 							],
 							"id": "testDetailed"
+						},
+						{
+							"type": "obsGroup",
+							"label": "Entry point, detailed",
+							"id": "entryPointD",
+							"questionOptions": {
+								"concept": "a8a17f06-1350-11df-a1f1-0026b9348838",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Entry point:",
+									"type": "obs",
+									"id": "hpventrypoint",
+									"questionOptions": {
+										"concept": "a8a17e48-1350-11df-a1f1-0026b9348838",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "IPD",
+												"concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "OPD",
+												"concept": "a8a09ac8-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Maternity",
+												"concept": "50d22d55-e6af-4a77-9283-2e901c3060ad"
+											},
+											{
+												"label": "CCC",
+												"concept": "a8a3899a-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "MCH",
+												"concept": "a8a17d80-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "PMTCT",
+												"concept": "a89fbedc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(order1) || !arrayContains(['a8a46fd6-1350-11df-a1f1-0026b9348838','a898fe80-1350-11df-a1f1-0026b9348838'],order1))",
+											"message": "Entry Point is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(order1) || !arrayContains(['a8a46fd6-1350-11df-a1f1-0026b9348838','a898fe80-1350-11df-a1f1-0026b9348838'],order1)"
+									}
+								},
+								{
+									"label": "Other specify, freetext:",
+									"id": "hpvorder",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "hpventrypoint !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							]
+						},
+						{
+							"label": "HIV status:",
+							"type": "obs",
+							"id": "hivstatus",
+							"questionOptions": {
+								"concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Reactive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Non-Reactive"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								]
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838'))",
+									"message": "HIV Status is required."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838')"
+							}
+						},
+						{
+							"label": "Type of screening:",
+							"type": "obs",
+							"id": "screentype",
+							"questionOptions": {
+								"concept": "6048b6bd-c698-48c9-8d20-424ab0b3d628",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "76ab49de-c5f4-43dc-a368-0274ee834ad3",
+										"label": "Initial screening"
+									},
+									{
+										"concept": "a89526f2-1350-11df-a1f1-0026b9348838",
+										"label": "Routine screening"
+									},
+									{
+										"concept": "19a7233b-2db1-4d7b-a2fb-4473e6b58f9d",
+										"label": "Post Rx screening"
+									},
+									{
+										"concept": "9ee34e6b-b9ed-4306-b41f-476406895a4a",
+										"label": "Repeat screening"
+									}
+								]
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838'))",
+									"message": "Type of screening is required."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838')"
+							}
+						},
+						{
+							"label": "Sample collection method:",
+							"type": "obs",
+							"id": "collecttype",
+							"questionOptions": {
+								"concept": "aa14f397-5d82-4cd3-8dc8-bb381a935717",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89d1c68-1350-11df-a1f1-0026b9348838",
+										"label": "Clinician collected"
+									},
+									{
+										"concept": "3e69faed-e56f-4ff1-8831-922224d6ae6b",
+										"label": "Self collected"
+									}
+								]
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838'))",
+									"message": "Sample collected is required."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838')"
+							}
+						},
+						{
+							"label": "Date of sample collection:",
+							"type": "obs",
+							"id": "collectdate",
+							"questionOptions": {
+								"concept": "e07623c2-38af-4caa-8d8d-d01791441c59",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Date should be before the encounter date."
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838'))",
+									"message": "Date of sample collection is required."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8a46fd6-1350-11df-a1f1-0026b9348838')"
+							}
 						},
 						{
 							"label": "CD4 justification:",

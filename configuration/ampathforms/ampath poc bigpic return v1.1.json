@@ -1,0 +1,3466 @@
+{
+    "name": "BIGPIC_POC_Adult_Return_v1.1",
+    "uuid": "xxxx",
+    "processor": "EncounterFormProcessor",
+    "pages": [
+        {
+            "label": "Encounter Details",
+            "sections": [
+                {
+                    "label": "Encounter Details",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Visit date",
+                            "type": "encounterDatetime",
+                            "required": "true",
+                            "default": "",
+                            "id": "encDate",
+                            "questionOptions": {
+                                "rendering": "date"
+                            },
+                            "validators": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "encounterProvider",
+                            "label": "Provider",
+                            "id": "provider",
+                            "required": "true",
+                            "default": "",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            }
+                        },
+                        {
+                            "label": "Facility name (site/satellite clinic required):",
+                            "type": "encounterLocation",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            },
+                            "id": "location",
+                            "required": "true"
+                        },
+                        {
+                            "label": "Type of Follow-up",
+                            "type": "obs",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "multiCheckbox",
+                                "concept": "a8a47760-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a8986880-1350-11df-a1f1-0026b9348838",
+                                        "label": "Hypertension"
+                                    },
+                                    {
+                                        "concept": "a893436e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Diabetes Mellitus"
+                                    },
+                                    {
+                                        "concept": "a890b810-1350-11df-a1f1-0026b9348838",
+                                        "label": "Mental Illness"
+                                    },
+                                    {
+                                        "label": "Other",
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                                    }
+                                ]
+                            },
+                            "id": "followUp"
+                        }
+                    ]
+                },
+                {
+                    "label": "Visits",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+							"type": "obsGroup",
+							"label": "Visit type detailed",
+							"questionOptions": {
+								"concept": "79ac9dc2-6864-497b-9f47-2c2b854b2856",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Visit type:",
+									"id": "visitType",
+									"questionOptions": {
+										"concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+                                                "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                                                "label": "Initial visit"
+                                            
+                                            },
+                                            {
+                                                "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                                                "label": "Follow-Up"
+                                            
+                                            },
+                                            {
+                                                "concept": "e155a9d5-6803-4c68-8e91-51287cf441b7",
+                                                "label": "Referred from clinical officer"
+                                                
+                                            },
+                                            {
+                                                "concept": "c562d975-b677-4ced-848a-6a6229844a99",
+                                                "label": "Referred from group care"
+                                                
+                                            },
+                                            {
+                                                "concept": "83ff6a32-e6e8-489b-8714-a878111fe453",
+                                                "label": "Referred from outpatient clinic"
+                                            
+                                            },
+                                            {
+                                                "concept": "d1c4a2c9-6326-41ab-baae-8239ec697620",
+                                                "label": "Drug delivery"
+                                            },
+                                            {
+                                                "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                                "label": "Other non-coded"
+                                            }
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "What is the non-coded visit type:",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"type": "obs",
+									"id": "visitTypeOther",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "visitType !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "visitTypeDet"
+						},
+                   
+                        {
+                            "label": "Where is the patient seen at this visit?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "6335d36f-0d9e-4936-a3ce-7181af1bcc50",
+                                "answers": [
+                                    {
+                                        "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                                        "label": "Health centre"
+                                    },
+                                    {
+                                        "concept": "53401493-70ba-4361-a21c-ee6f19bc6422",
+                                        "label": "District hospital/Sub-county"
+                                    },
+                                    {
+                                        "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                                        "label": "Community"
+                                    }
+                                ]
+                            },
+                            "id": "patientVisit"
+                        },
+                        {
+                            "label": "Name of group care",
+                            "type": "obs",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "aab3dcc5-f984-45d2-b0c4-7a3ba746951b"
+                            },
+                            "id": "groupname"
+                        },
+                        {
+                            "label": "Village",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "5dff52c6-a14a-4893-967f-42c400b98989"
+                            },
+                            "id": "village"
+                        }
+                    ]
+                },
+                {
+                    "label": "Health Insurance:",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": " Are you an active NHIF contributor?",
+                            "type": "obs",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a8b02524-1350-11df-a1f1-0026b9348838",
+                                "conceptMappings": [
+                                    {
+                                        "type": "local",
+                                        "value": "6266"
+                                    }
+                                ],
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    },
+                                    {
+                                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Unknown"
+                                    }
+                                ]
+                            },
+                            "id": "nhifContributor"
+                        },
+                        {
+                            "label": "  If yes, what is NHIF ID?:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "73afb9b4-8b70-4d34-a60b-5c63e1f889c5",
+                                "max": "",
+                                "min": "",
+                                "showDate": ""
+                            },
+                            "id": "nhifNumber",
+                            "hide": {
+                                "hideWhenExpression": "nhifContributor !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "NHIF Status Confirmed?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "548e6743-67c0-4a6b-bb07-b5f799f63bc1",
+                                "answers": [
+                                    {
+                                        "concept": "b058a9ad-a0e4-4b37-9214-75b8aed1eaa4",
+                                        "label": "Active",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "dd373348-1a7f-4625-9e69-9904fa1cc9c7",
+                                        "label": "Inactive",
+                                        "conceptMappings": []
+                                    }
+                                ]
+                            },
+                            "id": "statusConfirmed"
+                        },
+                        {
+                            "label": "If status is active,please indicate outpatient facility of choice, free text:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                                "conceptMappings": [
+                                    {
+                                        "type": "local",
+                                        "value": "1915"
+                                    },
+                                    {
+                                        "type": "MCL/CIEL",
+                                        "value": "160632"
+                                    }
+                                ]
+                            },
+                            "id": "activeStatus",
+                            "hide": {
+                                "hideWhenExpression": "statusConfirmed !== 'b058a9ad-a0e4-4b37-9214-75b8aed1eaa4'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "GISHE Information",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Are you part of a savings group?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "41f773c6-1511-4c49-99be-106f01dc3342",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1065"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1065"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1066"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "1066"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "required": "true",
+                            "id": "savingGroupmembership"
+                        },
+                        {
+                            "label": "What is the name of your savings group?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "aab3dcc5-f984-45d2-b0c4-7a3ba746951b"
+                            },
+                            "id": "savingGroupname"
+                        }
+                    ]
+                },
+                {
+                    "label": "General Information",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Civil status:",
+                            "required": "true",
+                            "type": "obs",
+                            "historicalExpression": "HD.getObject('prevEnc').getValue('a899a9f2-1350-11df-a1f1-0026b9348838')",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a899a9f2-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a899af10-1350-11df-a1f1-0026b9348838",
+                                        "label": "Cohabitating"
+                                    },
+                                    {
+                                        "concept": "a899ad58-1350-11df-a1f1-0026b9348838",
+                                        "label": "Divorced"
+                                    },
+                                    {
+                                        "concept": "a8aa76b0-1350-11df-a1f1-0026b9348838",
+                                        "label": "Married monogamous"
+                                    },
+                                    {
+                                        "concept": "a8b03712-1350-11df-a1f1-0026b9348838",
+                                        "label": "Married polygamous"
+                                    },
+                                    {
+                                        "concept": "a899aba0-1350-11df-a1f1-0026b9348838",
+                                        "label": "Separated"
+                                    },
+                                    {
+                                        "concept": "a899ac7c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Single"
+                                    },
+                                    {
+                                        "concept": "a899ae34-1350-11df-a1f1-0026b9348838",
+                                        "label": "Widowed"
+                                    }
+                                ]
+                            },
+                            "validators": [],
+                            "id": "__typtqLHrK"
+                        },
+                        {
+                            "label": "Occupation",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Teacher",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "162946"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
+                                        "label": "Casual worker",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "159613"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a09dca-1350-11df-a1f1-0026b9348838",
+                                        "label": "Housewife",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "160295"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a09e92-1350-11df-a1f1-0026b9348838",
+                                        "label": "Police officer",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1970"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a09c4e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Farmer",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1538"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a09f50-1350-11df-a1f1-0026b9348838",
+                                        "label": "Unemployed",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "123801"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a89ff438-1350-11df-a1f1-0026b9348838",
+                                        "label": "Sex worker",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "160579"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                                        "label": "Health care provider",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5619"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8b03294-1350-11df-a1f1-0026b9348838",
+                                        "label": "Self Employment",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "161382"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                                        "label": "Truck Driver",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "162198"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "49c8583d-baa0-4b80-a719-8c5609129c15",
+                                        "label": "Formal Employment",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "165219"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "529a8c73-617d-4aee-ac0c-5c22f38f4265",
+                                        "label": "Civil servant",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "162944"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "05b4c838-a185-4bb0-8c33-71f80ea7c4cf",
+                                        "label": "Student",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "159465"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "16281ca7-8cb2-4d80-851c-0485f3d55aaa",
+                                        "label": "Boda Boda",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "Local",
+                                                "value": "6580"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Other non-coded",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5622"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "id": "occupation"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Vital Signs",
+            "sections": [
+                {
+                    "label": "Vital Signs",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "BP:Systolic:",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                                "max": "250",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "id": "syst"
+                        },
+                        {
+                            "label": "BP:Diastolic:",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                                "max": "200",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "id": "diast"
+                        },
+                        {
+                            "label": "Pulse(Rate/Min):",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+                                "max": "230",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "id": "pulse"
+                        },
+                        {
+                            "label": "Random blood sugar (mmol/L)",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a898418e-1350-11df-a1f1-0026b9348838",
+                                "max": "",
+                                "min": "",
+                                "showDate": ""
+                            },
+                            "id": "__KqGLvqDsH"
+                        },
+                        {
+                            "label": "HBA1c:",
+                            "id": "a1c",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a8af7520-1350-11df-a1f1-0026b9348838",
+                                "max": "20",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "RR (Breath/Min):",
+                            "id": "rr",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
+                                "max": "20",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "Waist circumference (CM):",
+                            "id": "waistCircumferece",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "9ed84785-76c5-4520-ad0e-5c6446c9df2c",
+                                "max": "150",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "Temp(C):",
+                            "questionOptions": {
+                                "rendering": "decimal",
+                                "concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
+                                "max": "43.00",
+                                "min": "25.00"
+                            },
+                            "type": "obs",
+                            "validators": [
+                                {
+                                    "type": "decimal",
+                                    "decimalPlace": 1
+                                }
+                            ],
+                            "id": "temp"
+                        },
+                        {
+                            "label": "Weight(Kg):",
+                            "id": "weight",
+                            "questionOptions": {
+                                "rendering": "decimal",
+                                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                                "max": "250",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": [
+                                {
+                                    "type": "decimal",
+                                    "decimalPlace": 1
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Height(CM):",
+                            "id": "height",
+                            "historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
+                            "questionOptions": {
+                                "rendering": "decimal",
+                                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                                "max": "228.00",
+                                "min": "10.00"
+                            },
+                            "type": "obs",
+                            "validators": [
+                                {
+                                    "type": "decimal",
+                                    "decimalPlace": 1
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Sp02:",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
+                                "max": "100",
+                                "min": "0"
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "id": "saturation"
+                        },
+                        {
+                            "label": "BMI:Kg/M2",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+                                "max": "100",
+                                "min": "0",
+                                "calculate": {
+                                    "calculateExpression": "calcBMI(height,weight)"
+                                }
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age<18"
+                            },
+                            "id": "bmi"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "New Labs & Results",
+            "sections": [
+                {
+                    "label": "Chemistry Lab Tests",
+                    "questions": [
+                        {
+                            "type": "obs",
+                            "label": "Creatinine mmol/L:",
+                            "id": "creatinine_test",
+                            "questionOptions": {
+                                "concept": "a897e450-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "showDate": "true",
+                                "max": "11050",
+                                "min": "0",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(creatinine_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(creatinine_test)"
+                                    }
+                                }
+                            },
+                            "validators": []
+                        },
+                        {
+                            "type": "obs",
+                            "label": "Potassium (K+) mmol/L:",
+                            "id": "potassium_test",
+                            "questionOptions": {
+                                "concept": "a89a7418-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "showDate": "true",
+                                "max": "50",
+                                "min": "0",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(potassium_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(potassium_test)"
+                                    }
+                                }
+                            },
+                            "validators": []
+                        },
+                        {
+                            "type": "obs",
+                            "label": "SGPT (ALT):",
+                            "id": "sgptalt_test",
+                            "questionOptions": {
+                                "concept": "a896ca48-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "3500",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(sgptalt_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(sgptalt_test)"
+                                    }
+                                }
+                            },
+                            "validators": []
+                        },
+                        {
+                            "type": "obs",
+                            "label": "SGOT (AST):",
+                            "id": "ast_test",
+                            "questionOptions": {
+                                "concept": "a896c8ae-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "3500",
+                                "min": "0",
+                                "showDate": "true"
+                            },
+                            "shownDateOptions": {
+                                "validators": [
+                                    {
+                                        "type": "date"
+                                    },
+                                    {
+                                        "type": "js_expression",
+                                        "failsWhenExpression": "!isEmpty(ast_test) && isEmpty(myValue)",
+                                        "message": "Date is result is required."
+                                    }
+                                ],
+                                "hide": {
+                                    "hideWhenExpression": "isEmpty(ast_test)"
+                                }
+                            }
+                        },
+                        {
+                            "label": "RBS mmol/L:",
+                            "id": "rbs_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "a898418e-1350-11df-a1f1-0026b9348838",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "50",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(rbs_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(rbs_test)"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "FBS mmol/L:",
+                            "id": "fbs_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "a8b018fe-1350-11df-a1f1-0026b9348838",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "50",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(fbs_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(fbs_test)"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "LDL mmol/L:",
+                            "id": "ldl_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "a898e74c-1350-11df-a1f1-0026b9348838",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "75",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(ldl_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(ldl_test)"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "HDL mmol/L:",
+                            "id": "hdl_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "a898e602-1350-11df-a1f1-0026b9348838",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "15",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(hdl_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(hdl_test)"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "TG mmol/L:",
+                            "id": "tg_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "a898e8a0-1350-11df-a1f1-0026b9348838",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "55",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(tg_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(tg_test)"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "Cholesterol mmol/L:",
+                            "id": "chol_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "a898e4b8-1350-11df-a1f1-0026b9348838",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "100",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(chol_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(chol_test)"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "Microalbumin test, Urine mg/L:",
+                            "id": "microAlb_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "7129af13-e39a-43b0-9923-6d1de22c9c5e",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "300",
+                                "min": "30",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(microAlb_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(microAlb_test)"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "Urea mmol/L:",
+                            "id": "urea_test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "a8982550-1350-11df-a1f1-0026b9348838",
+                                "answers": [],
+                                "rendering": "number",
+                                "max": "330",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(urea_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hde": {
+                                        "hideWhenExpression": "isEmpty(urea_test)"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "CBC",
+                    "questions": [
+                        {
+                            "label": "Hgb g/dL",
+                            "id": "hgbgdl_test",
+                            "questionOptions": {
+                                "concept": "a8908a16-1350-11df-a1f1-0026b9348838",
+                                "max": "50",
+                                "min": "0",
+                                "showDate": "true",
+                                "rendering": "number",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(hgbgdl_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(hgbgdl_test)"
+                                    }
+                                }
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "WBC/mm3",
+                            "id": "testWBCmm",
+                            "questionOptions": {
+                                "concept": "a896dea2-1350-11df-a1f1-0026b9348838",
+                                "max": "500",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(testWBCmm) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(testWBCmm)"
+                                    }
+                                },
+                                "rendering": "number"
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "type": "obs",
+                            "label": "Platelets:",
+                            "id": "platelets_test",
+                            "questionOptions": {
+                                "concept": "a8970954-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "450000",
+                                "min": "0",
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(platelets_test) && isEmpty(myValue)",
+                                            "message": "Date result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(platelets_test)"
+                                    }
+                                }
+                            },
+                            "validators": []
+                        },
+                        {
+                            "label": "ALC/ mm3",
+                            "id": "alcmm_test",
+                            "questionOptions": {
+                                "concept": "a898b20e-1350-11df-a1f1-0026b9348838",
+                                "max": "500",
+                                "min": "0",
+                                "showDate": "true",
+                                "rendering": "number",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(alcmm_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(alcmm_test)"
+                                    }
+                                }
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "MCV",
+                            "id": "mcv_test",
+                            "questionOptions": {
+                                "concept": "a898201e-1350-11df-a1f1-0026b9348838",
+                                "max": "500",
+                                "min": "0",
+                                "showDate": "true",
+                                "rendering": "number",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(mcv_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(mcv_test)"
+                                    }
+                                }
+                            },
+                            "type": "obs",
+                            "validators": []
+                        }
+                    ]
+                },
+                {
+                    "label": "HIV Test",
+                    "questions": [
+                        {
+                            "label": "Rapid HIV:",
+                            "type": "obs",
+                            "id": "hivRapid",
+                            "questionOptions": {
+                                "concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+                                "rendering": "select",
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Indeterminate"
+                                    },
+                                    {
+                                        "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Poor sample quality"
+                                    },
+                                    {
+                                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Unknown"
+                                    },
+                                    {
+                                        "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                                        "label": "Not done"
+                                    }
+                                ],
+                                "showDate": "true",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(hivRapid) && isEmpty(myValue)",
+                                            "message": "Date result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(hivRapid)"
+                                    }
+                                }
+                            },
+                            "validators": []
+                        },
+                        {
+                            "label": "HIV Long Eliza:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "id": "longEliza",
+                                "concept": "a8999fb6-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Indeterminate"
+                                    },
+                                    {
+                                        "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Poor sample quality"
+                                    },
+                                    {
+                                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Unknown"
+                                    },
+                                    {
+                                        "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                                        "label": "Not done"
+                                    }
+                                ],
+                                "showDate": "true",
+                                "rendering": "select",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(longEliza) && isEmpty(myValue)",
+                                            "message": "Date result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(longEliza)"
+                                    }
+                                }
+                            },
+                            "validators": [],
+                            "id": "__yL0oG11In"
+                        },
+                        {
+                            "label": "HIV DNA PCR:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "id": "hivPcr",
+                                "concept": "a898fe80-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Indeterminate"
+                                    },
+                                    {
+                                        "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Poor sample quality"
+                                    },
+                                    {
+                                        "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                                        "label": "Not done"
+                                    }
+                                ],
+                                "showDate": "true",
+                                "rendering": "select",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(hivPcr) && isEmpty(myValue)",
+                                            "message": "Date result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(hivPcr)"
+                                    }
+                                }
+                            },
+                            "validators": [],
+                            "id": "__Ko3HH3EIH"
+                        }
+                    ]
+                },
+                {
+                    "label": "TB Test",
+                    "questions": [
+                        {
+                            "label": "Sputum gene xpert MTB:",
+                            "id": "sputumgene_test",
+                            "questionOptions": {
+                                "concept": "741517cf-8bac-4755-b289-8dd2a2df7962",
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Indeterminate"
+                                    },
+                                    {
+                                        "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Poor sample quality"
+                                    }
+                                ],
+                                "showDate": "true",
+                                "rendering": "select",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(sputumgene_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(sputumgene_test)"
+                                    }
+                                }
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "Sputum AFB smear:",
+                            "id": "sputumafp_test",
+                            "questionOptions": {
+                                "concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
+                                        "label": "1+"
+                                    },
+                                    {
+                                        "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
+                                        "label": "2+"
+                                    },
+                                    {
+                                        "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
+                                        "label": "3+"
+                                    },
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Indeterminate"
+                                    },
+                                    {
+                                        "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Poor sample quality"
+                                    }
+                                ],
+                                "showDate": "true",
+                                "rendering": "select",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(sputumafp_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(sputumafp_test)"
+                                    }
+                                }
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "Sputum culture:",
+                            "id": "sputumculture_test",
+                            "questionOptions": {
+                                "concept": "a8a462a2-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Poor sample quality"
+                                    },
+                                    {
+                                        "concept": "0b4e9aa1-e470-46d1-9d2d-0d8a475561b9",
+                                        "label": "Mycobacterium tuberculosis"
+                                    },
+                                    {
+                                        "concept": "a01149c4-7f0e-4d27-8f42-dc019e3330ec",
+                                        "label": "NonTuberculosis mycobacteria"
+                                    }
+                                ],
+                                "showDate": "true",
+                                "rendering": "select",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(sputumculture_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(sputumculture_test)"
+                                    }
+                                }
+                            },
+                            "type": "obs",
+                            "validators": []
+                        },
+                        {
+                            "label": "TST (Mantoux test) :",
+                            "id": "tst_test",
+                            "questionOptions": {
+                                "concept": "a89d278a-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89d2852-1350-11df-a1f1-0026b9348838",
+                                        "label": "Strongly Positive"
+                                    }
+                                ],
+                                "showDate": "true",
+                                "rendering": "select",
+                                "shownDateOptions": {
+                                    "validators": [
+                                        {
+                                            "type": "date"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "!isEmpty(tst_test) && isEmpty(myValue)",
+                                            "message": "Date is result is required."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(tst_test)"
+                                    }
+                                }
+                            },
+                            "type": "obs",
+                            "validators": []
+                        }
+                    ]
+                },
+                {
+                    "label": "Lab Results, Notes",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Labs results, Notes:",
+                            "type": "obs",
+                            "id": "labresultsText",
+                            "questionOptions": {
+                                "concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
+                                "rendering": "textarea",
+                                "rows": 15
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Urinalysis",
+                    "questions": [
+                        {
+                            "label": "Urinalysis:",
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "id": "urinalysis",
+                                "concept": "a894590c-1350-11df-a1f1-0026b9348838",
+                                "rendering": "group"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Pus cells:",
+                                    "id": "puscells_test",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "concept": "a8a0a91e-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "select",
+                                        "answers": [
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive(+)"
+                                            },
+                                            {
+                                                "concept": "a8a18fdc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Strong positive (++)"
+                                            },
+                                            {
+                                                "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Stronger positive (+++)"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "label": "Protein:",
+                                    "type": "obs",
+                                    "id": "protein_test",
+                                    "questionOptions": {
+                                        "concept": "a8a47ca6-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "select",
+                                        "answers": [
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive(+)"
+                                            },
+                                            {
+                                                "concept": "a8a18fdc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Strong positive (++)"
+                                            },
+                                            {
+                                                "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Stronger positive (+++)"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "label": "Leucocytes:",
+                                    "type": "obs",
+                                    "id": "leucocytes_test",
+                                    "questionOptions": {
+                                        "concept": "a8b0f3e6-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "select",
+                                        "answers": [
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive(+)"
+                                            },
+                                            {
+                                                "concept": "a8a18fdc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Strong positive (++)"
+                                            },
+                                            {
+                                                "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Stronger positive (+++)"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "label": "Ketone:",
+                                    "type": "obs",
+                                    "id": "ketone_test",
+                                    "questionOptions": {
+                                        "concept": "b72fa772-19a9-4386-8185-6491ab97e97e",
+                                        "rendering": "select",
+                                        "answers": [
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive(+)"
+                                            },
+                                            {
+                                                "concept": "a8a18fdc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Strong positive (++)"
+                                            },
+                                            {
+                                                "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Stronger positive (+++)"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "label": "Glucose:",
+                                    "id": "sugar_test",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "concept": "a8a47d5a-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "select",
+                                        "answers": [
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive(+)"
+                                            },
+                                            {
+                                                "concept": "a8a18fdc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Strong positive (++)"
+                                            },
+                                            {
+                                                "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Stronger positive (+++)"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "label": "Nitrites:",
+                                    "id": "nitrites_test",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "concept": "6ab44394-80a5-40cd-9649-32f1839e94cd",
+                                        "rendering": "select",
+                                        "answers": [
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive(+)"
+                                            },
+                                            {
+                                                "concept": "a8a18fdc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Strong positive (++)"
+                                            },
+                                            {
+                                                "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Stronger positive (+++)"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "id": "__potKtru3p"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "History Of Present Illness",
+            "sections": [
+                {
+                    "label": "Hospitalization History",
+                    "questions": [
+                        {
+                            "type": "obsGroup",
+                            "label": "Recent hospitalizations",
+                            "questionOptions": {
+                                "rendering": "group",
+                                "concept": "a8a003a6-1350-11df-a1f1-0026b9348838"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Was the patient hospitalized since last visit?",
+                                    "id": "wasHospitalized",
+                                    "required": "true",
+                                    "questionOptions": {
+                                        "concept": "a898c56e-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                                "label": "Yes"
+                                            },
+                                            {
+                                                "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                                "label": "No"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": []
+                                }
+                            ],
+                            "id": "__KnxusvEvw"
+                        },
+                        {
+                            "type": "obsGroup",
+                            "label": "If yes reason for hospitalization:",
+                            "questionOptions": {
+                                "concept": "a8a003a6-1350-11df-a1f1-0026b9348838",
+                                "rendering": "repeating"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Reason for hospitalization:",
+                                    "id": "hospReason",
+                                    "questionOptions": {
+                                        "concept": "a8a07a48-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "problem"
+                                    },
+                                    "type": "obs",
+                                    "validators": [
+                                        {
+                                            "type": "conditionalAnswered",
+                                            "message": "Providing diagnosis but didn't answer that patient was hospitalized in question",
+                                            "referenceQuestionId": "wasHospitalized",
+                                            "referenceQuestionAnswers": [
+                                                "a899b35c-1350-11df-a1f1-0026b9348838"
+                                            ]
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "isEmpty(myValue) && !isEmpty(wasHospitalized) && wasHospitalized === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                                            "message": "Patient previously marked as hospitalized. Please provide hospitalization reason."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "wasHospitalized !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                }
+                            ],
+                            "id": "__nqqwwJovF"
+                        },
+                        {
+                            "label": "Location of admission:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "2c0d1507-d8ce-454d-8bed-0cb59dcd573f"
+                            },
+                            "id": "admLocation"
+                        }
+                    ]
+                },
+                {
+                    "label": " History of Present Illness and Key Physical Exam Findings:",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "History of present illness and key physical exam findings",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "textarea",
+                                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                                "rows": "5"
+                            },
+                            "id": "hkf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Diagnosis & Problem List",
+            "sections": [
+                {
+                    "label": "Problem List",
+                    "questions": [
+                        {
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "concept": "a89c2d8a-1350-11df-a1f1-0026b9348838",
+                                "rendering": "repeating"
+                            },
+                            "label": "Problem Added",
+                            "questions": [
+                                {
+                                    "label": "Problem added",
+                                    "id": "probAdded",
+                                    "questionOptions": {
+                                        "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "problem"
+                                    },
+                                    "type": "obs",
+                                    "validators": []
+                                }
+                            ],
+                            "id": "__wJoyvzpwq"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Medication plan",
+            "sections": [
+                {
+                    "label": "Medication Plan",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Plan:",
+                            "id": "antiDiabeticPlan",
+                            "questionOptions": {
+                                "concept": "6dd6392d-c18e-44b7-bbc3-95c6c981de65",
+                                "answers": [
+                                    {
+                                        "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                                        "label": "Start"
+                                    },
+                                    {
+                                        "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                                        "label": "Continue"
+                                    },
+                                    {
+                                        "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                                        "label": "Change regimen"
+                                    },
+                                    {
+                                        "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                                        "label": " Stop all"
+                                    }
+                                ],
+                                "rendering": "select"
+                            },
+                            "type": "obs",
+                            "validators": [
+                                {
+                                    "type": "js_expression",
+                                    "failsWhenExpression": "!isEmpty(dmMeds) && !isEmpty(myValue) && !arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838'], myValue)",
+                                    "message": "Patient marked as on DM meds in current medication section. Therefore plan can only be change regimen, continue or stop all"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "obsGroup",
+                            "label": "Anti diabetic drugs",
+                            "id": "antiDiabeticDrugs",
+                            "questionOptions": {
+                                "concept": "a6812b99-3126-40b8-8c9c-2f511a6912b1",
+                                "rendering": "repeating"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Name of drug:",
+                                    "id": "antiDiabetics",
+                                    "questionOptions": {
+                                        "concept": "78809200-7f7f-4d6f-b515-31088765d442",
+                                        "answers": [
+                                            {
+                                                "concept": "5f249221-d451-4b3b-9e25-59146703d052",
+                                                "label": "Gliclazide 30mg"
+                                            },
+                                            {
+                                                "concept": "e71bb18a-6acb-41a9-9885-8fe134a1933f",
+                                                "label": "Gliclazide 60mg"
+                                            },
+                                            {
+                                                "concept": "c5bed405-475d-4fad-859a-76df68c473ba",
+                                                "label": "Gliclazide 80mg"
+                                            },
+                                            {
+                                                "concept": "1ec6d128-75d3-47df-b077-3b810b77b59d",
+                                                "label": "Gliclazide 120mg"
+                                            },
+                                            {
+                                                "concept": "a6be6647-74dd-4208-a6c1-22fbb14c589f",
+                                                "label": "Glibenclamide 2.5mg"
+                                            },
+                                            {
+                                                "concept": "4a37b4e7-3970-4a5b-9973-97578856d457",
+                                                "label": "Glibenclamide 5mg"
+                                            },
+                                            {
+                                                "concept": "c9676ca6-12d2-4fd6-9b83-d1f5f23ccc2b",
+                                                "label": "Glibenclamide 7.5mg"
+                                            },
+                                            {
+                                                "concept": "ea502d7c-c331-42c3-8f59-cfc73adcc7d6",
+                                                "label": "Glibenclamide 10mg"
+                                            },
+                                            {
+                                                "concept": "bd69d4d4-beaf-4113-9821-0dc7d02d2543",
+                                                "label": "Glimepiride 1mg"
+                                            },
+                                            {
+                                                "concept": "9e56ecbc-64ab-4f24-94f3-027e5f9071c4",
+                                                "label": "Glimepiride 2mg"
+                                            },
+                                            {
+                                                "concept": "fd4909e3-1098-4b1e-ac15-2aa53671c60c",
+                                                "label": "Glimepiride 4mg"
+                                            },
+                                            {
+                                                "concept": "21934204-868a-4c5c-a238-fe18324c9fe3",
+                                                "label": "Insulin 70/30 susp inj"
+                                            },
+                                            {
+                                                "concept": "38b9c977-f6d7-4d19-b75a-ade8c5a8da1f",
+                                                "label": "Insulin 70/30 100IU/ML inj"
+                                            },
+                                            {
+                                                "concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Insulin NPH"
+                                            },
+                                            {
+                                                "concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
+                                                "label": "Insulin humalogue"
+                                            },
+                                            {
+                                                "concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
+                                                "label": "Insulin glargine"
+                                            },
+                                            {
+                                                "concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
+                                                "label": "Insulin regular"
+                                            },
+                                            {
+                                                "concept": "4f95770f-d7af-4591-9011-15697ca17091",
+                                                "label": "Lasix 10mg"
+                                            },
+                                            {
+                                                "concept": "743d4d97-884f-4bfa-baea-b3ca06450846",
+                                                "label": "Lasix 20mg"
+                                            },
+                                            {
+                                                "concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
+                                                "label": "Lasix 40mg"
+                                            },
+                                            {
+                                                "concept": "61b05799-466d-4a9e-b134-00b607505058",
+                                                "label": "Lasix 80mg"
+                                            },
+                                            {
+                                                "concept": "5347d982-9137-4829-b77b-864a07436508",
+                                                "label": "Metformin 500mg"
+                                            },
+                                            {
+                                                "concept": "21659445-3cfc-4a33-aaa4-9fa12ff0d48e",
+                                                "label": "Metformin 750mg"
+                                            },
+                                            {
+                                                "concept": "5406f76f-1255-4af8-b63a-8b70b92737d7",
+                                                "label": "Metformin 850mg"
+                                            },
+                                            {
+                                                "concept": "bc65c466-0a3d-4606-8edc-8563787deea3",
+                                                "label": "Metformin 1000mg"
+                                            },
+                                            {
+                                                "concept": "d938b638-e91e-491b-96cd-790add567396",
+                                                "label": "Pioglitazone 15mg"
+                                            },
+                                            {
+                                                "concept": "381ea54a-8118-4178-820f-b7afa5d93b66",
+                                                "label": "Pioglitazone 30mg"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "arrayContains(['a89b7d36-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'],antiDiabeticPlan)"
+                                    }
+                                },
+                                {
+                                    "label": "IU",
+                                    "questionOptions": {
+                                        "concept": "5143fb62-92af-4945-a0c1-ffe8e497e5b3",
+                                        "max": "1000",
+                                        "min": "0",
+                                        "rendering": "number"
+                                    },
+                                    "type": "obs",
+                                    "hide": {
+                                        "field": "antiDiabetics",
+                                        "value": [
+                                            "21934204-868a-4c5c-a238-fe18324c9fe3",
+                                            "38b9c977-f6d7-4d19-b75a-ade8c5a8da1f",
+                                            "a8a42fbc-1350-11df-a1f1-0026b9348838",
+                                            "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
+                                            "01983012-5416-448d-b9c7-c9ec9c2062b4"
+                                        ]
+                                    },
+                                    "id": "__qx0rtMvpH"
+                                },
+                                {
+                                    "label": "Dosing time",
+                                    "questionOptions": {
+                                        "concept": "a89ea902-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a89ea538-1350-11df-a1f1-0026b9348838",
+                                                "label": "AM"
+                                            },
+                                            {
+                                                "concept": "a89ea6b4-1350-11df-a1f1-0026b9348838",
+                                                "label": "Lunch"
+                                            },
+                                            {
+                                                "concept": "a89eeeda-1350-11df-a1f1-0026b9348838",
+                                                "label": "PM"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "hide": {
+                                        "field": "antiDiabetics",
+                                        "value": [
+                                            "21934204-868a-4c5c-a238-fe18324c9fe3",
+                                            "38b9c977-f6d7-4d19-b75a-ade8c5a8da1f",
+                                            "a8a42fbc-1350-11df-a1f1-0026b9348838",
+                                            "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
+                                            "01983012-5416-448d-b9c7-c9ec9c2062b4"
+                                        ],
+                                        "hide": {
+                                            "hideWhenExpression": "antiDiabeticPlan == 'a89b7d36-1350-11df-a1f1-0026b9348838'"
+                                        }
+                                    },
+                                    "id": "__rtGM6xyuF"
+                                },
+                                {
+                                    "label": "Frequency:",
+                                    "questionOptions": {
+                                        "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838",
+                                                "label": "OD"
+                                            },
+                                            {
+                                                "concept": "a8a05aea-1350-11df-a1f1-0026b9348838",
+                                                "label": "BD"
+                                            },
+                                            {
+                                                "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838",
+                                                "label": "TDS"
+                                            },
+                                            {
+                                                "concept": "a89ea538-1350-11df-a1f1-0026b9348838",
+                                                "label": "AM"
+                                            },
+                                            {
+                                                "concept": "a89eeeda-1350-11df-a1f1-0026b9348838",
+                                                "label": "PM"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "antiDiabeticPlan == 'a89b7d36-1350-11df-a1f1-0026b9348838'"
+                                    },
+                                    "id": "__FEDMDyD2I"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Plan:",
+                            "id": "antiHypertensivePlan",
+                            "questionOptions": {
+                                "concept": "034bfcf2-d286-4450-93a8-5effe80acda9",
+                                "answers": [
+                                    {
+                                        "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                                        "label": "Start"
+                                    },
+                                    {
+                                        "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                                        "label": "Continue"
+                                    },
+                                    {
+                                        "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                                        "label": "Change regimen"
+                                    },
+                                    {
+                                        "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                                        "label": " Stop all"
+                                    }
+                                ],
+                                "rendering": "select"
+                            },
+                            "type": "obs",
+                            "validators": [
+                                {
+                                    "type": "js_expression",
+                                    "failsWhenExpression": "!isEmpty(htnMeds) && !isEmpty(myValue) && !arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838'], myValue)",
+                                    "message": "Patient marked as on HTN meds in current medication section. Therefore plan can only be change regimen, continue or stop all"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "obsGroup",
+                            "label": "Anti hypertensive drugs",
+                            "id": "antihtnDrugs",
+                            "questionOptions": {
+                                "concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822",
+                                "rendering": "repeating"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Name of drug:",
+                                    "id": "antiHypertensive",
+                                    "questionOptions": {
+                                        "concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
+                                        "answers": [
+                                            {
+                                                "concept": "12309904-5f80-4d65-b8e7-e04c183ecc0b",
+                                                "label": "Amlodipine 2.5mg"
+                                            },
+                                            {
+                                                "concept": "568771d5-3116-4ed7-a85d-3f7f0b9a4e54",
+                                                "label": "Amlodipine 5mg"
+                                            },
+                                            {
+                                                "concept": "2edd97ef-6642-4052-b86b-ab33aaebe579",
+                                                "label": "Amlodipine 10mg"
+                                            },
+                                            {
+                                                "concept": "7540e598-880a-449e-a936-7ad11b9977f0",
+                                                "label": "Atenolol 25mg"
+                                            },
+                                            {
+                                                "concept": "0e3f486b-1dad-43e8-96ec-c3858ae3a5af",
+                                                "label": "Atenolol 50mg"
+                                            },
+                                            {
+                                                "concept": "eafc9e55-5750-434d-874e-5bbfdd652a79",
+                                                "label": "Atenolol 75mg"
+                                            },
+                                            {
+                                                "concept": "d6e8c3ea-5068-41b7-aaf0-a17d32382aa8",
+                                                "label": "Atenolol 100mg"
+                                            },
+                                            {
+                                                "concept": "49e9bb6e-45ca-44b7-b895-7c3fcfd75d7c",
+                                                "label": "Atorvastatin 10mg"
+                                            },
+                                            {
+                                                "concept": "c24c8f86-5236-4132-9496-0cc0770f7683",
+                                                "label": "Atorvastatin 20mg"
+                                            },
+                                            {
+                                                "concept": "6c242143-e467-402e-9196-b34545dde56f",
+                                                "label": "Atorvastatin 40mg"
+                                            },
+                                            {
+                                                "concept": "437ece6d-f321-47a8-bcc8-a469104942a9",
+                                                "label": "Atorvastatin 60mg"
+                                            },
+                                            {
+                                                "concept": "96ccf18f-3486-4f3d-95e6-ea11e20afa69",
+                                                "label": "Atorvastatin 80mg"
+                                            },
+                                            {
+                                                "concept": "247e53e6-86d5-4325-8c88-8a7bda16b5f0",
+                                                "label": "Carvedilol 3.125mg"
+                                            },
+                                            {
+                                                "concept": "fcb4e2a5-9bfa-4090-adf3-3f6949e4d9fb",
+                                                "label": "Carvedilol 6.25mg"
+                                            },
+                                            {
+                                                "concept": "e34704ed-b5e0-454f-a9a5-3de190e0f7d5",
+                                                "label": "Carvedilol 12.5mg"
+                                            },
+                                            {
+                                                "concept": "ab539d87-69b2-45a2-9510-878d85ceb5c6",
+                                                "label": "Carvedilol 25mg"
+                                            },
+                                            {
+                                                "concept": "324ccf52-a641-4f1b-a36a-562b58482714",
+                                                "label": "Carvedilol 50ml"
+                                            },
+                                            {
+                                                "concept": "23ea18e1-676d-440c-8e30-5bbe3b7fd77a",
+                                                "label": "Enalapril 2.5mg"
+                                            },
+                                            {
+                                                "concept": "c28c7ddd-667c-48bc-9f3a-688c086f8018",
+                                                "label": "Enalapril 5mg"
+                                            },
+                                            {
+                                                "concept": "8d0194ed-84cb-4345-b85a-63a5b73fa5e4",
+                                                "label": "Enalapril 10mg"
+                                            },
+                                            {
+                                                "concept": "11836dc4-9a08-4d5b-a91c-bede87786b50",
+                                                "label": "Enalapril 15mg"
+                                            },
+                                            {
+                                                "concept": "5c903a4e-39bf-4563-b3cb-c731a17b3ffe",
+                                                "label": "Enalapril 20mg"
+                                            },
+                                            {
+                                                "concept": "9fca88ba-47b1-4d67-83da-ecdfd2aa0349",
+                                                "label": "Felodipine 2.5mg"
+                                            },
+                                            {
+                                                "concept": "5856e0a6-3b75-4531-a1ef-9209919fb6f5",
+                                                "label": "Felodipine 5mg"
+                                            },
+                                            {
+                                                "concept": "035bf78a-6504-4133-9a5b-74d8ccbee878",
+                                                "label": "Felodipine 10mg"
+                                            },
+                                            {
+                                                "concept": "39d7fef8-cb51-40aa-ae42-8128725d252b",
+                                                "label": "HCTZ 12.5mg"
+                                            },
+                                            {
+                                                "concept": "1b2cc2a8-b565-4599-8f89-c9fe39e2a340",
+                                                "label": "HCTZ 25mg"
+                                            },
+                                            {
+                                                "concept": "19c6df2b-486c-48df-805a-7333898ea093",
+                                                "label": "HCTZ 50mg"
+                                            },
+                                            {
+                                                "concept": "99d1a61c-eb23-416f-bd3b-1cfc4228ba21",
+                                                "label": "Lisinopril 20mg/HCTZ 12.5mg"
+                                            },
+                                            {
+                                                "concept": "02838e06-ce3b-4804-88fc-aac8393a17ed",
+                                                "label": "Losartan 25mg"
+                                            },
+                                            {
+                                                "concept": "a113493b-7584-46a1-ba58-628d11b67623",
+                                                "label": "Losartan 50mg"
+                                            },
+                                            {
+                                                "concept": "80059522-192d-4d9b-a05a-72f546860700",
+                                                "label": "Losartan 75mg"
+                                            },
+                                            {
+                                                "concept": "8efcb46c-295d-40c7-944b-9604f9759864",
+                                                "label": "Losartan 100mg"
+                                            },
+                                            {
+                                                "concept": "e350ac38-0a46-4a58-a515-11279a009117",
+                                                "label": "Losartan H"
+                                            },
+                                            {
+                                                "concept": "c2ddb9b2-8023-4251-8735-e113357af8db",
+                                                "label": "Metropolol 25mg"
+                                            },
+                                            {
+                                                "concept": "52795770-4584-422e-a2b7-774b30b75088",
+                                                "label": "Metropolol 50mg"
+                                            },
+                                            {
+                                                "concept": "887f8caf-1c18-47f8-9927-a57365bcadba",
+                                                "label": "Metropolol 100mg"
+                                            },
+                                            {
+                                                "concept": "bb168b83-6eb3-490b-922c-f71768960597",
+                                                "label": "Nifedipine 20mg"
+                                            },
+                                            {
+                                                "concept": "bb168b83-6eb3-490b-922c-f71768960597",
+                                                "label": "Nifedipine 40mg"
+                                            },
+                                            {
+                                                "concept": "a515a6b4-95c4-4910-b9fb-e9bd4d5763a4",
+                                                "label": "Sildenafil 25mg"
+                                            },
+                                            {
+                                                "concept": "faa56aa5-3c04-4f5b-9cb2-8f30c51f2a55",
+                                                "label": "Sildenafil 50mg"
+                                            },
+                                            {
+                                                "concept": "bb8ab6c5-0bcf-4198-b820-2e34aaf3c95e",
+                                                "label": "Sildenafil 75mg"
+                                            },
+                                            {
+                                                "concept": "59611435-e869-4a8d-8e58-649b7630e471",
+                                                "label": "Junior ASA 75mg"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "hide": {}
+                                },
+                                {
+                                    "label": "Frequency:",
+                                    "questionOptions": {
+                                        "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838",
+                                                "label": "OD"
+                                            },
+                                            {
+                                                "concept": "a8a05aea-1350-11df-a1f1-0026b9348838",
+                                                "label": "BD"
+                                            },
+                                            {
+                                                "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838",
+                                                "label": "TDS"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "antiHypertensivePlan == 'a89b7d36-1350-11df-a1f1-0026b9348838'"
+                                    },
+                                    "id": "__Dxpnt29sq"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Plan:",
+                            "id": "mentalhealthmedPlan",
+                            "questionOptions": {
+                                "concept": "9f06e09e-3374-4ac4-aa92-0099372e1023",
+                                "answers": [
+                                    {
+                                        "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                                        "label": "Start"
+                                    },
+                                    {
+                                        "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                                        "label": "Continue"
+                                    },
+                                    {
+                                        "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                                        "label": "Change regimen"
+                                    },
+                                    {
+                                        "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                                        "label": " Stop all"
+                                    }
+                                ],
+                                "rendering": "select"
+                            },
+                            "type": "obs",
+                            "validators": [
+                                {
+                                    "type": "js_expression",
+                                    "failsWhenExpression": "!isEmpty(mentalHealthmeds) && !isEmpty(myValue) && !arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838'], myValue)",
+                                    "message": "Patient marked as on HTN meds in current medication section. Therefore plan can only be change regimen, continue or stop all"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "obsGroup",
+                            "label": "Mental health drugs",
+                            "id": "mentalheathDrugs",
+                            "questionOptions": {
+                                "concept": "e249e6f0-a094-4c7a-8f30-43bebad62a95",
+                                "rendering": "repeating"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Name of drug:",
+                                    "id": "antiHypertensive",
+                                    "questionOptions": {
+                                        "concept": "c72425eb-d829-4774-87f3-f3fd90dd7258",
+                                        "answers": [
+                                            {
+                                                "concept": "a8a4442a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Zyprexa(Olanzapine) 5mg"
+                                            },
+                                            {
+                                                "concept": "a8a4442a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Zyprexa(Olanzapine) 10mg"
+                                            },
+                                            {
+                                                "concept": "a8a4442a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Zyprexa(Olanzapine) 20mg"
+                                            },
+                                            {
+                                                "concept": "a897125a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Alprazolam 0.25mg"
+                                            },
+                                            {
+                                                "concept": "a897125a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Alprazolam 0.5mg"
+                                            },
+                                            {
+                                                "concept": "a8a43d54-1350-11df-a1f1-0026b9348838",
+                                                "label": "Amitriptyline 25mg"
+                                            },
+                                            {
+                                                "concept": "a8a43d54-1350-11df-a1f1-0026b9348838",
+                                                "label": "Amitriptyline 50mg"
+                                            },
+                                            {
+                                                "concept": "01d951f6-be2d-4508-ac6e-59daa825bfbc",
+                                                "label": "Benzhexol"
+                                            },
+                                            {
+                                                "concept": "a89896fc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Carbamazepine 200mg"
+                                            },
+                                            {
+                                                "concept": "a89896fc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Carbamazepine 400mg"
+                                            },
+                                            {
+                                                "concept": "a89891de-1350-11df-a1f1-0026b9348838",
+                                                "label": "Chlorpromizine 100mg"
+                                            },
+                                            {
+                                                "concept": "a8989cd8-1350-11df-a1f1-0026b9348838",
+                                                "label": "Fluphenazine 10mg"
+                                            },
+                                            {
+                                                "concept": "a8a444fc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Haloperidol 5mg"
+                                            },
+                                            {
+                                                "concept": "a8a444fc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Haloperidol 10mg"
+                                            },
+                                            {
+                                                "concept": "a8a444fc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Imipramine"
+                                            },
+                                            {
+                                                "concept": "a8a44632-1350-11df-a1f1-0026b9348838",
+                                                "label": "Valproate 200mg"
+                                            },
+                                            {
+                                                "concept": "a8a44632-1350-11df-a1f1-0026b9348838",
+                                                "label": "Valproate 400mg"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "hide": {}
+                                },
+                                {
+                                    "label": "Frequency:",
+                                    "questionOptions": {
+                                        "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838",
+                                                "label": "OD"
+                                            },
+                                            {
+                                                "concept": "a8a05aea-1350-11df-a1f1-0026b9348838",
+                                                "label": "BD"
+                                            },
+                                            {
+                                                "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838",
+                                                "label": "TDS"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "antiHypertensivePlan == 'a89b7d36-1350-11df-a1f1-0026b9348838'"
+                                    },
+                                    "id": "__Dxpnt29sq"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Plan",
+            "sections": [
+                {
+                    "label": "Referrals",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Urgent referrals",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "deeee215-e324-4617-aaca-12d174a02f50",
+                                "answers": [
+                                    {
+                                        "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                                        "label": "Nutritional support",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5484"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "5484"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a8aefc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Family planning services",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5483"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "5483"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
+                                        "label": "AMPATH",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1286"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1286"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a8b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "Mental health services",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "5489"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5489"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a0660c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Dental services",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1902"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
+                                        "label": "Another facility, nos",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "7308"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
+                                        "label": "Ophthalmology services",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1904"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "c65fcd72-1f3f-4450-b93f-90a87ae64d55",
+                                        "label": "Referral to suggery",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6571"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a2187952-59e0-449b-895f-5102b7aed49c",
+                                        "label": "Cardiology",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
+                                        "label": "Orthopedic services",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "160465"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
+                                        "label": "Oncology services",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "2394dc0b-711a-4b93-be87-27842954450b",
+                                        "label": "Palliative cate",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "f3c103de-6457-4df4-b6a0-020cc933409a",
+                                        "label": "Oncology breast cancer screening program",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "97eb97f5-d241-4c09-a07f-490fbfa7451e",
+                                        "label": "Oncology ceevical cancer screening program",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "5c4612a6-91ba-4986-a036-4e963103e30c",
+                                        "label": "National health insurance fund officer",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
+                                        "label": "Dermatology clinic",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6758"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "0fa18f9a-95c8-4ab3-81ed-a1bac69063fa",
+                                        "label": "Diabetes management",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "7341"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a8b26c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Tuberculosis treatment or DOT program",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5487"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "5487"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "conceptMappings": [
+                                    {
+                                        "type": "local",
+                                        "value": "7272"
+                                    }
+                                ]
+                            },
+                            "id": "urgentReferrals"
+                        },
+                        {
+                            "label": "Non Urgent Referrals",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "3391c26e-ab66-40bf-9080-53c770523707",
+                                "answers": [
+                                    {
+                                        "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                                        "label": "Nutritional support",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5484"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "5484"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a8aefc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Family planning services",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5483"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "5483"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
+                                        "label": "AMPATH",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1286"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1286"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a0660c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Dental services",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1902"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
+                                        "label": "OPHTHALMOLOGY SERVICES",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1904"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "c65fcd72-1f3f-4450-b93f-90a87ae64d55",
+                                        "label": "REFERRAL TO SURGERY",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6571"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
+                                        "label": "ORTHOPEDIC SERVICES",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "160465"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
+                                        "label": "ONCOLOGY SERVICES",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "2394dc0b-711a-4b93-be87-27842954450b",
+                                        "label": "PALLIATIVE CARE",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "f3c103de-6457-4df4-b6a0-020cc933409a",
+                                        "label": "ONCOLOGY BREAST CANCER SCREENING PROGRAM",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "97eb97f5-d241-4c09-a07f-490fbfa7451e",
+                                        "label": "ONCOLOGY CERVICAL CANCER SCREENING PROGRAM",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "0fa18f9a-95c8-4ab3-81ed-a1bac69063fa",
+                                        "label": "DIABETES MANAGEMENT",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "7341"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "5c4612a6-91ba-4986-a036-4e963103e30c",
+                                        "label": "NATIONAL HEALTH INSURANCE FUND OFFICER",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
+                                        "label": "DERMATOLOGY CLINIC",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6758"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8a8b26c-1350-11df-a1f1-0026b9348838",
+                                        "label": "TUBERCULOSIS TREATMENT OR DOT PROGRAM",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "5487"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "5487"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "conceptMappings": [
+                                    {
+                                        "type": "local",
+                                        "value": "7278"
+                                    }
+                                ]
+                            },
+                            "id": "nonurgentReferrals"
+                        }
+                    ]
+                },
+                {
+                    "label": "Imaging",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Urgent Imaging",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "06bd726f-74ce-423a-8e1c-3d2f81611e6b",
+                                "answers": [
+                                    {
+                                        "concept": "e83f4f97-91eb-4858-89d8-371535c5c131",
+                                        "label": "ULTRASOUND",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6502"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "759a4bd6-79ab-40a9-9836-1e30783f7ae5",
+                                        "label": "XRAY",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6897"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "9d3f2fc1-1604-472e-ac2d-be8facc11717",
+                                        "label": "CT SCAN",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6501"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "5f24edf3-da0f-4990-8a43-9c6e3ca52cfe",
+                                        "label": "MAGNETIC RESONANCE IMAGING",
+                                        "conceptMappings": []
+                                    }
+                                ]
+                            },
+                            "id": "urgentImaging"
+                        },
+                        {
+                            "label": "Non-Urgent Imaging",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "3194eb11-2246-4af0-b67d-e9b29a13aaf5",
+                                "answers": [
+                                    {
+                                        "concept": "e83f4f97-91eb-4858-89d8-371535c5c131",
+                                        "label": "ULTRASOUND",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6502"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "759a4bd6-79ab-40a9-9836-1e30783f7ae5",
+                                        "label": "XRAY",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6897"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "9d3f2fc1-1604-472e-ac2d-be8facc11717",
+                                        "label": "CT SCAN",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6501"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "5f24edf3-da0f-4990-8a43-9c6e3ca52cfe",
+                                        "label": "MAGNETIC RESONANCE IMAGING",
+                                        "conceptMappings": []
+                                    }
+                                ]
+                            },
+                            "id": "nonUrgentImaging"
+                        }
+                    ]
+                },
+                {
+                    "label": "Plan",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Key Observations and Plans From This Visit",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "textarea",
+                                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                                "rows": "",
+                                "conceptMappings": [
+                                    {
+                                        "type": "local",
+                                        "value": "1915"
+                                    },
+                                    {
+                                        "type": "MCL/CIEL",
+                                        "value": "160632"
+                                    }
+                                ]
+                            },
+                            "id": "keyObservationsandPlans "
+                        },
+                        {
+                            "label": "Labs",
+                            "type": "testOrder",
+                            "questionOptions": {
+                                "rendering": "repeating",
+                                "concept": "a89c2268-1350-11df-a1f1-0026b9348838",
+                                "orderType": "testorder",
+                                "orderSettingUuid": "6f0c9a92-6f24-11e3-af88-005056821db0",
+                                "selectableOrders": [
+                                    {
+                                        "concept": "a898b2ea-1350-11df-a1f1-0026b9348838",
+                                        "label": "LIVER FUNCTION TESTS",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "953"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "953"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8af7520-1350-11df-a1f1-0026b9348838",
+                                        "label": "GLYCOSYLATED HEMOGLOBIN",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6126"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8982474-1350-11df-a1f1-0026b9348838",
+                                        "label": "HIV VIRAL LOAD, QUANTITATIVE",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "856"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "856"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8999fb6-1350-11df-a1f1-0026b9348838",
+                                        "label": "HIV ENZYME IMMUNOASSAY, QUALITATIVE",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1042"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "1042"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a898fe80-1350-11df-a1f1-0026b9348838",
+                                        "label": "HIV DNA POLYMERASE CHAIN REACTION, QUALITATIVE",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1030"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1030"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "1b2dc83b-9abf-4494-b18e-2bfd76b5db4d",
+                                        "label": "FULL THYROID PANEL",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "7129af13-e39a-43b0-9923-6d1de22c9c5e",
+                                        "label": "MICROALBUMIN TEST, URINE",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "7302"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a898f50c-1350-11df-a1f1-0026b9348838",
+                                        "label": "COMPLETE BLOOD COUNT",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1019"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1019"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8909524-1350-11df-a1f1-0026b9348838",
+                                        "label": "MALARIAL SMEAR",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "32"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "32"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "9364c765-eeec-4b03-b938-ea7874560d88",
+                                        "label": "GENEXPERT ",
+                                        "conceptMappings": []
+                                    },
+                                    {
+                                        "concept": "a8909f56-1350-11df-a1f1-0026b9348838",
+                                        "label": "URINE PREGNANCY TEST, QUALITATIVE",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "45"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "45"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
+                                        "label": "SPUTUM FOR ACID FAST BACILLI",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "307"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "307"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a894590c-1350-11df-a1f1-0026b9348838",
+                                        "label": "URINALYSIS",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "302"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "302"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+                                        "label": "HIV RAPID TEST, QUALITATIVE",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "1040"
+                                            },
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1040"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                                        "label": "NONE",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1107"
+                                            },
+                                            {
+                                                "type": "local",
+                                                "value": "1107"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "cde31588-6c57-4260-adca-b13c3cfb82fe",
+                                        "label": "RENAL FUNCTION BLOOD TEST",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "local",
+                                                "value": "6898"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "a898e9e0-1350-11df-a1f1-0026b9348838",
+                                        "label": "LIPID PANEL",
+                                        "conceptMappings": [
+                                            {
+                                                "type": "MCL/CIEL",
+                                                "value": "1010"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "concept": "00ed7062-a576-4749-9dcb-783840caddc1",
+                                        "label": "FASTING LIPID PANEL",
+                                        "conceptMappings": []
+                                    }
+                                ]
+                            },
+                            "id": "labsordered"
+                        }
+                    ]
+                },
+                {
+                    "label": "Additional Medication Orders",
+                    "questions": [
+                        {
+                            "type": "obsGroup",
+                            "label": "Additional medication orders",
+                            "questionOptions": {
+                                "rendering": "repeating",
+                                "concept": "a8a0654e-1350-11df-a1f1-0026b9348838"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Drug",
+                                    "questionOptions": {
+                                        "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "drug"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "id": "__KJwJI2ppp"
+                                },
+                                {
+                                    "label": "Frequency",
+                                    "questionOptions": {
+                                        "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "label": "Once a day",
+                                                "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+                                            },
+                                            {
+                                                "label": "Twice a day",
+                                                "concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+                                            },
+                                            {
+                                                "label": "Three times a day",
+                                                "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+                                            },
+                                            {
+                                                "label": "Four times a day",
+                                                "concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+                                            },
+                                            {
+                                                "label": "As needed",
+                                                "concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+                                            },
+                                            {
+                                                "label": "Other",
+                                                "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                                            }
+                                        ],
+                                        "rendering": "select"
+                                    },
+                                    "type": "obs",
+                                    "validators": [],
+                                    "id": "__oprJoJyDH"
+                                },
+                                {
+                                    "label": "If tabs, number",
+                                    "questionOptions": {
+                                        "concept": "a8a0630a-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "number"
+                                    },
+                                    "type": "obs",
+                                    "id": "__HzoqMMvJx"
+                                },
+                                {
+                                    "label": "If caps, number",
+                                    "questionOptions": {
+                                        "concept": "ea404923-fe2b-4812-aec5-3be7fbe712f7",
+                                        "rendering": "number"
+                                    },
+                                    "type": "obs",
+                                    "id": "__DwxoustHo"
+                                },
+                                {
+                                    "label": "If mg, number",
+                                    "questionOptions": {
+                                        "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "number"
+                                    },
+                                    "type": "obs",
+                                    "id": "__2rzGwrqIu"
+                                },
+                                {
+                                    "label": "If ml, number",
+                                    "questionOptions": {
+                                        "concept": "a8a08286-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "number"
+                                    },
+                                    "type": "obs",
+                                    "id": "__MuLnn1Fxq"
+                                }
+                            ],
+                            "id": "__qwwDrD8Mq"
+                        }
+                    ]
+                },
+                {
+                    "label": "Prevention Services",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Prevention services ordered",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "multicheckbox",
+                                "concept": "e7819751-a5b0-485d-a2bc-9d4aa69aa1e4",
+                                "answers": [
+                                    {
+                                        "concept": "a89e2df6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Psychotherapy"
+                                    },
+                                    {
+                                        "concept": "554f2668-f64e-4497-abff-af6079089a80",
+                                        "label": "Home visit"
+                                    },
+                                    {
+                                        "concept": "4080bf1b-2e6c-4f9d-bd66-80af821d652d",
+                                        "label": "Food distribution"
+                                    },
+                                    {
+                                        "concept": "921cb736-ea98-48e6-b8fb-667a2efd8703",
+                                        "label": "Farm input support"
+                                    },
+                                    {
+                                        "concept": "a8a8b352-1350-11df-a1f1-0026b9348838",
+                                        "label": "Medication adherence counselling"
+                                    },
+                                    {
+                                        "concept": "f7b861c9-33cb-40d0-9495-7ec6113d988f",
+                                        "label": "Lifestyle modification"
+                                    }
+                                ]
+                            },
+                            "id": "prevservice"
+                        }
+                    ]
+                },
+                {
+                    "label": "Appointment Date",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Return to clinic date:",
+                            "type": "obs",
+                            "required": "true",
+                            "id": "rtc",
+                            "questionOptions": {
+                                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                                "rendering": "date",
+                                "weeksList": [
+                                    2,
+                                    4,
+                                    6,
+                                    8,
+                                    12,
+                                    16,
+                                    24,
+                                    36
+                                ]
+                            },
+                            "validators": [
+                                {
+                                    "type": "date",
+                                    "allowFutureDates": "true"
+                                },
+                                {
+                                    "type": "js_expression",
+                                    "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                                    "message": "Return to clinic date should be greater than the encounter date."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

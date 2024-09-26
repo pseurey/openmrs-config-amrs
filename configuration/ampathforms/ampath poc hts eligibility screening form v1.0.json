@@ -142,7 +142,7 @@
 								"concept": "8b0fa615-39c7-40ba-ad06-579ae540c6a5",
 								"answers": [
 									{
-										"concept": "Widows and Widowers",
+										"concept": "a899ae34-1350-11df-a1f1-0026b9348838",
 										"label": "Widows and widowers"
 									},
 									{
@@ -150,7 +150,7 @@
 										"label": "Orphans and vulnerable children"
 									},
 									{
-										"concept": "Families and children living on the streets",
+										"concept": "c6fec85e-b1b1-4a0a-9ee0-4444952382cd",
 										"label": "Families and children living on the streets"
 									},
 									{
@@ -166,7 +166,7 @@
 										"label": "Refugees, displaced persons and migrants"
 									},
 									{
-										"concept": "People who abuse alcohol and other drugs",
+										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
 										"label": "People who abuse alcohol and other drugs"
 									},
 									{
@@ -1653,7 +1653,7 @@
 							}
 						},
 						{
-							"label": "Cough of any duration",
+							"label": "Cough of any duration:",
 							"type": "obs",
 							"id": "coughDuration",
 							"questionOptions": {
@@ -1955,16 +1955,20 @@
 								"rendering": "radio",
 								"answers": [
 									{
-										"concept": "795cff32-9697-4c10-a1c2-deed8143677d",
-										"label": "Client is eligible"
+										"concept": "69db9a47-21c5-4398-89f7-1c03a1392240",
+										"label": "HCW Provider Discretion"
 									},
 									{
 										"concept": "03019f05-7e81-4bbe-a24c-bf6e8188e566",
-										"label": "Based on HIV Risk category from EMR"
+										"label": "Based on Risk screening findings"
 									},
 									{
-										"concept": "a89ac94a-1350-11df-a1f1-0026b9348838",
-										"label": "Both eligible and risk category"
+										"concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
+										"label": "ML Risk category"
+									},
+									{
+										"concept": "9381abe8-9f54-4a67-becf-a31485f49ba1",
+										"label": "HTS Guidelines"
 									}
 								]
 							},
@@ -1983,15 +1987,19 @@
 								"answers": [
 									{
 										"concept": "69db9a47-21c5-4398-89f7-1c03a1392240",
-										"label": "Client is not eligible"
+										"label": "HCW Provider Discretion"
 									},
 									{
 										"concept": "03019f05-7e81-4bbe-a24c-bf6e8188e566",
-										"label": "Based on HIV Risk category from EMR"
+										"label": "Based on Risk screening findings"
 									},
 									{
-										"concept": "a89ac94a-1350-11df-a1f1-0026b9348838",
-										"label": "Both not eligible and risk category"
+										"concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
+										"label": "ML Risk category"
+									},
+									{
+										"concept": "9381abe8-9f54-4a67-becf-a31485f49ba1",
+										"label": "HTS Guidelines"
 									}
 								]
 							},

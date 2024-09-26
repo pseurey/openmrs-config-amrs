@@ -1,5 +1,5 @@
 {
-	"name": "AMPATH POC PNC Initial Encounter Form v1.0",
+	"name": "AMPATH POC PNC Initial Visit Form v1.0",
 	"uuid": "xxxx",
 	"processor": "EncounterFormProcessor",
 	"referencedForms": [],
@@ -208,136 +208,250 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "BP systolic:",
-							"id": "syst",
+							"type": "obsGroup",
+							"label": "test group",
 							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
-								"max": "250",
-								"min": "0"
+								"rendering": "group",
+								"concept": "a899e6d8-1350-11df-a1f1-0026b9348838"
 							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "BP diastolic:",
-							"id": "dias",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
-								"max": "200",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Pulse (Rate/min):",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
-								"max": "230",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": [],
-							"id": "pulse"
-						},
-						{
-							"label": "Temp(C):",
-							"questionOptions": {
-								"rendering": "decimal",
-								"concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
-								"max": "43.00",
-								"min": "25.00"
-							},
-							"type": "obs",
-							"validators": [
+							"questions": [
 								{
-									"type": "decimal",
-									"decimalPlace": 1
+									"label": "BP:Systolic:",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+										"max": "250",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "syst"
+								},
+								{
+									"label": "BP:Diastolic:",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+										"max": "200",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "diast"
+								},
+								{
+									"label": "Pulse(Rate/Min):",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+										"max": "230",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "pulse"
+								},
+								{
+									"label": "RR(Breath/Min):",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
+										"max": "99",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "resp"
+								},
+								{
+									"label": "Temp(C):",
+									"questionOptions": {
+										"rendering": "decimal",
+										"concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
+										"max": "43.00",
+										"min": "25.00"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									],
+									"id": "temp"
+								},
+								{
+									"label": "Weight(Kg):",
+									"id": "weight",
+									"questionOptions": {
+										"rendering": "decimal",
+										"concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+										"max": "250",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									]
+								},
+								{
+									"label": "Height(CM):",
+									"id": "height",
+									"historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
+									"questionOptions": {
+										"rendering": "decimal",
+										"concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+										"max": "228.00",
+										"min": "10.00"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									]
+								},
+								{
+									"label": "Sp02:",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a66354-1350-11df-a1f1-0026b9348838",
+										"max": "100",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "saturation"
+								},
+								{
+									"label": "BMI:Kg/M2",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+										"max": "100",
+										"min": "0",
+										"calculate": {
+											"calculateExpression": "calcBMI(height,weight)"
+										}
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "age<18"
+									},
+									"id": "bmi"
+								},
+								{
+									"label": "BMI for age Z-Score:",
+									"id": "bmiScore",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "9061e5d5-8478-4d16-be44-bfec05b6705a",
+										"max": "4",
+										"min": "-4",
+										"calculate": {
+											"calculateExpression": "!isEmpty(height) && !isEmpty(weight) ? calcBMIForAgeZscore(bmiForAgeRef,height,weight): ''"
+										}
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "age<=5 ||age >=17"
+									}
+								},
+								{
+									"label": "MUAC:MM",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a89c6188-1350-11df-a1f1-0026b9348838",
+										"max": "450",
+										"min": "60"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "muac"
 								}
 							],
-							"id": "temp"
-						},
-						{
-							"label": "Weight (Kg):",
-							"id": "weight",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-								"max": "250",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Height(CM):",
-							"id": "height",
-							"historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
-							"questionOptions": {
-								"rendering": "decimal",
-								"concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-								"max": "228.00",
-								"min": "10.00"
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "decimal",
-									"decimalPlace": 1
-								}
-							]
-						},
-						{
-							"label": "Sp02:",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a66354-1350-11df-a1f1-0026b9348838",
-								"max": "100",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": [],
-							"id": "oxygen"
-						},
-						{
-							"label": "MUAC:",
-							"id": "muac",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a89c6188-1350-11df-a1f1-0026b9348838",
-								"max": "450",
-								"min": "60"
-							},
-							"type": "obs",
-							"validators": []
+							"id": "muac"
 						}
 					]
 				},
 				{
-					"label": "Adult Vaccination",
+					"label": "Nutrition Assessment and Diagnosis",
+					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Immunization history:",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "multiCheckbox",
-								"concept": "b29b512f-cd46-41ee-a568-bdaafa0bb874",
-								"answers": [
-									{
-										"concept": "a897dd84-1350-11df-a1f1-0026b9348838",
-										"label": "Hepatitis B"
+							"label": "Nutrition Assessment and Diagnosis",
+							"questions": [
+								{
+									"label": "Nutrition status:",
+									"id": "nutritionStatus",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
+										"answers": [
+											{
+												"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+												"label": "Normal"
+											},
+											{
+												"concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+												"label": "Overweight"
+											},
+											{
+												"concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+												"label": "Obese"
+											},
+											{
+												"concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+												"label": "Severe acute malnutrition"
+											},
+											{
+												"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
+												"label": "Moderate  acute malnutrition"
+											}
+										]
 									},
-									{
-										"concept": "a8a70746-1350-11df-a1f1-0026b9348838",
-										"label": "Flu"
-									}
-								]
-							},
-							"validators": [],
-							"id": "immuni"
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Nutrition intervention:",
+									"id": "nutritionIntervention",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "42c0032e-e404-4e64-9564-06cc1473d5d0",
+												"label": "Nutrition counselling"
+											},
+											{
+												"concept": "a8a488d6-1350-11df-a1f1-0026b9348838",
+												"label": "Supplememntary feeding program"
+											},
+											{
+												"concept": "55f41f90-5650-4292-8fb2-8c1eadd95cb1",
+												"label": "Outpatient therapeutic program"
+											},
+											{
+												"concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
+												"label": "Inpatient management"
+											},
+											{
+												"concept": "c6b6915a-8bc0-4420-8d3b-ae6282b4be68",
+												"label": "Weight management"
+											}
+										]
+									},
+									"type": "obs",
+									"validators": []
+								}
+							]
 						}
 					]
 				}
@@ -434,99 +548,43 @@
 							"hide": {
 								"hideWhenExpression": "nhif !== 'a899e0ac-1350-11df-a1f1-0026b9348838'"
 							}
-						},
-						{
-							"label": "Population type:",
-							"id": "popType",
-							"required": "true",
-							"questionInfo": "Indicate the pupulation type.",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
-								"answers": [
-									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-										"label": "General population"
-									},
-									{
-										"concept": "0bfb0150-949b-4625-98b8-b9d8275bcf44",
-										"label": "Key population"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Key population:",
-							"id": "keyPop",
-							"questionInfo": "Indicate the key population.",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
-								"answers": [
-									{
-										"concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
-										"label": "MSM"
-									},
-									{
-										"concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
-										"label": "FSW"
-									},
-									{
-										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
-										"label": "PWID"
-									},
-									{
-										"concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
-										"label": "Transgender"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(popType) && popType === '0bfb0150-949b-4625-98b8-b9d8275bcf44'",
-									"message": "Required!"
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "popType !== '0bfb0150-949b-4625-98b8-b9d8275bcf44'"
-							}
 						}
+						
 					]
-				},
+				}
+			]
+		},
+		{
+			"label": "HIV Testing",
+			"sections": [
 				{
 					"label": "HIV Testing",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Prior known status:",
-							"id": "pncHiv",
-							"type": "obs",
+							"label": "HIV testing done:",
+							"required": "true",
 							"questionOptions": {
-								"concept": "c6f26fda-432d-4ba1-8632-3e9c70f4f36c",
-								"rendering": "select",
+								"concept": "71bb9660-cb25-48d0-ab90-2dc39df8e9ab",
 								"answers": [
 									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
+										"concept": "76ab49de-c5f4-43dc-a368-0274ee834ad3",
+										"label": "Initial"
 									},
 									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
+										"concept": "9ee34e6b-b9ed-4306-b41f-476406895a4a",
+										"label": "Retest"
 									},
 									{
 										"concept": "fa5a4dd8-60cd-4085-80b6-4aea76809926",
 										"label": "Known positive"
-									},
-									{
-										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-										"label": "Unknown"
 									}
-								]
-							}
+								
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"id": "currHivStatus"
 						},
 						{
 							"label": "HIV Test 1 Results:",
@@ -563,7 +621,7 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], pncHiv)"
+										"hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
 									}
 								},
 								{
@@ -593,7 +651,7 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], pncHiv)"
+										"hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
 									}
 								},
 								{
@@ -605,7 +663,7 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], pncHiv)"
+										"hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
 									},
 									"type": "obs"
 								},
@@ -617,10 +675,10 @@
 										"concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8"
 									},
 									"validators": [],
-									"type": "obs",
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], pncHiv)"
-									}
+										"hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
+									},
+									"type": "obs"
 								}
 							],
 							"id": "test1Detailed"
@@ -723,7 +781,104 @@
 							"id": "test2Detailed"
 						},
 						{
-							"label": "Final PNC results:",
+							"label": "HIV Test Results 3:",
+							"type": "obsGroup",
+							"questionOptions": {
+								"rendering": "group",
+								"concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+							},
+							"questions": [
+								{
+									"label": "HIV test 3 results",
+									"id": "test3",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "eae7ec5d-16f2-4764-bf42-c4924ebcaa24",
+										"answers": [
+											{
+												"label": "Positive",
+												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											},
+											{
+												"label": "Negative",
+												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											},
+											{
+												"label": "N/A",
+												"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Kit name:",
+									"id": "rapidTest3",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Determine",
+												"concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
+												"conceptMappings": []
+											},
+											{
+												"label": "First response",
+												"concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+												"conceptMappings": []
+											},
+											{
+												"label": "Dual kit",
+												"concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
+												"conceptMappings": []
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Lot number:",
+									"id": "lotNumber3",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									},
+									"type": "obs"
+								},
+								{
+									"label": "Expiry date:",
+									"id": "expiryDate3",
+									"questionOptions": {
+										"rendering": "date",
+										"concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+									},
+									"type": "obs"
+								}
+							],
+							"id": "test3Detailed"
+						},
+						{
+							"label": "Final results:",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -746,7 +901,7 @@
 							"id": "finalResults",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], pncHiv)"
+								"hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
 							}
 						},
 						{
@@ -769,7 +924,7 @@
 							"id": "resultGiven",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], pncHiv)"
+								"hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
 							}
 						}
 					]
@@ -792,6 +947,10 @@
 									{
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
+									},
+									{
+										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+										"label": "N/A"
 									}
 								]
 							},
@@ -823,9 +982,77 @@
 								"hideWhenExpression": "patnerTested !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "patnerStatus"
+						},
+						{
+							"label": "Population type:",
+							"id": "popType",
+							"required": "true",
+							"questionInfo": "Indicate the pupulation type.",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
+								"answers": [
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "General population"
+									},
+									{
+										"concept": "0bfb0150-949b-4625-98b8-b9d8275bcf44",
+										"label": "Key population"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Key population:",
+							"id": "keyPop",
+							"questionInfo": "Indicate the key population.",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+								"answers": [
+									{
+										"concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+										"label": "MSM"
+									},
+									{
+										"concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+										"label": "FSW"
+									},
+									{
+										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+										"label": "PWID"
+									},
+									{
+										"concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
+										"label": "Transgender"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(popType) && popType === '0bfb0150-949b-4625-98b8-b9d8275bcf44'",
+									"message": "Required!"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "popType !== '0bfb0150-949b-4625-98b8-b9d8275bcf44'"
+							}
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"label": "Enrollment History",
+			"sections": [
 				{
 					"label": "Enrollment History",
 					"isExpanded": "true",
@@ -851,7 +1078,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -983,7 +1210,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1068,7 +1295,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1087,7 +1314,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1110,7 +1337,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1147,7 +1374,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -1182,8 +1409,8 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								},
 								{
 									"label": "Relation:",
@@ -1253,8 +1480,8 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								},
 								{
 									"label": "HIV status of family member:",
@@ -1280,8 +1507,8 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								},
 								{
 									"label": "In care:",
@@ -1307,8 +1534,8 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								}
 							],
 							"id": "__nFEvuF8JG"
@@ -1328,7 +1555,7 @@
 								"attributeType": "573af09d-4c3e-47c2-9a9d-4d78aff35312"
 							},
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1398,7 +1625,7 @@
 								"rendering": "select"
 							},
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"type": "personAttribute"
 						}
@@ -1636,8 +1863,8 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								}
 							],
 							"id": "__FDnuM6zJn"
@@ -1722,7 +1949,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1745,7 +1972,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1799,7 +2026,7 @@
 								"rendering": "multiCheckbox"
 							},
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2090,7 +2317,7 @@
 							},
 							"id": "aztDispensed",
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2116,7 +2343,7 @@
 							},
 							"id": "nvpDispensed",
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2147,7 +2374,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2483,7 +2710,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2639,7 +2866,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2908,7 +3135,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2994,7 +3221,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3034,7 +3261,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3066,7 +3293,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -3394,8 +3621,8 @@
 										}
 									],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								}
 							]
 						},
@@ -3942,8 +4169,8 @@
 										"label": "No"
 									},
 									{
-										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-										"label": "N/A"
+										"concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+										"label": "Not done"
 									}
 								]
 							},
@@ -3951,6 +4178,38 @@
 							"validators": [],
 							"hide": {
 								"hideWhenExpression": "sex !== 'F'"
+							}
+						},
+						{
+							"label": "Reason cervical cancer screening not done:",
+							"id": "cervCanNotdone",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('032f1b25-2e20-4641-aedb-627d289f11ac')) ? undefined : HD.getObject('prevEnc').getValue('032f1b25-2e20-4641-aedb-627d289f11ac')",
+							"questionOptions": {
+								"concept": "032f1b25-2e20-4641-aedb-627d289f11ac",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a8a713f8-1350-11df-a1f1-0026b9348838",
+										"label": "Total abdominal hysterectomy "
+									},
+									{
+										"concept": "a109ac83-0b23-459f-9463-2338c90dc875",
+										"label": "Cervix inaccessible"
+									},
+									{
+										"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+										"label": "Declined"
+									},
+									{
+										"concept": "a8ad2b4e-1350-11df-a1f1-0026b9348838",
+										"label": "Menses"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "cervCanScreen !== 'a899ea48-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3974,7 +4233,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "sex !== 'F' ||cervCanScreen !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "sex !== 'F' || cervCanScreen !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3996,34 +4255,6 @@
 							],
 							"hide": {
 								"hideWhenExpression": "isEmpty(caTestResult)"
-							}
-						},
-						{
-							"label": "Screening method:",
-							"type": "obs",
-							"id": "screeningMethod",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "multiCheckbox",
-								"concept": "6750ddf9-bd32-4d8f-bee0-b5fc192a20a3",
-								"answers": [
-									{
-										"concept": "b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65",
-										"label": "VIA or VIA/VILI"
-									},
-									{
-										"concept": "a89b2dcc-1350-11df-a1f1-0026b9348838",
-										"label": "HPV"
-									},
-									{
-										"concept": "a8983ff4-1350-11df-a1f1-0026b9348838",
-										"label": "Pap smear"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "sex !== 'F' ||cervCanScreen !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -4240,7 +4471,7 @@
 					]
 				},
 				{
-					"label": "STI",
+					"label": "STI Diagnosis",
 					"questions": [
 						{
 							"label": "Do you have any of the following:",
@@ -4396,7 +4627,7 @@
 								"rendering": "select"
 							},
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"type": "obs"
 						},
@@ -4933,43 +5164,6 @@
 							]
 						}
 					]
-				},
-				{
-					"label": "Nutrition Assessment and Diagnosis",
-					"questions": [
-						{
-							"label": "Nutrition status:",
-							"id": "nutritionStatus",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
-										"label": "Overweight"
-									},
-									{
-										"concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
-										"label": "Obese"
-									},
-									{
-										"concept": "0306539c-f24f-49f5-b059-b646adbec47c",
-										"label": "Severe acute malnutrition"
-									},
-									{
-										"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
-										"label": "Moderate  acute malnutrition"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": []
-						}
-					]
 				}
 			]
 		},
@@ -4998,9 +5192,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__Ms7Gpssop"
+							"id": "pexams"
 						},
 						{
 							"label": "Skin :",
@@ -5025,9 +5219,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__zznK4ErIo"
+							"id": "skin"
 						},
 						{
 							"label": "Lymph nodes:",
@@ -5064,9 +5258,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__HFC10oK4q"
+							"id": "lnodes"
 						},
 						{
 							"label": "Respiratory exam :",
@@ -5087,9 +5281,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__pGoMzn3Jy"
+							"id": "rexams"
 						},
 						{
 							"label": "HEENT:",
@@ -5146,9 +5340,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__oDFtKp2Gw"
+							"id": "heent"
 						},
 						{
 							"label": "Cardiac exam:",
@@ -5201,9 +5395,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__9IxLyz7vJ"
+							"id": "cexam"
 						},
 						{
 							"label": "Abdominal exam:",
@@ -5240,9 +5434,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__KIMtMs79r"
+							"id": "aExam"
 						},
 						{
 							"label": "Urogenital exam:",
@@ -5267,9 +5461,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__EELvpKEvC"
+							"id": "uroExam"
 						},
 						{
 							"label": "Extremies exam:",
@@ -5302,9 +5496,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__wI6vzGJsw"
+							"id": "_eExams"
 						},
 						{
 							"label": "Musculoskeletal exam:",
@@ -5325,9 +5519,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__otutIFJEq"
+							"id": "musExams"
 						},
 						{
 							"label": "Neurologic exam:",
@@ -5360,9 +5554,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__6KDDGMrHL"
+							"id": "neuExam"
 						},
 						{
 							"label": "Psychiatric exam:",
@@ -5391,9 +5585,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__MGnswLqEG"
+							"id": "psyExam"
 						}
 					]
 				},
@@ -5411,7 +5605,7 @@
 								"rows": 15
 							},
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -6029,7 +6223,7 @@
 								}
 							},
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"label": "CD4 Count:",
 							"validators": [
@@ -6075,7 +6269,7 @@
 							"label": "CD4 test qualitative (VISITECT):",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -6111,7 +6305,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -6147,7 +6341,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -7032,7 +7226,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -7053,7 +7247,7 @@
 							"validators": [],
 							"id": "staging",
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -7144,7 +7338,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -7723,7 +7917,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -7947,7 +8141,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8158,7 +8352,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8214,7 +8408,7 @@
 							],
 							"id": "cryptoPlan",
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8286,7 +8480,7 @@
 							],
 							"id": "pcpPlan",
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8329,7 +8523,7 @@
 							],
 							"id": "toxoPlan",
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8372,7 +8566,7 @@
 							],
 							"id": "kaposiPlan",
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -8453,8 +8647,8 @@
 										}
 									],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								}
 							],
 							"id": "__LyswquKKz"
@@ -9263,13 +9457,7 @@
 							"hide": {
 								"hideWhenExpression": "couselFp!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
-						}
-					]
-				},
-				{
-					"label": "Haematinics:",
-					"isExpanded": "true",
-					"questions": [
+						},
 						{
 							"label": "Haematinics dispensed:",
 							"type": "obs",
@@ -9288,6 +9476,15 @@
 								]
 							},
 							"id": "haematinics"
+						},
+						{
+							"label": "Other maternal complications:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "a8affe64-1350-11df-a1f1-0026b9348838"
+							},
+							"id": "matComplications"
 						}
 					]
 				},
@@ -9355,9 +9552,9 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": " !arrayContains(['d164c76c-cc91-4ac2-89e9-ab7c29152ee0','824cf3e6-dd16-4767-ba41-2e04dede349e'], visitType.uuid)"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
-							"id": "__FtH3trErD"
+							"id": "phdp"
 						}
 					]
 				},
@@ -9540,8 +9737,8 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								},
 								{
 									"label": "Referrals made to the patient: Other (specify):",
@@ -9647,8 +9844,8 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 								},
 								{
 									"type": "personAttribute",
@@ -9683,32 +9880,32 @@
 					]
 				},
 				{
-					"label": "Patient Categorization",
+					"label": "Categorization",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Patient category:",
+							"label": "Patient establishment categorization:",
+							"type": "obs",
 							"required": "true",
+							"id": "establishCategory",
 							"questionOptions": {
-								"concept": "a89eea66-1350-11df-a1f1-0026b9348838",
+								"concept": "0c61f19e-e1d0-4808-8612-07663ac08cc9",
+								"rendering": "select",
 								"answers": [
 									{
-										"concept": "81033c9e-80d4-445a-9899-3a6a9c9520ee",
-										"label": "Well"
+										"concept": "8f2d9ee8-ad95-4f37-b81d-7eff531ad80b",
+										"label": "Established"
 									},
 									{
-										"concept": "f78c9313-1f94-481d-94a6-5387f5dbe82e",
-										"label": "Unwell"
+										"concept": "dc8eb4d5-8e3c-4c48-bec9-340cf125ff55",
+										"label": "Not Established"
 									}
-								],
-								"rendering": "select"
+								]
 							},
-							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], pncHiv) && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-							},
-							"id": "patientCategorization"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
 						}
 					]
 				}

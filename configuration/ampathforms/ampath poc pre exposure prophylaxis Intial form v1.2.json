@@ -1705,7 +1705,7 @@
 						{
 							"label": "If negative,vaccine series initiated?",
 							"type": "obs",
-							"id": "vaccineInitiated",
+							"id": "vaccineInitiatedC",
 							"questionOptions": {
 								"concept": "3e062bd6-e681-46d1-a1d1-e593f983b436",
 								"answers": [

@@ -4572,7 +4572,7 @@
 							"validators": [],
 							"id": "hpvVaccine",
 							"hide": {
-								"hideWhenExpression": "sex!== 'F' || age <10 || age >14"
+								"hideWhenExpression": "sex!== 'F' || age <9 || age >14"
 							}
 						},
 						{
@@ -6522,6 +6522,10 @@
 												"label": "Steven-Johnson syndrome"
 											},
 											{
+												"concept": "5d08b98f-5123-4d6d-9972-825b6aa2f4ed",
+												"label": "Fanconi syndrome"
+											},
+											{
 												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
 												"label": "Other"
 											}
@@ -7143,6 +7147,14 @@
 											{
 												"concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
 												"label": "Side effects (Adverse drug reaction)"
+											},
+											{
+												"concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+												"label": "Change of regimen"
+											},
+											{
+												"concept": "a8af61e8-1350-11df-a1f1-0026b9348838",
+												"label": "LTFU"
 											}
 										],
 										"rendering": "select"
@@ -7790,12 +7802,12 @@
 								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
 								"answers": [
 									{
-										"concept": "a8a4bd42-1350-11df-a1f1-0026b9348838",
-										"label": "Present"
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
 									},
 									{
-										"concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
-										"label": "Absent"
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
 									}
 								],
 								"showDate": "true",
@@ -8032,49 +8044,74 @@
 					"label": "Comorbidities And Additional Medication Orders",
 					"questions": [
 						{
-							"label": "Comorbid illness:",
-							"required": "true",
-							"id": "comorbidIllness",
+							"type": "obsGroup",
+							"label": "Comorbid illness",
 							"questionOptions": {
-								"concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
-								"answers": [
-									{
-										"concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
-										"label": "Convulsive disease"
-									},
-									{
-										"concept": "a890b810-1350-11df-a1f1-0026b9348838",
-										"label": "Mental health disorders"
-									},
-									{
-										"concept": "a893436e-1350-11df-a1f1-0026b9348838",
-										"label": "Diabetes"
-									},
-									{
-										"concept": "a8ad5254-1350-11df-a1f1-0026b9348838",
-										"label": "Renal disease"
-									},
-									{
-										"concept": "a8ad516e-1350-11df-a1f1-0026b9348838",
-										"label": "Liver disease"
-									},
-									{
-										"concept": "a8986880-1350-11df-a1f1-0026b9348838",
-										"label": "Hypertension"
-									},
-									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-										"label": "None"
-									},
-									{
-										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-										"label": "Other"
-									}
-								],
-								"rendering": "multiCheckbox"
+								"rendering": "group",
+								"concept": "ebf02efb-b28c-49e8-9caf-65e96dbfa0a9"
 							},
-							"type": "obs",
-							"validators": []
+							"questions": [
+								{
+									"label": "Comorbid illness:",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')) ? undefined : HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
+									"id": "comorbidIllness",
+									"questionOptions": {
+										"concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
+										"answers": [
+											{
+												"concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
+												"label": "Convulsive disease"
+											},
+											{
+												"concept": "a890b810-1350-11df-a1f1-0026b9348838",
+												"label": "Mental health disorders"
+											},
+											{
+												"concept": "a893436e-1350-11df-a1f1-0026b9348838",
+												"label": "Diabetes"
+											},
+											{
+												"concept": "a8ad5254-1350-11df-a1f1-0026b9348838",
+												"label": "Renal disease"
+											},
+											{
+												"concept": "a8ad516e-1350-11df-a1f1-0026b9348838",
+												"label": "Liver disease"
+											},
+											{
+												"concept": "a8986880-1350-11df-a1f1-0026b9348838",
+												"label": "Hypertension"
+											},
+											{
+												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+												"label": "None"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Other specify:",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"type": "obs",
+									"id": "comorbidOther",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8aaf3e2-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
+									}
+								}
+							],
+							"id": "__yHppFGExK"
 						},
 						{
 							"label": "Hypertension treatment:",
