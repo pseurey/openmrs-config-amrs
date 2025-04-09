@@ -1,5 +1,5 @@
 {
-	"name": "AMPATH POC Youth Initial Encounter Form v1.8",
+	"name": "AMPATH POC Youth Initial Encounter Form v2.0",
 	"uuid": "xxxx",
 	"processor": "EncounterFormProcessor",
 	"referencedForms": [
@@ -482,12 +482,12 @@
 							}
 						},
 						{
-							"label": "Patient covered by NHIF:",
+							"label": "Patient covered by SHA:",
 							"id": "nhif",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')) ? undefined : HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')",
 							"questionOptions": {
 								"rendering": "select",
-								"concept": "0b49e3e6-55df-4096-93ca-59edadb74b3f",
+								"concept": "1899d98e-46df-437f-bd86-472d37fa3278",
 								"answers": [
 									{
 										"concept": "8b715fed-97f6-4e38-8f6a-c167a42f8923",
@@ -503,12 +503,12 @@
 							"validators": []
 						},
 						{
-							"label": "What is the patient's NHIF status?",
+							"label": "What is the patient's SHA status?",
 							"id": "nhifStatus",
-							"questionInfo": "Indicate if the patient has been remitting monthly contributions towards the NHIF medical cover.",
+							"questionInfo": "Indicate if the patient has been remitting monthly contributions towards the SHA medical cover.",
 							"questionOptions": {
 								"rendering": "select",
-								"concept": "548e6743-67c0-4a6b-bb07-b5f799f63bc1",
+								"concept": "ab0f59a7-963e-4a8b-860d-2ef6b15b8f97",
 								"answers": [
 									{
 										"concept": "b058a9ad-a0e4-4b37-9214-75b8aed1eaa4",
@@ -576,10 +576,6 @@
 										"label": "General population"
 									},
 									{
-										"concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
-										"label": "Key population"
-									},
-									{
 										"concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
 										"label": "Vulnerable population"
 									},
@@ -591,48 +587,6 @@
 							},
 							"type": "obs",
 							"validators": []
-						},
-						{
-							"label": "Key population:",
-							"id": "keyPop",
-							"questionInfo": "Indicate the key population.",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
-								"answers": [
-									{
-										"concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
-										"label": "MSM"
-									},
-									{
-										"concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
-										"label": "MSW"
-									},
-									{
-										"concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
-										"label": "FSW"
-									},
-									{
-										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
-										"label": "PWID"
-									},
-									{
-										"concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
-										"label": "PWUD"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(popType) && popType === '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6'",
-									"message": "Required!"
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "popType !== '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6'"
-							}
 						},
 						{
 							"label": "Vulnerable population:",
@@ -1330,252 +1284,6 @@
 			]
 		},
 		{
-			"label": "Risk Assessment",
-			"sections": [
-				{
-					"label": "OVC Program",
-					"id": "ovcProgram",
-					"questions": [
-						{
-							"label": "Accessing OVC Services:",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "994dba64-b963-4fdd-89a8-ff2211a5f0ca",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"id": "__tnJxpvJpt"
-						}
-					]
-				},
-				{
-					"label": "Mental health",
-					"questions": [
-						{
-							"label": "Little interest or pleasure in doing things:(0=Not at all, 1=Sevaral days, 2=More than half days, 3=Nearly everyday)",
-							"id": "interest",
-							"questionOptions": {
-								"concept": "0975c82b-7905-446f-bd16-2f5e373543db",
-								"rendering": "number",
-								"max": "3",
-								"min": "0"
-							},
-							"type": "obs"
-						},
-						{
-							"label": "Feels down or depressed or hopeless:(0=Not at all, 1=Sevaral days, 2=More than half days, 3=Nearly everyday)",
-							"id": "down",
-							"questionOptions": {
-								"concept": "fa7f8ebd-449d-4f09-a5ed-fd9c05302c67",
-								"rendering": "number",
-								"max": "3",
-								"min": "0"
-							},
-							"type": "obs"
-						}
-					]
-				},
-				{
-					"label": "Nutrition Meals",
-					"questions": [
-						{
-							"label": "How often do you miss meals for an entire day?",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "a89ce388-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a899d120-1350-11df-a1f1-0026b9348838",
-										"label": "Never"
-									},
-									{
-										"concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
-										"label": "Monthly"
-									},
-									{
-										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
-										"label": "Weekly"
-									},
-									{
-										"concept": "65831439-8ba0-4c64-ab62-1f7b7f548fb7",
-										"label": "Few times per week"
-									},
-									{
-										"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838",
-										"label": "Daily"
-									}
-								],
-								"rendering": "select"
-							},
-							"id": "__InzonFHDD"
-						}
-					]
-				},
-				{
-					"label": "Nutrition Assessment and Diagnosis",
-					"questions": [
-						{
-							"label": "Nutrition status:",
-							"id": "nutritionStatus",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
-										"label": "Overweight"
-									},
-									{
-										"concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
-										"label": "Obese"
-									},
-									{
-										"concept": "0306539c-f24f-49f5-b059-b646adbec47c",
-										"label": "Severe acute malnutrition"
-									},
-									{
-										"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
-										"label": "Moderate  acute malnutrition"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Nutrition intervention:",
-							"id": "nutritionIntervention",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "42c0032e-e404-4e64-9564-06cc1473d5d0",
-										"label": "Nutrition counselling"
-									},
-									{
-										"concept": "a8a488d6-1350-11df-a1f1-0026b9348838",
-										"label": "Supplememntary feeding program"
-									},
-									{
-										"concept": "55f41f90-5650-4292-8fb2-8c1eadd95cb1",
-										"label": "Outpatient therapeutic program"
-									},
-									{
-										"concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
-										"label": "Inpatient management"
-									},
-									{
-										"concept": "c6b6915a-8bc0-4420-8d3b-ae6282b4be68",
-										"label": "Weight management"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": []
-						}
-					]
-				},
-				{
-					"label": "VAC Screening",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "In the past three months has anyone punched, slapped, kicked, bite you or caused you any type of physical harm?",
-							"questionInfo": "Anyone can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
-							"id": "physical",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "8fca5b8a-0674-49e5-8111-003db067ee22",
-								"rendering": "select",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							}
-						},
-						{
-							"label": "In the past three months has anyone insulted you, ignored you, yelled at you, or made you feel ashamed or bad about yourself?",
-							"questionInfo": "as with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
-							"id": "emotional",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
-								"rendering": "select",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							}
-						},
-						{
-							"label": "In the past three months has anyone forced you to have sex or perform any sexual act, touched you sexually in any way that you did not want?",
-							"questionInfo": "As with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague",
-							"id": "sexual",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "920709bc-dde6-4d21-863e-851e63c084e4",
-								"rendering": "select",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							}
-						}
-					]
-				},
-				{
-					"label": "Overall risk assessment Notes",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Please comment on risk factors",
-							"type": "obs",
-							"id": "overllAssNote",
-							"required": "true",
-							"default": "",
-							"questionOptions": {
-								"concept": "bf48af84-e16a-4757-81da-582511e88b35",
-								"rendering": "textarea",
-								"rows": 18
-							}
-						}
-					]
-				}
-			]
-		},
-		{
 			"label": "Sexual and Reproductive History",
 			"sections": [
 				{
@@ -1764,35 +1472,6 @@
 								}
 							],
 							"id": "__zn5LrFqHo"
-						},
-						{
-							"label": "Are you using condoms?",
-							"id": "usingCondoms",
-							"isExpanded": "true",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "a8a00090-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a89cdbcc-1350-11df-a1f1-0026b9348838",
-										"label": "Sometimes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									},
-									{
-										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-										"label": "N/A"
-									}
-								]
-							},
-							"validators": []
 						}
 					]
 				},
@@ -2002,172 +1681,6 @@
 							"hide": {
 								"hideWhenExpression": "sex !== 'M'"
 							}
-						}
-					]
-				},
-				{
-					"label": "Family Planning Profile",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"type": "obsGroup",
-							"label": "Family planning, detailed",
-							"questionOptions": {
-								"concept": "767e8060-5272-4927-ab78-97534a4499ef",
-								"rendering": "group"
-							},
-							"questions": [
-								{
-									"label": "Select modern contraception method:",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')",
-									"id": "fpMethod",
-									"questionOptions": {
-										"concept": "a894b1cc-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-												"label": "None"
-											},
-											{
-												"concept": "81aad3d5-0535-416a-a833-9079af068e3f",
-												"label": "Bilateral tubal ligation"
-											},
-											{
-												"concept": "a123d949-31f3-4abf-98e3-8504e17ebc00",
-												"label": "3-year implant"
-											},
-											{
-												"concept": "feb48308-a56f-4754-8e8f-8c1698e570cb",
-												"label": "5-year implant"
-											},
-											{
-												"concept": "f8c66a32-3660-4233-ae51-d3a4a1eac44e",
-												"label": "IUCD copper"
-											},
-											{
-												"concept": "236dba53-1062-46b4-8067-ec8711897dbf",
-												"label": "IUCD hormonal"
-											},
-											{
-												"concept": "a8988b44-1350-11df-a1f1-0026b9348838",
-												"label": "Injectables (Depo)"
-											},
-											{
-												"concept": "a897dbd6-1350-11df-a1f1-0026b9348838",
-												"label": "OCP"
-											},
-											{
-												"concept": "eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc",
-												"label": "Vasectomy"
-											}
-										],
-										"rendering": "select"
-									},
-									"type": "obs",
-									"validators": []
-								},
-								{
-									"type": "obs",
-									"label": "Approximate start date (If FP is 3-year implant/5-year implant/Injectables/Vasectomy/IUCD Copper/IUCD Hormonal/Bilateral tubal ligation)",
-									"id": "appStartDate",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a89ae092-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a89ae092-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a89ae092-1350-11df-a1f1-0026b9348838",
-										"rendering": "date"
-									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
-											"message": "Start date should be before the encounter date."
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(fpMethod) || !arrayContainsAny(fpMethod,['a123d949-31f3-4abf-98e3-8504e17ebc00','feb48308-a56f-4754-8e8f-8c1698e570cb','eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc','a8988b44-1350-11df-a1f1-0026b9348838','a8a713f8-1350-11df-a1f1-0026b9348838','f8c66a32-3660-4233-ae51-d3a4a1eac44e','236dba53-1062-46b4-8067-ec8711897dbf']))",
-											"message": "Start date is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(fpMethod) || arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a897dbd6-1350-11df-a1f1-0026b9348838'],fpMethod)"
-									}
-								},
-								{
-									"label": "If not on family planning,reason",
-									"id": "notFamilyPlanning",
-									"type": "obs",
-									"questionOptions": {
-										"concept": "88ad5975-4762-4108-a967-072f12f91b0b",
-										"rendering": "select",
-										"answers": [
-											{
-												"label": "Religion",
-												"concept": "a8b03352-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Has adequate supply",
-												"concept": "32659669-0edf-4470-b4cd-39661e0c005e"
-											},
-											{
-												"label": "Wants more children in future",
-												"concept": "fb82f3b4-bcec-4cd2-a0a4-545b02d28a4d"
-											},
-											{
-												"label": "Abstinence",
-												"concept": "a8aff284-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Fear of side effects",
-												"concept": "2ae62639-4703-41dc-be8e-afe50640238b"
-											},
-											{
-												"label": "Trying to conceive now",
-												"concept": "2e78504f-1946-479b-8cd1-d9ded0a68bd5"
-											},
-											{
-												"label": "Not sexually active",
-												"concept": "2d6f977e-3b3f-4ea9-82ee-fde1fb4bdf56"
-											},
-											{
-												"label": "Infertile",
-												"concept": "bc0ecbd4-0dad-4a9e-ab48-993e0f78a4dc"
-											},
-											{
-												"label": "Partner does not want family planning",
-												"concept": "81eeb6d6-627c-4c40-8dc2-bd8343b50f7a"
-											},
-											{
-												"label": "Myths and misconception",
-												"concept": "a8b0341a-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Natural family planning",
-												"concept": "a8a714c0-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Believes cannot get pregnant",
-												"concept": "37b27c86-cabb-4c82-9166-d67d2271a8a3"
-											},
-											{
-												"label": "Pregnant",
-												"concept": "a89d109c-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Unknown",
-												"concept": "a899b50a-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Other",
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
-											}
-										]
-									},
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "fpMethod !== 'a899e0ac-1350-11df-a1f1-0026b9348838'"
-									}
-								}
-							],
-							"id": "__zwoMnys2p"
 						}
 					]
 				},
@@ -3658,7 +3171,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "TB Symptoms:",
+							"label": "TB symptoms:",
 							"required": "true",
 							"questionOptions": {
 								"concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
@@ -3719,7 +3232,7 @@
 							"id": "__rqHFE1nuD"
 						},
 						{
-							"label": "TB Status:",
+							"label": "TB status:",
 							"id": "tbstatus",
 							"required": "true",
 							"questionOptions": {
@@ -9613,200 +9126,6 @@
 					]
 				},
 				{
-					"label": "Referrals",
-					"questions": [
-						{
-							"type": "obsGroup",
-							"label": "Referrals",
-							"questionOptions": {
-								"concept": "a8a07c8c-1350-11df-a1f1-0026b9348838",
-								"rendering": "group"
-							},
-							"questions": [
-								{
-									"label": "Patient referred to:",
-									"id": "patientReferrals",
-									"questionOptions": {
-										"concept": "a89c2344-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-												"label": "None"
-											},
-											{
-												"concept": "a89fbb12-1350-11df-a1f1-0026b9348838",
-												"label": "OVC"
-											},
-											{
-												"concept": "a8a066ca-1350-11df-a1f1-0026b9348838",
-												"label": "ENT"
-											},
-											{
-												"concept": "a8a8b352-1350-11df-a1f1-0026b9348838",
-												"label": "Adherence counselling"
-											},
-											{
-												"concept": "a2187952-59e0-449b-895f-5102b7aed49c",
-												"label": "Cardiology"
-											},
-											{
-												"concept": "0fa18f9a-95c8-4ab3-81ed-a1bac69063fa",
-												"label": "Diabetes"
-											},
-											{
-												"concept": "a89accc4-1350-11df-a1f1-0026b9348838",
-												"label": "Disclosure counselling"
-											},
-											{
-												"concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
-												"label": "Oncology"
-											},
-											{
-												"concept": "a8a8b42e-1350-11df-a1f1-0026b9348838",
-												"label": "Mental health services"
-											},
-											{
-												"concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
-												"label": "Nutritional support"
-											},
-											{
-												"concept": "a89e2df6-1350-11df-a1f1-0026b9348838",
-												"label": "Psychosocial support"
-											},
-											{
-												"concept": "a8a8b26c-1350-11df-a1f1-0026b9348838",
-												"label": "TB/DOT program"
-											},
-											{
-												"concept": "c65fcd72-1f3f-4450-b93f-90a87ae64d55",
-												"label": "Surgery"
-											},
-											{
-												"concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
-												"label": "Dermatology"
-											},
-											{
-												"concept": "a89e2d1a-1350-11df-a1f1-0026b9348838",
-												"label": "Social work"
-											},
-											{
-												"concept": "7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0",
-												"label": "Differentiated care program"
-											},
-											{
-												"concept": "a8a06788-1350-11df-a1f1-0026b9348838",
-												"label": "Ophthalmology "
-											},
-											{
-												"concept": "a8a002e8-1350-11df-a1f1-0026b9348838",
-												"label": "Reproductive health "
-											},
-											{
-												"concept": "f3537f40-193c-4091-b969-88597588b909",
-												"label": "Dispensary"
-											},
-											{
-												"concept": "f90652be-7fb6-46cd-9274-99558a1dacd2",
-												"label": "COE"
-											},
-											{
-												"concept": "a9431295-9862-405b-b694-534f093ca0ad",
-												"label": "Viremia program"
-											},
-											{
-												"concept": "7c941f38-ede1-4a94-938f-6c4083339673",
-												"label": "Resistance clinic"
-											},
-											{
-												"concept": "fd90d6b2-7302-4a9c-ad1b-1f93eff77afb",
-												"label": "OTZ program"
-											},
-											{
-												"concept": "355b199f-c9c7-4e91-831f-2be17d2c67bd",
-												"label": "Legal counsel"
-											},
-											{
-												"concept": "5fc2555b-cae1-4bb8-9cd8-e19c2c04fc37",
-												"label": "Police department"
-											},
-											{
-												"concept": "5a089407-22df-4242-99d8-0b4d4da56b75",
-												"label": "Child protection services"
-											},
-											{
-												"concept": "a8b02e16-1350-11df-a1f1-0026b9348838",
-												"label": "Emergency shelter"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
-											}
-										],
-										"rendering": "multiCheckbox"
-									},
-									"type": "obs",
-									"validators": []
-								},
-								{
-									"label": "Patient referred to other, (specify):",
-									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-										"rendering": "text"
-									},
-									"type": "obs",
-									"validators": [],
-									"id": "__yGGH0KCop"
-								}
-							],
-							"id": "__zIFzxKFsI"
-						},
-						{
-							"label": "If referred for hospitalization, choose location:",
-							"id": "hospitalization",
-							"questionOptions": {
-								"concept": "a89c2420-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
-										"label": "Local health centre/hospital"
-									},
-									{
-										"concept": "a89c24fc-1350-11df-a1f1-0026b9348838",
-										"label": "MTRH"
-									},
-									{
-										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-										"label": "Other"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Reason  for hospitalization",
-							"id": "hospReason",
-							"type": "obsGroup",
-							"questionOptions": {
-								"concept": "a8a07c8c-1350-11df-a1f1-0026b9348838",
-								"rendering": "repeating"
-							},
-							"questions": [
-								{
-									"label": "Reason for hospitalization:",
-									"questionOptions": {
-										"concept": "a8a07a48-1350-11df-a1f1-0026b9348838",
-										"rendering": "problem"
-									},
-									"type": "obs",
-									"id": "__pLFtxyqyv"
-								}
-							]
-						}
-					]
-				},
-				{
 					"label": "Referrals, Notes",
 					"isExpanded": "true",
 					"questions": [
@@ -9827,143 +9146,6 @@
 		{
 			"label": "Plan",
 			"sections": [
-				{
-					"label": "Family Planning Plan",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Dispense condom today?",
-							"id": "condomDispensed",
-							"questionOptions": {
-								"concept": "a8b034d8-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Continue modern contraception method?",
-							"id": "contCurrentFP",
-							"questionOptions": {
-								"concept": "9bd08995-617e-407a-bf5d-79f29fbdb289",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(fpMethod) && isEmpty(myValue) && arrayContains(['a8a713f8-1350-11df-a1f1-0026b9348838', 'a123d949-31f3-4abf-98e3-8504e17ebc00', 'feb48308-a56f-4754-8e8f-8c1698e570cb', 'f8c66a32-3660-4233-ae51-d3a4a1eac44e', '236dba53-1062-46b4-8067-ec8711897dbf', 'a8988b44-1350-11df-a1f1-0026b9348838', 'a897dbd6-1350-11df-a1f1-0026b9348838', 'eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc'], fpMethod)",
-									"message": "Based on modern contraception method selected, you must answer this question."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "fpMethod === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Does patient wish to start modern contraception method?",
-							"id": "famPlanningPlan",
-							"questionOptions": {
-								"concept": "d1d7056f-42ed-4948-b04f-ef6146c789be",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(contCurrentFP) && contCurrentFP !== 'a899b35c-1350-11df-a1f1-0026b9348838'",
-									"message": "Patient does not wish to continue with modern contraception method. Please indicate if they wish to start."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "isEmpty(contCurrentFP) && fpMethod !== 'a899e0ac-1350-11df-a1f1-0026b9348838' || contCurrentFP === 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "If yes, modern contraception method chosen:",
-							"id": "famPlanChosen",
-							"questionOptions": {
-								"concept": "2d55cabe-a778-40a3-9b85-613889037a11",
-								"answers": [
-									{
-										"concept": "81aad3d5-0535-416a-a833-9079af068e3f",
-										"label": "Bilateral tubal ligation"
-									},
-									{
-										"concept": "a123d949-31f3-4abf-98e3-8504e17ebc00",
-										"label": "3-year implant"
-									},
-									{
-										"concept": "feb48308-a56f-4754-8e8f-8c1698e570cb",
-										"label": "5-year implant"
-									},
-									{
-										"concept": "f8c66a32-3660-4233-ae51-d3a4a1eac44e",
-										"label": "IUCD copper"
-									},
-									{
-										"concept": "236dba53-1062-46b4-8067-ec8711897dbf",
-										"label": "IUCD hormonal"
-									},
-									{
-										"concept": "a8988b44-1350-11df-a1f1-0026b9348838",
-										"label": "Injectables (Depo)"
-									},
-									{
-										"concept": "a897dbd6-1350-11df-a1f1-0026b9348838",
-										"label": "OCP"
-									},
-									{
-										"concept": "eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc",
-										"label": "Vasectomy"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(famPlanningPlan) && famPlanningPlan === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-									"message": "Patient wishes to start modern contraception method. Please choose method."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "famPlanningPlan!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						}
-					]
-				},
 				{
 					"label": "Next appointment",
 					"isExpanded": "true",

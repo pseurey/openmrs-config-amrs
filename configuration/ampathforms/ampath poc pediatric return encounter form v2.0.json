@@ -1,5 +1,5 @@
 {
-	"name": "AMPATH POC Pediatric Return Form v1.8",
+	"name": "AMPATH POC Pediatric Return Form v2.0",
 	"uuid": "xxxx",
 	"processor": "EncounterFormProcessor",
 	"referencedForms": [
@@ -402,12 +402,12 @@
 							}
 						},
 						{
-							"label": "Patient covered by NHIF:",
+							"label": "Patient covered by SHA:",
 							"id": "nhif",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')) ? undefined : HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')",
 							"questionOptions": {
 								"rendering": "select",
-								"concept": "0b49e3e6-55df-4096-93ca-59edadb74b3f",
+								"concept": "1899d98e-46df-437f-bd86-472d37fa3278",
 								"answers": [
 									{
 										"concept": "8b715fed-97f6-4e38-8f6a-c167a42f8923",
@@ -423,12 +423,12 @@
 							"validators": []
 						},
 						{
-							"label": "What is the patient's NHIF status?",
+							"label": "What is the patient's SHA status?",
 							"id": "nhifStatus",
-							"questionInfo": "Indicate if the patient has been remitting monthly contributions towards the NHIF medical cover.",
+							"questionInfo": "Indicate if the patient has been remitting monthly contributions towards the SHA medical cover.",
 							"questionOptions": {
 								"rendering": "select",
-								"concept": "548e6743-67c0-4a6b-bb07-b5f799f63bc1",
+								"concept": "ab0f59a7-963e-4a8b-860d-2ef6b15b8f97",
 								"answers": [
 									{
 										"concept": "b058a9ad-a0e4-4b37-9214-75b8aed1eaa4",
@@ -667,104 +667,7 @@
 						}
 					]
 				},
-				{
-					"label": "OVC Program",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Has the child been assessed for OVC care?",
-							"id": "ovcAssess",
-							"type": "obs",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')) ? undefined : HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "0f1f43b2-2a81-4ebb-833f-7d2b71faf85b",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							}
-						},
-						{
-							"label": "If yes, outcome of assessment:",
-							"id": "ovcOutcome",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "927a7650-e7bf-421d-867d-9b25bcf758c1",
-								"answers": [
-									{
-										"concept": "795cff32-9697-4c10-a1c2-deed8143677d",
-										"label": "Eligible"
-									},
-									{
-										"concept": "69db9a47-21c5-4398-89f7-1c03a1392240",
-										"label": "Not eligible"
-									}
-								]
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && ovcAssess === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-									"message": "Child has been assessed for OVC. Please indicate assessment outcome."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "ovcAssess !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "If eligible, is the child enrolled in OVC?",
-							"id": "ovcProgram",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "994dba64-b963-4fdd-89a8-ff2211a5f0ca",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && ovcOutcome === '795cff32-9697-4c10-a1c2-deed8143677d'",
-									"message": "Child is elligible for OVC service. Please indicate if enrolled."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "ovcOutcome !== '795cff32-9697-4c10-a1c2-deed8143677d'"
-							}
-						},
-						{
-							"label": "If enrolled, OVC number:",
-							"id": "ovcNo",
-							"type": "obs",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('494c833c-e3d4-4238-aea1-5bdbfc87bf88')) ? undefined : HD.getObject('prevEnc').getValue('494c833c-e3d4-4238-aea1-5bdbfc87bf88')",
-							"questionOptions": {
-								"rendering": "text",
-								"concept": "494c833c-e3d4-4238-aea1-5bdbfc87bf88"
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "ovcProgram !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						}
-					]
-				},
+				
 				{
 					"label": "Depression",
 					"isExpanded": "true",
@@ -1100,72 +1003,7 @@
 						}
 					]
 				},
-				{
-					"label": "VAC Screening",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "In the past three months has anyone punched, slapped, kicked, bite you or caused you any type of physical harm?",
-							"questionInfo": "Anyone can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
-							"id": "physical",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "8fca5b8a-0674-49e5-8111-003db067ee22",
-								"rendering": "select",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							}
-						},
-						{
-							"label": "In the past three months has anyone insulted you, ignored you, yelled at you, or made you feel ashamed or bad about yourself?",
-							"questionInfo": "as with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
-							"id": "emotional",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
-								"rendering": "select",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							}
-						},
-						{
-							"label": "In the past three months has anyone forced you to have sex or perform any sexual act, touched you sexually in any way that you did not want?",
-							"questionInfo": "As with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague",
-							"id": "sexual",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "920709bc-dde6-4d21-863e-851e63c084e4",
-								"rendering": "select",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							}
-						}
-					]
-				},
+				
 				{
 					"label": "Nutrition Assessment and Diagnosis",
 					"questions": [

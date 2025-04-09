@@ -1000,7 +1000,6 @@
 							"questions": [
 								{
 									"label": "Select modern contraception method:",
-									"required": "true",
 									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('767e8060-5272-4927-ab78-97534a4499ef.a894b1cc-1350-11df-a1f1-0026b9348838')",
 									"id": "fpMethod",
 									"questionOptions": {
@@ -1111,7 +1110,6 @@
 					"questions": [
 						{
 							"label": "In the last 3 months, has your partner(s) hit, kicked, slapped, or otherwise physically hurt you?",
-							"required": "true",
 							"id": "physical",
 							"type": "obs",
 							"questionOptions": {
@@ -1131,7 +1129,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner threatened to hurt you or abused you verbally or emotionally? E.g abusing or talking down to you?",
-							"required": "true",
 							"id": "emmotional",
 							"type": "obs",
 							"questionOptions": {
@@ -1151,7 +1148,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner(s) forced you to do something sexually that made you feel uncomfortable?",
-							"required": "true",
 							"id": "sexual",
 							"type": "obs",
 							"questionOptions": {
@@ -1171,7 +1167,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner (s) deliberately withdrawn any form of support, including financial support?",
-							"required": "true",
 							"id": "financial",
 							"type": "obs",
 							"questionOptions": {
@@ -1198,13 +1193,7 @@
 								"rendering": "textarea",
 								"rows": 7
 							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-									"message": "Patient screened positive for GBV/IPV. Please provide notes."
-								}
-							]
+							"validators": []
 						}
 					]
 				},
@@ -1420,6 +1409,10 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
+									},
+									{
 										"concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
 										"label": "TDF300mg/3TC300mg/EFV600mg"
 									},
@@ -1466,6 +1459,10 @@
 									{
 										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
 										"label": "Dolutegravir 50mg"
+									},
+									{
+										"concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
+										"label": "Tenofovir alafenamide 25mg"
 									},
 									{
 										"concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
@@ -3517,6 +3514,18 @@
 										"label": "Steven-Johnson syndrome"
 									},
 									{
+										"concept": "5d08b98f-5123-4d6d-9972-825b6aa2f4ed",
+										"label": "Fanconi syndrome"
+									},
+									{
+										"concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
+										"label": "Renal failure"
+									},
+									{
+										"concept": "a89dca46-1350-11df-a1f1-0026b9348838",
+										"label": "Osteopenia/Osteoporosis"
+									},
+									{
 										"concept": "a8ad21e4-1350-11df-a1f1-0026b9348838",
 										"label": "Nausea"
 									},
@@ -4506,7 +4515,43 @@
 							"validators": [
 								{
 									"type": "decimal",
+									"decimalPlace": 2
+								}
+							]
+						},
+						{
+							"label": "eGFR:",
+							"id": "egfr",
+							"questionOptions": {
+								"concept": "23bc7e2f-ab06-45ca-a55d-d4fb058a671a",
+								"showDate": "true",
+								"rendering": "decimal",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(egfr) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(egfr)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "decimal",
 									"decimalPlace": 1
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(creatinine_test)",
+									"message": "Patient has creatinine results. Please calculate eGFR"
 								}
 							]
 						},
@@ -5043,37 +5088,6 @@
 									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(mcv_test)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "decimal",
-									"decimalPlace": 1
-								}
-							]
-						},
-						{
-							"label": "eGFR:",
-							"id": "egfr",
-							"questionOptions": {
-								"concept": "23bc7e2f-ab06-45ca-a55d-d4fb058a671a",
-								"showDate": "true",
-								"rendering": "decimal",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(egfr) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(egfr)"
 									}
 								}
 							},
@@ -6059,14 +6073,6 @@
 												"label": "Risk of pregnancy"
 											},
 											{
-												"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
-												"label": "Other patient desicion"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
-											},
-											{
 												"concept": "4ee08cb4-fc93-44a0-a330-4e3fb45ca625",
 												"label": "Optimization"
 											},
@@ -6077,6 +6083,30 @@
 											{
 												"concept": "93fe19e8-fec4-4e4b-85f1-239e1fabd761",
 												"label": "Virologic failure"
+											},
+											{
+												"concept": "5d08b98f-5123-4d6d-9972-825b6aa2f4ed",
+												"label": "Fanconi syndrome"
+											},
+											{
+												"concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
+												"label": "Renal failure"
+											},
+											{
+												"concept": "a89dca46-1350-11df-a1f1-0026b9348838",
+												"label": "Osteopenia/Osteoporosis"
+											},
+											{
+												"concept": "a898d478-1350-11df-a1f1-0026b9348838",
+												"label": "Age >60 years"
+											},
+											{
+												"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+												"label": "Other patient desicion"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
 											}
 										],
 										"rendering": "select"
@@ -6282,6 +6312,10 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
+									},
+									{
 										"concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
 										"label": "TDF300mg/3TC300mg/EFV600mg"
 									},
@@ -6328,6 +6362,10 @@
 									{
 										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
 										"label": "Dolutegravir 50mg"
+									},
+									{
+										"concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
+										"label": "Tenofovir alafenamide 25mg"
 									},
 									{
 										"concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
@@ -6974,6 +7012,11 @@
 											"type": "js_expression",
 											"failsWhenExpression": "!isEmpty(tbpropplan) && tbpropplan === 'a89b77aa-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838','a898c938-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
 											"message": "Patient marked as starting TB Prophylaxis. Therefore cannot be on TB treatment."
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(tbpropplan) && tbpropplan === 'a8a00220-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838','a898c938-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
+											"message": "Patient marked as Restarting TB Prophylaxis. Therefore cannot be on TB treatment."
 										},
 										{
 											"type": "js_expression",
@@ -7918,6 +7961,40 @@
 							}
 						},
 						{
+							"label": "Renal disease status:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('85b45e49-2428-4898-b9f8-62a1b8a4b4e4')) ? undefined : HD.getObject('prevEnc').getValue('85b45e49-2428-4898-b9f8-62a1b8a4b4e4')",
+							"id": "renalDisease",
+							"questionOptions": {
+								"concept": "85b45e49-2428-4898-b9f8-62a1b8a4b4e4",
+								"answers": [
+									{
+										"concept": "16bcc8b6-7eee-43ef-b8da-89ed597dc1c9",
+										"label": "Acute kidney disease"
+									},
+									{
+										"concept": "5cc6e984-a8c1-421b-93ad-0617251fa112",
+										"label": "Chronic kidney disease"
+									},
+									{
+										"concept": "9da6f97d-6f7c-4d14-aaa8-7180b11d7d64",
+										"label": "ESRD on dialysis"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny(['a8ad5254-1350-11df-a1f1-0026b9348838'],comorbidIllness)",
+									"message": "Patient marked as having renal disease. Please indicate status"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8ad5254-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+							}
+						},
+						{
 							"type": "obsGroup",
 							"label": "Additional medication orders",
 							"questionOptions": {
@@ -8751,19 +8828,19 @@
 								"answers": [
 									{
 										"concept": "13e72035-c017-489e-815b-31dd528c084a",
-										"label": "Baseline"
+										"label": "Baseline for new client"
 									},
 									{
-										"concept": "5aee795e-db90-4af7-9d27-79d7275e61de",
-										"label": "New OI"
+										"concept": "93fe19e8-fec4-4e4b-85f1-239e1fabd761",
+										"label": "Virologic treatment failure"
+									},
+									{
+										"concept": "5103f427-691d-4033-bfd3-77fc21890553",
+										"label": "Patient on follow up for cryptococcal meningitis"
 									},
 									{
 										"concept": "31962167-5c45-4ce6-b7fb-6dd2bed1b6fd",
-										"label": "Returned clients who were IITs (>= 3months)"
-									},
-									{
-										"concept": "e43ddeb6-3984-499c-a280-3bade1039608",
-										"label": "Confirmation of treatment failure"
+										"label": "Patient returning back to care after 3+ months IIT)"
 									}
 								]
 							},
@@ -8809,6 +8886,14 @@
 									{
 										"concept": "e883376e-80cb-4ec7-a958-f0fbc0a0bad3",
 										"label": "PMTCT known positives"
+									},
+									{
+										"concept": "0998e404-d0ea-4271-abe0-a8a69c08c2cf",
+										"label": "PMTCT NP <=6 weeks in PNC"
+									},
+									{
+										"concept": "4d74eab9-4cad-4efb-8d58-82b53d23fcb9",
+										"label": "PMTCT NP >6 weeks in PNC"
 									}
 								]
 							},
@@ -8919,7 +9004,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "isEmpty(vljust) || !arrayContains(['635f446c-bab9-428a-9930-ae4f46363c0c','e883376e-80cb-4ec7-a958-f0fbc0a0bad3'],vljust)"
+								"hideWhenExpression": "isEmpty(vljust) || !arrayContains(['635f446c-bab9-428a-9930-ae4f46363c0c','e883376e-80cb-4ec7-a958-f0fbc0a0bad3','0998e404-d0ea-4271-abe0-a8a69c08c2cf','4d74eab9-4cad-4efb-8d58-82b53d23fcb9'],vljust)"
 							}
 						}
 					]
@@ -9150,13 +9235,7 @@
 										"rendering": "multiCheckbox"
 									},
 									"type": "obs",
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-											"message": "Patient screened positive for GBV/IPV. Please indicate service provided."
-										}
-									]
+									"validators": []
 								},
 								{
 									"label": "Referrals made to the patient: Other (specify):",

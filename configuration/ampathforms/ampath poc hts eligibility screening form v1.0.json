@@ -3,6 +3,7 @@
 	"description": "Form used to screen clients prior to HIV testing",
 	"version": "1.0",
 	"encounter": "HTS",
+	"processor": "EncounterFormProcessor",
 	"pages": [
 		{
 			"label": "HTS Eligibility Screening",
@@ -50,6 +51,7 @@
 						{
 							"label": "Population Typology",
 							"type": "obs",
+							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
 								"concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
@@ -83,15 +85,11 @@
 								"answers": [
 									{
 										"concept": "a89ff438-1350-11df-a1f1-0026b9348838",
-										"label": "FSW (Female sex Worker)"
-									},
-									{
-										"concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
-										"label": "TG (Transgender)"
+										"label": "FSW (Female Sex Worker)"
 									},
 									{
 										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
-										"label": "PWID/PWUD (People who Inject drugs/People Who Use Drugs)"
+										"label": "PWID/PWUD (People Who Inject Drugs/People Who Use Drugs)"
 									},
 									{
 										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
@@ -101,7 +99,7 @@
 							},
 							"id": "femaleKeyPopTypes",
 							"hide": {
-								"hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || sex !== 'F'"
+								"hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || sex != 'F'"
 							}
 						},
 						{
@@ -118,10 +116,6 @@
 									{
 										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
 										"label": "PWID/PWUD (People who Inject drugs/People Who Use Drugs)"
-									},
-									{
-										"concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
-										"label": "TG (Transgender)"
 									},
 									{
 										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
@@ -252,7 +246,7 @@
 							"label": "Does client have any disability?",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "radio",
+								"rendering": "select",
 								"concept": "522cca7a-235d-43d4-837e-8a118f2d9f88",
 								"answers": [
 									{
@@ -315,7 +309,7 @@
 							"label": "Please indicated the type of disability :",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "checkbox",
+								"rendering": "multiCheckbox",
 								"concept": "a89ffa64-1350-11df-a1f1-0026b9348838",
 								"answers": [
 									{
@@ -404,7 +398,7 @@
 							"type": "obs",
 							"id": "patienTyPe",
 							"questionOptions": {
-								"rendering": "radio",
+								"rendering": "select",
 								"concept": "a89eea66-1350-11df-a1f1-0026b9348838",
 								"answers": [
 									{
@@ -424,7 +418,7 @@
 							"type": "obs",
 							"id": "hcwCare",
 							"questionOptions": {
-								"rendering": "radio",
+								"rendering": "select",
 								"concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
 								"answers": [
 									{
@@ -446,17 +440,17 @@
 							"label": "Client has any relationship with an index client?",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "checkbox",
+								"rendering": "select",
 								"concept": "bfdf728c-9c56-4ba9-ad40-1ae3c7fcdfa9",
 								"answers": [
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									},
 									{
 										"concept": "bfdf728c-9c56-4ba9-ad40-1ae3c7fcdfa9",
 										"label": "Social contact",
 										"disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
-									},
-									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-										"label": "None"
 									},
 									{
 										"concept": "431d092d-cf3a-47d8-8293-603f42e90f99",
@@ -475,9 +469,13 @@
 							"label": "Client has any relationship with an index client?",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "checkbox",
+								"rendering": "select",
 								"concept": "bfdf728c-9c56-4ba9-ad40-1ae3c7fcdfa9",
 								"answers": [
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									},
 									{
 										"concept": "7831f002-331d-4f07-bf91-6bb65cd31050",
 										"label": "Sexual contact",
@@ -492,10 +490,6 @@
 										"concept": "431d092d-cf3a-47d8-8293-603f42e90f99",
 										"label": "Needle sharing",
 										"disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
-									},
-									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-										"label": "None"
 									}
 								]
 							},
@@ -594,7 +588,7 @@
 										"label": "Nutrition Clinic"
 									},
 									{
-										"concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
+										"concept": "375e6d4a-ba94-41ac-8ac3-5a56015c4d92",
 										"label": "PMTCT - ANC"
 									},
 									{
@@ -626,7 +620,7 @@
 										"label": "Emergency"
 									},
 									{
-										"concept": "9f696a25-3a42-41af-bbad-e73241d7ad98",
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
 										"label": "Other"
 									}
 								]
@@ -652,10 +646,10 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Mother's HIV status :",
+							"label": "Mother's HIV Status :",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "radio",
+								"rendering": "select",
 								"concept": "a8afb80a-1350-11df-a1f1-0026b9348838",
 								"answers": [
 									{
@@ -683,7 +677,7 @@
 							"label": "Tested for HIV before :",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "radio",
+								"rendering": "select",
 								"concept": "71bb9660-cb25-48d0-ab90-2dc39df8e9ab",
 								"answers": [
 									{
@@ -705,7 +699,7 @@
 							"id": "teSteR",
 							"questionOptions": {
 								"concept": "10927b6d-0f49-4a20-9bca-fe755719613c",
-								"rendering": "checkbox",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
@@ -723,7 +717,7 @@
 							}
 						},
 						{
-							"label": "Provider test result:",
+							"label": "Provider Test Result :",
 							"type": "obs",
 							"id": "testedResultsprovider",
 							"questionOptions": {
@@ -731,26 +725,26 @@
 								"rendering": "select",
 								"answers": [
 									{
-										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-										"label": "Unknown"
-									},
-									{
 										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
 										"label": "Positive"
 									},
 									{
 										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
 										"label": "Negative"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
 									}
 								]
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(teSteR) || !arrayContains(teSteR, ['a8aaf158-1350-11df-a1f1-0026b9348838'])"
+								"hideWhenExpression": "isEmpty(teSteR) || !arrayContains(teSteR, ['a8aaf158-1350-11df-a1f1-0026b9348838']) || testHistory === 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
-							"label": "Date tested:",
+							"label": "Date Tested:",
 							"type": "obs",
 							"id": "dateProvider",
 							"questionOptions": {
@@ -769,11 +763,11 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "isEmpty(teSteR) || !arrayContains(teSteR, ['a8aaf158-1350-11df-a1f1-0026b9348838']) || testedResultsprovider === 'a899b50a-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "isEmpty(teSteR) || !arrayContains(teSteR, ['a8aaf158-1350-11df-a1f1-0026b9348838']) || testedResultsprovider === 'a899b50a-1350-11df-a1f1-0026b9348838' || testHistory === 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
-							"label": "Self test result :",
+							"label": "Self Test Result :",
 							"type": "obs",
 							"id": "testedResultsself",
 							"questionOptions": {
@@ -781,22 +775,22 @@
 								"rendering": "select",
 								"answers": [
 									{
-										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-										"label": "Unknown"
-									},
-									{
 										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
 										"label": "Positive"
 									},
 									{
 										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
 										"label": "Negative"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
 									}
 								]
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(teSteR) || !arrayContains(teSteR, ['2797e57b-d1ff-4928-b10e-b72e95b63faf'])"
+								"hideWhenExpression": "isEmpty(teSteR) || !arrayContains(teSteR, ['00e8899b-8dde-4736-83e7-4faedb47a52c']) || testHistory === 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -819,7 +813,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "isEmpty(teSteR)|| !arrayContains(teSteR, ['2797e57b-d1ff-4928-b10e-b72e95b63faf'])"
+								"hideWhenExpression": "isEmpty(teSteR)|| !arrayContains(teSteR, ['00e8899b-8dde-4736-83e7-4faedb47a52c']) || testHistory === 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -846,7 +840,7 @@
 							}
 						},
 						{
-							"label": "CCC number :",
+							"label": "CCC Number :",
 							"type": "obs",
 							"id": "upnConcept",
 							"questionOptions": {
@@ -872,7 +866,7 @@
 							"id": "childDefiled",
 							"questionOptions": {
 								"concept": "053ec791-2371-4c87-88a1-86a1abeed90c",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -900,7 +894,7 @@
 							"id": "childDefiledMother",
 							"questionOptions": {
 								"concept": "053ec791-2371-4c87-88a1-86a1abeed90c",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -928,14 +922,14 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "a8aac5fc-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
-										"concept": "1",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
 										"label": "Yes"
 									},
 									{
-										"concept": "0",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
 									}
 								]
@@ -951,7 +945,7 @@
 							"id": "activeSexually",
 							"questionOptions": {
 								"concept": "053ec791-2371-4c87-88a1-86a1abeed90c",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -969,7 +963,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == '0' || sexuallyActive == '1cbd578b-e357-441b-b83d-e404ea961fe2' || age < 9"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == 'a899b42e-1350-11df-a1f1-0026b9348838' || sexuallyActive == '1cbd578b-e357-441b-b83d-e404ea961fe2' || age < 9"
 							}
 						},
 						{
@@ -979,7 +973,7 @@
 							"id": "newPartner",
 							"questionOptions": {
 								"concept": "79f74b25-3f97-4367-a57d-7571bba1d7b4",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -997,7 +991,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == '0' || sexuallyActive == '1cbd578b-e357-441b-b83d-e404ea961fe2' || age < 9 "
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == 'a899b42e-1350-11df-a1f1-0026b9348838' || sexuallyActive == '1cbd578b-e357-441b-b83d-e404ea961fe2' || age < 9 "
 							}
 						},
 						{
@@ -1007,7 +1001,7 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "a8a46428-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
@@ -1029,7 +1023,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == '0' || sexuallyActive == '1cbd578b-e357-441b-b83d-e404ea961fe2' || age < 10 "
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == 'a899b42e-1350-11df-a1f1-0026b9348838' || sexuallyActive == '1cbd578b-e357-441b-b83d-e404ea961fe2' || age < 10 "
 							}
 						},
 						{
@@ -1039,7 +1033,7 @@
 							"id": "coupleDiscordant",
 							"questionOptions": {
 								"concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1057,7 +1051,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== '1' || age < 10"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== 'a899b35c-1350-11df-a1f1-0026b9348838' || age < 10 || partnerHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1067,21 +1061,21 @@
 							"id": "multipleSexPartners",
 							"questionOptions": {
 								"concept": "a8aab45e-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
-										"concept": "1",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
 										"label": "Yes"
 									},
 									{
-										"concept": "0",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
 									}
 								]
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== '1' || age < 9"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== 'a899b35c-1350-11df-a1f1-0026b9348838' || age < 9"
 							}
 						},
 						{
@@ -1097,7 +1091,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(multipleSexPartners) || multipleSexPartners !== '1' || age < 9"
+								"hideWhenExpression": "isEmpty(multipleSexPartners) || multipleSexPartners !== 'a899b35c-1350-11df-a1f1-0026b9348838' || age < 9"
 							}
 						},
 						{
@@ -1107,7 +1101,7 @@
 							"id": "alcoholicSex",
 							"questionOptions": {
 								"concept": "9506b97f-c8bc-48a8-a439-72bb65276785",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a89fffd2-1350-11df-a1f1-0026b9348838",
@@ -1129,7 +1123,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== '1' || age < 9"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== 'a899b35c-1350-11df-a1f1-0026b9348838' || age < 9"
 							}
 						},
 						{
@@ -1139,7 +1133,7 @@
 							"id": "moneySex",
 							"questionOptions": {
 								"concept": "7ff5752c-4ccb-45bb-a001-c194316ba35b",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1157,7 +1151,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== '1'"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1167,7 +1161,7 @@
 							"id": "condomBurst",
 							"questionOptions": {
 								"concept": "78fe84f3-dced-48c0-b7fd-acd81e785853",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1185,7 +1179,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== '1'"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1195,7 +1189,7 @@
 							"id": "strangerSex",
 							"questionOptions": {
 								"concept": "6d493b8b-1453-45ef-866c-25f000b79f53",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1213,7 +1207,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== '1'"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1223,7 +1217,7 @@
 							"id": "knownPositive",
 							"questionOptions": {
 								"concept": "01ca8654-febc-44ff-ae0e-99d7fe8356b7",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1241,7 +1235,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== '1'"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1251,7 +1245,7 @@
 							"id": "needleShared",
 							"questionOptions": {
 								"concept": "059e8896-eea1-4295-b71d-5223bd29863d",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1265,7 +1259,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == '0' || kpTypeMale !== 'a890d57a-1350-11df-a1f1-0026b9348838' || kpTypeFemale !== 'a890d57a-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "isEmpty(sexuallyActive) || sexuallyActive == 'a899b42e-1350-11df-a1f1-0026b9348838' || kpTypeMale !== 'a890d57a-1350-11df-a1f1-0026b9348838' || kpTypeFemale !== 'a890d57a-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1275,7 +1269,7 @@
 							"id": "needleStick",
 							"questionOptions": {
 								"concept": "3740fc55-4ae2-4f34-ac9d-0dde5988ebf8",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1299,7 +1293,7 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "503736d1-b29f-414b-ba5a-7aabfa5619f8",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1322,7 +1316,7 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "503736d1-b29f-414b-ba5a-7aabfa5619f8",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1344,7 +1338,7 @@
 							"id": "EligiBiliTykiDs",
 							"questionOptions": {
 								"concept": "82f9db06-0bf0-44c3-81e1-19b5216ef946",
-								"rendering": "checkbox",
+								"rendering": "multiCheckbox",
 								"answers": [
 									{
 										"concept": "a890b126-1350-11df-a1f1-0026b9348838",
@@ -1387,17 +1381,17 @@
 					]
 				},
 				{
-					"label": "GBV",
+					"label": "Violence Screening",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Has the client recently experienced GBV?",
+							"label": "Has the client recently experienced Violence?",
 							"type": "obs",
 							"id": "experiencedGbv",
 							"required": "true",
 							"questionOptions": {
 								"concept": "f46b4208-049b-4f42-822a-218a3b4cf89d",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1410,7 +1404,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "age < 9 || testedResultsprovider === 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "age < 9 || testedResultsprovider === 'a896f3a6-1350-11df-a1f1-0026b9348838'|| motHersHivstatus == 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1419,7 +1413,7 @@
 							"id": "sexualViolence",
 							"questionOptions": {
 								"concept": "1c5af957-2c27-4e1c-8f05-18f749e2d1f6",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1442,30 +1436,7 @@
 							"id": "forcedSex",
 							"questionOptions": {
 								"concept": "8b0700f2-3893-41a6-b0a3-8424ae2ecced",
-								"rendering": "radio",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(experiencedGbv) || experiencedGbv !== 'a899b35c-1350-11df-a1f1-0026b9348838' || age < 9 || motHersHivstatus == 'a896f3a6-1350-11df-a1f1-0026b9348838' || testHistory == 'a899b42e-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Within the last 3 months, has the client experienced emotional violence?",
-							"type": "obs",
-							"id": "emotional",
-							"questionOptions": {
-								"concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1494,7 +1465,7 @@
 							"id": "prepService",
 							"questionOptions": {
 								"concept": "70d8f5b1-8a10-453a-a1e2-1de96a87f31f",
-								"rendering": "checkbox",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1512,7 +1483,7 @@
 							"id": "currentlyPrep",
 							"questionOptions": {
 								"concept": "3bb25a51-6d87-4e91-81a9-90075f5d22f6",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1539,7 +1510,7 @@
 							"id": "pepService",
 							"questionOptions": {
 								"concept": "16942a08-c346-4a23-ab20-d72090e02b35",
-								"rendering": "checkbox",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1557,19 +1528,15 @@
 							"id": "currentlyPep",
 							"questionOptions": {
 								"concept": "a8a19c20-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
-										"concept": "1",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
 										"label": "Yes"
 									},
 									{
-										"concept": "0",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
-									},
-									{
-										"concept": "1cbd578b-e357-441b-b83d-e404ea961fe2",
-										"label": "Declined to answer"
 									}
 								]
 							},
@@ -1584,7 +1551,7 @@
 							"id": "stiService",
 							"questionOptions": {
 								"concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
-								"rendering": "checkbox",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1602,7 +1569,7 @@
 							"id": "currentlySti",
 							"questionOptions": {
 								"concept": "2190071e-744c-4ecf-aa00-d331280afc37",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1636,7 +1603,7 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "a8a48bec-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1645,11 +1612,15 @@
 									{
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
+									},
+									{
+										"concept": "1cbd578b-e357-441b-b83d-e404ea961fe2",
+										"label": "Declined to answer"
 									}
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "testedResultsprovider === 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "testedResultsprovider === 'a896f3a6-1350-11df-a1f1-0026b9348838' || motHersHivstatus == 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1658,7 +1629,7 @@
 							"id": "coughDuration",
 							"questionOptions": {
 								"concept": "a890d73c-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1681,7 +1652,7 @@
 							"id": "fever",
 							"questionOptions": {
 								"concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1704,7 +1675,7 @@
 							"id": "weightLoss",
 							"questionOptions": {
 								"concept": "cea97acf-d023-4069-b758-3ce5aba76aae",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1727,7 +1698,7 @@
 							"id": "experiencingSweats",
 							"questionOptions": {
 								"concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1750,7 +1721,7 @@
 							"id": "LetHargy",
 							"questionOptions": {
 								"concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1773,7 +1744,7 @@
 							"id": "tbResultstaTuS",
 							"questionOptions": {
 								"concept": "02ad9357-b996-4530-b1a4-aff91a105383",
-								"rendering": "radio",
+								"rendering": "select",
 								"calculate": {
 									"calculateExpression": "String(coughDuration) === 'a899b42e-1350-11df-a1f1-0026b9348838' && String(fever) === 'a899b42e-1350-11df-a1f1-0026b9348838' && String(weightLoss) === 'a899b42e-1350-11df-a1f1-0026b9348838'  && String(experiencingSweats) === 'a899b42e-1350-11df-a1f1-0026b9348838' ? 'f7dfdac3-65ee-487a-98f3-9f62693272a9' : ( (String(coughDuration) === 'a899b35c-1350-11df-a1f1-0026b9348838'? 1 : 0) + (String(fever) === 'a899b35c-1350-11df-a1f1-0026b9348838'? 1 : 0) + (String(experiencingSweats) === 'a899b35c-1350-11df-a1f1-0026b9348838'? 1 : 0) + (String(weightLoss) === '1'? 1 : 0) ) > 0 ?  '6cd4f017-dae4-4b65-86ee-77074555feaa' : ''"
 								},
@@ -1813,7 +1784,7 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1822,6 +1793,10 @@
 									{
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
+									},
+									{
+										"concept": "1cbd578b-e357-441b-b83d-e404ea961fe2",
+										"label": "Declined to answer"
 									}
 								]
 							},
@@ -1835,7 +1810,7 @@
 							"id": "breastfeeding",
 							"questionOptions": {
 								"concept": "a8a18208-1350-11df-a1f1-0026b9348838",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1844,6 +1819,10 @@
 									{
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
+									},
+									{
+										"concept": "1cbd578b-e357-441b-b83d-e404ea961fe2",
+										"label": "Declined to answer"
 									}
 								]
 							},
@@ -1863,7 +1842,7 @@
 							"id": "eligibleTest",
 							"questionOptions": {
 								"concept": "e01da5a1-c3e7-4b7f-98d0-05b4bae023fb",
-								"rendering": "radio",
+								"rendering": "select",
 								"calculate": {
 									"calculateExpression": "String(testedResultsprovider) === 'a896f3a6-1350-11df-a1f1-0026b9348838' ? 'a899b42e-1350-11df-a1f1-0026b9348838' : ''"
 								},
@@ -1895,7 +1874,7 @@
 							"label": "Generated HIV risk category",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "radio",
+								"rendering": "select",
 								"concept": "03019f05-7e81-4bbe-a24c-bf6e8188e566",
 								"readOnly": "true",
 								"answers": [
@@ -1929,7 +1908,7 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "584e01aa-a1a1-41d2-84c5-6331817bb53b",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1952,10 +1931,10 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "83a1739f-f3af-42cd-8aff-5977fbb6ff71",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
-										"concept": "69db9a47-21c5-4398-89f7-1c03a1392240",
+										"concept": "795cff32-9697-4c10-a1c2-deed8143677d",
 										"label": "HCW Provider Discretion"
 									},
 									{
@@ -1983,10 +1962,10 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "909c2abb-c68e-4bcc-a811-dabf97aafe99",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
-										"concept": "69db9a47-21c5-4398-89f7-1c03a1392240",
+										"concept": "795cff32-9697-4c10-a1c2-deed8143677d",
 										"label": "HCW Provider Discretion"
 									},
 									{
@@ -2014,7 +1993,7 @@
 							"required": "true",
 							"questionOptions": {
 								"concept": "e01da5a1-c3e7-4b7f-98d0-05b4bae023fb",
-								"rendering": "radio",
+								"rendering": "select",
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2044,7 +2023,7 @@
 									"id": "declineTesting",
 									"questionOptions": {
 										"concept": "a8afc732-1350-11df-a1f1-0026b9348838",
-										"rendering": "checkbox",
+										"rendering": "multiCheckbox",
 										"answers": [
 											{
 												"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
@@ -2104,7 +2083,6 @@
 			]
 		}
 	],
-	"processor": "EncounterFormProcessor",
 	"referencedForms": [],
 	"encounterType": "9c0a7a57-62ff-4f75-babe-5835b0e921b7",
 	"uuid": "7a16a346-0991-48ac-b339-aacd463a7845"

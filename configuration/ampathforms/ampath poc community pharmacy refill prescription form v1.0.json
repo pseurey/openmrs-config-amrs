@@ -1,0 +1,199 @@
+{
+    "name": "AMPATH POC Community Pharmacy Refill Prescription Form v1.0",
+    "uuid": "xxxx",
+    "processor": "EncounterFormProcessor",
+    "pages": [
+        {
+            "label": "Encounter Details",
+            "sections": [
+                {
+                    "label": "Encounter Details",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Visit date:",
+                            "type": "encounterDatetime",
+                            "required": "true",
+                            "default": "",
+                            "id": "encDate",
+                            "questionOptions": {
+                                "rendering": "date"
+                            },
+                            "validators": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "encounterProvider",
+                            "label": "Provider:",
+                            "id": "provider",
+                            "required": "true",
+                            "default": "",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            }
+                        },
+                        {
+                            "type": "encounterLocation",
+                            "label": "Facility name (site/satellite clinic required):",
+                            "id": "location",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            }
+                        },
+                        {
+                            "type": "obsGroup",
+                            "label": "Medication Dispensed, detailed",
+                            "questionOptions": {
+                                "concept": "a89fe56a-1350-11df-a1f1-0026b9348838",
+                                "rendering": "repeating"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Medication Dispensed:",
+                                    "id": "artStartedAdult",
+                                    "questionOptions": {
+                                        "concept": "a89b6a62-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                                                "label": "DTG50mg/3TC300mg/TDF300mg"
+                                            },
+                                            {
+                                                "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                                                "label": "TAF25mg/3TC300mg/DTG50mg"
+                                            },
+                                            {
+                                                "concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
+                                                "label": "TDF300mg/3TC300mg/EFV600mg"
+                                            },
+                                            {
+                                                "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                                                "label": "TDF300mg/3TC300mg/EFV400mg"
+                                            },
+                                            {
+                                                "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                                                "label": "ABC600mg/3TC300mg"
+                                            },
+                                            {
+                                                "concept": "6a73f32d-1870-4527-af6e-74443251ded2",
+                                                "label": "NVP200/ZDV300/3TC150"
+                                            },
+                                            {
+                                                "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                                                "label": "3TC300mg/TDF300mg"
+                                            },
+                                            {
+                                                "concept": "a896758e-1350-11df-a1f1-0026b9348838",
+                                                "label": "3TC150mg/ZDV300mg"
+                                            },
+                                            {
+                                                "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                                                "label": "Emtri200mg/TDF300(Truvada)"
+                                            },
+                                            {
+                                                "concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+                                                "label": "Aluvia(Kaletra)200mg/LPV50mg"
+                                            },
+                                            {
+                                                "concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+                                                "label": "Atazanavir300/Ritonavir100"
+                                            },
+                                            {
+                                                "concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
+                                                "label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+                                            },
+                                            {
+                                                "concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+                                                "label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+                                            },
+                                            {
+                                                "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                                                "label": "Dolutegravir 50mg"
+                                            },
+                                            {
+                                                "concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
+                                                "label": "Tenofovir alafenamide 25mg"
+                                            },
+                                            {
+                                                "concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
+                                                "label": "Abacavir300mg"
+                                            },
+                                            {
+                                                "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                                                "label": "Efavirenz 200mg"
+                                            },
+                                            {
+                                                "concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+                                                "label": "Lamivudine150mg"
+                                            },
+                                            {
+                                                "concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
+                                                "label": "Raltegravir 400mg"
+                                            },
+                                            {
+                                                "concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Zidovudine300mg"
+                                            },
+                                            {
+                                                "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                                                "label": "Darunavir 600mg"
+                                            },
+                                            {
+                                                "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                                                "label": " Ritonavir 100mg"
+                                            },
+                                            {
+                                                "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                                                "label": " Ritonavir 80mg"
+                                            },
+                                            {
+                                                "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                                                "label": "Etravirine 100mg"
+                                            }
+                                        ],
+                                        "rendering": "multiCheckbox"
+                                    },
+                                    "type": "obs",
+                                    "validators": []
+                                },
+                                {
+                                    "label": "Frequency:",
+                                    "questionOptions": {
+                                        "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                                        "rendering": "select",
+                                        "answers": [
+                                            {
+                                                "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838",
+                                                "label": "OD"
+                                            },
+                                            {
+                                                "concept": "a8a05aea-1350-11df-a1f1-0026b9348838",
+                                                "label": "BD"
+                                            }
+                                        ]
+                                    },
+                                    "type": "obs",
+                                    "id": "medFreq"
+                                },
+                                {
+                                    "label": "Number of pills:",
+                                    "questionOptions": {
+                                        "concept": "db4a2478-1a3b-4c46-9769-a500c64ae5ba",
+                                        "rendering": "number"
+                                    },
+                                    "type": "obs",
+                                    "id": "pills"
+                                }
+                            ],
+                            "id": "ArvStartedDetailed"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

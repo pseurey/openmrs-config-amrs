@@ -1,100 +1,100 @@
 {
-  "name": "AMPATH POC HTS Client Referral Form V1.0",
-  "description": "HTS Client Referral Form",
-  "version": "1.0",
-  "uuid": "3b688533-0de1-4c3e-b75a-c5b865080d80",
-  "retired": false,
-  "encounter": "HTS",
-  "pages": [
-    {
-      "label": "HTS Referral",
-      "sections": [
-        {
-          "label": "Visit Details",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "Date:",
-              "type": "encounterDatetime",
-              "questionOptions": {
-                "rendering": "ui-select-extended"
-              },
-              "validators": [
-                {
-                  "type": "date",
-                  "allowFutureDates": "false"
-                }
-              ],
-              "id": "encDate"
-            },
-            {
-              "label": "Provider:",
-              "type": "encounterProvider",
-              "questionOptions": {
-                "rendering": "ui-select-extended"
-              },
-              "id": "encProvider "
-            },
-            {
-              "label": "Location:",
-              "type": "encounterLocation",
-              "questionOptions": {
-                "rendering": "ui-select-extended"
-              },
-              "id": "encLocation"
-            }
-          ]
-        },
-        {
-          "label": "Referral Details",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "Facility referred to:",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "99f8ac81-cea1-43eb-88fb-29a9ea2d77cf"
-              },
-              "id": "referredFacility",
-              "required": "true"
-            },
-            {
-              "label": "Date to be enrolled :",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "date",
-                "concept": "1cd286f4-7256-4a56-b90a-6acd8734f9c9"
-              },
-              "id": "date-to-be-enrolled",
-              "validators": [
-                {
-                  "type": "date",
-                  "allowFutureDates": "true"
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
-                  "message": "Date to be enrolled can either be today or future date."
-                }
-              ],
-              "required": "true"
-            },
-            {
-              "label": "Remarks:",
-              "type": "obs",
-              "id": "remarks",
-              "questionOptions": {
-                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
-                "rendering": "textarea"
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "processor": "EncounterFormProcessor",
-  "referencedForms": [],
-  "encounterType": "55c10a7a-2732-4063-be25-68d5e1bce1fc"
+	"name": "AMPATH POC HTS Client Referral Form V1.0",
+	"description": "HTS Client Referral Form",
+	"version": "1.0",
+	"uuid": "3b688533-0de1-4c3e-b75a-c5b865080d80",
+	"retired": false,
+	"encounter": "HTS",
+	"pages": [
+		{
+			"label": "HTS Referral",
+			"sections": [
+				{
+					"label": "Visit Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Date:",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "false"
+								}
+							],
+							"id": "encDate"
+						},
+						{
+							"label": "Provider:",
+							"type": "encounterProvider",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider "
+						},
+						{
+							"label": "Location:",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						}
+					]
+				},
+				{
+					"label": "Referral Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Facility referred to:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "99f8ac81-cea1-43eb-88fb-29a9ea2d77cf"
+							},
+							"id": "referredFacility",
+							"required": "true"
+						},
+						{
+							"label": "Date to be enrolled :",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "1cd286f4-7256-4a56-b90a-6acd8734f9c9"
+							},
+							"id": "date-to-be-enrolled",
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Date to be enrolled can either be today or future date."
+								}
+							],
+							"required": "true"
+						},
+						{
+							"label": "Remarks:",
+							"type": "obs",
+							"id": "remarks",
+							"questionOptions": {
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+								"rendering": "textarea"
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"processor": "EncounterFormProcessor",
+	"referencedForms": [],
+	"encounterType": "9c0a7a57-62ff-4f75-babe-5835b0e921b7"
 }

@@ -1694,7 +1694,6 @@
 						{
 							"label": "Has the child been assessed for OVC care?",
 							"id": "ovcAssess",
-							"required": "true",
 							"type": "obs",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')) ? undefined : HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')",
 							"questionOptions": {
@@ -2658,7 +2657,6 @@
 					"questions": [
 						{
 							"label": "In the past three months has anyone punched, slapped, kicked, bite you or caused you any type of physical harm?",
-							"required": "true",
 							"questionInfo": "Anyone can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
 							"id": "physical",
 							"type": "obs",
@@ -2680,7 +2678,6 @@
 						{
 							"label": "In the past three months has anyone insulted you, ignored you, yelled at you, or made you feel ashamed or bad about yourself?",
 							"questionInfo": "as with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
-							"required": "true",
 							"id": "emotional",
 							"type": "obs",
 							"questionOptions": {
@@ -2700,7 +2697,6 @@
 						},
 						{
 							"label": "In the past three months has anyone forced you to have sex or perform any sexual act, touched you sexually in any way that you did not want?",
-							"required": "true",
 							"questionInfo": "As with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague",
 							"id": "sexual",
 							"type": "obs",
@@ -9975,19 +9971,19 @@
 								"answers": [
 									{
 										"concept": "13e72035-c017-489e-815b-31dd528c084a",
-										"label": "Baseline"
+										"label": "Baseline for new client"
 									},
 									{
-										"concept": "5aee795e-db90-4af7-9d27-79d7275e61de",
-										"label": "New OI"
+										"concept": "93fe19e8-fec4-4e4b-85f1-239e1fabd761",
+										"label": "Virologic treatment failure"
+									},
+									{
+										"concept": "5103f427-691d-4033-bfd3-77fc21890553",
+										"label": "Patient on follow up for cryptococcal meningitis"
 									},
 									{
 										"concept": "31962167-5c45-4ce6-b7fb-6dd2bed1b6fd",
-										"label": "Returned clients who were IITs (>= 3months)"
-									},
-									{
-										"concept": "e43ddeb6-3984-499c-a280-3bade1039608",
-										"label": "Confirmation of treatment failure"
+										"label": "Patient returning back to care after 3+ months IIT)"
 									}
 								]
 							},
@@ -10033,6 +10029,14 @@
 									{
 										"concept": "e883376e-80cb-4ec7-a958-f0fbc0a0bad3",
 										"label": "PMTCT known positives"
+									},
+									{
+										"concept": "0998e404-d0ea-4271-abe0-a8a69c08c2cf",
+										"label": "PMTCT NP upto <=6 weeks in PNC"
+									},
+									{
+										"concept": "4d74eab9-4cad-4efb-8d58-82b53d23fcb9",
+										"label": "PMTCT NP >6 weeks in PNC"
 									}
 								]
 							},
@@ -10341,13 +10345,7 @@
 										"rendering": "multiCheckbox"
 									},
 									"type": "obs",
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-											"message": "Patient screened positive for GBV/IPV. Please indicate service provided."
-										}
-									]
+									"validators": []
 								},
 								{
 									"label": "Patient referred to other, (specify):",

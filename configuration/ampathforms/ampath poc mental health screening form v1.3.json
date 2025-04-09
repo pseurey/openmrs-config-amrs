@@ -267,11 +267,11 @@
 			"label": "Mental Health Screening",
 			"sections": [
 				{
-					"label": "PHQ-9 (Over the last 2 weeks, how often have you been bothered by any of the following problems?)",
+					"label": "PHQ-9 (Over the last 2 weeks, how often have you been bothered by any of the following problems? Please answer these questions as you reflect on the last 2 weeks)",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Little interest or pleasure in doing things? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Not being able to enjoy activities you used to enjoy? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "pleasure",
 							"questionInfo": "Kwa wiki mbili iliyopita, umekuwa na hamu au raha ndogo katika kufanya mambo (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
 							"required": "true",
@@ -285,7 +285,7 @@
 							"validators": []
 						},
 						{
-							"label": "Felt down, depressed, or hopeless? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Feeling down, depressed, or hopeless? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "depressed",
 							"questionInfo": "Kwa wiki mbili iliyopita, uhisi kuwa chini, huzuni au kutokuwa na tumaini (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
 							"required": "true",
@@ -401,7 +401,7 @@
 							"validators": []
 						},
 						{
-							"label": "Trouble concentrating on things: (linked with patient's usual activities such as reading the newspapers or listening to a radio programme) (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Trouble concentrating on things such as reading the newspapers or watching television) (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "concentrate",
 							"required": "true",
 							"questionInfo": "Shida ya kuzingatia mambo, kama vile kusoma gazeti au kutazama televisheni (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -415,7 +415,7 @@
 							"validators": []
 						},
 						{
-							"label": "Moving or speaking so slowly that other people could have noticed. Or the opposite, being so fidgety or restless that you have been moving a lot more than usual: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Walking or speaking so slowly that other people have noticed. Or the opposite, being so uneasy that you are not able to sit still or remain calm in one place: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "speak",
 							"required": "true",
 							"questionInfo": "Kusonga au kuongea polepole kiasi kwamba watu wengine wangeweza kugundua au kinyume chake kusongasonga sana au kutotulia kiasi kwamba umekuwa ukizunguka sana kuliko kawaida(0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -429,7 +429,7 @@
 							"validators": []
 						},
 						{
-							"label": "Thoughts that you would be better off dead or of hurting yourself in some ways: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Thoughts that you would be better off dead or of hurting yourself: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "dead",
 							"required": "true",
 							"questionInfo": "Mawazo kwamba utakuwa bora ukifa, au kujiumiza mwenyewe (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -502,11 +502,11 @@
 					]
 				},
 				{
-					"label": "Anxiety  Assessment (Over the last 2 weeks, how often have you been bothered by any of the following problems?) GAD-7",
+					"label": "Anxiety  Assessment (Over the last 2 weeks, how often have you been bothered by any of the following problems? Please answer these questions as you reflect on the last 2 weeks) GAD-7",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Feeling nervous, anxious or on the edge: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Feeling nervous or anxious: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "nervous",
 							"questionInfo": "Kuhisi wasiwasi, hofu, au kutotulia (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
 							"required": "true",
@@ -521,7 +521,7 @@
 							"validators": []
 						},
 						{
-							"label": "Not being able to stop or control worrying: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Cannot stop worrying: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "worrying",
 							"questionInfo": "Kutokuwa na uwezo wa kuacha au kudhibiti wasiwasi (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
 							"required": "true",
@@ -536,7 +536,7 @@
 							"validators": []
 						},
 						{
-							"label": "Worrying too much about different things: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Worrying about too many different things: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "differentthings",
 							"required": "true",
 							"questionInfo": "Kuhangaika sana kuhusu mambo mbalimbali (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -551,7 +551,7 @@
 							"validators": []
 						},
 						{
-							"label": "Trouble relaxing (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Trouble becoming or reamining calm: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "troublerelaxing",
 							"required": "true",
 							"questionInfo": "Kushindwa kupumzika (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -566,7 +566,7 @@
 							"validators": []
 						},
 						{
-							"label": "Being so restless that its hard to sit still (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Being so uneasy that it is hard to sit still: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "restless",
 							"required": "true",
 							"questionInfo": "Kutokuwa na utulivu kiasi kwamba ni vigumu kukaa tuli (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -581,7 +581,7 @@
 							"validators": []
 						},
 						{
-							"label": "Becoming easily annoyed or irritable (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Becoming easily annoyed or irritable: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "irritable",
 							"required": "true",
 							"questionInfo": "Kukasirishwa au kuwa na hasira kwa urahisi (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -596,7 +596,7 @@
 							"validators": []
 						},
 						{
-							"label": "Feeling afraid as if something awful might happen (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+							"label": "Feeling afraid as if something bad might happen: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
 							"id": "afraid",
 							"required": "true",
 							"questionInfo": "Kuhisi hofu kana kwamba kitu kibaya kinaweza kutokea (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
@@ -641,7 +641,7 @@
 						},
 						{
 							"label": "If you checked off any problems, how difficult have these made it for you to do your work, take care of things at home, or get along with other people?",
-							"id": "difficulty",
+							"id": "difficultyGad",
 							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
@@ -678,13 +678,12 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "In the past 12 months, how many times have you used alcohol?",
-							"questionInfo": "Beer, wine, spirits, makali, tei, pombe, maji, changaa, keg",
+							"label": "In the past 12 months, how many times have you used alcohol? (beer, wine, spirits, makali, tei, pombe, maji, changaa, keg etc.)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Alcoholic beverages (beer, wine, spirits, makali, tei, pombe, maji, changaa, keg etc.)?",
 							"id": "alcohol",
 							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Alcoholic beverages (beer, wine, spirits, makali, tei, pombe, maji, changaa, keg etc.)? ",
 								"concept": "a8a77d02-1350-11df-a1f1-0026b9348838",
 								"answers": [
 									{
@@ -703,7 +702,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -713,13 +711,12 @@
 							}
 						},
 						{
-							"label": "In the past 12 months, how many times have you used tobacco?",
-							"questionInfo": "Cigarettes, fegi, sigara, moshi, kuber, master fwaka, lyft",
+							"label": "In the past 12 months, how many times have you used tobacco? (Cigarettes, fegi, sigara, moshi, kuber, master fwaka, lyft)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Tobacco products (cigarettes, fegi, sigara, moshi, kuber, master fwaka, lyft)?",
 							"id": "tobacco",
 							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Tobacco products (cigarettes, fegi, sigara, moshi, kuber, master fwaka, lyft)? ",
 								"concept": "ea12042d-a3c5-4017-bdad-67a202d3aa5b",
 								"answers": [
 									{
@@ -738,7 +735,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -748,13 +744,12 @@
 							}
 						},
 						{
-							"label": "In the past 12 months, how many times have you used cannabis?",
-							"questionInfo": "Marijuana, pot, grass, hash, blunt, ndom, ngwai, bangi, kachoma, shada, shash, weed, ndukulu, hela, kwaburu, kete",
+							"label": "In the past 12 months, how many times have you used cannabis? (Marijuana, pot, grass, hash, blunt, ndom, ngwai, bangi, kachoma, shada, shash, weed, ndukulu, hela, kwaburu, kete)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Cannabis (marijuana, pot, grass, hash, blunt, ndom, ngwai, bangi, kachoma, shada, shash, weed, ndukulu, hela, kwaburu, kete etc.)?",
 							"id": "cannabis",
 							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Cannabis (marijuana, pot, grass, hash, blunt, ndom, ngwai, bangi, kachoma, shada, shash, weed, ndukulu, hela, kwaburu, kete etc.)?",
 								"concept": "ea29f0be-06ca-4dc1-9be9-8d412fd768af",
 								"answers": [
 									{
@@ -773,7 +768,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -783,12 +777,11 @@
 							}
 						},
 						{
-							"label": "In the past 12 months, how many times have you used miraa?",
-							"questionInfo": "Mogoka (speed, meth, ecstasy, ice, etc.)",
+							"label": "In the past 12 months, how many times have you used miraa? Mogoka (speed, meth, ecstasy, ice, etc.)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Miraa/Mogoka (speed, meth, ecstasy, ice, etc.)?",
 							"id": "miraa",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Miraa/Mogoka (speed, meth, ecstasy, ice, etc.)?",
 								"concept": "fb04284c-db98-4ef6-9ec3-59a58b975b6b",
 								"answers": [
 									{
@@ -807,7 +800,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -823,12 +815,11 @@
 							}
 						},
 						{
-							"label": "In the past 12 months, how many times have you used prescription pills?",
-							"questionInfo": "Heroin, morphine, codeine, unga, tramadol, pethidine, betapine etc.",
+							"label": "In the past 12 months, how many times have you used prescription pills? (Heroin, morphine, codeine, unga, tramadol, pethidine, betapine etc.)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Opioids (heroin, morphine, codeine, unga, tramadol, pethidine, betapine, etc.)?",
 							"id": "prescriptionPills",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Opioids (heroin, morphine, codeine, unga, tramadol, pethidine, betapine, etc.)?",
 								"concept": "c0e79654-0f67-4b39-8aaa-bbfd502639a8",
 								"answers": [
 									{
@@ -847,7 +838,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -863,12 +853,11 @@
 							}
 						},
 						{
-							"label": "In the past 12 months, how many times have you used coccaine?",
-							"questionInfo": "Coke, crack, white paper, coke powder etc",
+							"label": "In the past 12 months, how many times have you used coccaine? (Coke, crack, white paper, coke powder etc)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Cocaine (coke, crack, white paper, coke powder etc.)?",
 							"id": "coccaine",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Cocaine (coke, crack, white paper, coke powder etc.)?",
 								"concept": "fb2c96ba-7151-496c-afd1-da4714eaa884",
 								"answers": [
 									{
@@ -887,7 +876,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -903,12 +891,11 @@
 							}
 						},
 						{
-							"label": "In the past 12 months, how many times have you used inhalants?",
-							"questionInfo": "Nitrous, glue, petrol, paint thinner, bieri, glue, gum, mafuta ya ndege, jet fuel, petrol, gaga etc.",
+							"label": "In the past 12 months, how many times have you used inhalants? (Nitrous, glue, petrol, paint thinner, bieri, glue, gum, mafuta ya ndege, jet fuel, petrol, gaga etc.)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Inhalants (nitrous, glue, petrol, paint thinner, bieri, glue, gum, mafuta ya ndege, jet fuel, petrol, gaga etc.)?",
 							"id": "inhalants",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Inhalants (nitrous, glue, petrol, paint thinner, bieri, glue, gum, mafuta ya ndege, jet fuel, petrol, gaga etc.)?",
 								"concept": "2d92466b-a3dc-4a35-b01f-7c4d8fd64835",
 								"answers": [
 									{
@@ -927,7 +914,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -943,12 +929,11 @@
 							}
 						},
 						{
-							"label": "In the past 12 months, how many times have you used hallucinogen?",
-							"questionInfo": "LSD, acid, mushrooms/mash, trips, ketamine, taptap",
+							"label": "In the past 12 months, how many times have you used hallucinogen? (LSD, acid, mushrooms/mash, trips, ketamine, taptap)",
+							"questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Hallucinogens (LSD, acid, mushrooms/mash, trips, ketamine, taptap)?",
 							"id": "hallucinogen",
 							"questionOptions": {
 								"rendering": "select",
-								"placeholder": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Hallucinogens (LSD, acid, mushrooms/mash, trips, ketamine, taptap)?",
 								"concept": "dc15a7cf-2698-4a23-b076-28eed2c6c593",
 								"answers": [
 									{
@@ -967,7 +952,6 @@
 										"concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
 										"label": "Weekly or more (Kila wiki ama zaidi)"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -987,7 +971,7 @@
 							"id": "sud",
 							"questionOptions": {
 								"calculate": {
-                                    "calculateExpression":"((alcohol=='a899d120-1350-11df-a1f1-0026b9348838' || alcohol=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && (tobacco=='a899d120-1350-11df-a1f1-0026b9348838' || tobacco=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && (cannabis=='a899d120-1350-11df-a1f1-0026b9348838' || cannabis=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && (miraa=='a899d120-1350-11df-a1f1-0026b9348838' || miraa=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && (prescriptionPills=='a899d120-1350-11df-a1f1-0026b9348838' || prescriptionPills=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && (cocaine=='a899d120-1350-11df-a1f1-0026b9348838' || cocaine=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && (inhalants=='a899d120-1350-11df-a1f1-0026b9348838' || inhalants=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && (hallucinogen=='a899d120-1350-11df-a1f1-0026b9348838' || hallucinogen=='992fa969-c0a2-46c1-8ddc-da79f7f54448')) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : ((alcohol=='a899d7f6-1350-11df-a1f1-0026b9348838' || tobacco=='a899d7f6-1350-11df-a1f1-0026b9348838' || cannabis=='a899d7f6-1350-11df-a1f1-0026b9348838' || miraa=='a899d7f6-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d7f6-1350-11df-a1f1-0026b9348838' || cocaine=='a899d7f6-1350-11df-a1f1-0026b9348838' || inhalants=='a899d7f6-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d7f6-1350-11df-a1f1-0026b9348838') ? 'a89efdee-1350-11df-a1f1-0026b9348838': ((alcohol=='a899d8d2-1350-11df-a1f1-0026b9348838' || tobacco=='a899d8d2-1350-11df-a1f1-0026b9348838' || cannabis=='a899d8d2-1350-11df-a1f1-0026b9348838' || miraa=='a899d8d2-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d8d2-1350-11df-a1f1-0026b9348838' || cocaine=='a899d8d2-1350-11df-a1f1-0026b9348838' || inhalants=='a899d8d2-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d8d2-1350-11df-a1f1-0026b9348838') ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : 'a899e0ac-1350-11df-a1f1-0026b9348838'))"
+									"calculateExpression": "(alcohol=='a899d8d2-1350-11df-a1f1-0026b9348838' || tobacco=='a899d8d2-1350-11df-a1f1-0026b9348838' || cannabis=='a899d8d2-1350-11df-a1f1-0026b9348838' || miraa=='a899d8d2-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d8d2-1350-11df-a1f1-0026b9348838' || cocaine=='a899d8d2-1350-11df-a1f1-0026b9348838' || inhalants=='a899d8d2-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d8d2-1350-11df-a1f1-0026b9348838') ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : (alcohol=='a899d7f6-1350-11df-a1f1-0026b9348838' || tobacco=='a899d7f6-1350-11df-a1f1-0026b9348838' || cannabis=='a899d7f6-1350-11df-a1f1-0026b9348838' || miraa=='a899d7f6-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d7f6-1350-11df-a1f1-0026b9348838' || cocaine=='a899d7f6-1350-11df-a1f1-0026b9348838' || inhalants=='a899d7f6-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d7f6-1350-11df-a1f1-0026b9348838') && !(alcohol=='a899d8d2-1350-11df-a1f1-0026b9348838' || tobacco=='a899d8d2-1350-11df-a1f1-0026b9348838' || cannabis=='a899d8d2-1350-11df-a1f1-0026b9348838' || miraa=='a899d8d2-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d8d2-1350-11df-a1f1-0026b9348838' || cocaine=='a899d8d2-1350-11df-a1f1-0026b9348838' || inhalants=='a899d8d2-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d8d2-1350-11df-a1f1-0026b9348838') ? 'a89efdee-1350-11df-a1f1-0026b9348838' : (alcohol=='a899d120-1350-11df-a1f1-0026b9348838' || alcohol=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(alcohol=='a899d7f6-1350-11df-a1f1-0026b9348838' || alcohol=='a899d8d2-1350-11df-a1f1-0026b9348838') && (tobacco=='a899d120-1350-11df-a1f1-0026b9348838' || tobacco=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(tobacco=='a899d7f6-1350-11df-a1f1-0026b9348838' || tobacco=='a899d8d2-1350-11df-a1f1-0026b9348838') && (cannabis=='a899d120-1350-11df-a1f1-0026b9348838' || cannabis=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(cannabis=='a899d7f6-1350-11df-a1f1-0026b9348838' || cannabis=='a899d8d2-1350-11df-a1f1-0026b9348838') && (miraa=='a899d120-1350-11df-a1f1-0026b9348838' || miraa=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(miraa=='a899d7f6-1350-11df-a1f1-0026b9348838' || miraa=='a899d8d2-1350-11df-a1f1-0026b9348838') && (prescriptionPills=='a899d120-1350-11df-a1f1-0026b9348838' || prescriptionPills=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(prescriptionPills=='a899d7f6-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d8d2-1350-11df-a1f1-0026b9348838') && (cocaine=='a899d120-1350-11df-a1f1-0026b9348838' || cocaine=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(cocaine=='a899d7f6-1350-11df-a1f1-0026b9348838' || cocaine=='a899d8d2-1350-11df-a1f1-0026b9348838') && (inhalants=='a899d120-1350-11df-a1f1-0026b9348838' || inhalants=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(inhalants=='a899d7f6-1350-11df-a1f1-0026b9348838' || inhalants=='a899d8d2-1350-11df-a1f1-0026b9348838') && (hallucinogen=='a899d120-1350-11df-a1f1-0026b9348838' || hallucinogen=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(hallucinogen=='a899d7f6-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d8d2-1350-11df-a1f1-0026b9348838') ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : null"
 								},
 								"rendering": "select",
 								"concept": "",
@@ -1007,8 +991,10 @@
 								]
 							},
 							"type": "control",
-							
-							"validators": []
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "age <10 || age >24"
+							}
 						},
 						{
 							"label": "Do you sometimes drink alcohol?",

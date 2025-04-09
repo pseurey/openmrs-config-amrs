@@ -1,0 +1,1492 @@
+{
+    "name": "AMPATH POC HTS Retest Form v1.1",
+    "description": "Form for HTS testing services",
+    "version": "1.1",
+    "published": true,
+    "retired": false,
+    "uuid": "9b1258a3-e181-4dec-af70-8538c4735e38",
+    "encounter": "HTS",
+    "pages": [
+        {
+            "label": "Encounter Details",
+            "sections": [
+                {
+                    "label": "Encounter Details",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Visit date:",
+                            "type": "encounterDatetime",
+                            "required": "true",
+                            "id": "encDate",
+                            "questionOptions": {
+                                "rendering": "date"
+                            },
+                            "validators": [
+                                {
+                                    "type": "date",
+                                    "allowFutureDates": "false"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "HTS Provider",
+                            "type": "encounterProvider",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            },
+                            "id": "encounterProvider"
+                        },
+                        {
+                            "label": "Facility name",
+                            "type": "encounterLocation",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            },
+                            "id": "encounterLocation"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "HTS Recordings",
+            "sections": [
+                {
+                    "label": "Population Typology",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Population Typology",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
+                                "answers": [
+                                    {
+                                        "concept": "79ab66e0-4248-491e-be7c-cddaa89bb0d7",
+                                        "label": "GP (General Population)"
+                                    },
+                                    {
+                                        "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                                        "label": "Key Population"
+                                    },
+                                    {
+                                        "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                                        "label": "Vulnerable Population"
+                                    }
+                                ]
+                            },
+                            "id": "populationType"
+                        },
+                        {
+                            "label": "Please indicate Key population type :",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                                "answers": [
+                                    {
+                                        "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                                        "label": "DC (Discordant couple)"
+                                    },
+                                    {
+                                        "concept": "a89ff438-1350-11df-a1f1-0026b9348838",
+                                        "label": "FSW (Female sex Worker)"
+                                    },
+                                    {
+                                        "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                                        "label": "PWID/PWUD (People who Inject drugs/People Who Use Drugs)"
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Others"
+                                    }
+                                ]
+                            },
+                            "id": "femaleKeyPopTypes",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || sex !== 'F'"
+                            }
+                        },
+                        {
+                            "label": "Please indicate Key population type :",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                                "answers": [
+                                    {
+                                        "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                                        "label": "DC (Discordant couple)"
+                                    },
+                                    {
+                                        "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+                                        "label": "MSM/MSW (Men who have sex with men/Male Sex Workers)"
+                                    },
+                                    {
+                                        "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                                        "label": "PWID/PWUD (People who Inject drugs/People Who Use Drugs)"
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Others"
+                                    }
+                                ]
+                            },
+                            "id": "maleKeyPopTypes",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || sex !== 'M'"
+                            }
+                        },
+                        {
+                            "label": "Please indicate vulnerable population type:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                                "answers": [
+                                    {
+                                        "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                                        "label": "Fisher Folks"
+                                    },
+                                    {
+                                        "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                                        "label": "Truck drivers"
+                                    },
+                                    {
+                                        "concept": "b7d9878b-8ce9-4cdf-b6c3-a1545989c604",
+                                        "label": "People in Prison Setting"
+                                    },
+                                    {
+                                        "concept": "38e553c5-3744-4bd6-9a30-d582741ddb5d",
+                                        "label": "Adolescent and young girls"
+                                    },
+                                    {
+                                        "concept": "72303ffa-d5b0-4a21-80a9-637ad6ec9538",
+                                        "label": "Military and other uniformed services"
+                                    },
+                                    {
+                                        "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Not Applicable"
+                                    }
+                                ]
+                            },
+                            "id": "femalevp",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(populationType) || populationType != '729690d4-09dc-497e-a180-bfc2e9d7d21d' || sex !== 'F'"
+                            }
+                        },
+                        {
+                            "label": "Please indicate vulnerable population type:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                                "answers": [
+                                    {
+                                        "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                                        "label": "Fisher folk"
+                                    },
+                                    {
+                                        "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                                        "label": "Truck driver"
+                                    },
+                                    {
+                                        "concept": "b7d9878b-8ce9-4cdf-b6c3-a1545989c604",
+                                        "label": "Prisoner"
+                                    },
+                                    {
+                                        "concept": "72303ffa-d5b0-4a21-80a9-637ad6ec9538",
+                                        "label": "Military and other uniformed services"
+                                    },
+                                    {
+                                        "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Not Applicable"
+                                    }
+                                ]
+                            },
+                            "id": "malevp",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(populationType) || populationType !== '729690d4-09dc-497e-a180-bfc2e9d7d21d' || sex !== 'M'"
+                            }
+                        },
+                        {
+                            "label": "Does client have any disability?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "522cca7a-235d-43d4-837e-8a118f2d9f88",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "clientDisability"
+                        },
+                        {
+                            "label": "Please indicated the type of disability :",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "checkbox",
+                                "concept": "a89ffa64-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "ef7df6d2-e2da-478a-abbe-c6273f211702",
+                                        "label": "Hearing impairment"
+                                    },
+                                    {
+                                        "concept": "bad3e303-2b74-40ad-8f90-14ca804c4ad7",
+                                        "label": "Visual impairment"
+                                    },
+                                    {
+                                        "concept": "291e1dc4-203a-4a09-aa0c-2d0a1962a719",
+                                        "label": "Mentally Challenged"
+                                    },
+                                    {
+                                        "concept": "d2c75e8e-3c80-4851-8225-050adfa96226",
+                                        "label": "Physically Challenged"
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Others"
+                                    }
+                                ]
+                            },
+                            "id": "disabilityTypes",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(clientDisability) || clientDisability !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Specify",
+                            "type": "obs",
+                            "id": "specifyOtherDisability",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+                            },
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(disabilityTypes) || !arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'], disabilityTypes)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "HIV Test History",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "   Has the client ever been tested for HIV by a HTS provider?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "71bb9660-cb25-48d0-ab90-2dc39df8e9ab",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "everTested"
+                        },
+                        {
+                            "label": "Duration in months since the last test:",
+                            "type": "obs",
+                            "id": "durationSinceLastTest",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "f528c0be-81eb-48d7-8398-bf76e6f6abf5",
+                                "min": "0",
+                                "showDate": ""
+                            },
+                            "hide": {
+                                "hideWhenExpression": "everTested !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Has the client done HIV self test in the last 12 months?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "00e8899b-8dde-4736-83e7-4faedb47a52c",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "selfTestLastTwelveMonths"
+                        },
+                        {
+                            "label": "Is client willing to share results?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "66ab7b78-2b3f-4274-97fb-4febdba45d7f",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "willingToShareResults",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(selfTestLastTwelveMonths) || selfTestLastTwelveMonths != 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Self test results?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "23bac336-db91-4970-a685-47f6edc8fafc",
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    }
+                                ]
+                            },
+                            "id": "selfTestResults",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(willingToShareResults) || willingToShareResults !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Date of self test",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "date",
+                                "concept": "64807fb6-0ca3-4def-a62a-2d5f66c4328a"
+                            },
+                            "id": "DeteOfSelfTest",
+                            "validators": [
+                                {
+                                    "type": "date",
+                                    "allowFutureDates": "false"
+                                }
+                            ],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(willingToShareResults) || willingToShareResults !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Setting",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "HTS Setting:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "10927b6d-0f49-4a20-9bca-fe755719613c",
+                                "answers": [
+                                    {
+                                        "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+                                        "label": "Facility"
+                                    },
+                                    {
+                                        "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                                        "label": "Community"
+                                    }
+                                ]
+                            },
+                            "id": "htsSetting",
+                            "required": "true"
+                        }
+                    ]
+                },
+                {
+                    "label": "Approach",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "HTS Approach: ",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "ae0cb578-6ef0-4a10-9aad-d70b384782a0",
+                                "answers": [
+                                    {
+                                        "concept": "a8a359a2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Provider Initiated Testing(PITC)"
+                                    },
+                                    {
+                                        "concept": "a46ff7ed-d319-423a-8b57-977f41498e0a",
+                                        "label": "Client Initiated Testing (CITC)"
+                                    }
+                                ]
+                            },
+                            "id": "htsApproach",
+                            "required": "true"
+                        }
+                    ]
+                },
+                {
+                    "label": "HTS Strategy",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Indicate HTS strategy used:",
+                            "type": "obs",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "1219f85c-31dd-4212-92ac-77926fa5ba03",
+                                "answers": [
+                                    {
+                                        "concept": "33e890f8-c492-4053-afad-215c4cf62626",
+                                        "label": "Stand Alone VCT Center"
+                                    },
+                                    {
+                                        "concept": "a8a17cc2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Home Based Testing"
+                                    },
+                                    {
+                                        "concept": "a8a17bfa-1350-11df-a1f1-0026b9348838",
+                                        "label": "MO: Mobile Outreach HTS"
+                                    },
+                                    {
+                                        "concept": "a8a4636a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Index testing"
+                                    },
+                                    {
+                                        "concept": "e194e1cc-3975-4bb2-85e1-c71597ebcd64",
+                                        "label": "SNS: Social Networks"
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "O: Others"
+                                    }
+                                ]
+                            },
+                            "id": "communityStrategy",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(htsSetting) || htsSetting != '9bc09285-7a04-4c81-a313-3a1c67f5c84a'"
+                            }
+                        },
+                        {
+                            "label": "Indicate HTS strategy used:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "1219f85c-31dd-4212-92ac-77926fa5ba03",
+                                "answers": [
+                                    {
+                                        "concept": "a8a359a2-1350-11df-a1f1-0026b9348838",
+                                        "label": "HP:Provider Initiated Testing(PITC)"
+                                    },
+                                    {
+                                        "concept": "a46ff7ed-d319-423a-8b57-977f41498e0a",
+                                        "label": "NP: HTS for non-patients"
+                                    },
+                                    {
+                                        "concept": "58782117-ad52-4699-84f1-8a33a7bf77d6",
+                                        "label": "VI:Integrated VCT Center"
+                                    },
+                                    {
+                                        "concept": "a8a17bfa-1350-11df-a1f1-0026b9348838",
+                                        "label": "MO: Mobile Outreach HTS"
+                                    },
+                                    {
+                                        "concept": "a8a4636a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Index testing"
+                                    },
+                                    {
+                                        "concept": "e194e1cc-3975-4bb2-85e1-c71597ebcd64",
+                                        "label": "SNS: Social Networks"
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "O: Others"
+                                    }
+                                ]
+                            },
+                            "id": "facilityStrategy",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(htsSetting) || htsSetting != '744b2cb1-0849-486c-a9cb-1ebe4b03c4bf'"
+                            }
+                        },
+                        {
+                            "label": "Specify:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
+                            },
+                            "id": "otherFacilityhtsStrategy",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(facilityStrategy) || facilityStrategy != 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Specify:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
+                            },
+                            "id": "otherCommunityhtsStrategy",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(communityStrategy) || communityStrategy != 'a8aaf3e2-1350-11df-a1f1-0026b9348838' "
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "HTS Entry Point",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Indicate HTS entry point: ",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "aad34924-d6e7-4138-a841-0fea9ee4b41f",
+                                "answers": [
+                                    {
+                                        "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
+                                        "label": "In Patient Department(IPD)"
+                                    },
+                                    {
+                                        "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+                                        "label": "Out Patient Department(OPD)"
+                                    },
+                                    {
+                                        "concept": "a8a37996-1350-11df-a1f1-0026b9348838",
+                                        "label": "Peadiatric Clinic"
+                                    },
+                                    {
+                                        "concept": "385aa16d-3af8-4fc8-b490-f861bc1da684",
+                                        "label": "Nutrition Clinic"
+                                    },
+                                    {
+                                        "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
+                                        "label": "PMTCT - ANC"
+                                    },
+                                    {
+                                        "concept": "50d22d55-e6af-4a77-9283-2e901c3060ad",
+                                        "label": "PMTCT - MAT"
+                                    },
+                                    {
+                                        "concept": "a8a0a252-1350-11df-a1f1-0026b9348838",
+                                        "label": "PMTCT - PNC"
+                                    },
+                                    {
+                                        "concept": "6b15e4fa-6897-4d69-adcf-5908abade719",
+                                        "label": "TB"
+                                    },
+                                    {
+                                        "concept": "a8a17b3c-1350-11df-a1f1-0026b9348838",
+                                        "label": "VCT"
+                                    },
+                                    {
+                                        "concept": "2b14aa1f-fb17-4519-bf67-d908f2e86bc7",
+                                        "label": "VMMC"
+                                    },
+                                    {
+                                        "concept": "a8a09a0a-1350-11df-a1f1-0026b9348838",
+                                        "label": "STI Clinic"
+                                    },
+                                    {
+                                        "concept": "9f696a25-3a42-41af-bbad-e73241d7ad98",
+                                        "label": "Emergency"
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Other"
+                                    }
+                                ]
+                            },
+                            "id": "htsFacilityEntryPoint",
+                            "required": "true",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(htsSetting) || htsSetting != '744b2cb1-0849-486c-a9cb-1ebe4b03c4bf'"
+                            }
+                        },
+                        {
+                            "label": "Indicate HTS entry point: ",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "aad34924-d6e7-4138-a841-0fea9ee4b41f",
+                                "answers": [
+                                    {
+                                        "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                                        "label": "Community Testing"
+                                    },
+                                    {
+                                        "concept": "a8a17cc2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Home Based Testing"
+                                    },
+                                    {
+                                        "concept": "a8a17bfa-1350-11df-a1f1-0026b9348838",
+                                        "label": "Mobile Outreach"
+                                    },
+                                    {
+                                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                        "label": "Other"
+                                    }
+                                ]
+                            },
+                            "id": "htsCommunityEntryPoint",
+                            "required": "true",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(htsSetting) || htsSetting != '9bc09285-7a04-4c81-a313-3a1c67f5c84a'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "TB Screening",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Tb Screening results: ",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
+                                "answers": [
+                                    {
+                                        "concept": "f7dfdac3-65ee-487a-98f3-9f62693272a9",
+                                        "label": "No TB Signs"
+                                    },
+                                    {
+                                        "concept": "6cd4f017-dae4-4b65-86ee-77074555feaa",
+                                        "label": "Presumed TB"
+                                    },
+                                    {
+                                        "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                                        "label": "Not Done"
+                                    },
+                                    {
+                                        "concept": "a899e444-1350-11df-a1f1-0026b9348838",
+                                        "label": "On TB Treatment"
+                                    }
+                                ]
+                            },
+                            "id": "tbScreeningResults"
+                        }
+                    ]
+                },
+                {
+                    "label": "HIV Testing",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Has consent been given? ",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "9d9ccb6b-73ae-48dd-83f9-12c782ce6685",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "consentGiven",
+                            "required": "true"
+                        },
+                        {
+                            "label": "Client tested as?  ",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "0c34be0b-3c82-4449-970d-f3ad0f758023",
+                                "answers": [
+                                    {
+                                        "concept": "a8b03596-1350-11df-a1f1-0026b9348838",
+                                        "label": "Individual"
+                                    },
+                                    {
+                                        "concept": "a8afcd40-1350-11df-a1f1-0026b9348838",
+                                        "label": "Couple"
+                                    }
+                                ]
+                            },
+                            "id": "testedAs",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "HIV Test One",
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "rendering": "group",
+                                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+                            },
+                            "id": "hivTestOne",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Kit 1 name",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "3f827a28-d738-4dc0-93a8-f1439d93fe12",
+                                                "label": "Trinscreen"
+                                            },
+                                            {
+                                                "concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
+                                                "label": "Dual Kit"
+                                            },
+                                            {
+                                                "concept": "ab996835-26e8-45f6-b51d-fe2110954eac",
+                                                "label": "Standard Q"
+                                            },
+                                            {
+                                                "concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
+                                                "label": "Determine"
+                                            }
+                                        ]
+                                    },
+                                    "id": "kitName",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                },
+                                {
+                                    "label": "Lot number:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "text",
+                                        "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                                    },
+                                    "id": "lotNumber",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                },
+                                {
+                                    "label": "Expiry date:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "date",
+                                        "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                                        "weeksList": ""
+                                    },
+                                    "id": "expiryDate",
+                                    "validators": [
+                                        {
+                                            "type": "date",
+                                            "allowFutureDates": "true"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+                                            "message": "The Expiry date should be in the future."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                },
+                                {
+                                    "label": "HIV test 1 results:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive"
+                                            },
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                                                "label": "Invalid"
+                                            }
+                                        ]
+                                    },
+                                    "id": "testResults",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "label": "HIV Test Two",
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "rendering": "group",
+                                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+                            },
+                            "id": "hivTestTwo",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Kit 2 name:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "22d8b9b3-378a-4ef1-9a38-e4d8b33348ea",
+                                                "label": "One step"
+                                            },
+                                            {
+                                                "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+                                                "label": "First response"
+                                            }
+                                        ]
+                                    },
+                                    "id": "kitNameB",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(testResults) || testResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                },
+                                {
+                                    "label": "Lot number:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "text",
+                                        "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                                    },
+                                    "id": "lotNumberB",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameB)"
+                                    }
+                                },
+                                {
+                                    "label": "Expiry date:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "date",
+                                        "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                                        "weeksList": ""
+                                    },
+                                    "id": "expiryDateB",
+                                    "validators": [
+                                        {
+                                            "type": "date",
+                                            "allowFutureDates": "true"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+                                            "message": "The Expiry date should be in the future."
+                                        }
+                                    ],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameB)"
+                                    }
+                                },
+                                {
+                                    "label": "HIV test 2 results:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive"
+                                            },
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                                                "label": "Invalid"
+                                            }
+                                        ]
+                                    },
+                                    "id": "testResultsB",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameB)"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "label": "HIV Test",
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "rendering": "group",
+                                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+                            },
+                            "id": "hivTestA2",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Kit 1 name:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "3f827a28-d738-4dc0-93a8-f1439d93fe12",
+                                                "label": "Trinscreen"
+                                            }
+                                        ]
+                                    },
+                                    "id": "kitNameD",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(testResultsB) || testResultsB !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || kitName ==='a8afbc9c-1350-11df-a1f1-0026b9348838' && kitNameB === 'ef44a147-c32b-491e-a5ce-e79003c90e01'"
+                                    }
+                                },
+                                {
+                                    "label": "Lot number:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "text",
+                                        "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                                    },
+                                    "id": "lotNumberD",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameD)"
+                                    }
+                                },
+                                {
+                                    "label": "Expiry date:",
+                                    "type": "obs",
+                                    "validators": [
+                                        {
+                                            "type": "date",
+                                            "allowFutureDates": "true"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                                            "message": "Expiry date should be greater than the encounter date."
+                                        }
+                                    ],
+                                    "questionOptions": {
+                                        "rendering": "date",
+                                        "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                                        "weeksList": ""
+                                    },
+                                    "id": "expiryDateD",
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameD)"
+                                    }
+                                },
+                                {
+                                    "label": "HIV test 3 results:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive"
+                                            },
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                                                "label": "Invalid"
+                                            }
+                                        ]
+                                    },
+                                    "id": "testResultsD",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameD)"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "label": "HIV Test",
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "rendering": "group",
+                                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+                            },
+                            "id": "hivTest3",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Kit 3 name:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+                                                "label": "First Response"
+                                            }
+                                        ]
+                                    },
+                                    "id": "kitNameC",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(testResultsB) || testResultsB !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || kitName ==='a8afbc9c-1350-11df-a1f1-0026b9348838' && kitNameB === 'ef44a147-c32b-491e-a5ce-e79003c90e01'"
+                                    }
+                                },
+                                {
+                                    "label": "Lot number:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "text",
+                                        "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                                    },
+                                    "id": "lotNumberC",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameC)"
+                                    }
+                                },
+                                {
+                                    "label": "Expiry date:",
+                                    "type": "obs",
+                                    "validators": [
+                                        {
+                                            "type": "date",
+                                            "allowFutureDates": "true"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                                            "message": "Expiry date should be greater than the encounter date."
+                                        }
+                                    ],
+                                    "questionOptions": {
+                                        "rendering": "date",
+                                        "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                                        "weeksList": ""
+                                    },
+                                    "id": "expiryDateC",
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameC)"
+                                    }
+                                },
+                                {
+                                    "label": "HIV test 3 results:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "eae7ec5d-16f2-4764-bf42-c4924ebcaa24",
+                                        "answers": [
+                                            {
+                                                "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                                "label": "Positive"
+                                            },
+                                            {
+                                                "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                                "label": "Negative"
+                                            },
+                                            {
+                                                "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                                                "label": "Invalid"
+                                            }
+                                        ]
+                                    },
+                                    "id": "testResultsC",
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(kitNameC)"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Final results:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a89c6c64-1350-11df-a1f1-0026b9348838",
+                                "calculate": {
+                                    "calculateExpression": "String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a896d2cc-1350-11df-a1f1-0026b9348838' : String(testResults) || String(testResultsB) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : ''"
+                                },
+                                "answers": [
+                                    {
+                                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Positive"
+                                    },
+                                    {
+                                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                                        "label": "Negative"
+                                    },
+                                    {
+                                        "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Inconclusive"
+                                    }
+                                ]
+                            },
+                            "id": "finalResult",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Results given to client?",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a8a4a8b6-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "resultsGiven",
+                            "required": "true",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Couple is discordant:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                                "calculate": {
+                                    "calculateExpression": "String(testedAs) === 'a8b03596-1350-11df-a1f1-0026b9348838' ? 'a89ad3a4-1350-11df-a1f1-0026b9348838' : ''"
+                                },
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    },
+                                    {
+                                        "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                                        "label": "N/A"
+                                    }
+                                ]
+                            },
+                            "id": "coupleDiscordant",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(consentGiven) || consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Referral",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Client referred for other services:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "91c2f975-14db-4fe1-b025-952b591377e1",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "clientReferred",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(finalResult)"
+                            }
+                        },
+                        {
+                            "label": "Referral history",
+                            "id": "refHist",
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "concept": "1c6ac7dc-38d8-43ce-9b74-2edd1a637dc2",
+                                "rendering": "group"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Referred for which services::",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "multiCheckbox",
+                                        "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+                                        "answers": [
+                                            {
+                                                "concept": "14b2dcee-94ea-4ed4-9d63-f558ce9ce076",
+                                                "label": "Risk reduction counselling"
+                                            },
+                                            {
+                                                "concept": "a8b03eba-1350-11df-a1f1-0026b9348838",
+                                                "label": "Safer sex practices"
+                                            },
+                                            {
+                                                "concept": "a893516a-1350-11df-a1f1-0026b9348838",
+                                                "label": "Condom use counselling"
+                                            },
+                                            {
+                                                "concept": "a8a19c20-1350-11df-a1f1-0026b9348838",
+                                                "label": "Post-exposure prophylaxis"
+                                            },
+                                            {
+                                                "concept": "14d88980-54b5-470d-b9b9-78f5c6dd6e56",
+                                                "label": "Prevention and treatment of STIs"
+                                            },
+                                            {
+                                                "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                                                "label": "Substance abuse and mental health treatment"
+                                            },
+                                            {
+                                                "concept": "4045cb6c-793c-4784-bea5-6e2b7bfd8467",
+                                                "label": "Prevention of violence"
+                                            },
+                                            {
+                                                "concept": "2b14aa1f-fb17-4519-bf67-d908f2e86bc7",
+                                                "label": "VMMC"
+                                            },
+                                            {
+                                                "concept": "387aef17-88a4-431e-893a-c571217f1a19",
+                                                "label": "HIV testing and re-testing"
+                                            },
+                                            {
+                                                "concept": "27ac429d-8a42-476e-b2f6-65bde0b8c935",
+                                                "label": "Pre-exposure prophylaxis"
+                                            },
+                                            {
+                                                "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                                                "label": "Others"
+                                            }
+                                        ]
+                                    },
+                                    "id": "refeRRalSerVicEs",
+                                    "hide": {
+                                        "hideWhenExpression": "isEmpty(clientReferred) || clientReferred !=='a899b35c-1350-11df-a1f1-0026b9348838' || finalResult !=='a896d2cc-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Specify referral",
+                            "type": "obs",
+                            "id": "speCrEferRed",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "2c8bb721-b642-428a-b956-7902242776ab"
+                            },
+                            "hide": {
+                                "hideWhenExpression": "refeRRalSerVicEs !=='a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Referral for:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a8a47396-1350-11df-a1f1-0026b9348838",
+                                "calculate": {
+                                    "calculateExpression": "String(finalResult) === 'a896f3a6-1350-11df-a1f1-0026b9348838' ? 'a8a3899a-1350-11df-a1f1-0026b9348838'"
+                                },
+                                "answers": [
+                                    {
+                                        "concept": "a8a3899a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Comprehensive care center"
+                                    }
+                                ]
+                            },
+                            "id": "referredForCare",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(clientReferred) || clientReferred !=='a899b35c-1350-11df-a1f1-0026b9348838' || finalResult !=='a896f3a6-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Referral to:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "concept": "2d1930dc-354c-4d5a-810e-b0d6396716cd",
+                                "rendering": "select",
+                                "answers": [
+                                    {
+                                        "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
+                                        "label": "This health facility"
+                                    },
+                                    {
+                                        "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
+                                        "label": "Other health facility"
+                                    }
+                                ]
+                            },
+                            "id": "referredToCare",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(finalResult) || finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Other Facility name :",
+                            "type": "obs",
+                            "id": "otherFacility",
+                            "questionOptions": {
+                                "concept": "99f8ac81-cea1-43eb-88fb-29a9ea2d77cf",
+                                "rendering": "text"
+                            },
+                            "hide": {
+                                "hideWhenExpression": "ReferredToCare !== 'ab396b67-273c-4c97-9f90-f858d79b13b1'"
+                            }
+                        },
+                        {
+                            "label": "This Facility:",
+                            "type": "obs",
+                            "id": "thisfacility",
+                            "questionOptions": {
+                                "concept": "6574e401-3b04-498f-828b-9fd9aaebf12b",
+                                "rendering": "text",
+                                "calculate": {
+                                    "calculateExpression": "ReferredToCare === '59312903-dde9-4f7a-b6cf-7b41863b7e81' && userLocation.display"
+                                }
+                            },
+                            "hide": {
+                                "hideWhenExpression": "ReferredToCare !== '59312903-dde9-4f7a-b6cf-7b41863b7e81'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Recency screening",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Has recency screening been done:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "92f27f4b-f8be-4d24-9920-f741844dc2c2",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "recencyScreening",
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(finalResult) || finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "type": "patientIdentifier",
+                            "label": "Recency Id (REC14130-00001)",
+                            "questionInfo": "",
+                            "id": "recencyId",
+                            "required": "false",
+                            "default": "",
+                            "questionOptions": {
+                                "rendering": "text",
+                                "identifierType": "a3ba8e7b-808c-4ae3-acaf-724797ae98b4"
+                            },
+                            "validators": [
+                                {
+                                    "type": "js_expression",
+                                    "failsWhenExpression": "myValue && doesNotMatchExpression('^REC\\\\d{5}-\\\\d{5,6}$', recencyId)",
+                                    "message": "Please provide the correct format for the recency id ie. REC+mflCode+number eg.REC11902-00062"
+                                }
+                            ],
+                            "hide": {
+                                "hideWhenExpression": "isEmpty(finalResult) || finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' || isEmpty(recencyScreening) || recencyScreening === 'a899b42e-1350-11df-a1f1-0026b9348838' "
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Remarks",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Remarks",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "textarea",
+                                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c"
+                            },
+                            "id": "rEmArks"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "processor": "EncounterFormProcessor",
+    "referencedForms": [],
+    "encounterType": "9c0a7a57-62ff-4f75-babe-5835b0e921b7"
+}
