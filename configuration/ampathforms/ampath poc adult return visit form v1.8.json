@@ -112,19 +112,19 @@
 							}
 						},
 						{
-							"label": "Patient covered by NHIF:",
+							"label": "Patient covered by SHIF/SHA:",
 							"id": "nhif",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')) ? undefined : HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')",
 							"questionOptions": {
 								"rendering": "select",
-								"concept": "0b49e3e6-55df-4096-93ca-59edadb74b3f",
+								"concept": "1899d98e-46df-437f-bd86-472d37fa3278",
 								"answers": [
 									{
-										"concept": "8b715fed-97f6-4e38-8f6a-c167a42f8923",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
 										"label": "Yes"
 									},
 									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
 									}
 								]
@@ -133,12 +133,12 @@
 							"validators": []
 						},
 						{
-							"label": "What is the patient's NHIF status?",
+							"label": "What is the patient's SHIF/SHA status?",
 							"id": "nhifStatus",
-							"questionInfo": "Indicate if the patient has been remitting monthly contributions towards the NHIF medical cover.",
+							"questionInfo": "Indicate if the patient has been remitting monthly contributions towards the SHIF/SHA medical cover.",
 							"questionOptions": {
 								"rendering": "select",
-								"concept": "548e6743-67c0-4a6b-bb07-b5f799f63bc1",
+								"concept": "ab0f59a7-963e-4a8b-860d-2ef6b15b8f97",
 								"answers": [
 									{
 										"concept": "b058a9ad-a0e4-4b37-9214-75b8aed1eaa4",
@@ -1105,12 +1105,13 @@
 					]
 				},
 				{
-					"label": "GBV Screening",
+					"label": "Violence Screening",
 					"isExpanded": "true",
 					"questions": [
 						{
 							"label": "In the last 3 months, has your partner(s) hit, kicked, slapped, or otherwise physically hurt you?",
 							"id": "physical",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"concept": "8fca5b8a-0674-49e5-8111-003db067ee22",
@@ -1130,6 +1131,7 @@
 						{
 							"label": "In the last 3 months, has your partner threatened to hurt you or abused you verbally or emotionally? E.g abusing or talking down to you?",
 							"id": "emmotional",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
@@ -1149,6 +1151,7 @@
 						{
 							"label": "In the last 3 months, has your partner(s) forced you to do something sexually that made you feel uncomfortable?",
 							"id": "sexual",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"concept": "920709bc-dde6-4d21-863e-851e63c084e4",
@@ -1168,6 +1171,7 @@
 						{
 							"label": "In the last 3 months, has your partner (s) deliberately withdrawn any form of support, including financial support?",
 							"id": "financial",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"concept": "c900913e-1fcc-48c5-a39e-fb106c3645dc",
@@ -1185,7 +1189,7 @@
 							}
 						},
 						{
-							"label": "GBV/IPV assessment notes:",
+							"label": "Violence screening assessment notes:",
 							"type": "obs",
 							"id": "gbvText",
 							"questionOptions": {
@@ -1193,7 +1197,13 @@
 								"rendering": "textarea",
 								"rows": 7
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
+									"message": "Patient screened positive for violence. Please provide notes."
+								}
+							]
 						}
 					]
 				},
@@ -7717,7 +7727,7 @@
 								{
 									"label": "Comorbid illness:",
 									"required": "true",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')) ? undefined : HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ebf02efb-b28c-49e8-9caf-65e96dbfa0a9.0ac4af8a-1b8e-4404-b445-c0471d6f7576')) ? undefined : HD.getObject('prevEnc').getValue('ebf02efb-b28c-49e8-9caf-65e96dbfa0a9.0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
 									"id": "comorbidIllness",
 									"questionOptions": {
 										"concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
@@ -7777,188 +7787,384 @@
 							"id": "__qxL9JJy92"
 						},
 						{
-							"label": "Hypertension treatment:",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')) ? undefined : HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')",
-							"id": "antiHypertensive",
-							"questionOptions": {
-								"concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
-								"answers": [
-									{
-										"concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
-										"label": "Amlodipine"
-									},
-									{
-										"concept": "22857905-ef07-4702-b576-bdb02677e301",
-										"label": "Amlodipine/Losartan"
-									},
-									{
-										"concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
-										"label": "Atenolol"
-									},
-									{
-										"concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
-										"label": "Atorvastatin"
-									},
-									{
-										"concept": "a8a43994-1350-11df-a1f1-0026b9348838",
-										"label": "Carvedilol"
-									},
-									{
-										"concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
-										"label": "Clopidogrel"
-									},
-									{
-										"concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
-										"label": "Digoxin"
-									},
-									{
-										"concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
-										"label": "Enalapril"
-									},
-									{
-										"concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
-										"label": "Enoxaparin"
-									},
-									{
-										"concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
-										"label": "Felodipine"
-									},
-									{
-										"concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
-										"label": "Frusemide"
-									},
-									{
-										"concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
-										"label": "HCTZ"
-									},
-									{
-										"concept": "4ef71275-29e3-4b5a-940c-267473ab61b6",
-										"label": "Lisinopril 20mg/HCTZ 12.5mg"
-									},
-									{
-										"concept": "a8a43750-1350-11df-a1f1-0026b9348838",
-										"label": "Losartan"
-									},
-									{
-										"concept": "e476d21f-911d-4d2e-8c37-1ce76e48930f",
-										"label": "Losartan 50mg/Hydrochlorothiazide 12.5mg"
-									},
-									{
-										"concept": "d6dd4ede-2a46-4eb1-99b7-360fb4e329e5",
-										"label": "Metropolol"
-									},
-									{
-										"concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
-										"label": "Nifedipine"
-									},
-									{
-										"concept": "a8939044-1350-11df-a1f1-0026b9348838",
-										"label": "Propranolol"
-									},
-									{
-										"concept": "c06c7786-0657-41db-babc-a16c350d35da",
-										"label": "Rosuvastatin"
-									},
-									{
-										"concept": "a8a43a52-1350-11df-a1f1-0026b9348838",
-										"label": "Spironolactone"
-									},
-									{
-										"concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
-										"label": "Telmisartan"
-									},
-									{
-										"concept": "59611435-e869-4a8d-8e58-649b7630e471",
-										"label": "Junior ASA"
-									}
-								],
-								"rendering": "multiCheckbox"
-							},
-							"type": "obs",
-							"validators": [],
+							"type": "obsGroup",
+							"label": "Hypertenstion drugs started, detailed",
+							"required": "true",
+							"id": "hyperdetailed",
 							"hide": {
 								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8986880-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
-							}
+							},
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822"
+							},
+							"questions": [
+								{
+									"label": "Hypertension treatment:",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')) ? undefined : HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')",
+									"id": "antiHypertensive",
+									"questionOptions": {
+										"concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
+										"answers": [
+											{
+												"concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
+												"label": "Amlodipine"
+											},
+											{
+												"concept": "22857905-ef07-4702-b576-bdb02677e301",
+												"label": "Amlodipine/Losartan"
+											},
+											{
+												"concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
+												"label": "Atenolol"
+											},
+											{
+												"concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
+												"label": "Atorvastatin"
+											},
+											{
+												"concept": "a8a43994-1350-11df-a1f1-0026b9348838",
+												"label": "Carvedilol"
+											},
+											{
+												"concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
+												"label": "Clopidogrel"
+											},
+											{
+												"concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
+												"label": "Digoxin"
+											},
+											{
+												"concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
+												"label": "Enalapril"
+											},
+											{
+												"concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
+												"label": "Enoxaparin"
+											},
+											{
+												"concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
+												"label": "Felodipine"
+											},
+											{
+												"concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
+												"label": "Frusemide"
+											},
+											{
+												"concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
+												"label": "HCTZ"
+											},
+											{
+												"concept": "4ef71275-29e3-4b5a-940c-267473ab61b6",
+												"label": "Lisinopril 20mg/HCTZ 12.5mg"
+											},
+											{
+												"concept": "a8a43750-1350-11df-a1f1-0026b9348838",
+												"label": "Losartan"
+											},
+											{
+												"concept": "e476d21f-911d-4d2e-8c37-1ce76e48930f",
+												"label": "Losartan 50mg/Hydrochlorothiazide 12.5mg"
+											},
+											{
+												"concept": "d6dd4ede-2a46-4eb1-99b7-360fb4e329e5",
+												"label": "Metropolol"
+											},
+											{
+												"concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
+												"label": "Nifedipine"
+											},
+											{
+												"concept": "a8939044-1350-11df-a1f1-0026b9348838",
+												"label": "Propranolol"
+											},
+											{
+												"concept": "c06c7786-0657-41db-babc-a16c350d35da",
+												"label": "Rosuvastatin"
+											},
+											{
+												"concept": "a8a43a52-1350-11df-a1f1-0026b9348838",
+												"label": "Spironolactone"
+											},
+											{
+												"concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
+												"label": "Telmisartan"
+											},
+											{
+												"concept": "59611435-e869-4a8d-8e58-649b7630e471",
+												"label": "Junior ASA"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Frequency",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Once a day",
+												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Twice a day",
+												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Three times a day",
+												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Four times a day",
+												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "As needed",
+												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiHypertensive)"
+									},
+									"id": "medFreq"
+								},
+								{
+									"label": "Number of mg:",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+										"rendering": "number"
+									},
+									"type": "obs",
+									"id": "numberMg",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiHypertensive)"
+									}
+								}
+							]
 						},
 						{
-							"label": "Diabetes treatment:",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')) ? undefined : HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')",
-							"id": "antiDiabetics",
-							"questionOptions": {
-								"concept": "78809200-7f7f-4d6f-b515-31088765d442",
-								"answers": [
-									{
-										"concept": "a8a4320a-1350-11df-a1f1-0026b9348838",
-										"label": "Gliclazide"
-									},
-									{
-										"concept": "a8a4314c-1350-11df-a1f1-0026b9348838",
-										"label": "Glibenclamide"
-									},
-									{
-										"concept": "a8a43386-1350-11df-a1f1-0026b9348838",
-										"label": "Glimepiride"
-									},
-									{
-										"concept": "a8a42ecc-1350-11df-a1f1-0026b9348838",
-										"label": "Insulin 70/30"
-									},
-									{
-										"concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
-										"label": "Insulin NPH"
-									},
-									{
-										"concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
-										"label": "Insulin humalogue"
-									},
-									{
-										"concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
-										"label": "Insulin glargine"
-									},
-									{
-										"concept": "a8a4344e-1350-11df-a1f1-0026b9348838",
-										"label": "Metformin"
-									},
-									{
-										"concept": "a8a43b1a-1350-11df-a1f1-0026b9348838",
-										"label": "Pioglitazone"
-									}
-								],
-								"rendering": "multiCheckbox"
-							},
-							"type": "obs",
-							"validators": [],
+							"type": "obsGroup",
+							"label": "Diabetes drugs started, detailed",
+							"id": "diabetesdetailed",
 							"hide": {
 								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
-							}
+							},
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "a6812b99-3126-40b8-8c9c-2f511a6912b1"
+							},
+							"questions": [
+								{
+									"label": "Diabetes treatment:",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')) ? undefined : HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')",
+									"id": "antiDiabetics",
+									"questionOptions": {
+										"concept": "78809200-7f7f-4d6f-b515-31088765d442",
+										"answers": [
+											{
+												"concept": "a8a4320a-1350-11df-a1f1-0026b9348838",
+												"label": "Gliclazide"
+											},
+											{
+												"concept": "a8a4314c-1350-11df-a1f1-0026b9348838",
+												"label": "Glibenclamide"
+											},
+											{
+												"concept": "a8a43386-1350-11df-a1f1-0026b9348838",
+												"label": "Glimepiride"
+											},
+											{
+												"concept": "a8a42ecc-1350-11df-a1f1-0026b9348838",
+												"label": "Insulin 70/30"
+											},
+											{
+												"concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
+												"label": "Insulin NPH"
+											},
+											{
+												"concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
+												"label": "Insulin humalogue"
+											},
+											{
+												"concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
+												"label": "Insulin glargine"
+											},
+											{
+												"concept": "a8a4344e-1350-11df-a1f1-0026b9348838",
+												"label": "Metformin"
+											},
+											{
+												"concept": "a8a43b1a-1350-11df-a1f1-0026b9348838",
+												"label": "Pioglitazone"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Frequency",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Once a day",
+												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Twice a day",
+												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Three times a day",
+												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Four times a day",
+												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "As needed",
+												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiDiabetics)"
+									},
+									"id": "medFreq"
+								},
+								{
+									"label": "Number of mg:",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+										"rendering": "number"
+									},
+									"type": "obs",
+									"id": "numberMg",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiDiabetics)"
+									}
+								}
+							]
 						},
 						{
-							"label": "Mental health treatment:",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('c72425eb-d829-4774-87f3-f3fd90dd7258')) ? undefined : HD.getObject('prevEnc').getValue('c72425eb-d829-4774-87f3-f3fd90dd7258')",
-							"id": "mhealth",
-							"questionOptions": {
-								"concept": "c72425eb-d829-4774-87f3-f3fd90dd7258",
-								"answers": [
-									{
-										"concept": "a8a444fc-1350-11df-a1f1-0026b9348838",
-										"label": "Haloperidol"
-									},
-									{
-										"concept": "a89891de-1350-11df-a1f1-0026b9348838",
-										"label": "Chlorpromazine"
-									},
-									{
-										"concept": "a8a4442a-1350-11df-a1f1-0026b9348838",
-										"label": "Olanzapine"
-									}
-								],
-								"rendering": "multiCheckbox"
-							},
-							"type": "obs",
-							"validators": [],
+							"type": "obsGroup",
+							"label": "Mental health drugs started, detailed",
+							"id": "mentaldetailed",
 							"hide": {
 								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a890b810-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
-							}
+							},
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "e249e6f0-a094-4c7a-8f30-43bebad62a95"
+							},
+							"questions": [
+								{
+									"label": "Mental health treatment:",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('c72425eb-d829-4774-87f3-f3fd90dd7258')) ? undefined : HD.getObject('prevEnc').getValue('c72425eb-d829-4774-87f3-f3fd90dd7258')",
+									"id": "mhealth",
+									"questionOptions": {
+										"concept": "c72425eb-d829-4774-87f3-f3fd90dd7258",
+										"answers": [
+											{
+												"concept": "a8a444fc-1350-11df-a1f1-0026b9348838",
+												"label": "Haloperidol"
+											},
+											{
+												"concept": "a89891de-1350-11df-a1f1-0026b9348838",
+												"label": "Chlorpromazine"
+											},
+											{
+												"concept": "a8a4442a-1350-11df-a1f1-0026b9348838",
+												"label": "Olanzapine"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Frequency",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Once a day",
+												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Twice a day",
+												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Three times a day",
+												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Four times a day",
+												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "As needed",
+												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(mhealth)"
+									},
+									"id": "medFreq"
+								},
+								{
+									"label": "Number of mg:",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+										"rendering": "number"
+									},
+									"type": "obs",
+									"id": "numberMg",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(mhealth)"
+									}
+								}
+							]
 						},
 						{
 							"label": "Renal disease status:",
@@ -9072,7 +9278,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Patient establishment categorization:",
+							"label": "Patient categorization:",
 							"type": "obs",
 							"required": "true",
 							"id": "establishCategory",
@@ -9197,7 +9403,7 @@
 											},
 											{
 												"concept": "4b2bb2ce-4160-4e44-b310-5ceeb761ec38",
-												"label": "Treatment of GBV injuries"
+												"label": "Treatment of injuries"
 											},
 											{
 												"concept": "717c50e1-48da-4148-aeee-c49fdd957b64",
@@ -9486,7 +9692,7 @@
 								},
 								{
 									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(medDate) && (new moment(myValue)).diff(new moment(medDate),'weeks') > 24",
+									"failsWhenExpression": "!isEmpty(medDate) && (new moment(myValue)).diff(new moment(medDate),'weeks') > 25",
 									"message": "Return to clinic date should not be more than 6 months after medication pick up date"
 								}
 							]

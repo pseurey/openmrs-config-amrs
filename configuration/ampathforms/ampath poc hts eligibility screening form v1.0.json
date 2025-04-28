@@ -99,9 +99,21 @@
 							},
 							"id": "femaleKeyPopTypes",
 							"hide": {
-								"hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || sex != 'F'"
+								"hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || age <15 || sex != 'F'"
 							}
 						},
+						{
+							"label": "Specify:",
+							"type": "obs",
+							"questionOptions": {
+							  "rendering": "text",
+							  "concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
+							},
+							"id": "kPfmalEOther",
+							"hide": {
+							  "hideWhenExpression": "isEmpty(femaleKeyPopTypes) || femaleKeyPopTypes !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+							}
+						  },
 						{
 							"label": "Please indicate Key population type :",
 							"type": "obs",
@@ -125,9 +137,21 @@
 							},
 							"id": "maleKeyPopTypes",
 							"hide": {
-								"hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || sex !== 'M'"
+								"hideWhenExpression": "isEmpty(populationType) || populationType != '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6' || age <15 || sex !== 'M'"
 							}
 						},
+						{
+							"label": "Specify:",
+							"type": "obs",
+							"questionOptions": {
+							  "rendering": "text",
+							  "concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
+							},
+							"id": "kPmaleOther",
+							"hide": {
+							  "hideWhenExpression": "isEmpty(maleKeyPopTypes) || maleKeyPopTypes !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+							}
+						  },
 						{
 							"label": "Please indicate Priority population type :",
 							"type": "obs",
@@ -170,7 +194,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "isEmpty(populationType) || populationType != '8b0fa615-39c7-40ba-ad06-579ae540c6a5'"
+								"hideWhenExpression": "isEmpty(populationType) || populationType != '8b0fa615-39c7-40ba-ad06-579ae540c6a5' || age <15"
 							},
 							"id": "__xr7svtJJu"
 						},
@@ -205,7 +229,7 @@
 							},
 							"id": "femalevp",
 							"hide": {
-								"hideWhenExpression": "isEmpty(populationType) || populationType != '729690d4-09dc-497e-a180-bfc2e9d7d21d' || sex !== 'F'"
+								"hideWhenExpression": "isEmpty(populationType) || populationType != '729690d4-09dc-497e-a180-bfc2e9d7d21d' || age <15 || sex !== 'F'"
 							}
 						},
 						{
@@ -239,7 +263,7 @@
 							},
 							"id": "malevp",
 							"hide": {
-								"hideWhenExpression": "isEmpty(populationType) || populationType !== '729690d4-09dc-497e-a180-bfc2e9d7d21d' || sex !== 'M'"
+								"hideWhenExpression": "isEmpty(populationType) || populationType !== '729690d4-09dc-497e-a180-bfc2e9d7d21d' || age <15 || sex !== 'M'"
 							}
 						},
 						{
@@ -251,55 +275,13 @@
 								"answers": [
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes",
-										"conceptMappings": [
-											{
-												"type": "PIH",
-												"value": "1065"
-											},
-											{
-												"type": "PIH Malawi",
-												"value": "Malawi: 1065"
-											},
-											{
-												"type": "AMPATH",
-												"value": "1065"
-											},
-											{
-												"type": "CIEL",
-												"value": "1065"
-											},
-											{
-												"type": "SNOMED CT",
-												"value": "CT: 373066001"
-											}
-										]
+										"label": "Yes"
+										
 									},
 									{
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No",
-										"conceptMappings": [
-											{
-												"type": "PIH",
-												"value": "1066"
-											},
-											{
-												"type": "SNOMED CT",
-												"value": "CT: 373067005"
-											},
-											{
-												"type": "PIH Malawi",
-												"value": "Malawi: 1066"
-											},
-											{
-												"type": "CIEL",
-												"value": "1066"
-											},
-											{
-												"type": "AMPATH",
-												"value": "1066"
-											}
-										]
+										"label": "No"
+										
 									}
 								]
 							},
@@ -348,7 +330,7 @@
 								"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
 							},
 							"hide": {
-								"hideWhenExpression": "isEmpty(disabilityTypes) || !arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'], disabilityTypes)"
+								"hideWhenExpression": "isEmpty(disabilityTypes) || !arrayContainsAny(['a8aaf3e2-1350-11df-a1f1-0026b9348838'], disabilityTypes)"
 							}
 						}
 					]
