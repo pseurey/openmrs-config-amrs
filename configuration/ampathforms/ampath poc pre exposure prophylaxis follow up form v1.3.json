@@ -656,12 +656,10 @@
 					]
 				},
 				{
-					"label": "GBV Screening",
-					"isExpanded": "true",
+					"label": "Violence Screening",
 					"questions": [
 						{
 							"label": "In the last 3 months, has your partner(s) hit, kicked, slapped, or otherwise physically hurt you?",
-							"required": "true",
 							"id": "physical",
 							"type": "obs",
 							"questionOptions": {
@@ -681,7 +679,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner threatened to hurt you or abused you verbally or emotionally? E.g abusing or talking down to you?",
-							"required": "true",
 							"id": "emmotional",
 							"type": "obs",
 							"questionOptions": {
@@ -701,7 +698,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner(s) forced you to do something sexually that made you feel uncomfortable?",
-							"required": "true",
 							"id": "sexual",
 							"type": "obs",
 							"questionOptions": {
@@ -721,7 +717,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner (s) deliberately withdrawn any form of support, including financial support?",
-							"required": "true",
 							"id": "financial",
 							"type": "obs",
 							"questionOptions": {
@@ -740,7 +735,7 @@
 							}
 						},
 						{
-							"label": "GBV/IPV assessment notes:",
+							"label": "Assessment notes:",
 							"type": "obs",
 							"id": "gbvText",
 							"questionOptions": {
@@ -748,13 +743,7 @@
 								"rendering": "textarea",
 								"rows": 7
 							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-									"message": "Patient screened positive for GBV/IPV. Please provide notes."
-								}
-							]
+							"validators": []
 						}
 					]
 				}
@@ -809,6 +798,20 @@
 							"validators": []
 						},
 						{
+							"label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility):",
+							"type": "obs",
+							"required": "true",
+							"id": "htsProvider",
+							"questionOptions": {
+								"concept": "29f94c52-6159-4e26-805c-beb915c9fa21",
+								"rendering": "text"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "isEmpty(hivRapid)"
+							}
+						},
+						{
 							"label": "Client initiated on ART:",
 							"type": "obs",
 							"id": "linkCare",
@@ -849,7 +852,10 @@
 								],
 								"rendering": "select"
 							},
-							"validators": []
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"type": "obs",
@@ -905,7 +911,10 @@
 								],
 								"rendering": "select"
 							},
-							"validators": []
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "creatinineDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"label": "Other (Write in test,result and units [if applicable]):",
@@ -915,6 +924,9 @@
 								"concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
 								"rendering": "textarea",
 								"rows": 15
+							},
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -1314,6 +1326,35 @@
 							}
 						},
 						{
+							"label": "Next medication pick up location:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "62c90e60-ced5-4183-a1b0-092339384d02",
+								"answers": [
+									{
+										"concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+										"label": "Facility"
+									},
+									{
+										"concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+										"label": "Community"
+									}
+								]
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(prepPrescribed) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Patient on PrEP.Kindly indicate next pick location."
+								}
+							],
+							"id": "pickupLoc",
+							"hide": {
+								"hideWhenExpression": "prepPrescribed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
 							"label": "If discontinued, reasons:",
 							"id": "discontinuedReasons",
 							"type": "obs",
@@ -1453,14 +1494,14 @@
 			]
 		},
 		{
-			"label": "GBV Services And Referrals",
+			"label": "Violence Sreening Services And Referrals",
 			"sections": [
 				{
-					"label": "GBV Services",
+					"label": "Violence Screening Services",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "GBV Services:",
+							"label": "Violence screening services:",
 							"questionOptions": {
 								"concept": "e7819751-a5b0-485d-a2bc-9d4aa69aa1e4",
 								"answers": [
@@ -1470,7 +1511,7 @@
 									},
 									{
 										"concept": "a89adc46-1350-11df-a1f1-0026b9348838",
-										"label": "Treatment of GBV injuries"
+										"label": "Treatment of injuries"
 									},
 									{
 										"concept": "717c50e1-48da-4148-aeee-c49fdd957b64",
@@ -1488,13 +1529,7 @@
 								"rendering": "multiCheckbox"
 							},
 							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-									"message": "Patient screened positive for GBV/IPV. Please indicate service provided."
-								}
-							],
+							"validators": [],
 							"id": "gbvServices"
 						}
 					]
@@ -1540,13 +1575,7 @@
 										"rendering": "multiCheckbox"
 									},
 									"type": "obs",
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-											"message": "Patient screened positive for GBV/IPV. Please indicate referral ordered."
-										}
-									]
+									"validators": []
 								},
 								{
 									"label": "Patient referred to other, (specify):",

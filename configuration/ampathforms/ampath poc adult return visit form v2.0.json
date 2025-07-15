@@ -886,6 +886,11 @@
 									"type": "js_expression",
 									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(caTestResult) && caTestResult !== 'a89ad3a4-1350-11df-a1f1-0026b9348838' ",
 									"message": "Date is result is required."
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Date should be before the encounter date."
 								}
 							],
 							"hide": {
@@ -7946,11 +7951,16 @@
 									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
 									"questionOptions": {
 										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "number"
+										"rendering": "decimal"
 									},
 									"type": "obs",
 									"id": "numberMg",
-									"validators": [],
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 3
+										}
+									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(antiHypertensive)"
 									}
@@ -8063,11 +8073,16 @@
 									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
 									"questionOptions": {
 										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "number"
+										"rendering": "decimal"
 									},
 									"type": "obs",
 									"id": "numberMg",
-									"validators": [],
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 3
+										}
+									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(antiDiabetics)"
 									}
@@ -8156,11 +8171,16 @@
 									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
 									"questionOptions": {
 										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "number"
+										"rendering": "decimal"
 									},
 									"type": "obs",
 									"id": "numberMg",
-									"validators": [],
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(mhealth)"
 									}
@@ -8574,10 +8594,10 @@
 					]
 				},
 				{
-					"label": "DC Outcome",
+					"label": "DSD Outcome",
 					"questions": [
 						{
-							"label": "Differentiated care plan:",
+							"label": "DSD plan:",
 							"required": "true",
 							"id": "dcCarePlan",
 							"questionOptions": {
@@ -8585,11 +8605,11 @@
 								"answers": [
 									{
 										"concept": "a8af5018-1350-11df-a1f1-0026b9348838",
-										"label": "Continue in DC"
+										"label": "Continue in DSD"
 									},
 									{
 										"concept": "a8af50f4-1350-11df-a1f1-0026b9348838",
-										"label": "Exit from DC"
+										"label": "Exit from DSD"
 									}
 								],
 								"rendering": "select"
@@ -8805,10 +8825,6 @@
 											{
 												"concept": "a89dd9aa-1350-11df-a1f1-0026b9348838",
 												"label": "Echo"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
 											}
 										]
 									}
@@ -8816,14 +8832,11 @@
 								{
 									"label": "Test ordered: Other (specify):",
 									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
 										"rendering": "text"
 									},
 									"type": "obs",
 									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
-									},
 									"id": "otherTestOrder"
 								}
 							],
@@ -9357,7 +9370,7 @@
 											},
 											{
 												"concept": "7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0",
-												"label": "Differentiated care program"
+												"label": "Differentiated service delivery model"
 											},
 											{
 												"concept": "a8a06788-1350-11df-a1f1-0026b9348838",
@@ -9536,6 +9549,36 @@
 							}
 						},
 						{
+							"label": "Facility ART refill model:",
+							"required": "true",
+							"id": "facilityModel",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "d5e8c52f-7a38-44ed-a76a-bc771cc9b2ee",
+								"answers": [
+									{
+										"concept": "20838ff5-7a28-4877-889c-300155627a6f",
+										"label": "FT-Fast track"
+									},
+									{
+										"concept": "bf6b9fc9-a3bb-4881-aa06-df9071c47e33",
+										"label": "FAG-Facility ART distribution group"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(deliveryModel) && arrayContains(['d5e8c52f-7a38-44ed-a76a-bc771cc9b2ee'],deliveryModel)",
+									"message": "Please indicate the facility model."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "deliveryModel !== 'd5e8c52f-7a38-44ed-a76a-bc771cc9b2ee'"
+							}
+						},
+						{
 							"label": "Community model:",
 							"type": "obs",
 							"id": "communityModel",
@@ -9545,11 +9588,23 @@
 								"answers": [
 									{
 										"concept": "7e5e7759-e9f7-4b16-b904-041fcdddb390",
-										"label": "Individual DDD"
+										"label": "ICAD-Individual Community ART distribution"
 									},
 									{
 										"concept": "33363568-fb62-4063-b0ac-e37be1d23514",
-										"label": "Community pharmacy"
+										"label": "CPM-Community pharmacy model"
+									},
+									{
+										"concept": "771b200c-8525-4425-b763-7e1cdca1b01f",
+										"label": "CARG-Community ART group -peer led"
+									},
+									{
+										"concept": "fb36b5af-3f83-460b-a10f-fc7923ed7914",
+										"label": "CARG-Community ART group -HCW led"
+									},
+									{
+										"concept": "fc3e030d-f29a-4385-8171-4b2c3559016a",
+										"label": "CADP-Community ART distribution points"
 									}
 								]
 							},
@@ -9604,12 +9659,12 @@
 							"validators": [
 								{
 									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(deliveryModel) && arrayContains(['f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e'],deliveryModel)",
-									"message": "Please indicate whether patient is elligible for delivery."
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(communityModel) && arrayContains(['33363568-fb62-4063-b0ac-e37be1d23514'],communityModel)",
+									"message": "Please indicate whether patient is eligible for drug delivery."
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "deliveryModel !== 'f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e'"
+								"hideWhenExpression": "communityModel !== '33363568-fb62-4063-b0ac-e37be1d23514'"
 							}
 						}
 					]
@@ -9710,6 +9765,49 @@
 					"isExpanded": "true",
 					"questions": [
 						{
+							"label": "Medication delivery date:",
+							"type": "obs",
+							"id": "medDelivery",
+							"questionOptions": {
+								"concept": "318a5e8b-218c-4f66-9106-cd581dec1f95",
+								"rendering": "date",
+								"weeksList": [
+									15,
+									30,
+									45,
+									60,
+									90,
+									120,
+									150,
+									180
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Medication delivery date should be greater than the encounter date."
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(myValue) && (new moment(myValue)).diff(new moment(encDate).startOf('day'),'weeks') < 2",
+									"message": "Medication delivery date should not be less than 2 weeks after the encounter date"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals)",
+									"message": "Patient referred for DSD, medication delivery date should be required."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "communityModel !== '7e5e7759-e9f7-4b16-b904-041fcdddb390'"
+							}
+						},
+						{
 							"label": "Medication pick up date:",
 							"type": "obs",
 							"id": "medDate",
@@ -9744,12 +9842,12 @@
 								},
 								{
 									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals)",
-									"message": "Patient referred for DC, medication pick up date should be required."
+									"failsWhenExpression": "isEmpty(myValue) && arrayContains (['d5e8c52f-7a38-44ed-a76a-bc771cc9b2ee'],deliveryModel)",
+									"message": "Medication pick up date should be required."
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "(arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c'], visitTypeUuid) && dcCarePlan === 'a8af50f4-1350-11df-a1f1-0026b9348838') || !((arrayContains( ['d4ac2aa5-2899-42fb-b08a-d40161815b48'], visitTypeUuid) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals))|| (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'], visitTypeUuid)))"
+								"hideWhenExpression": "(arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c'], visitTypeUuid) && dcCarePlan === 'a8af50f4-1350-11df-a1f1-0026b9348838') || !((arrayContains( ['d4ac2aa5-2899-42fb-b08a-d40161815b48'], visitTypeUuid) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals) && (communityModel !=='7e5e7759-e9f7-4b16-b904-041fcdddb390'))|| (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'], visitTypeUuid))&& (communityModel !=='7e5e7759-e9f7-4b16-b904-041fcdddb390'))"
 							}
 						},
 						{

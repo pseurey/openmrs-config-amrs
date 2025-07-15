@@ -1,0 +1,215 @@
+{
+	"name": "AMPATH POC Project Beyond PrEP Delivery Consent Form v1.0",
+	"pages": [
+		{
+			"label": "PrEP Delivery Consent:",
+			"sections": [
+				{
+					"label": "PrEP Delivery Consent:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Consent Date:",
+							"required": "true",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "Encounter Provider:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter Location:",
+							"required": "true",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						},
+						{
+							"label": "Is the client elligible for PrEP continuation?",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "70d8f5b1-8a10-453a-a1e2-1de96a87f31f",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "prepCont"
+						},
+						{
+							"label": "Discontinuation reason",
+							"type": "obsGroup",
+							"questionOptions": {
+								"concept": "3665d0ef-3718-47b2-9091-8b685bda412d",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "If no, give reasons:",
+									"type": "obs",
+									"id": "discontinuedReasons",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "a89e3f94-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "HIV test positive",
+												"concept": "a89ace7c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Low risk of HIV",
+												"concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb"
+											},
+											{
+												"label": "Renal dysfunction",
+												"concept": "a8a058ce-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Client request",
+												"concept": "5be50fc2-9e50-4d64-8a0c-f08ed7a34bb9"
+											},
+											{
+												"label": "Not adherent to PrEP",
+												"concept": "a89ce50e-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Viral suppression of HIV positive partner",
+												"concept": "243dbae3-326e-4919-9b0d-22a1567e477f"
+											},
+											{
+												"label": "Too many HIV tests",
+												"concept": "0d57a3e4-5f9b-4a0f-9784-4970d7eeb57d"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"hide": {
+										"hideWhenExpression": "prepCont !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Other reason to discontinue, specify:",
+									"type": "obs",
+									"id": "OtherDiscontReasonSpecify",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"answers": []
+									},
+									"hide": {
+										"hideWhenExpression": "isEmpty(discontinuedReasons) || !arrayContainsAny(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],discontinuedReasons)"
+									}
+								}
+							],
+							"id": "__ErLznrKqo"
+						},
+						{
+							"label": "Does the client consent for teleconsultations through phone calls?",
+							"type": "obs",
+							"id": "telecom",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6ef9b8e3-ba2d-4d24-82e4-3afd4ecc3c34",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"hide": {
+								"hideWhenExpression": "prepCont !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If yes, does the client consent for PrEP delivery during refill times at their place of choice at appropriate times?",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "aaff0b06-6436-4ab4-8956-070f5d75d9c8",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "drugDelivery",
+							"hide": {
+								"hideWhenExpression": "telecom !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Does the client consent for HIV self-test kit delivery bundled with PrEP during refill times?",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "cb9828bf-2b96-4188-b360-226bf4f5c26e",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "selftestConsent",
+							"hide": {
+								"hideWhenExpression": "telecom !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Project beyond prep refill consent form (Upload the form here):",
+							"type": "obs",
+							"default": "",
+							"id": "beyondConsent",
+							"questionOptions": {
+								"concept": "3e491ddf-ad07-4ab7-be73-48ed4983363c",
+								"rendering": "file"
+							},
+							"validators": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"processor": "EncounterFormProcessor",
+	"uuid": "xxxx",
+	"referencedForms": []
+}

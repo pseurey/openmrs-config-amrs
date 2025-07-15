@@ -1,0 +1,153 @@
+{
+	"name": "AMPATH POC Project Beyond PrEP Delivery Consent Form v1.0",
+	"pages": [
+		{
+			"label": "PrEP Delivery Consent:",
+			"sections": [
+				{
+					"label": "PrEP Delivery Consent:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Consent Date:",
+							"required": "true",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "Encounter Provider:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter Location:",
+							"required": "true",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						},
+						{
+							"label": "Is the client elligible for PrEP?",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "70d8f5b1-8a10-453a-a1e2-1de96a87f31f",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "prepElligible"
+						},
+						{
+							"label": "Has the client consented to participate in the PrEP Study?",
+							"type": "obs",
+							"id": "study",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "2248a7c3-8536-4700-931a-83dfb6462bff",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+							
+						},
+						{
+							"label": "Has the client consented for PrEP Telehealth?",
+							"type": "obs",
+							"id": "telecom",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6ef9b8e3-ba2d-4d24-82e4-3afd4ecc3c34",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+							
+						},
+						{
+							"label": "If yes, does the client consent for PrEP delivery during refill times at their place of choice at appropriate times?",
+							"type": "obs",
+							
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "aaff0b06-6436-4ab4-8956-070f5d75d9c8",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "drugDelivery",
+							"hide": {
+								"hideWhenExpression": "telecom !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Does the client consent for HIV self-test kit delivery bundled with PrEP during refill times?",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "cb9828bf-2b96-4188-b360-226bf4f5c26e",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "selftestConsent",
+							"hide": {
+								"hideWhenExpression": "telecom !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+						
+					]
+				}
+			]
+		}
+	],
+	"processor": "EncounterFormProcessor",
+	"uuid": "xxxx",
+	"referencedForms": []
+}

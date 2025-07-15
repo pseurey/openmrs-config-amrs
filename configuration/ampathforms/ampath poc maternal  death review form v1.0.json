@@ -266,7 +266,7 @@
                             "validators": []
                         },
                         {
-                            "label": "Parity abortion:",
+                            "label": "Parity :",
                             "type": "obs",
                             "questionOptions": {
                                 "rendering": "number",

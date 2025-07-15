@@ -8903,8 +8903,9 @@
 						}
 					]
 				},
-				{
+					{
 					"label": "Comorbidities And Additional Medication Orders",
+					"isExpanded": "true",
 					"questions": [
 						{
 							"type": "obsGroup",
@@ -8917,7 +8918,7 @@
 								{
 									"label": "Comorbid illness:",
 									"required": "true",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')) ? undefined : HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ebf02efb-b28c-49e8-9caf-65e96dbfa0a9.0ac4af8a-1b8e-4404-b445-c0471d6f7576')) ? undefined : HD.getObject('prevEnc').getValue('ebf02efb-b28c-49e8-9caf-65e96dbfa0a9.0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
 									"id": "comorbidIllness",
 									"questionOptions": {
 										"concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
@@ -8974,7 +8975,7 @@
 									}
 								}
 							],
-							"id": "__HtnMwEyEK"
+							"id": "__qxL9JJy92"
 						},
 						{
 							"type": "obsGroup",
@@ -9135,11 +9136,16 @@
 									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
 									"questionOptions": {
 										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "number"
+										"rendering": "decimal"
 									},
 									"type": "obs",
 									"id": "numberMg",
-									"validators": [],
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 3
+										}
+									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(antiHypertensive)"
 									}
@@ -9252,11 +9258,16 @@
 									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
 									"questionOptions": {
 										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "number"
+										"rendering": "decimal"
 									},
 									"type": "obs",
 									"id": "numberMg",
-									"validators": [],
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 3
+										}
+									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(antiDiabetics)"
 									}
@@ -9345,16 +9356,55 @@
 									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
 									"questionOptions": {
 										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "number"
+										"rendering": "decimal"
 									},
 									"type": "obs",
 									"id": "numberMg",
-									"validators": [],
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(mhealth)"
 									}
 								}
 							]
+						},
+						{
+							"label": "Renal disease status:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('85b45e49-2428-4898-b9f8-62a1b8a4b4e4')) ? undefined : HD.getObject('prevEnc').getValue('85b45e49-2428-4898-b9f8-62a1b8a4b4e4')",
+							"id": "renalDisease",
+							"questionOptions": {
+								"concept": "85b45e49-2428-4898-b9f8-62a1b8a4b4e4",
+								"answers": [
+									{
+										"concept": "16bcc8b6-7eee-43ef-b8da-89ed597dc1c9",
+										"label": "Acute kidney disease"
+									},
+									{
+										"concept": "5cc6e984-a8c1-421b-93ad-0617251fa112",
+										"label": "Chronic kidney disease"
+									},
+									{
+										"concept": "9da6f97d-6f7c-4d14-aaa8-7180b11d7d64",
+										"label": "ESRD on dialysis"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny(['a8ad5254-1350-11df-a1f1-0026b9348838'],comorbidIllness)",
+									"message": "Patient marked as having renal disease. Please indicate status"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8ad5254-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+							}
 						},
 						{
 							"type": "obsGroup",
@@ -10386,7 +10436,7 @@
 						}
 					]
 				},
-				{
+						{
 					"label": "Categorization",
 					"isExpanded": "true",
 					"questions": [
