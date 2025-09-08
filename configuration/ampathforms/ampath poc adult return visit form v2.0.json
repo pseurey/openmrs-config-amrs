@@ -3224,7 +3224,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						},
 						{
@@ -3310,7 +3310,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						},
 						{
@@ -3350,7 +3350,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						},
 						{
@@ -3382,7 +3382,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						}
 					]
@@ -5117,7 +5117,7 @@
 					]
 				},
 				{
-					"label": "CD4",
+					"label": "CD4/Crag",
 					"questions": [
 						{
 							"type": "obs",
@@ -5213,6 +5213,49 @@
 									"decimalPlace": 1
 								}
 							]
+						},
+						{
+							"label": "Crag test:",
+							"id": "cragTest",
+							"questionOptions": {
+								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+										"label": "Poor sample quality"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(cragTest)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
+							}
 						}
 					]
 				},
@@ -5774,6 +5817,42 @@
 							},
 							"type": "obs",
 							"validators": []
+						},
+						{
+							"label": "TB LAM:",
+							"id": "tblam",
+							"questionOptions": {
+								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(tblam) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(tblam)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
 						}
 					]
 				},
@@ -6124,7 +6203,7 @@
 												"label": "Other"
 											}
 										],
-										"rendering": "select"
+										"rendering": "multiCheckbox"
 									},
 									"type": "obs",
 									"validators": [
@@ -6195,17 +6274,17 @@
 									"validators": [
 										{
 											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(arvChangeReason)&&isEmpty(myValue) && (arvChangeReason==='a890d1ba-1350-11df-a1f1-0026b9348838')",
+											"failsWhenExpression": "!isEmpty(arvChangeReason)&&isEmpty(myValue) && (arrayContainsAny(['a890d1ba-1350-11df-a1f1-0026b9348838'],arvChangeReason))",
 											"message": "You indicated patient is changing /changing dose/substituting/stopping arvs due to toxicity, cause should be selected."
 										},
 										{
 											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(arvChangeReason) && !isEmpty(myValue) && (arvChangeReason!=='a890d1ba-1350-11df-a1f1-0026b9348838')",
+											"failsWhenExpression": "!isEmpty(arvChangeReason) && !isEmpty(myValue) && (!arrayContainsAny(['a890d1ba-1350-11df-a1f1-0026b9348838'],arvChangeReason))",
 											"message": "You indicated patient is not changing/dose/substituting/stopping arvs due to toxicity, cause should be selected."
 										}
 									],
 									"hide": {
-										"hideWhenExpression": "arvChangeReason!=='a890d1ba-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "!arrayContainsAny(['a890d1ba-1350-11df-a1f1-0026b9348838'],arvChangeReason)"
 									}
 								},
 								{
@@ -7424,85 +7503,6 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Crag test:",
-							"id": "cragTest",
-							"questionOptions": {
-								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
-										"label": "Poor sample quality"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(cragTest)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
-							}
-						},
-						{
-							"label": "TB LAM:",
-							"id": "tblam",
-							"questionOptions": {
-								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(tblam) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(tblam)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
 							"label": "Cryptococcal meningitis treatment plan:",
 							"type": "obs",
 							"required": "true",
@@ -7555,7 +7555,7 @@
 							],
 							"id": "cryptoPlan",
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						},
 						{
@@ -7627,7 +7627,7 @@
 							],
 							"id": "pcpPlan",
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						},
 						{
@@ -7670,7 +7670,7 @@
 							],
 							"id": "toxoPlan",
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						},
 						{
@@ -7713,7 +7713,7 @@
 							],
 							"id": "kaposiPlan",
 							"hide": {
-								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c'],visitTypeUuid)"
+								"hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
 							}
 						}
 					]
@@ -8617,7 +8617,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'],visitTypeUuid)"
+								"hideWhenExpression": "!arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'],visitTypeUuid)"
 							}
 						},
 						{
@@ -9289,6 +9289,7 @@
 				},
 				{
 					"label": "Referrals",
+					"isExpanded": "true",
 					"questions": [
 						{
 							"type": "obsGroup",
@@ -9307,6 +9308,10 @@
 											{
 												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
 												"label": "None"
+											},
+											{
+												"concept": "7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0",
+												"label": "Differentiated service delivery model"
 											},
 											{
 												"concept": "a89fbb12-1350-11df-a1f1-0026b9348838",
@@ -9367,10 +9372,6 @@
 											{
 												"concept": "a89e2d1a-1350-11df-a1f1-0026b9348838",
 												"label": "Social work"
-											},
-											{
-												"concept": "7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0",
-												"label": "Differentiated service delivery model"
 											},
 											{
 												"concept": "a8a06788-1350-11df-a1f1-0026b9348838",
@@ -9545,7 +9546,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c'], visitTypeUuid) && dcCarePlan !== 'a8af5018-1350-11df-a1f1-0026b9348838') || !((arrayContains( ['d4ac2aa5-2899-42fb-b08a-d40161815b48'], visitTypeUuid) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals))|| (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'], visitTypeUuid)))"
+								"hideWhenExpression": "establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'], visitTypeUuid) && dcCarePlan !== 'a8af5018-1350-11df-a1f1-0026b9348838') || !((arrayContains( ['d4ac2aa5-2899-42fb-b08a-d40161815b48'], visitTypeUuid) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals))|| (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'], visitTypeUuid)))"
 							}
 						},
 						{
@@ -9799,8 +9800,13 @@
 								},
 								{
 									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals)",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals) && communityModel === '7e5e7759-e9f7-4b16-b904-041fcdddb390'",
 									"message": "Patient referred for DSD, medication delivery date should be required."
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContains (['a8af5018-1350-11df-a1f1-0026b9348838'],dcCarePlan) && communityModel === '7e5e7759-e9f7-4b16-b904-041fcdddb390'",
+									"message": "Patient on DSD, medication delivery date should be required."
 								}
 							],
 							"hide": {
@@ -9847,7 +9853,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "(arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c'], visitTypeUuid) && dcCarePlan === 'a8af50f4-1350-11df-a1f1-0026b9348838') || !((arrayContains( ['d4ac2aa5-2899-42fb-b08a-d40161815b48'], visitTypeUuid) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals) && (communityModel !=='7e5e7759-e9f7-4b16-b904-041fcdddb390'))|| (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'], visitTypeUuid))&& (communityModel !=='7e5e7759-e9f7-4b16-b904-041fcdddb390'))"
+								"hideWhenExpression": "(arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'], visitTypeUuid) && dcCarePlan === 'a8af50f4-1350-11df-a1f1-0026b9348838' || establishCategory === 'dc8eb4d5-8e3c-4c48-bec9-340cf125ff55') || !((arrayContains( ['d4ac2aa5-2899-42fb-b08a-d40161815b48'], visitTypeUuid) && arrayContains (['7c6f0599-3e3e-4f42-87a2-2ce66f1e96d0'],referrals) && (communityModel !=='7e5e7759-e9f7-4b16-b904-041fcdddb390') ||arrayContains (['dc8eb4d5-8e3c-4c48-bec9-340cf125ff55'],establishCategory))|| (arrayContains( ['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039','d4e28d0f-ae28-4eec-8cfc-449b4c5a9f5f'], visitTypeUuid))&& (communityModel !=='7e5e7759-e9f7-4b16-b904-041fcdddb390'))"
 							}
 						},
 						{

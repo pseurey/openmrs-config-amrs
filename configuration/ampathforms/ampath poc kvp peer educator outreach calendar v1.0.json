@@ -1,0 +1,668 @@
+{
+  "name": "AMPATH POC KVP Peer Educator Outreach Calendar v1.0",
+  "version": "1.0",
+  "encounterType": "uuid",
+  "processor": "EncounterFormProcessor",
+  "form": "uuid",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "KVP Peer Educator Outreach Calendar",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "id": "encDate",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "required": "true",
+              "id": "provider",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "label": "Implementation county:",
+              "type": "obs",
+              "id": "county",
+              "required": "true",
+              "questionOptions": {
+                "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation sub-county:",
+              "type": "obs",
+              "id": "subCounty",
+              "required": "true",
+              "questionOptions": {
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation ward:",
+              "type": "obs",
+              "id": "ward",
+              "required": "true",
+              "questionOptions": {
+                "concept": "0698d8d3-1d0f-487d-af0b-ac7dd76070ca",
+                "rendering": "text"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Outreach Calendar",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Key population type:",
+              "required": "true",
+              "id": "kptypeMale",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+                    "label": "MSM"
+                  },
+                  {
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+                  {
+                    "concept": "1e1af954-4a00-454a-ad55-c5f95c2e30b2",
+                    "label": "Transman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+
+                  {
+                    "concept": "add86571-a28f-4464-9f72-eb6ca72c6ee0",
+                    "label": "Transwoman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Vulnerable population type:",
+              "required": "true",
+              "id": "vulntype",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                "answers": [
+                  {
+                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                    "label": "Fisher folks"
+                  },
+                  {
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Truckers"
+                  },
+                  {
+                    "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
+                    "label": "Person in prison"
+                  },
+                  {
+                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Discordant couples"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Client type:",
+              "required": "true",
+              "id": "clientType",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89eea66-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "5c1e610c-36f4-456c-be9b-11c106591f7f",
+                    "label": "New"
+                  },
+
+                  {
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                    "label": "Repeat"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+
+            {
+              "label": "Name of hotspot/operating sites/Block number for inmates:",
+              "type": "obs",
+              "id": "hotspotFrequented",
+              "required": "true",
+              "questionOptions": {
+                "concept": "8da0ca52-ebc0-4536-bdb6-69d1dea9f223",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "vulntype === '390a0eda-e4a0-4c3b-893c-ceb0ab2387f5'"
+              }
+            },
+            {
+              "label": "Hotspot/operating sites typology:",
+              "type": "obs",
+              "id": "hotspotType",
+              "questionOptions": {
+                "concept": "55357879-1b9d-4ff6-b7e2-25ae5d2b0159",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "7980e606-9fec-4e8f-949a-e76cf9243c34",
+                    "label": "Street"
+                  },
+                  {
+                    "concept": "c2fd72ce-46fa-45be-a0b2-14821b36b8bd",
+                    "label": "Injecting den"
+                  },
+                  {
+                    "concept": "df2b7afc-ad69-413e-96c1-c880e96566dc",
+                    "label": "Uninhabitable building"
+                  },
+                  {
+                    "concept": "9e034cc9-2daf-4b46-9e8c-272c45a66e22",
+                    "label": "Parks"
+                  },
+                  {
+                    "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                    "label": "Homes"
+                  },
+                  {
+                    "concept": "acb551fc-b7b0-41aa-8bbb-44945d0894d8",
+                    "label": "Casino"
+                  },
+                  {
+                    "concept": "2d306200-5a85-4f5c-9232-d574b33b4103",
+                    "label": "Bar with lodging"
+                  },
+                  {
+                    "concept": "d0306a0f-14a0-42d7-98c2-77086f065282",
+                    "label": "Bar without lodging"
+                  },
+                  {
+                    "concept": "5b0919ed-d5e7-491a-9bf6-a1371bf89770",
+                    "label": "Sex den"
+                  },
+                  {
+                    "concept": "3a1aca73-de25-42b0-a908-4a43d7d69fa2",
+                    "label": "Strip club"
+                  },
+                  {
+                    "concept": "010aa91e-11d3-440a-820b-3d96f616a182",
+                    "label": "Highways"
+                  },
+                  {
+                    "concept": "1a21f998-963b-4d73-b582-e373fecbd85e",
+                    "label": "Brothel"
+                  },
+                  {
+                    "concept": "0433e6b6-c705-4823-ad82-ba09e67a0aa1",
+                    "label": "Guest house"
+                  },
+                  {
+                    "concept": "48ca7119-3535-48f7-877d-acd7c1d193dd",
+                    "label": "Massage parlor"
+                  },
+                  {
+                    "concept": "a9994c84-667e-4575-a968-dea7356941f7",
+                    "label": "Chang'aa den"
+                  },
+                  {
+                    "concept": "35bf407c-57e0-4404-9682-29cd198f6f2d",
+                    "label": "Barber shop/salon"
+                  },
+                  {
+                    "concept": "b590ce29-26ce-4a36-8d87-05edd7ded752",
+                    "label": "Virtual space"
+                  },
+                  {
+                    "concept": "c9642adc-e8fd-4229-9b05-c0df9e6550b2",
+                    "label": "Truck stops"
+                  },
+
+                  {
+                    "concept": "92de0bc3-61aa-4b1c-839d-2840d783ce08",
+                    "label": "Prison block"
+                  },
+
+                  {
+                    "concept": "a54bbf3d-200b-468f-a556-3247c47f6e1a",
+                    "label": "Beach"
+                  },
+
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Prison setting typologies:",
+              "type": "obs",
+              "id": "prisonTypologies",
+              "questionOptions": {
+                "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "1b4e88814-1882-4919-83f1-5f8d671f6cac",
+                    "label": "Remandees"
+                  },
+                  {
+                    "concept": "1b7d9878b-8ce9-4cdf-b6c3-a1545989c604",
+                    "label": "Convicted"
+                  },
+                  {
+                    "concept": "732547c9-934f-4b3a-aa2c-cbfddb637be0",
+                    "label": "Staff working in prison settings and their families "
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "vulntype === '390a0eda-e4a0-4c3b-893c-ceb0ab2387f5'"
+              }
+            },
+            {
+              "label": "Location in the prisons (inmates only) wards/cell blocks name or number:",
+              "type": "obs",
+              "id": "prisonLocation",
+              "questionOptions": {
+                "concept": "09d28804-18a7-47d3-9ae6-ff7937661a6b",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Average number of sex acts per week:",
+              "type": "obs",
+              "id": "sexActs",
+              "questionOptions": {
+                "concept": "532ae632-98ae-4210-a5ce-b7f02f7f2128",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Condom requirements per month:",
+              "type": "obs",
+              "id": "condomsMonth",
+              "questionOptions": {
+                "concept": "cd1862cd-b7a1-4018-b2c1-a98981934027",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Average number of anal sex acts per week:",
+              "type": "obs",
+              "id": "analSexActs",
+              "questionOptions": {
+                "concept": "bc675983-3110-431c-bd2a-71a54a0c49f2",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Lubricant requirements per month:",
+              "type": "obs",
+              "id": "lubricantWeek",
+              "questionOptions": {
+                "concept": "c88d75d6-5b09-4829-b382-d105fe384d5b",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Average number of injecting episodes per day:",
+              "type": "obs",
+              "id": "injectingEpisodes",
+              "questionOptions": {
+                "concept": "d28be8d8-2711-4cbc-9e7d-001bfb60a9e9",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Needle and syringe requirements per month:",
+              "type": "obs",
+              "id": "needleSyringMonth",
+              "questionOptions": {
+                "concept": "ca8ace07-d105-4a9f-ae80-42f89a1a3447",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Duration in sex work/Injecting/Trucking/Fishing/Since tested DC/incarcerated (Indicate in years):",
+              "type": "obs",
+              "id": "needleSyringMonth",
+              "questionOptions": {
+                "concept": "e6609b4d-2c6c-4c43-8a42-cb95c69ec265",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Have you ever experienced violence?",
+              "type": "obs",
+              "required": "true",
+              "id": "expriencedViolence",
+              "questionOptions": {
+                "concept": "4045cb6c-793c-4784-bea5-6e2b7bfd8467",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Number of needles and syringes distributed:",
+              "type": "obs",
+              "id": "needleSyringDist",
+              "questionOptions": {
+                "concept": "d0ec3716-ced0-49c3-9fb8-c1b45d2c4251",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Number of male condoms distributed:",
+              "type": "obs",
+              "id": "condomDist",
+              "questionOptions": {
+                "concept": "31faccd3-9134-4aa6-b059-921450ce9e68",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Number of female condoms distributed:",
+              "type": "obs",
+              "id": "condomDistFem",
+              "questionOptions": {
+                "concept": "8a1a75d4-a704-475b-98ff-3867d749798a",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Number of lubes distributed:",
+              "type": "obs",
+              "id": "lubesDist",
+              "questionOptions": {
+                "concept": "2f2becba-648e-468f-aa2e-2af49b646728",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Number HIV self test kits distributed:",
+              "type": "obs",
+              "id": "testKitDist",
+              "questionOptions": {
+                "concept": "2f2becba-648e-468f-aa2e-2af49b646728",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Health education:",
+              "type": "obs",
+              "required": "true",
+              "id": "healthEducation",
+              "questionOptions": {
+                "concept": "a8b0ec2a-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "27ac429d-8a42-476e-b2f6-65bde0b8c935",
+                    "label": "PreP messaging"
+                  },
+                  {
+                    "concept": "3e69faed-e56f-4ff1-8831-922224d6ae6b",
+                    "label": "HIV self testing messaging"
+                  },
+                  {
+                    "concept": "a8b01fe8-1350-11df-a1f1-0026b9348838",
+                    "label": "Substance abuse"
+                  },
+                  {
+                    "concept": "a894b1cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Family planning"
+                  },
+                  {
+                    "concept": "a8934292-1350-11df-a1f1-0026b9348838",
+                    "label": "HIV/STI information"
+                  },
+                  {
+                    "concept": "a890a96a-1350-11df-a1f1-0026b9348838",
+                    "label": "TB"
+                  },
+                  {
+                    "concept": "a8a19c20-1350-11df-a1f1-0026b9348838",
+                    "label": "PEP messaging"
+                  },
+                  {
+                    "concept": "8c0d56b4-9136-413f-b547-f1ec367ee23e",
+                    "label": "U=U"
+                  },
+                  {
+                    "concept": "86656d46-e7b9-40f2-9e3a-8d476c19b24e",
+                    "label": "Stigma reduction"
+                  },
+                  {
+                    "concept": "a89ecaa4-1350-11df-a1f1-0026b9348838",
+                    "label": "Disclosure"
+                  },
+                  {
+                    "concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
+                    "label": "Information on NCDs"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Referred for clinical services",
+              "type": "obs",
+              "required": "true",
+              "id": "clinicalServices",
+              "questionOptions": {
+                "concept": "47e6b872-f279-4895-b684-73c7f2ea39f2",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Received clinical services:",
+              "type": "obs",
+              "required": "true",
+              "id": "receivedServices",
+              "questionOptions": {
+                "concept": "e47db957-0d88-412f-a2e8-eb8538bb9986",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Crisis/Violence reported:",
+              "type": "obs",
+              "required": "true",
+              "id": "violenceReported",
+              "questionOptions": {
+                "concept": "599d4035-42dc-4489-a92f-9d0ba6c0bd0c",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+
+        {
+          "label": "Next Appointment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return to clinic date:",
+              "required": "true",
+              "type": "obs",
+              "id": "rtc",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2','0d608b80-1cb5-4c85-835a-29072683ca27','3c1906a1-6d85-4184-9a43-0912cbac3d74','0becf5b9-0522-47c8-960c-c9d660c56501','9bf3fadd-4938-40fa-a093-4e01bf197876','6bf34991-7414-4b5e-ad75-ca217d4c4939'], visitTypeUuid)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

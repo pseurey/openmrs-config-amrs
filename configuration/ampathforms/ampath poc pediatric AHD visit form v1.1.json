@@ -2327,6 +2327,108 @@
 					]
 				},
 				{
+					"label": "Third Line Adherence Questions",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Is care giver linked to a support group?",
+							"type": "obs",
+							"required": "true",
+							"id": "careGiverLinked",
+							"questionOptions": {
+								"concept": "f62eef9d-ca1b-482a-8eb4-d02246ca9896",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						},
+						{
+							"label": "Does the child have a treatment buddy?",
+							"type": "obs",
+							"required": "true",
+							"id": "treatmentBuddy",
+							"questionOptions": {
+								"concept": "5b6e305c-eabf-414d-b85a-193fbb8e39a3",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						},
+						{
+							"label": "Has a home visit been made?",
+							"type": "obs",
+							"required": "true",
+							"id": "homeVisit",
+							"questionOptions": {
+								"concept": "fe6800a2-76f1-42a4-a1c8-553e1fec18e9",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						},
+						{
+							"label": "Is drug storage at home adequate?",
+							"type": "obs",
+							"required": "true",
+							"id": "drugStorage",
+							"questionOptions": {
+								"concept": "6a064ca7-024f-4a0a-b67b-b530287471eb",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						}
+					]
+				},
+				{
 					"label": "PCP Prophylaxis History",
 					"isExpanded": "true",
 					"questions": [
@@ -3717,108 +3819,6 @@
 							"id": "__pMurtIDEI"
 						}
 					]
-				},
-				{
-					"label": "Third Line Adherence Questions",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Is care giver linked to a support group?",
-							"type": "obs",
-							"required": "true",
-							"id": "careGiverLinked",
-							"questionOptions": {
-								"concept": "f62eef9d-ca1b-482a-8eb4-d02246ca9896",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
-							}
-						},
-						{
-							"label": "Does the child have a treatment buddy?",
-							"type": "obs",
-							"required": "true",
-							"id": "treatmentBuddy",
-							"questionOptions": {
-								"concept": "5b6e305c-eabf-414d-b85a-193fbb8e39a3",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
-							}
-						},
-						{
-							"label": "Has a home visit been made?",
-							"type": "obs",
-							"required": "true",
-							"id": "homeVisit",
-							"questionOptions": {
-								"concept": "fe6800a2-76f1-42a4-a1c8-553e1fec18e9",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
-							}
-						},
-						{
-							"label": "Is drug storage at home adequate?",
-							"type": "obs",
-							"required": "true",
-							"id": "drugStorage",
-							"questionOptions": {
-								"concept": "6a064ca7-024f-4a0a-b67b-b530287471eb",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								],
-								"rendering": "select"
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
-							}
-						}
-					]
 				}
 			]
 		},
@@ -4843,7 +4843,7 @@
 					]
 				},
 				{
-					"label": "CD4",
+					"label": "TB/Crag",
 					"questions": [
 						{
 							"type": "obs",
@@ -4933,6 +4933,46 @@
 									}
 								}
 							},
+							"validators": []
+						},
+						{
+							"label": "Crag test:",
+							"id": "cragTest",
+							"questionOptions": {
+								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+										"label": "Poor sample quality"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(cragTest)"
+									}
+								}
+							},
+							"type": "obs",
 							"validators": []
 						}
 					]
@@ -6714,46 +6754,6 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Crag test:",
-							"id": "cragTest",
-							"questionOptions": {
-								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
-										"label": "Poor sample quality"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(cragTest)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
 							"label": "Cryptococcal meningitis treatment plan:",
 							"type": "obs",
 							"required": "true",
@@ -8125,12 +8125,12 @@
 								{
 									"label": "Test ordered: Other (specify):",
 									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
 										"rendering": "text"
 									},
 									"type": "obs",
 									"validators": [],
-									"id": "__stJCusEsy"
+									"id": "otherTestOrder"
 								},
 								{
 									"label": "CD4 justification:",

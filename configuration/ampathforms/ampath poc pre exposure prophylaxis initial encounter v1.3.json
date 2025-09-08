@@ -309,7 +309,7 @@
 									},
 									{
 										"concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-										"label": "Cabotegravir"
+										"label": "CAB-LA"
 									}
 								]
 							},
@@ -317,6 +317,56 @@
 							"validators": [],
 							"hide": {
 								"hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Method:",
+							"id": "prepMethodMaleStudy",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+								"answers": [
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
+									},
+									{
+										"concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+										"label": "CAB-LA"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50'"
+							}
+						},
+						{
+							"label": "Method:",
+							"id": "prepMethodMale",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+								"answers": [
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
+									},
+									{
+										"concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
+										"label": "Event driven oral prep"
+									},
+									{
+										"concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+										"label": "CAB-LA"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== 'a0ee8015-3558-4ac8-9886-285f9b687c2f'"
 							}
 						},
 						{
@@ -336,7 +386,7 @@
 									},
 									{
 										"concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-										"label": "Cabotegravir"
+										"label": "CAB-LA"
 									}
 								]
 							},
@@ -981,11 +1031,12 @@
 							"validators": [],
 							"alert": {
 								"alertWhenExpression": "!isEmpty(myValue) && hivRapid === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
-								"message": "Prep patients should be HIV negative, If Positive please refer to HIV clinic."
+								"message": "Prep clients should be HIV negative, If Positive please refer to HIV clinic."
 							}
 						},
 						{
-							"label": "Names of HTS provider that tested the patient? (Record at least 2 names)",
+							"label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility)",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "text",
@@ -1037,7 +1088,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": " hepBDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1103,7 +1154,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": " hepCDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": " hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1147,7 +1198,10 @@
 								],
 								"rendering": "select"
 							},
-							"validators": []
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"type": "obs",
@@ -1193,14 +1247,17 @@
 								"concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
 								"rendering": "textarea",
 								"rows": 15
+							},
+							"hide": {
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
 							"label": "Medically eligible to start PrEP:",
+							"required": "true",
 							"id": "medicalEligible",
-							
 							"questionOptions": {
-								"concept": "b70d8f5b1-8a10-453a-a1e2-1de96a87f31f",
+								"concept": "70d8f5b1-8a10-453a-a1e2-1de96a87f31f",
 								"answers": [
 									{
 										"label": "Yes",
@@ -1227,15 +1284,14 @@
 			]
 		},
 		{
-			"label": "GBV Screening",
+			"label": "Violence Screening",
 			"sections": [
 				{
-					"label": "GBV Screening",
+					"label": "Violence Screening",
 					"isExpanded": "true",
 					"questions": [
 						{
 							"label": "In the last 3 months, has your partner(s) hit, kicked, slapped, or otherwise physically hurt you?",
-							"required": "true",
 							"id": "physical",
 							"type": "obs",
 							"questionOptions": {
@@ -1258,7 +1314,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner threatened to hurt you or abused you verbally or emotionally? E.g abusing or talking down to you?",
-							"required": "true",
 							"id": "emmotional",
 							"type": "obs",
 							"questionOptions": {
@@ -1281,7 +1336,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner(s) forced you to do something sexually that made you feel uncomfortable?",
-							"required": "true",
 							"id": "sexual",
 							"type": "obs",
 							"questionOptions": {
@@ -1304,7 +1358,6 @@
 						},
 						{
 							"label": "In the last 3 months, has your partner (s) deliberately withdrawn any form of support, including financial support?",
-							"required": "true",
 							"id": "financial",
 							"type": "obs",
 							"questionOptions": {
@@ -1326,7 +1379,7 @@
 							}
 						},
 						{
-							"label": "GBV/IPV assessment notes:",
+							"label": "Assessment notes:",
 							"type": "obs",
 							"id": "gbvText",
 							"questionOptions": {
@@ -1334,13 +1387,7 @@
 								"rendering": "textarea",
 								"rows": 7
 							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-									"message": "Patient screened positive for GBV/IPV. Please provide notes."
-								}
-							],
+							"validators": [],
 							"hide": {
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
@@ -1381,7 +1428,9 @@
 						},
 						{
 							"label": "Signs/symptoms of acute HIV:",
+							"required": "true",
 							"type": "obs",
+							"id": "acuteHiv",
 							"questionOptions": {
 								"rendering": "select",
 								"concept": "39220cda-f62a-4514-8d73-013585e59770",
@@ -1397,7 +1446,10 @@
 								]
 							},
 							"validators": [],
-							"id": "acuteHiv",
+							"alert": {
+								"alertWhenExpression": "!isEmpty(myValue) && acuteHiv === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+								"message": "Suspected HIV infection, please delay prep initiation upto 4 weeks and guide client on other prevention measures."
+							},
 							"hide": {
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
@@ -1423,7 +1475,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1446,7 +1498,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "contraindications !== 'a899b42e-1350-11df-a1f1-0026b9348838' && acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838' "
+								"hideWhenExpression": "contraindications !== 'a899b42e-1350-11df-a1f1-0026b9348838' && acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1519,7 +1571,30 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== 'a0ee8015-3558-4ac8-9886-285f9b687c2f'"
+							}
+						},
+						{
+							"label": "Dosing strategy:",
+							"id": "doseStrategyStudy",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
+								"answers": [
+									{
+										"concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
+										"label": "Event driven"
+									},
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'|| visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50'"
 							}
 						},
 						{
@@ -1618,6 +1693,50 @@
 							}
 						},
 						{
+							"label": "Next medication pick up location:",
+							"required": "true",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "62c90e60-ced5-4183-a1b0-092339384d02",
+								"answers": [
+									{
+										"concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+										"label": "Facility"
+									},
+									{
+										"concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+										"label": "Community"
+									}
+								]
+							},
+							"validators": [],
+							"id": "pickupLoc",
+							"hide": {
+								"hideWhenExpression": "visitTypeUuid !== 'a0ee8015-3558-4ac8-9886-285f9b687c2f' || prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Next medication pick up location:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "62c90e60-ced5-4183-a1b0-092339384d02",
+								"answers": [
+									{
+										"concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+										"label": "Community"
+									}
+								]
+							},
+							"validators": [],
+							"id": "pickupLocStudy",
+							"hide": {
+								"hideWhenExpression": "visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50' || prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
 							"label": "Condom issued:",
 							"type": "obs",
 							"questionOptions": {
@@ -1637,7 +1756,66 @@
 							"validators": [],
 							"id": "condomIssue",
 							"hide": {
-								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Client issued with HIV self test kit:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6d567c69-c910-4aaa-8723-4b735d83d52e",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": [],
+							"id": "selfTestKit",
+							"hide": {
+								"hideWhenExpression": "visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50' || hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Number of kits issued:",
+							"id": "kitsIssued",
+							"questionOptions": {
+								"concept": "f4a33a46-4e2d-42a4-963a-076c478c69df",
+								"rendering": "number"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "selfTestKit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Reasons not issued with self test kits:",
+							"id": "reasonNotIssued",
+							"questionOptions": {
+								"concept": "e7540a23-f788-4992-a9e6-e8036c4ce7ed",
+								"answers": [
+									{
+										"concept": "c0c9eab3-46f6-453c-b29d-dc1c242317c5",
+										"label": "Out of stock"
+									},
+									{
+										"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+										"label": "Client declined"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "selfTestKit !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1672,14 +1850,14 @@
 			]
 		},
 		{
-			"label": "GBV Plan",
+			"label": "Violence Screening Plan",
 			"sections": [
 				{
-					"label": "GBV Services",
+					"label": "Violence Screening Services",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "GBV services:",
+							"label": "Violence screening services:",
 							"questionOptions": {
 								"concept": "e7819751-a5b0-485d-a2bc-9d4aa69aa1e4",
 								"answers": [
@@ -1689,7 +1867,7 @@
 									},
 									{
 										"concept": "a89adc46-1350-11df-a1f1-0026b9348838",
-										"label": "Treatment of GBV injuries"
+										"label": "Treatment of injuries"
 									},
 									{
 										"concept": "717c50e1-48da-4148-aeee-c49fdd957b64",
@@ -1722,7 +1900,7 @@
 					]
 				},
 				{
-					"label": "GBV referrals",
+					"label": "Violence screening referrals",
 					"questions": [
 						{
 							"type": "obsGroup",

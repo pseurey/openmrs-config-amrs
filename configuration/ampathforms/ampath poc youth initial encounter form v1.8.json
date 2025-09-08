@@ -2,376 +2,7 @@
 	"name": "AMPATH POC Youth Initial Encounter Form v1.8",
 	"uuid": "xxxx",
 	"processor": "EncounterFormProcessor",
-	"referencedForms": [
-		{
-			"formName": "component_vitals",
-			"alias": "vt",
-			"ref": {
-				"uuid": "7f5e06a4-92d1-4fc9-9e05-03b414457d69",
-				"display": "Vitals Component"
-			}
-		},
-		{
-			"formName": "component_preclinic-review-v1.0",
-			"alias": "pcr1",
-			"ref": {
-				"uuid": "8fcac059-c86c-4182-85c0-9653e1568ed4",
-				"display": "Preclinic Review v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_education",
-			"alias": "edu",
-			"ref": {
-				"uuid": "da8a703d-ce23-46b5-8b21-7dd81b4091d9",
-				"display": "Education Component"
-			}
-		},
-		{
-			"formName": "component_family-information",
-			"alias": "fi",
-			"ref": {
-				"uuid": "a0de78cc-a78a-4b60-8378-40514ec3e937",
-				"display": "Family Information Component"
-			}
-		},
-		{
-			"formName": "component_family-information-v1.0",
-			"alias": "fi1",
-			"ref": {
-				"uuid": "8d3e83b7-3d14-4aca-934e-690ad1d649a8",
-				"display": "Family Information v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_family-planning",
-			"alias": "fp",
-			"ref": {
-				"uuid": "2766658c-1728-4790-9ef2-fe44eb72fa6d",
-				"display": "Family Planning Component"
-			}
-		},
-		{
-			"formName": "component_social-history",
-			"alias": "sh",
-			"ref": {
-				"uuid": "12695918-5ce3-409b-9fd7-c6689e200de6",
-				"display": "Social History Component"
-			}
-		},
-		{
-			"formName": "component_nutrition",
-			"alias": "ntrn",
-			"ref": {
-				"uuid": "e421b750-e7fc-4194-b55e-6f2c978e1af5",
-				"display": "Nutrition Component"
-			}
-		},
-		{
-			"formName": "component_positive-health-dignity-&-prevention-services-v1.0",
-			"alias": "phps",
-			"ref": {
-				"uuid": "4da1548d-e098-4658-a847-8d42f45059f4",
-				"display": "positive-health-&-prevention-services v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_immunization-v1.0",
-			"alias": "immun1",
-			"ref": {
-				"uuid": "11b15110-e325-4d0d-bd54-5f55b21301f5",
-				"display": "Immunization v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_hospitalization",
-			"alias": "hosp",
-			"ref": {
-				"uuid": "77d6652f-4653-4434-af6b-6dab84117044",
-				"display": "Hospitalization Component"
-			}
-		},
-		{
-			"formName": "component_art",
-			"alias": "art",
-			"ref": {
-				"uuid": "bd4ff44f-8007-49b0-b468-669fe0125093",
-				"display": "Art Component"
-			}
-		},
-		{
-			"formName": "component_art-v1.3",
-			"alias": "art13",
-			"ref": {
-				"uuid": "c0c0ec8f-8bf2-4089-816e-518234d9901f",
-				"display": "Art v1.3 Component"
-			}
-		},
-		{
-			"formName": "component_pcp-prophy-v1.3",
-			"alias": "pcp13",
-			"ref": {
-				"uuid": "f337f624-1396-40cb-955c-c92c105a8587",
-				"display": "Pcp Prophy v1.3 Component"
-			}
-		},
-		{
-			"formName": "component_tb-prophy-v1.3",
-			"alias": "tbp13",
-			"ref": {
-				"uuid": "76256302-13fb-41ed-9845-afe5770c6c3b",
-				"display": "Tb Prophy v1.3 Component"
-			}
-		},
-		{
-			"formName": "component_tb-treatment-v1.2",
-			"alias": "tbt12",
-			"ref": {
-				"uuid": "9629bd9a-af5f-4ef5-9f4c-92c65bf4e24e",
-				"display": "Tb Treatment v1.2 Component"
-			}
-		},
-		{
-			"formName": "component_crypto",
-			"alias": "cry",
-			"ref": {
-				"uuid": "4ff5104b-b2d0-4403-9691-4020061d3a2c",
-				"display": "Crypto Component"
-			}
-		},
-		{
-			"formName": "component_other-medication",
-			"alias": "omed",
-			"ref": {
-				"uuid": "46205439-ccbf-4f60-80e1-d765861f6257",
-				"display": "Other Medication Component"
-			}
-		},
-		{
-			"formName": "component_side-effect-v1.0",
-			"alias": "se1",
-			"ref": {
-				"uuid": "61293172-88b0-439b-ba03-e661971705a7",
-				"display": "Side Effect v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_hpi",
-			"alias": "hpi",
-			"ref": {
-				"uuid": "b91aef27-cd94-4934-94ac-c168ce539cb3",
-				"display": "Hpi Component"
-			}
-		},
-		{
-			"formName": "component_child-labor",
-			"alias": "cl",
-			"ref": {
-				"uuid": "50976ca8-0b3a-411b-9ed6-150f7f192ee8",
-				"display": "Child Labor Component"
-			}
-		},
-		{
-			"formName": "component_mental-health",
-			"alias": "mh",
-			"ref": {
-				"uuid": "cfc21027-e186-40ca-9661-daf4156eb4ea",
-				"display": "Mental Health Component"
-			}
-		},
-		{
-			"formName": "component_child-abuse",
-			"alias": "ca",
-			"ref": {
-				"uuid": "ab98758f-054c-490a-bc7a-2984c55feaed",
-				"display": "Child Abuse Component"
-			}
-		},
-		{
-			"formName": "component_physical-exams",
-			"alias": "ppe",
-			"ref": {
-				"uuid": "b8538aa0-1820-4302-9274-4d38c410e929",
-				"display": "Physical Exams Component"
-			}
-		},
-		{
-			"formName": "component_lab-results",
-			"alias": "lr",
-			"ref": {
-				"uuid": "759e3a62-9f9e-4f56-9593-24f6cef3a5d4",
-				"display": "Lab Results Component"
-			}
-		},
-		{
-			"formName": "component_lab-results-v1.2",
-			"alias": "lr12",
-			"ref": {
-				"uuid": "7c84ca8c-c55e-4a5f-82d5-30305e8dbee7",
-				"display": "Lab Results v1.2 Component"
-			}
-		},
-		{
-			"formName": "component_who-staging",
-			"alias": "ws",
-			"ref": {
-				"uuid": "fdf950e0-ff0a-4d7d-a52b-33a8d5b98fb7",
-				"display": "Who Staging Component"
-			}
-		},
-		{
-			"formName": "component_lab-orders",
-			"alias": "lo",
-			"ref": {
-				"uuid": "ba985719-b085-419c-a0c7-3f1c3e61dd3e",
-				"display": "Lab Orders Component"
-			}
-		},
-		{
-			"formName": "component_lab-orders-v1.0",
-			"alias": "to",
-			"ref": {
-				"uuid": "61a262b6-3238-4187-9740-dea29ea4f7e4",
-				"display": "Lab Orders v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_lab-orders-v1.2",
-			"alias": "to12",
-			"ref": {
-				"uuid": "854ae18a-5ca3-4ea2-9cac-42b8e6fecf76",
-				"display": "Lab Orders v1.2 Component"
-			}
-		},
-		{
-			"formName": "component_assessment",
-			"alias": "ass",
-			"ref": {
-				"uuid": "98e061d2-4a16-4665-b0dc-fc0266ee689c",
-				"display": "Assessment Component"
-			}
-		},
-		{
-			"formName": "component_assessment-v1.0",
-			"alias": "ass1",
-			"ref": {
-				"uuid": "b0cbea4c-725a-4a0b-82f3-e5600e5e3086",
-				"display": "Assessment v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_referral",
-			"alias": "ref",
-			"ref": {
-				"uuid": "f18a6b65-f55b-4d53-afe2-b929bbb66a70",
-				"display": "Referral Component"
-			}
-		},
-		{
-			"formName": "component_referral-v1.0",
-			"alias": "ref1",
-			"ref": {
-				"uuid": "d562ecf0-4fe6-40d1-b427-3c375e187d73",
-				"display": "Referral v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_peds-hiv-status",
-			"alias": "phs",
-			"ref": {
-				"uuid": "dc6bf04e-9c27-45d4-b87d-31f63c3e4aba",
-				"display": "Peds HIV Status"
-			}
-		},
-		{
-			"formName": "component_reproductive-health-v1.0",
-			"alias": "rh1",
-			"ref": {
-				"uuid": "22ffeb58-cc48-400e-a595-113156234d7b",
-				"display": "Reproductive Health v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_substance-use-v1.0",
-			"alias": "subuse",
-			"ref": {
-				"uuid": "add61247-b1e0-42c8-90d6-f62e7ef89907",
-				"display": "Substance Use v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_ob-history-v1.2",
-			"alias": "gynhist12",
-			"ref": {
-				"uuid": "3a6e2b75-cedd-4c6a-9630-b601a6e748b9",
-				"display": "Ob History v1.2 Component"
-			}
-		},
-		{
-			"formName": "component_feeding-v1.0",
-			"alias": "feed",
-			"ref": {
-				"uuid": "ab38a0ae-47e7-463e-b589-b292d9c5d16f",
-				"display": "Feeding v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_sti-v1.0",
-			"alias": "sti1",
-			"ref": {
-				"uuid": "6515b019-5264-4a61-a7fd-e891ea03b5f4",
-				"display": "STI v1.0 Component"
-			}
-		},
-		{
-			"formName": "component_sexual-and-reproductive-history-v1.0",
-			"alias": "sph10",
-			"ref": {
-				"uuid": "5b4c32bc-93ee-4088-9822-fa384ebf92f7",
-				"display": "Sexual and Reproductive History Component"
-			}
-		},
-		{
-			"formName": "component_reproductive-history-v1.2",
-			"alias": "srh12",
-			"ref": {
-				"uuid": "488437b0-5c02-447b-bcd5-dec0e1bd48f3",
-				"display": "Reproductive History v1.2 Component"
-			}
-		},
-		{
-			"ref": {
-				"uuid": "1b966b99-9bc9-46ee-ade9-28cd18546644",
-				"display": "component_violence-against-children-v1.0"
-			},
-			"formName": "component_violence-against-children-v1.0",
-			"alias": "vac10"
-		},
-		{
-			"ref": {
-				"uuid": "8bacc60c-789b-4831-999f-4a79d6b52f83",
-				"display": "component_services-ordered-v1.0"
-			},
-			"formName": "component_services-ordered-v1.0",
-			"alias": "so10"
-		},
-		{
-			"ref": {
-				"uuid": "4d12c60e-de2d-4f9f-aef8-dc5130864e76",
-				"display": "component_referral-v1.6"
-			},
-			"formName": "component_referral-v1.6",
-			"alias": "ref16"
-		},
-		{
-			"ref": {
-				"uuid": "1d265294-3a62-4ab4-bc64-038cbd4a8a14",
-				"display": "component_positive-health-dignity-&-prevention-services-v1.2"
-			},
-			"formName": "component_positive-health-dignity-&-prevention-services-v1.2",
-			"alias": "phdp12"
-		}
-	],
+	"referencedForms": [],
 	"pages": [
 		{
 			"label": "Encounter Details",
@@ -999,7 +630,8 @@
 							]
 						},
 						{
-							"label": "Names of HTS provider that tested the patient? (Record at least 2 names)",
+							"label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility)",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "text",
@@ -5741,7 +5373,7 @@
 					]
 				},
 				{
-					"label": "CD4",
+					"label": "CD4/Crag",
 					"questions": [
 						{
 							"type": "obs",
@@ -5837,6 +5469,46 @@
 									"decimalPlace": 1
 								}
 							]
+						},
+						{
+							"label": "Crag test:",
+							"id": "cragTest",
+							"questionOptions": {
+								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+										"label": "Poor sample quality"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(cragTest)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
 						}
 					]
 				},
@@ -6217,6 +5889,42 @@
 									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(tst_test)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "TB LAM:",
+							"id": "tblam",
+							"questionOptions": {
+								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(tblam) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(tblam)"
 									}
 								}
 							},
@@ -8102,82 +7810,6 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Crag test:",
-							"id": "cragTest",
-							"questionOptions": {
-								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
-										"label": "Poor sample quality"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(cragTest)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "TB LAM:",
-							"id": "tblam",
-							"questionOptions": {
-								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(tblam) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(tblam)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
 							"label": "Cryptococcal meningitis treatment plan:",
 							"type": "obs",
 							"required": "true",
@@ -9075,10 +8707,6 @@
 											{
 												"concept": "a89dd9aa-1350-11df-a1f1-0026b9348838",
 												"label": "Echo"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
 											}
 										]
 									}
@@ -9086,14 +8714,11 @@
 								{
 									"label": "Test ordered: Other (specify):",
 									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
 										"rendering": "text"
 									},
 									"type": "obs",
 									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
-									},
 									"id": "otherTestOrder"
 								}
 							],

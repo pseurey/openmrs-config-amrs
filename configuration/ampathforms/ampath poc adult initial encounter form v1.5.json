@@ -612,7 +612,8 @@
 							]
 						},
 						{
-							"label": "Names of HTS provider that tested the patient? (Record at least 2 names)",
+							"label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility)",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "text",
@@ -5601,7 +5602,7 @@
 					]
 				},
 				{
-					"label": "CD4",
+					"label": "CD4/Crag",
 					"questions": [
 						{
 							"type": "obs",
@@ -5702,6 +5703,46 @@
 									"decimalPlace": 1
 								}
 							]
+						},
+						{
+							"label": "Crag test:",
+							"id": "cragTest",
+							"questionOptions": {
+								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+										"label": "Poor sample quality"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(cragTest)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
 						}
 					]
 				},
@@ -6386,6 +6427,42 @@
 									],
 									"hide": {
 										"hideWhenExpression": "isEmpty(tst_test)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "TB LAM:",
+							"id": "tblam",
+							"questionOptions": {
+								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
+								"answers": [
+									{
+										"concept": "a8a4bd42-1350-11df-a1f1-0026b9348838",
+										"label": "Present"
+									},
+									{
+										"concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+										"label": "Absent"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(tblam) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(tblam)"
 									}
 								}
 							},
@@ -8115,82 +8192,6 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Crag test:",
-							"id": "cragTest",
-							"questionOptions": {
-								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
-										"label": "Poor sample quality"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(cragTest)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "TB LAM:",
-							"id": "tblam",
-							"questionOptions": {
-								"concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
-								"answers": [
-									{
-										"concept": "a8a4bd42-1350-11df-a1f1-0026b9348838",
-										"label": "Present"
-									},
-									{
-										"concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
-										"label": "Absent"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(tblam) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(tblam)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
 							"label": "Cryptococcal meningitis treatment plan:",
 							"type": "obs",
 							"required": "true",
@@ -9117,10 +9118,6 @@
 											{
 												"concept": "a89dd9aa-1350-11df-a1f1-0026b9348838",
 												"label": "Echo"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
 											}
 										]
 									}
@@ -9128,14 +9125,11 @@
 								{
 									"label": "Test ordered: Other (specify):",
 									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
 										"rendering": "text"
 									},
 									"type": "obs",
 									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
-									},
 									"id": "otherTestOrder"
 								}
 							],

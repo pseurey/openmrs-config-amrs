@@ -1,0 +1,307 @@
+{
+	"name": "AMPATH POC PrEP Study Community Delivery Form v1.0",
+	"processor": "EncounterFormProcessor",
+	"uuid": "xxxx",
+	"referencedForms": [],
+	"pages": [
+		{
+			"label": "PrEP Delivery",
+			"sections": [
+				{
+					"label": "PrEP Delivery",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "encounterProvider",
+							"label": "Provider:",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Visit date:",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Was the drug delivery successful?",
+							"required": "true",
+							"type": "obs",
+							"id": "successDelivery",
+							"questionOptions": {
+								"concept": "be9131c6-58aa-46c1-94ae-a039b02beb6c",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							}
+						},
+						{
+							"type": "obsGroup",
+							"label": "Reason drug delivery not successful, detailed:",
+							"id": "successDetailed",
+							"questionOptions": {
+								"concept": "4471d514-4110-480e-a7de-ba947033a8d5",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Reason drug delivery not successful:",
+									"type": "obs",
+									"id": "reasonNotSuccess",
+									"questionOptions": {
+										"concept": "ddfbba76-7302-4f6d-865f-6159fcb3831b",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "a89def1c-1350-11df-a1f1-0026b9348838",
+												"label": "Not physically contacted"
+											},
+											{
+												"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+												"label": "Client declined"
+											},
+											{
+												"concept": "d00e4759-b442-4d94-a280-6b35c819936b",
+												"label": "Unfavourable enviroment for delivery"
+											},
+											{
+												"concept": "a89ef826-1350-11df-a1f1-0026b9348838",
+												"label": "Terraine"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										]
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(successDelivery) && successDelivery === 'a899b42e-1350-11df-a1f1-0026b9348838'",
+											"message": "Please indicate reason delivery not successful."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "successDelivery !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Other reasons, (specify):",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "!arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],reasonNotSuccess)"
+									},
+									"id": "otherReasonSuccess"
+								}
+							]
+						},
+						{
+							"label": "Individual who received drugs:",
+							"type": "obs",
+							"id": "personReceive",
+							"questionOptions": {
+								"concept": "a89cd410-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+										"label": "Self (Client)"
+									},
+									{
+										"concept": "a89ebec4-1350-11df-a1f1-0026b9348838",
+										"label": "Parent"
+									},
+									{
+										"concept": "a89ebc80-1350-11df-a1f1-0026b9348838",
+										"label": "Spouse"
+									},
+									{
+										"concept": "a898c262-1350-11df-a1f1-0026b9348838",
+										"label": "Sibling"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							},
+							"hide": {
+								"hideWhenExpression": "successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Name of provider who delivered drugs:",
+							"type": "obs",
+							"id": "namePerson",
+							"questionOptions": {
+								"concept": "29f94c52-6159-4e26-805c-beb915c9fa21",
+								"rendering": "text"
+							},
+							"hide": {
+								"hideWhenExpression": "successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If yes, regimen:",
+							"id": "prepRegimen",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "b42438be-5010-4416-8869-4255f6ee7ae0",
+								"answers": [
+									{
+										"concept": "6766ebbc-3298-11e0-8090-0026b9348838",
+										"label": "TDF/FTC"
+									},
+									{
+										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+										"label": "3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "6fbadffc-3127-11e0-8090-0026b9348838",
+										"label": "TDF"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Client issued with HIV self test kit:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6d567c69-c910-4aaa-8723-4b735d83d52e",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": [],
+							"id": "selfTestKit",
+							"hide": {
+								"hideWhenExpression": "successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Number of kits issued:",
+							"id": "kitsIssued",
+							"questionOptions": {
+								"concept": "f4a33a46-4e2d-42a4-963a-076c478c69df",
+								"rendering": "number"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "selfTestKit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Reasons not issued with self test kits:",
+							"id": "reasonNotIssued",
+							"questionOptions": {
+								"concept": "e7540a23-f788-4992-a9e6-e8036c4ce7ed",
+								"answers": [
+									{
+										"concept": "b1ed10d1-c017-4b28-8320-af9af6a1ef27",
+										"label": "Not due"
+									},
+									{
+										"concept": "c0c9eab3-46f6-453c-b29d-dc1c242317c5",
+										"label": "Out of stock"
+									},
+									{
+										"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+										"label": "Client declined"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "selfTestKit !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Return to clinic date:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date",
+								"weeksList": [
+									15,
+									30,
+									45,
+									60,
+									90,
+									120,
+									180
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Return to clinic date should be greater than the encounter date."
+								}
+							],
+							"id": "tca",
+							"hide": {
+								"hideWhenExpression": "successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
