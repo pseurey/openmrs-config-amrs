@@ -49,7 +49,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Population Typology",
+							"label": "Population typology",
 							"type": "obs",
 							"required": "true",
 							"questionOptions": {
@@ -77,7 +77,7 @@
 							"id": "populationType"
 						},
 						{
-							"label": "Please indicate Key population type :",
+							"label": "Please indicate key population type :",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -106,16 +106,16 @@
 							"label": "Specify:",
 							"type": "obs",
 							"questionOptions": {
-							  "rendering": "text",
-							  "concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
+								"rendering": "text",
+								"concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
 							},
 							"id": "kPfmalEOther",
 							"hide": {
-							  "hideWhenExpression": "isEmpty(femaleKeyPopTypes) || femaleKeyPopTypes !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "isEmpty(femaleKeyPopTypes) || femaleKeyPopTypes !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
 							}
-						  },
+						},
 						{
-							"label": "Please indicate Key population type :",
+							"label": "Please indicate key population type :",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -144,16 +144,16 @@
 							"label": "Specify:",
 							"type": "obs",
 							"questionOptions": {
-							  "rendering": "text",
-							  "concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
+								"rendering": "text",
+								"concept": "efe467f5-330e-4795-b30b-4736ad1cc229"
 							},
 							"id": "kPmaleOther",
 							"hide": {
-							  "hideWhenExpression": "isEmpty(maleKeyPopTypes) || maleKeyPopTypes !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "isEmpty(maleKeyPopTypes) || maleKeyPopTypes !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
 							}
-						  },
+						},
 						{
-							"label": "Please indicate Priority population type :",
+							"label": "Please indicate priority population type :",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -276,12 +276,10 @@
 									{
 										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
 										"label": "Yes"
-										
 									},
 									{
 										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
-										
 									}
 								]
 							},
@@ -376,7 +374,7 @@
 							"required": "true"
 						},
 						{
-							"label": "Patient Type",
+							"label": "Patient type:",
 							"type": "obs",
 							"id": "patienTyPe",
 							"questionOptions": {
@@ -624,11 +622,11 @@
 					]
 				},
 				{
-					"label": "History of HIV Testing",
+					"label": "History of HIV testing",
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Mother's HIV Status :",
+							"label": "Mother's HIV status:",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -656,7 +654,7 @@
 							}
 						},
 						{
-							"label": "Tested for HIV before :",
+							"label": "Tested for HIV before:",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -699,7 +697,7 @@
 							}
 						},
 						{
-							"label": "Provider Test Result :",
+							"label": "Provider test result :",
 							"type": "obs",
 							"id": "testedResultsprovider",
 							"questionOptions": {
@@ -726,7 +724,7 @@
 							}
 						},
 						{
-							"label": "Date Tested:",
+							"label": "Date tested:",
 							"type": "obs",
 							"id": "dateProvider",
 							"questionOptions": {
@@ -749,7 +747,7 @@
 							}
 						},
 						{
-							"label": "Self Test Result :",
+							"label": "Self test result :",
 							"type": "obs",
 							"id": "testedResultsself",
 							"questionOptions": {
@@ -776,7 +774,7 @@
 							}
 						},
 						{
-							"label": "Date Tested:",
+							"label": "Date tested:",
 							"type": "obs",
 							"id": "dateSelf",
 							"questionOptions": {
@@ -1266,29 +1264,6 @@
 							"validators": [],
 							"hide": {
 								"hideWhenExpression": "isEmpty(hcwCare) || hcwCare !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Traditional /non-medical procedures e.g. scarification, plastic tooth extraction, Circumcision, uvulectomy etc",
-							"type": "obs",
-							"id": "traditionalMethds",
-							"required": "true",
-							"questionOptions": {
-								"concept": "503736d1-b29f-414b-ba5a-7aabfa5619f8",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"hide": {
-								"hideWhenExpression": "testedResultsprovider === 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
