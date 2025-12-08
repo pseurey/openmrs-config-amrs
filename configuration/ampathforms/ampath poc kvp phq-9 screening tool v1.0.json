@@ -1,0 +1,311 @@
+{
+  "name": "AMPATH POC KVP PHQ-9 Screening Tool v1.0",
+  "version": "1.0",
+  "encounterType": "uuid",
+  "processor": "EncounterFormProcessor",
+  "form": "uuid",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "PHQ-9 Screening",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "id": "encDate",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "required": "true",
+              "id": "provider",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "label": "Implementation county:",
+              "type": "obs",
+              "id": "county",
+              "required": "true",
+              "questionOptions": {
+                "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation sub-county:",
+              "type": "obs",
+              "id": "subCounty",
+              "required": "true",
+              "questionOptions": {
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation ward:",
+              "type": "obs",
+              "id": "ward",
+              "required": "true",
+              "questionOptions": {
+                "concept": "0698d8d3-1d0f-487d-af0b-ac7dd76070ca",
+                "rendering": "text"
+              }
+            },
+
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeMale",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+                    "label": "MSM"
+                  },
+                  {
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+                  {
+                    "concept": "1e1af954-4a00-454a-ad55-c5f95c2e30b2",
+                    "label": "Transman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " sex !== 'M'"
+              }
+            },
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+
+                  {
+                    "concept": "add86571-a28f-4464-9f72-eb6ca72c6ee0",
+                    "label": "Transwoman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+
+              "hide": {
+                "hideWhenExpression": " sex !== 'F'"
+              }
+            },
+            {
+              "label": "KP hotspot/injecting site:",
+              "type": "obs",
+              "id": "hotspotFrequented",
+              "required": "true",
+              "questionOptions": {
+                "concept": "8da0ca52-ebc0-4536-bdb6-69d1dea9f223",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            }
+          ]
+        },
+        {
+          "label": "PHQ-9",
+          "questions": [
+            {
+              "label": "Little interest or pleasure in doing things: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "interest",
+              "questionOptions": {
+                "concept": "0975c82b-7905-446f-bd16-2f5e373543db",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Feels down or depressed or hopeless: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "down",
+              "questionOptions": {
+                "concept": "fa7f8ebd-449d-4f09-a5ed-fd9c05302c67",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Trouble falling or staying asleep or sleeping too much: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "sleep",
+              "questionOptions": {
+                "concept": "dfc873d9-e7ad-4481-abce-c836fcb0a3d5",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Feeling tired or having little energy: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "tired",
+              "questionOptions": {
+                "concept": "99dbc9ed-82df-4a95-99ca-145e61ee15d6",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Poor appetite or overeating: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "appetite",
+              "questionOptions": {
+                "concept": "bc0bfec9-72b9-4cd1-85e5-289629443e09",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Feeling bad about yourself, or that you are a failure or that you have let yourself or your family down: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "failure",
+              "questionOptions": {
+                "concept": "1e8ab77f-8c42-4a79-98a2-77795bd08b96",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Trouble concentrating on things: (linked with patient's usual activities such as reading the newspapers or listening to a radio programme) (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "concentrate",
+              "questionOptions": {
+                "concept": "c3b17b63-9f68-4265-8c5c-ac159360348b",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Moving or speaking so slowly that other people could have noticed. Or the opposite, being so fidgety or restless that you have been moving a lot more than usual: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "speak",
+              "questionOptions": {
+                "concept": "f3c67cdc-7a42-413b-8f52-dabba34d0bd9",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Thoughts that you would be better off dead or of hurting yourself in some ways: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "dead",
+              "questionOptions": {
+                "concept": "68c39c36-9956-49a6-bfbb-4e3cbef3c8ff",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "PHQ-9 total score:",
+              "id": "phqscore",
+              "questionOptions": {
+                "concept": "00bde79f-a625-4d9f-96d4-908cbb693fe0",
+                "rendering": "number",
+                "max": "27",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseInt(interest) + parseInt(down) + parseInt(tired)+ parseInt(sleep)+ parseInt(failure)+ parseInt(appetite)+ parseInt(concentrate)+ parseInt(speak)+ parseInt(dead)) ? undefined: (parseInt(interest) + parseInt(down) + parseInt(tired)+ parseInt(sleep)+ parseInt(failure)+ parseInt(appetite)+ parseInt(concentrate)+ parseInt(speak)+ parseInt(dead))"
+                }
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "PHQ-9 score rating:",
+              "id": "scorePh",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(phqscore) >= 0 && parseInt(phqscore) <= 4 ? 'Depression unlikely' : parseInt(phqscore) >= 5 && parseInt(phqscore) <= 9 ? 'Mild depression': parseInt(phqscore) >= 10 && parseInt(phqscore) <= 14 ? 'Moderate depression': parseInt(phqscore) >= 15 && parseInt(phqscore) <= 19 ? 'Moderate severe depression' : parseInt(phqscore) >= 20 && parseInt(phqscore) <= 27 ? 'Severe depression' : 'Unknown'"
+                },
+                "type": "control",
+                "validators": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -53,18 +53,14 @@
           "label": "Client Enrolment Social Status",
           "isExpanded": "true",
           "questions": [
-            {
+             {
               "label": "KP type:",
               "required": "true",
-              "id": "kptype",
+              "id": "kptypeMale",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
                 "answers": [
-                  {
-                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
-                    "label": "FSW"
-                  },
                   {
                     "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
                     "label": "MSM"
@@ -84,7 +80,37 @@
                   {
                     "concept": "1e1af954-4a00-454a-ad55-c5f95c2e30b2",
                     "label": "Transman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " sex !== 'M'"
+              }
+            },
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
                   },
+
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+
                   {
                     "concept": "add86571-a28f-4464-9f72-eb6ca72c6ee0",
                     "label": "Transwoman"
@@ -92,7 +118,11 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+
+              "hide": {
+                "hideWhenExpression": " sex !== 'F'"
+              }
             },
             {
               "label": "Vulnerable population type:",
@@ -167,14 +197,13 @@
               "type": "obs",
               "validators": []
             },
-             {
+            {
               "label": "How many sexual partners do you have:",
 
               "id": "noSexPartner",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a8aac700-1350-11df-a1f1-0026b9348838"
-                
               },
               "type": "obs",
               "validators": [],
@@ -188,7 +217,7 @@
           "label": "Historical Status",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Which year did you start sex work (FSW)?",
               "type": "obs",
               "id": "startSex",
@@ -197,7 +226,7 @@
                 "rendering": "number"
               },
               "hide": {
-                "hideWhenExpression": "sex !=='F'"
+                "hideWhenExpression": "kptypeFem !== '8e31a288-1a91-438b-8c88-768a61ba29ab'"
               }
             },
             {
@@ -209,7 +238,7 @@
                 "rendering": "number"
               },
               "hide": {
-                "hideWhenExpression": "sex !=='M'"
+                "hideWhenExpression": "kptypeMale !== 'e19c35f0-12f0-46c2-94ea-97050f37b811'"
               }
             },
             {
@@ -220,8 +249,10 @@
                 "concept": "c7b98109-7f79-4bbb-bbc6-afd7b4d6fa2a",
                 "rendering": "number",
                 "min": "0"
-              }
-              
+              },
+               "hide": {
+            "hideWhenExpression": " kptypeMale !== 'a890d57a-1350-11df-a1f1-0026b9348838' && kptypeFem !== 'a890d57a-1350-11df-a1f1-0026b9348838' && kptypeMale !== 'a2c49302-edb4-4baa-8440-2448eafd0ec1' && kptypeFem  !== 'a2c49302-edb4-4baa-8440-2448eafd0ec1'"
+          }
             },
             {
               "label": "How long are you on transit? (Truckers)? (Hrs, Days, Weeks, Months)",
@@ -231,8 +262,8 @@
                 "concept": "224521b9-c88a-4355-bd32-323996fcbb87",
                 "rendering": "select",
                 "min": "0",
-                "answers":[
-                    {
+                "answers": [
+                  {
                     "concept": "8fcf011b-1bbd-4a2c-b4a3-9136297f9046",
                     "label": "Hours"
                   },
@@ -245,24 +276,27 @@
                     "concept": "a899baaa-1350-11df-a1f1-0026b9348838",
                     "label": "Weeks"
                   },
-                   {
+                  {
                     "concept": "a899bb90-1350-11df-a1f1-0026b9348838",
                     "label": "Months"
                   }
                 ]
               },
-              "validators": [
-                
-              ]
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "vulntype !== '5ebb18d6-8fab-43bc-898f-6428dcc24c1e'"
+              }
             },
-             {
+            {
               "label": "How long have you been working as a trucker? (Months, Years)",
               "type": "obs",
               "id": "workingTruckers",
               "questionOptions": {
                 "concept": "1354fc48-c5fe-486c-a8db-7a69be9c5f0b",
                 "rendering": "text"
-                
+              },
+              "hide": {
+                "hideWhenExpression": "vulntype !== '5ebb18d6-8fab-43bc-898f-6428dcc24c1e'"
               }
             },
             {
@@ -273,6 +307,9 @@
                 "concept": "3b204d66-c560-4acc-a781-b571187810e6",
                 "rendering": "number",
                 "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "vulntype !== 'a8af49d8-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -295,7 +332,7 @@
                 ]
               }
             },
-             {
+            {
               "label": "If yes, specify?",
               "type": "obs",
               "required": "true",
@@ -322,7 +359,6 @@
                 "hideWhenExpression": "expriencedViolence !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
-
           ]
         },
         {
@@ -407,8 +443,7 @@
           "label": "HIV Care",
           "isExpanded": "true",
           "questions": [
-
-{
+            {
               "label": "If positive, are you receiving HIV care?",
               "type": "obs",
               "required": "true",
@@ -443,14 +478,13 @@
               "questionOptions": {
                 "concept": "a6758646-fba3-45b7-83c5-0e1ee32ff7fb",
                 "rendering": "text"
-                
               },
               "validators": [],
               "hide": {
                 "hideWhenExpression": "receivingCare !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
-           
+
             {
               "label": "CCC number",
               "type": "obs",
@@ -458,7 +492,6 @@
               "questionOptions": {
                 "concept": "45821d60-95fb-45f5-a267-c7e04cb25480",
                 "rendering": "text"
-               
               },
               "validators": [],
               "hide": {
@@ -472,14 +505,13 @@
               "questionOptions": {
                 "concept": "",
                 "rendering": "text"
-                
               },
               "validators": [],
               "hide": {
                 "hideWhenExpression": "receivingCare !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
-             {
+            {
               "label": "Are you willing to be tested for HIV?",
               "type": "obs",
               "required": "true",
@@ -511,14 +543,12 @@
               "questionOptions": {
                 "concept": "1a3f2e81-d3d4-4caa-8810-dd36c3a8770f",
                 "rendering": "text"
-                
               },
               "validators": [],
               "hide": {
                 "hideWhenExpression": "willingTester !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
               }
             }
-
           ]
         },
         {

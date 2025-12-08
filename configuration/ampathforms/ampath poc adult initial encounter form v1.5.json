@@ -58,6 +58,7 @@
 					"questions": [
 						{
 							"label": "Patient covered by SHIF/SHA:",
+							"required": "true",
 							"id": "nhif",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')) ? undefined : HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')",
 							"questionOptions": {
@@ -96,9 +97,15 @@
 								]
 							},
 							"type": "obs",
-							"validators": [],
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(nhif) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], nhif) && isEmpty(myValue)",
+									"message": "Please indicate SHA status."
+								}
+							],
 							"hide": {
-								"hideWhenExpression": "nhif !== '8b715fed-97f6-4e38-8f6a-c167a42f8923'"
+								"hideWhenExpression": "nhif !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1749,7 +1756,7 @@
 									},
 									{
 										"concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
-										"label": "Emtri200mg/TDF300(Truvada)"
+										"label": "Emtri200mg/TDF300mg(Truvada)"
 									},
 									{
 										"concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
@@ -1757,11 +1764,15 @@
 									},
 									{
 										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
-										"label": "Atazanavir300mg/Ritonavir100mg"
+										"label": "Atazanavir 300mg/Ritonavir 100mg"
 									},
 									{
 										"concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
 										"label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
 									},
 									{
 										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
@@ -1991,7 +2002,7 @@
 									},
 									{
 										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
-										"label": "Atazanavir300/Ritonavir100"
+										"label": "Atazanavir 300mg/Ritonavir 100mg"
 									},
 									{
 										"concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
@@ -2000,6 +2011,10 @@
 									{
 										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
 										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
 									},
 									{
 										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
@@ -2011,7 +2026,7 @@
 									},
 									{
 										"concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
-										"label": "Abacavir300mg"
+										"label": "Abacavir 300mg"
 									},
 									{
 										"concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
@@ -2019,7 +2034,7 @@
 									},
 									{
 										"concept": "a89673f4-1350-11df-a1f1-0026b9348838",
-										"label": "Lamivudine150mg"
+										"label": "Lamivudine 150mg"
 									},
 									{
 										"concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
@@ -2027,7 +2042,7 @@
 									},
 									{
 										"concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
-										"label": "Zidovudine300mg"
+										"label": "Zidovudine 300mg"
 									},
 									{
 										"concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
@@ -7147,7 +7162,7 @@
 									},
 									{
 										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
-										"label": "Atazanavir300/Ritonavir100"
+										"label": "Atazanavir 300mg/Ritonavir 100mg"
 									},
 									{
 										"concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
@@ -7156,6 +7171,10 @@
 									{
 										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
 										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
 									},
 									{
 										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
@@ -7167,7 +7186,7 @@
 									},
 									{
 										"concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
-										"label": "Abacavir300mg"
+										"label": "Abacavir 300mg"
 									},
 									{
 										"concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
@@ -7175,7 +7194,7 @@
 									},
 									{
 										"concept": "a89673f4-1350-11df-a1f1-0026b9348838",
-										"label": "Lamivudine150mg"
+										"label": "Lamivudine 150mg"
 									},
 									{
 										"concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
@@ -7183,7 +7202,7 @@
 									},
 									{
 										"concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
-										"label": "Zidovudine300mg"
+										"label": "Zidovudine 300mg"
 									},
 									{
 										"concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
@@ -9391,6 +9410,10 @@
 									{
 										"concept": "92a2818f-662c-4dbc-aa20-d9f4edec2654",
 										"label": "Recency"
+									},
+									{
+										"concept": "535f6faa-14bc-4989-a189-7f15de3f65d5",
+										"label": "Repeat viral load after 3rd EAC"
 									},
 									{
 										"concept": "635f446c-bab9-428a-9930-ae4f46363c0c",

@@ -114,6 +114,7 @@
 						},
 						{
 							"label": "Patient covered by SHIF/SHA:",
+							"required": "true",
 							"id": "nhif",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')) ? undefined : HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')",
 							"questionOptions": {
@@ -152,9 +153,15 @@
 								]
 							},
 							"type": "obs",
-							"validators": [],
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(nhif) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], nhif) && isEmpty(myValue)",
+									"message": "Please indicate SHA status."
+								}
+							],
 							"hide": {
-								"hideWhenExpression": "nhif !== '8b715fed-97f6-4e38-8f6a-c167a42f8923'"
+								"hideWhenExpression": "nhif !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -576,6 +583,30 @@
 									"type": "js_expression",
 									"failsWhenExpression": "isEmpty(myValue) && hpvVaccine === 'a899b35c-1350-11df-a1f1-0026b9348838'",
 									"message": "Please indicate dose"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Vaccination date:",
+							"id": "doseDate",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && hpvVaccine === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+									"message": "Please indicate dose"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Vaccination date should be less than the encounter date."
 								}
 							],
 							"hide": {
@@ -1116,6 +1147,10 @@
 									{
 										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
 										"label": "DTG50mg/3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
@@ -6157,6 +6192,10 @@
 									{
 										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
 										"label": "DTG50mg/3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",

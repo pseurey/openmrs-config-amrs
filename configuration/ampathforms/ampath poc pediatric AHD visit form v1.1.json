@@ -847,6 +847,30 @@
 							}
 						},
 						{
+							"label": "Vaccination date:",
+							"id": "doseDate",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && hpvVaccine === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+									"message": "Please indicate dose"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Vaccination date should be less than the encounter date."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
 							"label": "If no, reason not vaccinated:",
 							"type": "obs",
 							"questionOptions": {
@@ -1340,6 +1364,10 @@
 									{
 										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
 										"label": "DTG50mg/3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
@@ -2686,48 +2714,6 @@
 							"validators": []
 						},
 						{
-							"label": "If yes select drug",
-							"type": "obs",
-							"id": "onTbProphylaxisDrug",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')",
-							"questionOptions": {
-								"concept": "a899e35e-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "162724df-5a66-4ae3-bbf6-5dc6dbba4ebb",
-										"label": "Isoniazid 100mg (6H)"
-									},
-									{
-										"concept": "b150ccdc-e7ec-4f99-b592-6f3fa73b3aea",
-										"label": "Isoniazid 300mg (6H)"
-									},
-									{
-										"concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
-										"label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
-									},
-									{
-										"concept": "177635d0-793b-4a66-8324-976c46f795af",
-										"label": "Rifampicin 150mg and Isonaizid 75mg (3RH)"
-									},
-									{
-										"concept": "e5e24e6d-e6b0-4c81-8f7b-0e366df29426",
-										"label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
-									}
-								],
-								"rendering": "select"
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(onTbProphylaxis) && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-									"message": "Patient  marked as on TB Prophylaxis. Please provide the drug."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "onTbProphylaxis !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
 							"type": "obsGroup",
 							"label": "TB prophylaxis ever",
 							"questionOptions": {
@@ -2757,6 +2743,48 @@
 									"validators": [],
 									"hide": {
 										"hideWhenExpression": "onTbProphylaxis !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "If yes select drug",
+									"type": "obs",
+									"id": "onTbProphylaxisDrug",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a899e35e-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "162724df-5a66-4ae3-bbf6-5dc6dbba4ebb",
+												"label": "Isoniazid 100mg (6H)"
+											},
+											{
+												"concept": "b150ccdc-e7ec-4f99-b592-6f3fa73b3aea",
+												"label": "Isoniazid 300mg (6H)"
+											},
+											{
+												"concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
+												"label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
+											},
+											{
+												"concept": "177635d0-793b-4a66-8324-976c46f795af",
+												"label": "Rifampicin 150mg and Isonaizid 75mg (3RH)"
+											},
+											{
+												"concept": "e5e24e6d-e6b0-4c81-8f7b-0e366df29426",
+												"label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
+											}
+										],
+										"rendering": "select"
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(onTbProphylaxis) && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+											"message": "Patient  marked as on TB Prophylaxis. Please provide the drug."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "onTbProphylaxis !== 'a899b35c-1350-11df-a1f1-0026b9348838' && pastTbProphylaxisDrug !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 									}
 								},
 								{
@@ -6158,6 +6186,10 @@
 									{
 										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
 										"label": "DTG50mg/3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",

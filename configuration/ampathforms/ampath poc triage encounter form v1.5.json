@@ -385,7 +385,357 @@
 				}
 			]
 		},
-		
+		{
+			"label": "Family History",
+			"sections": [
+				{
+					"label": "Family History",
+					"questions": [
+						{
+							"label": "Family History",
+							"type": "obsGroup",
+							"questionOptions": {
+								"concept": "aeddf768-5ac0-45e4-934b-bf69730a8c2d",
+								"rendering": "repeating"
+							},
+							"questions": [
+								{
+									"label": "Age of family member:",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "d67c7f03-7559-46bd-972b-6520769ec2b7",
+										"answers": []
+									},
+									"validators": [],
+									"id": "__zCKsMxDur"
+								},
+								{
+									"label": "Relation:",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "2ec6c229-afb6-4d95-89d2-c2f5e2715e9a",
+										"answers": [
+											{
+												"concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
+												"label": "Mother"
+											},
+											{
+												"concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
+												"label": "Father"
+											},
+											{
+												"concept": "a898c262-1350-11df-a1f1-0026b9348838",
+												"label": "Sibling"
+											},
+											{
+												"concept": "a8a171a0-1350-11df-a1f1-0026b9348838",
+												"label": "Childrens home"
+											},
+											{
+												"concept": "a89defe4-1350-11df-a1f1-0026b9348838",
+												"label": "Child"
+											},
+											{
+												"concept": "a89c9f54-1350-11df-a1f1-0026b9348838",
+												"label": "Paternal grandparent"
+											},
+											{
+												"concept": "a89c9e3c-1350-11df-a1f1-0026b9348838",
+												"label": "Maternal grandparent"
+											},
+											{
+												"concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+												"label": "Self"
+											},
+											{
+												"concept": "a89ebc80-1350-11df-a1f1-0026b9348838",
+												"label": "Spouse"
+											},
+											{
+												"concept": "a8a17470-1350-11df-a1f1-0026b9348838",
+												"label": "Paternal aunt"
+											},
+											{
+												"concept": "a8a17394-1350-11df-a1f1-0026b9348838",
+												"label": "Maternal aunt"
+											},
+											{
+												"concept": "a8a175f6-1350-11df-a1f1-0026b9348838",
+												"label": "Paternal uncle"
+											},
+											{
+												"concept": "a8a1752e-1350-11df-a1f1-0026b9348838",
+												"label": "Maternal uncle"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__GppCIHrJy"
+								},
+								{
+									"label": "HIV status of family member:",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "e7de7f52-9d91-4be6-a369-6cde2fe2d9a6",
+										"answers": [
+											{
+												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+												"label": "Positive"
+											},
+											{
+												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+												"label": "Negative"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__rGuxHDpvu"
+								},
+								{
+									"label": "Year tested",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "2a1066f8-35c7-48b3-ad53-d692ca6bda3d",
+										"answers": [],
+										"min": "0"
+									},
+									"validators": [],
+									"id": "__IELDu2Lsp"
+								},
+								{
+									"label": "In care?",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "85c60aac-51e2-411c-98c5-56ffc0169b11",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__2q8Huu5sE"
+								},
+								{
+									"label": "Family member deceased?",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "1158dfed-993a-477e-9ecc-ccdde2aa382c",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__G6nIIpEsz"
+								},
+								{
+									"label": "If deceased,HIV cause of death?",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "758c85ed-2239-470e-a8a4-d6083ab3d0ee",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__wF1quDGtz"
+								},
+								{
+									"label": "On anti-TB meds",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__tMqwKxz8y"
+								}
+							],
+							"id": "__un46zJLqq"
+						}
+					]
+				},
+				{
+					"label": "Treatment Supporter Details",
+					"questions": [
+						{
+							"type": "personName",
+							"label": "Name",
+							"id": "name",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Relationship:",
+							"questionOptions": {
+								"concept": "2ec6c229-afb6-4d95-89d2-c2f5e2715e9a",
+								"answers": [
+									{
+										"concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
+										"label": "Mother"
+									},
+									{
+										"concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
+										"label": "Father"
+									},
+									{
+										"concept": "a898c262-1350-11df-a1f1-0026b9348838",
+										"label": "Sibling"
+									},
+									{
+										"concept": "a8a171a0-1350-11df-a1f1-0026b9348838",
+										"label": "Childrens home"
+									},
+									{
+										"concept": "a89c9f54-1350-11df-a1f1-0026b9348838",
+										"label": "Paternal grandparent"
+									},
+									{
+										"concept": "a89c9e3c-1350-11df-a1f1-0026b9348838",
+										"label": "Maternal grandparent"
+									},
+									{
+										"concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+										"label": "Self"
+									},
+									{
+										"concept": "a89ebc80-1350-11df-a1f1-0026b9348838",
+										"label": "Spouse"
+									},
+									{
+										"concept": "a8a17470-1350-11df-a1f1-0026b9348838",
+										"label": "Paternal aunt"
+									},
+									{
+										"concept": "a8a17394-1350-11df-a1f1-0026b9348838",
+										"label": "Maternal aunt"
+									},
+									{
+										"concept": "a8a175f6-1350-11df-a1f1-0026b9348838",
+										"label": "Paternal uncle"
+									},
+									{
+										"concept": "a8a1752e-1350-11df-a1f1-0026b9348838",
+										"label": "Maternal uncle"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"id": "__MzurotMtr"
+						}
+					]
+				},
+				{
+					"label": "HIV Disclosure",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "HIV disclosure:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('cd8ead74-96fc-4764-a9fa-c9ee059c59c5')) ? undefined : HD.getObject('prevEnc').getValue('cd8ead74-96fc-4764-a9fa-c9ee059c59c5')",
+							"required": "true",
+							"questionOptions": {
+								"concept": "cd8ead74-96fc-4764-a9fa-c9ee059c59c5",
+								"answers": [
+									{
+										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+										"label": "N/A"
+									},
+									{
+										"concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+										"label": "Not disclosed"
+									},
+									{
+										"concept": "40c4e9fa-0fc0-4ceb-89d6-1c8cfebb9bae",
+										"label": "Partially disclosed"
+									},
+									{
+										"concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+										"label": "Disclosure completed"
+									},
+									{
+										"concept": "e30f9b6c-e4b2-4cd0-83be-8d0d487f57fe",
+										"label": "Acceptance of diagnosis and management ongoing"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"id": "__Hrn9wnEyu"
+						}
+					]
+				}
+			]
+		},
 		{
 			"label": "Assessment",
 			"sections": [
@@ -397,7 +747,6 @@
 							"label": "Please enter the assessment below:",
 							"type": "obs",
 							"id": "assNote",
-							"required": "false",
 							"default": "",
 							"questionOptions": {
 								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",

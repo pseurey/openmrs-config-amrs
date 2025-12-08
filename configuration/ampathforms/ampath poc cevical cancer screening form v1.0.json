@@ -182,7 +182,7 @@
 									}
 								},
 								{
-									"label": "For a non-AMPATH client, please specify the primary HIV Care facility",
+									"label": "For a non-AMPATH client, please specify the primary HIV care facility",
 									"id": "nonAMPATHCareLocation",
 									"type": "obs",
 									"questionOptions": {
@@ -265,7 +265,7 @@
 							}
 						},
 						{
-							"label": "Visit type",
+							"label": "Visit type:",
 							"id": "typeOfVisit",
 							"required": "true",
 							"questionOptions": {
@@ -309,7 +309,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Number of pregnancies had (gravida)",
+							"label": "Number of pregnancies had (gravida):",
 							"type": "obs",
 							"id": "noPregnancy",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')",
@@ -325,7 +325,7 @@
 							}
 						},
 						{
-							"label": "Number of pregnancies delivered (parity)",
+							"label": "Number of pregnancies delivered (parity):",
 							"type": "obs",
 							"id": "noDelivery",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
@@ -346,7 +346,7 @@
 							}
 						},
 						{
-							"label": "Menstruation status",
+							"label": "Menstruation status:",
 							"id": "menStatus",
 							"questionOptions": {
 								"concept": "a8a185d2-1350-11df-a1f1-0026b9348838",
@@ -359,6 +359,10 @@
 									{
 										"label": "Postmenopausal",
 										"concept": "5cc1c1a7-dfcc-47dc-ad73-c386c188fad8"
+									},
+									{
+										"label": "Amenorrhea",
+										"concept": "a8a18514-1350-11df-a1f1-0026b9348838"
 									}
 								]
 							},
@@ -369,7 +373,7 @@
 							}
 						},
 						{
-							"label": "Last menstrual period",
+							"label": "Last menstrual period:",
 							"id": "lmpDate1",
 							"questionOptions": {
 								"concept": "a89ff758-1350-11df-a1f1-0026b9348838",
@@ -414,7 +418,7 @@
 							}
 						},
 						{
-							"label": "Last delivery date",
+							"label": "Last delivery date:",
 							"id": "lastDelDate",
 							"questionOptions": {
 								"concept": "a8aae050-1350-11df-a1f1-0026b9348838",
@@ -433,7 +437,7 @@
 							}
 						},
 						{
-							"label": "Estimated delivery date",
+							"label": "Estimated delivery date:",
 							"id": "delDate",
 							"questionOptions": {
 								"concept": "a8aaddbc-1350-11df-a1f1-0026b9348838",
@@ -497,7 +501,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Prior VIA",
+							"label": "Prior VIA:",
 							"type": "obs",
 							"required": "true",
 							"id": "priorviatest",
@@ -518,7 +522,7 @@
 							"validators": []
 						},
 						{
-							"label": "Prior VIA result",
+							"label": "Prior VIA result:",
 							"id": "priorviaresult",
 							"type": "obs",
 							"historicalExpression": "HD.getObject('prevEnc').getValue('f165c64a-9354-4145-9b06-4ee437630218')",
@@ -569,7 +573,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Screening method",
+							"label": "Screening method:",
 							"type": "obs",
 							"id": "screeningMethod",
 							"required": "true",
@@ -598,10 +602,9 @@
 							"validators": []
 						},
 						{
-							"label": "VIA or VIA/VILI test result",
+							"label": "VIA or VIA/VILI test result:",
 							"type": "obs",
 							"id": "currentVia",
-							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
 								"concept": "b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65",
@@ -616,17 +619,23 @@
 									},
 									{
 										"concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-										"label": "Suspicious for Cancer"
+										"label": "Suspicious for cancer"
 									}
 								]
 							},
-							"validators": [],
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65'],screeningMethod)",
+									"message": "Please indicate VIA or VIA/VILI results"
+								}
+							],
 							"hide": {
 								"hideWhenExpression": "isEmpty(screeningMethod) ||  !arrayContains(screeningMethod,'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
 							}
 						},
 						{
-							"label": "Observations noted from positive VIA or VIA/VILI test",
+							"label": "Observations noted from positive VIA or VIA/VILI test:",
 							"id": "viaObservations",
 							"type": "obs",
 							"questionOptions": {
@@ -669,7 +678,7 @@
 							}
 						},
 						{
-							"label": "Cervix impression",
+							"label": "Cervix impression:",
 							"id": "cervixImp",
 							"questionOptions": {
 								"concept": "149f4d06-5ac1-41b0-b914-771fb9d7f192",
@@ -696,7 +705,7 @@
 							}
 						},
 						{
-							"label": "Vagina impression",
+							"label": "Vagina impression:",
 							"id": "vaginaImp",
 							"questionOptions": {
 								"concept": "e469db48-fd1c-4e27-be37-391e653cf043",
@@ -723,7 +732,7 @@
 							}
 						},
 						{
-							"label": "Vulva impression",
+							"label": "Vulva impression:",
 							"id": "vulvaImp",
 							"questionOptions": {
 								"concept": "7367cc87-b229-461a-9db8-3979fe57e00d",
@@ -750,7 +759,31 @@
 							}
 						},
 						{
-							"label": "HPV test result",
+							"label": "Have you received HPV results:",
+							"type": "obs",
+							"id": "hpvReceive",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "bfbd547d-4449-48d6-a464-7938602bc4e5",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+									
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'a89b2dcc-1350-11df-a1f1-0026b9348838')"
+							}
+						},
+						{
+							"label": "HPV test result:",
 							"type": "obs",
 							"id": "currentHpv",
 							"questionOptions": {
@@ -764,20 +797,22 @@
 									{
 										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
 										"label": "Positive"
-									},
-									{
-										"concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
-										"label": "Unknown"
 									}
 								]
 							},
-							"validators": [],
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && hpvReceive === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+									"message": "Please indicate HPV results"
+								}
+							],
 							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'a89b2dcc-1350-11df-a1f1-0026b9348838')"
+								"hideWhenExpression": "isEmpty(hpvReceive) || hpvReceive !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
-							"label": "HPV type",
+							"label": "HPV type:",
 							"type": "obs",
 							"id": "hpvType",
 							"questionOptions": {
@@ -804,7 +839,7 @@
 							}
 						},
 						{
-							"label": "Pap smear test result",
+							"label": "Pap smear test result:",
 							"type": "obs",
 							"id": "currentPapSmear",
 							"questionOptions": {
@@ -837,9 +872,48 @@
 									}
 								]
 							},
-							"validators": [],
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['a8983ff4-1350-11df-a1f1-0026b9348838'],screeningMethod)",
+									"message": "Please indicate pap smear results"
+								}
+							],
 							"hide": {
 								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'a8983ff4-1350-11df-a1f1-0026b9348838')"
+							}
+						},
+						{
+							"label": "Colposcopy finding:",
+							"type": "obs",
+							"id": "colpoFinding",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb",
+								"answers": [
+									{
+										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a899e890-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+										"label": "Suspicious of cancer"
+									}
+								]
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['44ffeaba-ffeb-4aa5-a141-3f144b75d3cb'],screeningMethod)",
+									"message": "Please indicate colposcopy finding"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, '44ffeaba-ffeb-4aa5-a141-3f144b75d3cb')"
 							}
 						}
 					]
@@ -863,7 +937,7 @@
 							},
 							"questions": [
 								{
-									"label": "Procedure done on this visit",
+									"label": "Procedure done on this visit:",
 									"id": "ProceDone",
 									"required": "true",
 									"questionOptions": {
@@ -943,7 +1017,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Treatment method",
+							"label": "Treatment method:",
 							"type": "obs",
 							"id": "preCancerTreatment",
 							"required": "true",
@@ -976,7 +1050,7 @@
 							"validators": []
 						},
 						{
-							"label": "Other treatment methods not listed above",
+							"label": "Other treatment methods not listed above:",
 							"type": "obs",
 							"id": "otherTreatmentMethod",
 							"questionOptions": {
@@ -989,7 +1063,7 @@
 							}
 						},
 						{
-							"label": "Status of cryotherapy",
+							"label": "Status of cryotherapy:",
 							"type": "obs",
 							"id": "cryoStatus",
 							"required": "true",
@@ -1021,7 +1095,7 @@
 							}
 						},
 						{
-							"label": "Status of LEEP",
+							"label": "Status of LEEP:",
 							"type": "obs",
 							"id": "leepStatus",
 							"required": "true",
@@ -1049,7 +1123,7 @@
 							}
 						},
 						{
-							"label": "Status of thermocoagulation",
+							"label": "Status of thermocoagulation:",
 							"type": "obs",
 							"id": "thermocoagStatus",
 							"required": "true",
@@ -1092,7 +1166,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Please enter your assessment below",
+							"label": "Please enter your assessment below:",
 							"type": "obs",
 							"id": "assNote",
 							"default": "",
@@ -1114,7 +1188,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Follow-up plan",
+							"label": "Follow-up plan:",
 							"id": "viaPlan",
 							"required": "true",
 							"questionOptions": {
@@ -1176,7 +1250,7 @@
 					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "Return to clinic date",
+							"label": "Return to clinic date:",
 							"type": "obs",
 							"required": "true",
 							"questionOptions": {

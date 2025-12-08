@@ -1,0 +1,524 @@
+{
+  "name": "AMPATH POC Alcohol Abuse Screening Tool v1.0",
+  "version": "1.0",
+  "encounterType": "uuid",
+  "processor": "EncounterFormProcessor",
+  "form": "uuid",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Alcohol Abuse Screening",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "id": "encDate",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "required": "true",
+              "id": "provider",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "label": "Implementation county:",
+              "type": "obs",
+              "id": "county",
+              "required": "true",
+              "questionOptions": {
+                "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation sub-county:",
+              "type": "obs",
+              "id": "subCounty",
+              "required": "true",
+              "questionOptions": {
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation ward:",
+              "type": "obs",
+              "id": "ward",
+              "required": "true",
+              "questionOptions": {
+                "concept": "0698d8d3-1d0f-487d-af0b-ac7dd76070ca",
+                "rendering": "text"
+              }
+            },
+
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeMale",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+                    "label": "MSM"
+                  },
+                  {
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+                  {
+                    "concept": "1e1af954-4a00-454a-ad55-c5f95c2e30b2",
+                    "label": "Transman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " sex !== 'M'"
+              }
+            },
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+
+                  {
+                    "concept": "add86571-a28f-4464-9f72-eb6ca72c6ee0",
+                    "label": "Transwoman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+
+              "hide": {
+                "hideWhenExpression": " sex !== 'F'"
+              }
+            },
+            {
+              "label": "KP hotspot/injecting site:",
+              "type": "obs",
+              "id": "hotspotFrequented",
+              "required": "true",
+              "questionOptions": {
+                "concept": "8da0ca52-ebc0-4536-bdb6-69d1dea9f223",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            }
+          ]
+        },
+        {
+          "label": "Disorder Identification Test",
+          "isExpanded":"true",
+          "questions": [
+           {
+              "label": "1. How often do you have a drink containing alcohol?",
+              "type": "obs",
+              "id": "oftendrink",
+              "questionOptions": {
+                "concept": "a8a77d02-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "a899d1f2-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly or less"
+                  },
+                  {
+                    "concept": "a899d2ce-1350-11df-a1f1-0026b9348838",
+                    "label": "2 to 4 times a month"
+                  },
+                  {
+                    "concept": "a899d3aa-1350-11df-a1f1-0026b9348838",
+                    "label": "2 to 3 times a week"
+                  },
+                  {
+                    "concept": "efbd4ea6-3123-42c5-8d4b-bfde92a15086",
+                    "label": "4 or More times a week"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "2. How many drinks containing alcohol do you have on a typical day when you are drinking?",
+              "type": "obs",
+              "id": "alcoholDrink",
+              "questionOptions": {
+                "concept": "a8a77dde-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899db5c-1350-11df-a1f1-0026b9348838",
+                    "label": "1 or 2"
+                  },
+                  {
+                    "concept": "a899dc38-1350-11df-a1f1-0026b9348838",
+                    "label": "3 or 4"
+                  },
+                  {
+                    "concept": "a899dd14-1350-11df-a1f1-0026b9348838",
+                    "label": "5 or 6"
+                  },
+                  {
+                    "concept": "a899ddf0-1350-11df-a1f1-0026b9348838",
+                    "label": "7 to 8 or 9"
+                  },
+                  {
+                    "concept": "a899decc-1350-11df-a1f1-0026b9348838",
+                    "label": "10 or more"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "3. How often do you have six or more drinks on one occasion?",
+              "type": "obs",
+              "id": "sixdrinks",
+              "questionOptions": {
+                "concept": "a8a77eba-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "1a899d71a-1350-11df-a1f1-0026b9348838",
+                    "label": "Less than monthly"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly"
+                  },
+                  {
+                    "concept": "a899d9ae-1350-11df-a1f1-0026b9348838",
+                    "label": "Daily or almost daily"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "4. How often during the last year have you found that you were not able to stop drinking once you had started?",
+              "type": "obs",
+              "id": "canNotStop",
+              "questionOptions": {
+                "concept": "61a52060-a200-44cc-909e-6fa2f91228b7",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "1a899d71a-1350-11df-a1f1-0026b9348838",
+                    "label": "Less than monthly"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly"
+                  },
+                  {
+                    "concept": "a899d9ae-1350-11df-a1f1-0026b9348838",
+                    "label": "Daily or almost daily"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "5. How often during the last year have you failed to do what was normally expected from you because of drinking?",
+              "type": "obs",
+              "id": "failedduetoalcohol",
+              "questionOptions": {
+                "concept": "61798cbb-aad7-4d8c-ba2c-8b38ae680397",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "1a899d71a-1350-11df-a1f1-0026b9348838",
+                    "label": "Less than monthly"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly"
+                  },
+                  {
+                    "concept": "a899d9ae-1350-11df-a1f1-0026b9348838",
+                    "label": "Daily or almost daily"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "6. How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?",
+              "type": "obs",
+              "id": "neededfirstdrink",
+              "questionOptions": {
+                "concept": "9d30b60d-d3ec-4cad-956f-98f883e8508e",
+                "rendering": "select",
+                "answers": [
+                 {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "1a899d71a-1350-11df-a1f1-0026b9348838",
+                    "label": "Less than monthly"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly"
+                  },
+                  {
+                    "concept": "a899d9ae-1350-11df-a1f1-0026b9348838",
+                    "label": "Daily or almost daily"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "7. How often during the last year have you had a feeling of guilt or remorse after drinking?",
+              "type": "obs",
+              "id": "feelingOfguilt",
+              "questionOptions": {
+                "concept": "ecb178cf-bc45-418d-89d7-01bc066523fd",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "1a899d71a-1350-11df-a1f1-0026b9348838",
+                    "label": "Less than monthly"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly"
+                  },
+                  {
+                    "concept": "a899d9ae-1350-11df-a1f1-0026b9348838",
+                    "label": "Daily or almost daily"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "8. How often during the last year have you been unable to remember what happened the night before because you had been drinking?",
+              "type": "obs",
+              "id": "unableToremeber",
+              "questionOptions": {
+                "concept": "f2a5c334-743a-4820-8f97-cf2e63ac9854",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "1a899d71a-1350-11df-a1f1-0026b9348838",
+                    "label": "Less than monthly"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly"
+                  },
+                  {
+                    "concept": "a899d9ae-1350-11df-a1f1-0026b9348838",
+                    "label": "Daily or almost daily"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "9. Have you or someone else been injured as a result of your drinking?",
+              "type": "obs",
+              "id": "injured",
+              "questionOptions": {
+                "concept": "300d1d93-5195-4ec6-b0dd-b1157437581d",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "cc9e3e26-bdad-4003-b963-b085da936693",
+                    "label": "yes but not in last year"
+                  },
+                  {
+                    "concept": "63952b8b-32f0-4cb0-bbc8-a3a89d49fac0",
+                    "label": "yes during this year"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "10. Has a relative or friend or a doctor or another health worker been concerned about your drinking or suggested you cut down?",
+              "type": "obs",
+              "id": "concerned",
+              "questionOptions": {
+                "concept": "46491a1d-0537-47f9-aaee-4a4fdb555362",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "cc9e3e26-bdad-4003-b963-b085da936693",
+                    "label": "yes but not in last year"
+                  },
+                  {
+                    "concept": "63952b8b-32f0-4cb0-bbc8-a3a89d49fac0",
+                    "label": "yes during this year"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(oftendrink) || oftendrink == 'a899d120-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "11. Record total of specific items here If total over 8, alcohol use disorder likely. Please refer to alcohol disorder treatment programs.",
+              "type": "obs",
+              "id": "results",
+              "questionOptions": {
+                "concept": "546ce6a4-dd3e-40e2-b9ea-0cbcb770d5ea",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Remarks.",
+              "type": "obs",
+              "id": "remarks.",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

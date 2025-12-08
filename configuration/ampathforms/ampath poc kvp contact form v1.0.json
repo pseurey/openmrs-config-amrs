@@ -7,7 +7,7 @@
   "referencedForms": [],
   "pages": [
     {
-      "label": "Clinic Enrolment",
+      "label": "Contact Form",
       "sections": [
         {
           "label": "Encounter Details",
@@ -46,40 +46,43 @@
                 "rendering": "ui-select-extended"
               },
               "id": "encLocation"
+            },
+            {
+              "label": "Implementation county:",
+              "type": "obs",
+              "id": "county",
+              "required": "true",
+              "questionOptions": {
+                "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation sub-county:",
+              "type": "obs",
+              "id": "subCounty",
+              "required": "true",
+              "questionOptions": {
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation ward:",
+              "type": "obs",
+              "id": "ward",
+              "required": "true",
+              "questionOptions": {
+                "concept": "0698d8d3-1d0f-487d-af0b-ac7dd76070ca",
+                "rendering": "text"
+              }
             }
           ]
         },
-
-        {
-          "label": "Implementation county:",
-          "type": "obs",
-          "id": "county",
-          "required": "true",
-          "questionOptions": {
-            "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
-            "rendering": "text"
-          }
-        },
-        {
-          "label": "Implementation sub-county:",
-          "type": "obs",
-          "id": "subCounty",
-          "required": "true",
-          "questionOptions": {
-            "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
-            "rendering": "text"
-          }
-        },
-        {
-          "label": "Implementation ward:",
-          "type": "obs",
-          "id": "ward",
-          "required": "true",
-          "questionOptions": {
-            "concept": "0698d8d3-1d0f-487d-af0b-ac7dd76070ca",
-            "rendering": "text"
-          }
-        },
+{
+          "label": "Contact Details",
+          "isExpanded": "true",
+          "questions": [
         {
           "label": "KP type:",
           "required": "true",
@@ -111,7 +114,10 @@
             ]
           },
           "type": "obs",
-          "validators": []
+          "validators": [],
+          "hide": {
+            "hideWhenExpression": " sex !== 'M'"
+          }
         },
         {
           "label": "KP type:",
@@ -142,7 +148,11 @@
             ]
           },
           "type": "obs",
-          "validators": []
+          "validators": [],
+
+          "hide": {
+            "hideWhenExpression": " sex !== 'F'"
+          }
         },
         {
           "label": "Vulnerable population type:",
@@ -560,6 +570,7 @@
         }
       ]
     },
+   
 
     {
       "label": "Next Appointment",
@@ -592,5 +603,7 @@
         }
       ]
     }
+  ]
+}
   ]
 }

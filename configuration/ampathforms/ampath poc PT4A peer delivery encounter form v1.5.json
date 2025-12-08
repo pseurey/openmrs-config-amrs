@@ -1,0 +1,1535 @@
+{
+  "name": "AMPATH POC PT4A Peer Delivery Encounter Form 1.5",
+  "uuid": "xxxx",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Peer-Patient Details",
+      "sections": [
+        {
+          "label": "Peer Visit Type",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "What is the current peer visit type?",
+              "type": "obs",
+              "id": "peerVisitType",
+              "questionOptions": {
+                "concept": "ef057f3d-9ac8-49bd-94f2-475bedddb974",
+                "answers": [
+                  {
+                    "concept": "bb6c5e01-c41b-47d5-aa82-e74f1d6fa501",
+                    "label": "Peer initial visit"
+                  },
+                  {
+                    "concept": "8b15ed12-4700-431d-a6ef-589bad2a5c27",
+                    "label": "Peer follow-up visit"
+                  }
+                ],
+                "rendering": "select"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Peer Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Location of encounter:",
+              "type": "obs",
+              "id": "locationEnc",
+              "questionOptions": {
+                "concept": "a89df30e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
+                    "label": "Ampath facility"
+                  },
+                  {
+                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                    "label": "Community(Church, School etc.)"
+                  },
+                  {
+                    "concept": "a89de832-1350-11df-a1f1-0026b9348838",
+                    "label": "Phone call"
+                  },
+                  {
+                    "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                    "label": "Patient's home"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": []
+            },
+            {
+              "label": "Other:",
+              "type": "obs",
+              "id": "locationOther",
+              "questionOptions": {
+                "concept": "6d92a9fc-475d-4159-9cec-b801b29fadaa",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "locationEnc !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patient Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Nearest health facility:",
+              "type": "obs",
+              "id": "nearestFacility",
+              "questionOptions": {
+                "concept": "e2403406-9c12-4bae-bcb4-a401d56da300",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "peerVisitType !== '8b15ed12-4700-431d-a6ef-589bad2a5c27'"
+              }
+            },
+            {
+              "label": "Current mobile number:",
+              "type": "obs",
+              "id": "currentPhone",
+              "questionOptions": {
+                "concept": "bcb3220f-57b5-467e-ad8a-282df45a3642",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Alternative mobile number:",
+              "type": "obs",
+              "id": "otherPhone",
+              "questionOptions": {
+                "concept": "8bf69e37-af72-43d8-ae93-decc86b23e25",
+                "rendering": "text"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patient Medication Delivery/Distribution",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Contact initiated by?",
+              "type": "obs",
+              "id": "contactInitiatedby",
+              "questionOptions": {
+                "concept": "3dc75b27-37e2-442d-9a41-03728a59bcb0",
+                "answers": [
+                  {
+                    "concept": "d1eb251b-3c97-4406-b292-2c6e7a7ff968",
+                    "label": "Peer"
+                  },
+                  {
+                    "concept": "a8a089fc-1350-11df-a1f1-0026b9348838",
+                    "label": "Patient"
+                  },
+                  {
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                    "label": "Provider"
+                  },
+                  {
+                    "concept": "a8b03bb8-1350-11df-a1f1-0026b9348838",
+                    "label": "Family"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "select",
+                "renderingType": "field-set"
+              },
+              "validators": []
+            },
+            {
+              "label": "Reason for contact:",
+              "type": "obs",
+              "id": "reasonForContact",
+              "questionOptions": {
+                "concept": "a89e3788-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89e35b2-1350-11df-a1f1-0026b9348838",
+                    "label": "Medications delivery"
+                  },
+                  {
+                    "concept": "554f2668-f64e-4497-abff-af6079089a80",
+                    "label": "Home visit"
+                  },
+                  {
+                    "concept": "fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114",
+                    "label": "Peer clinic visit "
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(contactInitiatedby) || peerVisitType !== '8b15ed12-4700-431d-a6ef-589bad2a5c27'"
+              }
+            },
+            {
+              "label": "Was the patient available to receive the medications?",
+              "type": "obs",
+              "id": "successDelivery",
+              "questionOptions": {
+                "concept": "be9131c6-58aa-46c1-94ae-a039b02beb6c",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "reasonForContact !== 'a89e35b2-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "id": "onMedicationTime",
+              "label": "Length on medication:",
+              "questionOptions": {
+                "concept": "7c356d7b-92a4-4b07-9472-1c27afcaf8f7",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "How long have you been on HTN medication:",
+                  "id": "medicationPeriod",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "451e22a7-6d9a-41ac-8cb7-b4f3eba59ac5",
+                    "max": "9999",
+                    "min": "0"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "peerVisitType !== 'bb6c5e01-c41b-47d5-aa82-e74f1d6fa501'"
+                  }
+                },
+                {
+                  "label": "Duration:",
+                  "id": "duration",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "5e5b7ff2-f0e7-44a2-ac11-ab3d140bf925",
+                    "answers": [
+                      {
+                        "concept": "a899b9c4-1350-11df-a1f1-0026b9348838",
+                        "label": "Days"
+                      },
+                      {
+                        "concept": "a899baaa-1350-11df-a1f1-0026b9348838",
+                        "label": "Weeks"
+                      },
+                      {
+                        "concept": "a899bb90-1350-11df-a1f1-0026b9348838",
+                        "label": "Months"
+                      },
+                      {
+                        "concept": "ac6a274b-a494-486d-83c1-4abab7e4442c",
+                        "label": "Years"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "peerVisitType !== 'bb6c5e01-c41b-47d5-aa82-e74f1d6fa501'"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Has the patient experienced any of the following symptoms recently (symptoms of uncontrolled hypertension, hypoglycemia, or medication side effect)? Select all that apply:",
+              "type": "obs",
+              "id": "symptomsRecent",
+              "questionOptions": {
+                "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Dyspnea on exertion (SOB)"
+                  },
+                  {
+                    "concept": "a896537e-1350-11df-a1f1-0026b9348838",
+                    "label": "Edema (leg swelling)"
+                  },
+                  {
+                    "concept": "a8ad47f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Decreased urine Output"
+                  },
+                  {
+                    "concept": "4ac2bdf3-16ed-4cd1-acd9-d78a1bf1cc85",
+                    "label": "Fainting"
+                  },
+                  {
+                    "concept": "a89836ee-1350-11df-a1f1-0026b9348838",
+                    "label": "Dizziness"
+                  },
+                  {
+                    "concept": "f96122ff-fa73-4a11-bec3-b6a1eec1f603",
+                    "label": "Sweating"
+                  },
+                  {
+                    "concept": "ea2aad3e-7630-4bab-bb89-e6fed2475d4c",
+                    "label": "Shaking"
+                  },
+                  {
+                    "concept": "a8ad3b02-1350-11df-a1f1-0026b9348838",
+                    "label": "Confusion"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "id": "firstBP",
+              "label": "First BP reading:",
+              "questionOptions": {
+                "concept": "4d63d867-5864-4882-97c2-f2f5c734f80e",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "BP systolic(1st reading):",
+                  "id": "syst1",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                    "max": "250",
+                    "min": "0"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "alert": {
+                    "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(dias1) && ((myValue < 90 && dias1 < 60) || (myValue > 160 && dias1 > 100) || (myValue > 180 && dias1 > 100))",
+                    "message": "Please contact clinician. This patient needs immediate referral"
+                  }
+                },
+                {
+                  "label": "BP diastolic(1st reading):",
+                  "id": "dias1",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                    "max": "150",
+                    "min": "0"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": []
+                }
+              ]
+            },
+            {
+              "type": "obsGroup",
+              "id": "secondBP",
+              "label": "Second BP Reading",
+              "questionOptions": {
+                "concept": "1b54076b-48d9-48b9-bac7-22c3cce651ac",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "BP Systolic(2nd reading):",
+                  "id": "syst2",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                    "max": "250",
+                    "min": "0"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": [],
+                  "alert": {
+                    "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(dias2) && ((myValue < 90 && dias2 < 60) || (myValue > 160 && dias2 > 100) || (myValue > 180 && dias2 > 100))",
+                    "message": "Please contact clinician. This patient needs immediate referral"
+                  }
+                },
+                {
+                  "label": "BP Diastolic(2nd reading):",
+                  "id": "dias2",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                    "max": "150",
+                    "min": "0"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": []
+                }
+              ]
+            },
+            {
+              "type": "obsGroup",
+              "id": "thirdBP",
+              "label": "Third BP Reading",
+              "questionOptions": {
+                "concept": "94c33aeb-398d-4071-8c6b-7897cabaad49",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "BP Systolic(3rd reading):",
+                  "id": "syst3",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                    "max": "250",
+                    "min": "0"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "alert": {
+                    "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(dias3) && ((myValue < 90 && dias3 < 60) || (myValue > 160 && dias3 > 100) || (myValue > 180 && dias3 > 100))",
+                    "message": "Please contact clinician. This patient needs immediate referral"
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "BP Diastolic(3rd reading):",
+                  "id": "dias3",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                    "max": "150",
+                    "min": "0"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": []
+                }
+              ]
+            },
+            {
+              "label": "Pulse (Rate/Min):",
+              "id": "pulse",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+                "max": "230",
+                "min": "0"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              },
+              "alert": {
+                "alertWhenExpression": "(!isEmpty(pulse) && pulse < 60) || (!isEmpty(pulse) && pulse > 100))",
+                "message": "Please contact clinician. This patient needs immediate referral"
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Blood Pressure Management",
+          "isExpanded": "true",
+          "questions": [
+           
+            {
+              "type": "obsGroup",
+              "label": "What medication regimen is prescribed for the patient?",
+              "questionOptions": {
+                "concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Name of drug prescribed:",
+                  "type": "obs",
+                  "id": "htn_name_presc",
+                  "questionOptions": {
+                    "concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
+                    "answers": [
+                      {
+                        "concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
+                        "label": "Amlodipine"
+                      },
+                      {
+                        "concept": "7f516314-327f-468c-9492-5cff2236ed03",
+                        "label": "Amlodipine/Losartan"
+                      },
+                      {
+                        "concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Atenolol"
+                      },
+                      {
+                        "concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
+                        "label": "Atorvastatin"
+                      },
+                      {
+                        "concept": "f4111e53-cd37-4fc4-9ff6-4b6c2812e0de",
+                        "label": "Amlodipine/Losartan/Hydrochlorothiazide"
+                      },
+                      {
+                        "concept": "a8a43d54-1350-11df-a1f1-0026b9348838",
+                        "label": "Amitryptiline"
+                      },
+                      {
+                        "concept": "afe81fe2-6449-415d-847f-c40cd8716227",
+                        "label": "Candesartan"
+                      },
+                      {
+                        "concept": "a8a43994-1350-11df-a1f1-0026b9348838",
+                        "label": "Carvedilol"
+                      },
+                      {
+                        "concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
+                        "label": "Clopidogrel"
+                      },
+                      {
+                        "concept": "a89896fc-1350-11df-a1f1-0026b9348838",
+                        "label": "Carbamazepine"
+                      },
+                      {
+                        "concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
+                        "label": "Digoxin"
+                      },
+                      {
+                        "concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
+                        "label": "Enalapril"
+                      },
+                      {
+                        "concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
+                        "label": "Enoxaparin"
+                      },
+                      {
+                        "concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
+                        "label": "Felodipine"
+                      },
+                      {
+                        "concept": "a8a43e12-1350-11df-a1f1-0026b9348838",
+                        "label": "Gabapentin"
+                      },
+
+                      {
+                        "concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
+                        "label": "Hydrochlorothiazide(HTCZ)"
+                      },
+                      {
+                        "concept": "a8989e86-1350-11df-a1f1-0026b9348838",
+                        "label": "Hydralazine"
+                      },
+                      {
+                        "concept": "2ce527d3-2b5f-4c82-8061-b4774e5e5bda",
+                        "label": "Indapamide"
+                      },
+                      {
+                        "concept": "dde8dd1e-b8d6-467b-acf0-8b54cf87a9e4",
+                        "label": "Junior ASA"
+                      },
+                      {
+                        "concept": "a890cf62-1350-11df-a1f1-0026b9348838",
+                        "label": "Furosemide/Lasix"
+                      },
+                      {
+                        "concept": "a8a43692-1350-11df-a1f1-0026b9348838",
+                        "label": "Lisinopril/Hydrochlorothiazide(HTCZ)"
+                      },
+                      {
+                        "concept": "a8a43750-1350-11df-a1f1-0026b9348838",
+                        "label": "Losartan"
+                      },
+                      {
+                        "concept": "e350ac38-0a46-4a58-a515-11279a009117",
+                        "label": "Losartan/Hydrochlorothiazide"
+                      },
+                      {
+                        "concept": "a8a4380e-1350-11df-a1f1-0026b9348838",
+                        "label": "Metropolol"
+                      },
+                      {
+                        "concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nifedipine"
+                      },
+                      {
+                        "concept": "a8939044-1350-11df-a1f1-0026b9348838",
+                        "label": "Propranolol"
+                      },
+                      {
+                        "concept": "0fab19f5-cc9e-4d04-b3c0-bd10223b458a",
+                        "label": "Pregabalin"
+                      },
+                      {
+                        "concept": "8b9b7f9e-8103-425a-9dc3-41c7a1a74057",
+                        "label": "Rosuvastatin"
+                      },
+                      {
+                        "concept": "1bfe65e2-ab8e-4570-8c66-00f134a406d8",
+                        "label": "Spironolactone"
+                      },
+                      {
+                        "concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
+                        "label": "Telmisartan"
+                      },
+                      {
+                        "concept": "bf687d8d-48cd-4dc6-b37a-42759bb0de02",
+                        "label": "Telmisartan/Hydrochlorothiazide"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "What is the strength of the pill?",
+                  "questionOptions": {
+                    "concept": "8e140ec8-bee9-49ae-9bc4-76d3d743896c",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "id": "strengthPres"
+                },
+                {
+                  "label": "What is the daily dose for the drug prescribed?",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "id": "dosePres"
+                },
+                 {
+                  "label": "What is the pill count?",
+                  "questionOptions": {
+                    "concept": "9b15016c-9698-4852-8228-7c55703f73ee",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "id": "htn_pills_remaining"
+                },
+                {
+                  "label": "What is the strength of the pill remaining?",
+                  "type": "obs",
+                  "id": "strengthRem",
+                  "questionOptions": {
+                    "concept": "29c3f819-67b3-4b80-8e89-33454e361d8a",
+                    "rendering": "number"
+                  }
+                },
+                {
+                  "label": "What is the daily dose for the remaining drug?",
+                  "type": "obs",
+                  "id": "doseRem",
+                  "questionOptions": {
+                    "concept": "11f63c0b-5b0e-4868-81bc-2f12ee9ef0d6",
+                    "rendering": "number"
+                  }
+                }
+              ],
+              "id": "presc_htn_meds",
+              "hide": {
+                "hideWhenExpression": "(!arrayContains(['fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact)) && (successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "label": "What medication regimen is delivered for the patient?",
+              "questionOptions": {
+                "concept": "2b3afd36-1427-40e3-aa12-a23d7431e286",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Name of drug prescribed:",
+                  "type": "obs",
+                  "id": "htn_name_disp",
+                  "questionOptions": {
+                    "concept": "65a9ba9f-41f8-417a-99e2-37555a30f40f",
+                    "answers": [
+                      {
+                        "concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
+                        "label": "Amlodipine"
+                      },
+                      {
+                        "concept": "7f516314-327f-468c-9492-5cff2236ed03",
+                        "label": "Amlodipine/Losartan"
+                      },
+                      {
+                        "concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Atenolol"
+                      },
+                      {
+                        "concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
+                        "label": "Atorvastatin"
+                      },
+                      {
+                        "concept": "f4111e53-cd37-4fc4-9ff6-4b6c2812e0de",
+                        "label": "Amlodipine/Losartan/Hydrochlorothiazide"
+                      },
+                      {
+                        "concept": "a8a43d54-1350-11df-a1f1-0026b9348838",
+                        "label": "Amitryptiline"
+                      },
+                      {
+                        "concept": "afe81fe2-6449-415d-847f-c40cd8716227",
+                        "label": "Candesartan"
+                      },
+                      {
+                        "concept": "a8a43994-1350-11df-a1f1-0026b9348838",
+                        "label": "Carvedilol"
+                      },
+                      {
+                        "concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
+                        "label": "Clopidogrel"
+                      },
+                      {
+                        "concept": "a89896fc-1350-11df-a1f1-0026b9348838",
+                        "label": "Carbamazepine"
+                      },
+                      {
+                        "concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
+                        "label": "Digoxin"
+                      },
+                      {
+                        "concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
+                        "label": "Enalapril"
+                      },
+                      {
+                        "concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
+                        "label": "Enoxaparin"
+                      },
+                      {
+                        "concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
+                        "label": "Felodipine"
+                      },
+                      {
+                        "concept": "a8a43e12-1350-11df-a1f1-0026b9348838",
+                        "label": "Gabapentin"
+                      },
+
+                      {
+                        "concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
+                        "label": "Hydrochlorothiazide(HTCZ)"
+                      },
+                      {
+                        "concept": "a8989e86-1350-11df-a1f1-0026b9348838",
+                        "label": "Hydralazine"
+                      },
+                      {
+                        "concept": "2ce527d3-2b5f-4c82-8061-b4774e5e5bda",
+                        "label": "Indapamide"
+                      },
+                      {
+                        "concept": "dde8dd1e-b8d6-467b-acf0-8b54cf87a9e4",
+                        "label": "Junior ASA"
+                      },
+                      {
+                        "concept": "a890cf62-1350-11df-a1f1-0026b9348838",
+                        "label": "Furosemide/Lasix"
+                      },
+                      {
+                        "concept": "a8a43692-1350-11df-a1f1-0026b9348838",
+                        "label": "Lisinopril/Hydrochlorothiazide(HTCZ)"
+                      },
+                      {
+                        "concept": "a8a43750-1350-11df-a1f1-0026b9348838",
+                        "label": "Losartan"
+                      },
+                      {
+                        "concept": "e350ac38-0a46-4a58-a515-11279a009117",
+                        "label": "Losartan/Hydrochlorothiazide"
+                      },
+                      {
+                        "concept": "a8a4380e-1350-11df-a1f1-0026b9348838",
+                        "label": "Metropolol"
+                      },
+                      {
+                        "concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nifedipine"
+                      },
+                      {
+                        "concept": "a8939044-1350-11df-a1f1-0026b9348838",
+                        "label": "Propranolol"
+                      },
+                      {
+                        "concept": "0fab19f5-cc9e-4d04-b3c0-bd10223b458a",
+                        "label": "Pregabalin"
+                      },
+                      {
+                        "concept": "8b9b7f9e-8103-425a-9dc3-41c7a1a74057",
+                        "label": "Rosuvastatin"
+                      },
+                      {
+                        "concept": "1bfe65e2-ab8e-4570-8c66-00f134a406d8",
+                        "label": "Spironolactone"
+                      },
+                      {
+                        "concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
+                        "label": "Telmisartan"
+                      },
+                      {
+                        "concept": "bf687d8d-48cd-4dc6-b37a-42759bb0de02",
+                        "label": "Telmisartan/Hydrochlorothiazide"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "What is the strength of the pill?",
+                  "questionOptions": {
+                    "concept": "8e140ec8-bee9-49ae-9bc4-76d3d743896c",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "id": "strengthDisp"
+                },
+                {
+                  "label": "What is the daily dose for the drug delivered?",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "id": "doseDisp"
+                },
+                {
+                  "label": "What is the pill count?",
+                  "questionOptions": {
+                    "concept": "9b15016c-9698-4852-8228-7c55703f73ee",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "id": "htn_pills_remaining"
+                }
+              ],
+              "id": "disp_htn_meds",
+              "hide": {
+                "hideWhenExpression": "(!arrayContains(['fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact)) && (successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Blood Pressure Medication Adherence",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Does the patient understand that these drugs are for blood pressure control?",
+              "type": "obs",
+              "id": "patientUnderstandsMeds",
+              "questionOptions": {
+                "concept": "a89eb140-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": []
+            },
+            {
+              "label": "Does the patient understand when and how to take the prescribed drugs?",
+              "type": "obs",
+              "id": "understandTakingMeds",
+              "questionOptions": {
+                "concept": "b316417a-f78a-4646-86f0-46be75b38f2e",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": []
+            },
+            {
+              "label": "I missed my medicine (past 7 days):",
+              "id": "missedMedspast7days",
+              "questionOptions": {
+                "concept": "7384f40d-02d5-4bb4-a0ba-c50101c7e07f",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89ac6b6-1350-11df-a1f1-0026b9348838",
+                    "label": "A little of the time"
+                  },
+                  {
+                    "concept": "a89fbd60-1350-11df-a1f1-0026b9348838",
+                    "label": "Some of the time"
+                  },
+                  {
+                    "concept": "a89ac86e-1350-11df-a1f1-0026b9348838",
+                    "label": "Most"
+                  },
+                  {
+                    "concept": "a89ac94a-1350-11df-a1f1-0026b9348838",
+                    "label": "Every time"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "I skipped a dose of my medicine:",
+              "id": "skippedDose",
+              "questionOptions": {
+                "concept": "64b792e5-392f-4e4c-aea5-a42c44fa068b",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89ac6b6-1350-11df-a1f1-0026b9348838",
+                    "label": "A little of the time"
+                  },
+                  {
+                    "concept": "a89fbd60-1350-11df-a1f1-0026b9348838",
+                    "label": "Some of the time"
+                  },
+                  {
+                    "concept": "a89ac86e-1350-11df-a1f1-0026b9348838",
+                    "label": "Most"
+                  },
+                  {
+                    "concept": "a89ac94a-1350-11df-a1f1-0026b9348838",
+                    "label": "Every time"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "I did not take a dose of my medicine:",
+              "id": "didNotTakeDose",
+              "questionOptions": {
+                "concept": "5713a66f-06cd-49ae-a7f0-829aef90d60a",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89ac6b6-1350-11df-a1f1-0026b9348838",
+                    "label": "A little of the time"
+                  },
+                  {
+                    "concept": "a89cdbcc-1350-11df-a1f1-0026b9348838",
+                    "label": "Some of the time"
+                  },
+                  {
+                    "concept": "a89ac86e-1350-11df-a1f1-0026b9348838",
+                    "label": "Most"
+                  },
+                  {
+                    "concept": "a89ac94a-1350-11df-a1f1-0026b9348838",
+                    "label": "Every time"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Which of the prescribed medications were missed? (If applicable, may select more than one):",
+              "type": "obs",
+              "id": "missedMedication",
+              "questionOptions": {
+                "concept": "f9f721e5-d123-49d5-976f-a24d3c5b5a90",
+                "answers": [
+                  {
+                    "concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
+                    "label": "Amlodipine"
+                  },
+                  {
+                    "concept": "7f516314-327f-468c-9492-5cff2236ed03",
+                    "label": "Amlodipine/Losartan"
+                  },
+                  {
+                    "concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Atenolol"
+                  },
+                  {
+                    "concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
+                    "label": "Atorvastatin"
+                  },
+                  {
+                    "concept": "f4111e53-cd37-4fc4-9ff6-4b6c2812e0de",
+                    "label": "Amlodipine/Losartan/Hydrochlorothiazide"
+                  },
+                  {
+                    "concept": "a8a43d54-1350-11df-a1f1-0026b9348838",
+                    "label": "Amitryptiline"
+                  },
+                  {
+                    "concept": "afe81fe2-6449-415d-847f-c40cd8716227",
+                    "label": "Candesartan"
+                  },
+                  {
+                    "concept": "a8a43994-1350-11df-a1f1-0026b9348838",
+                    "label": "Carvedilol"
+                  },
+                  {
+                    "concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
+                    "label": "Clopidogrel"
+                  },
+                  {
+                    "concept": "a89896fc-1350-11df-a1f1-0026b9348838",
+                    "label": "Carbamazepine"
+                  },
+                  {
+                    "concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
+                    "label": "Digoxin"
+                  },
+                  {
+                    "concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
+                    "label": "Enalapril"
+                  },
+                  {
+                    "concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
+                    "label": "Enoxaparin"
+                  },
+                  {
+                    "concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
+                    "label": "Felodipine"
+                  },
+                  {
+                    "concept": "a8a43e12-1350-11df-a1f1-0026b9348838",
+                    "label": "Gabapentin"
+                  },
+
+                  {
+                    "concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
+                    "label": "Hydrochlorothiazide(HTCZ)"
+                  },
+                  {
+                    "concept": "a8989e86-1350-11df-a1f1-0026b9348838",
+                    "label": "Hydralazine"
+                  },
+                  {
+                    "concept": "2ce527d3-2b5f-4c82-8061-b4774e5e5bda",
+                    "label": "Indapamide"
+                  },
+                  {
+                    "concept": "dde8dd1e-b8d6-467b-acf0-8b54cf87a9e4",
+                    "label": "Junior ASA"
+                  },
+                  {
+                    "concept": "a890cf62-1350-11df-a1f1-0026b9348838",
+                    "label": "Furosemide/Lasix"
+                  },
+                  {
+                    "concept": "a8a43692-1350-11df-a1f1-0026b9348838",
+                    "label": "Lisinopril/Hydrochlorothiazide(HTCZ)"
+                  },
+                  {
+                    "concept": "a8a43750-1350-11df-a1f1-0026b9348838",
+                    "label": "Losartan"
+                  },
+                  {
+                    "concept": "e350ac38-0a46-4a58-a515-11279a009117",
+                    "label": "Losartan/Hydrochlorothiazide"
+                  },
+                  {
+                    "concept": "a8a4380e-1350-11df-a1f1-0026b9348838",
+                    "label": "Metropolol"
+                  },
+                  {
+                    "concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
+                    "label": "Nifedipine"
+                  },
+                  {
+                    "concept": "a8939044-1350-11df-a1f1-0026b9348838",
+                    "label": "Propranolol"
+                  },
+                  {
+                    "concept": "0fab19f5-cc9e-4d04-b3c0-bd10223b458a",
+                    "label": "Pregabalin"
+                  },
+                  {
+                    "concept": "8b9b7f9e-8103-425a-9dc3-41c7a1a74057",
+                    "label": "Rosuvastatin"
+                  },
+                  {
+                    "concept": "1bfe65e2-ab8e-4570-8c66-00f134a406d8",
+                    "label": "Spironolactone"
+                  },
+                  {
+                    "concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
+                    "label": "Telmisartan"
+                  },
+                  {
+                    "concept": "bf687d8d-48cd-4dc6-b37a-42759bb0de02",
+                    "label": "Telmisartan/Hydrochlorothiazide"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (peerVisitType !== '8b15ed12-4700-431d-a6ef-589bad2a5c27') || ((isEmpty(missedMedspast7days) || missedMedspast7days == 'a899e0ac-1350-11df-a1f1-0026b9348838') && (isEmpty(skippedDose) || skippedDose == 'a899e0ac-1350-11df-a1f1-0026b9348838') && (isEmpty(didNotTakeDose) || didNotTakeDose == 'a899e0ac-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "id": "missDose",
+              "label": "People miss doses for various reasons. Please tell us which reasons contributed to you missing a dose of your medication",
+              "questionOptions": {
+                "concept": "a89ebbc2-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(missedMedication)"
+              },
+              "questions": [
+                {
+                  "label": "I missed my dose because…",
+                  "type": "obs",
+                  "id": "missedDoseReason",
+                  "questionOptions": {
+                    "concept": "a89ebbc2-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a89eacc2-1350-11df-a1f1-0026b9348838",
+                        "label": "I forgot"
+                      },
+                      {
+                        "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+                        "label": "The medication caused side effects"
+                      },
+                      {
+                        "concept": "a89dee54-1350-11df-a1f1-0026b9348838",
+                        "label": "I did not have my medicines with me"
+                      },
+                      {
+                        "concept": "a8b03af0-1350-11df-a1f1-0026b9348838",
+                        "label": "I could not afford the medication"
+                      },
+                      {
+                        "concept": "a89eb802-1350-11df-a1f1-0026b9348838",
+                        "label": "The medication was not working"
+                      },
+                      {
+                        "concept": "b858568f-c722-411d-85ca-97d46bc98b3c",
+                        "label": "I did not want others to see my medications"
+                      },
+                      {
+                        "concept": "e7302412-bf48-4c8c-ba3c-45d632849112",
+                        "label": "There was no one to help me"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Treatment was hard on my family"
+                      },
+                      {
+                        "concept": "a89ebb04-1350-11df-a1f1-0026b9348838",
+                        "label": "I had other medications to take"
+                      },
+                      {
+                        "concept": "a8af4cee-1350-11df-a1f1-0026b9348838",
+                        "label": "I ran out of medication"
+                      },
+                      {
+                        "concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
+                        "label": "I was feeling too sick to take it"
+                      },
+                      {
+                        "concept": "a8a08ff6-1350-11df-a1f1-0026b9348838",
+                        "label": "I could not get answers to my questions about the medication"
+                      },
+                      {
+                        "concept": "a897fdaa-1350-11df-a1f1-0026b9348838",
+                        "label": "I could not afford the transport to go to the pharmacy/chemist"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "Frequency of missing dose:",
+                  "id": "missedDoseReasonRating",
+                  "questionOptions": {
+                    "concept": "a89eb384-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "31a579e7-daf6-4105-90b8-37bb070f918e",
+                        "label": "1 (Not at all)"
+                      },
+                      {
+                        "concept": "889c02ed-f732-47ff-b211-2a4b10cb540b",
+                        "label": "2"
+                      },
+                      {
+                        "concept": "3c731705-e440-4042-8916-cca3e631bbe0",
+                        "label": "3"
+                      },
+                      {
+                        "concept": "a82b4877-cd15-40ba-af20-f93b5e3387ab",
+                        "label": "4"
+                      },
+                      {
+                        "concept": "26ed82f2-2cec-4b46-9042-c8fec354847f",
+                        "label": "5 (Very much)"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Peer Action Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient adherence assessment:",
+              "type": "obs",
+              "id": "adherenceAssessment",
+              "questionOptions": {
+                "concept": "61172b0e-6b93-4865-944f-efb9c4577bef",
+                "answers": [
+                  {
+                    "concept": "27313b27-6968-420d-be86-bffec248e4f5",
+                    "label": "Patient is adherent to medications"
+                  },
+                  {
+                    "concept": "11b09893-7408-4c70-9992-00cf774146f0",
+                    "label": "Patient is not adherent to medications"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": []
+            },
+            {
+              "label": "Medication distribution, adherent:",
+              "type": "obs",
+              "id": "medDistribution1",
+              "questionOptions": {
+                "concept": "dcbe56f9-96b4-407d-90fc-0a02ebe8e209",
+                "answers": [
+                  {
+                    "concept": "7b6a9ea0-0193-4036-a56b-63295241f086",
+                    "label": "Continue current medication plan and distribute medications"
+                  },
+                  {
+                    "concept": "62223f09-4d19-4bb0-9972-7b0f7680396d",
+                    "label": "DO NOT distribute medications because patient needs urgent referral"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "adherenceAssessment !== '27313b27-6968-420d-be86-bffec248e4f5' || (reasonForContact == '' || (reasonForContact !== '554f2668-f64e-4497-abff-af6079089a80' && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              },
+              "validators": []
+            },
+            {
+              "label": "Medication distribution, non-adherent:",
+              "type": "obs",
+              "id": "medDistribution2",
+              "questionOptions": {
+                "concept": "dcbe56f9-96b4-407d-90fc-0a02ebe8e209",
+                "answers": [
+                  {
+                    "concept": "793bb384-daf6-45a7-b92f-a242defe9e72",
+                    "label": "Continue current medication plan, distribute medications, and provide enhanced adherence counseling"
+                  },
+                  {
+                    "concept": "f57172b5-7180-40f5-bbd1-adb5305c7270",
+                    "label": "DO NOT distribute medications because patient needs urgent referral"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "adherenceAssessment !== '11b09893-7408-4c70-9992-00cf774146f0' || (reasonForContact == '' || (reasonForContact !== '554f2668-f64e-4497-abff-af6079089a80' && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              },
+              "validators": []
+            },
+
+            {
+              "label": "Peer notes:",
+              "type": "obs",
+              "id": "peerObservation",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "If patient is unable to get medications distributed to them today, document reason why:",
+              "id": "nonDeliveryReason",
+              "questionOptions": {
+                "concept": "be050e3b-9915-4097-ba41-46033e9b61c3",
+                "answers": [
+                  {
+                    "concept": "a89def1c-1350-11df-a1f1-0026b9348838",
+                    "label": "Unreachable"
+                  },
+                  {
+                    "concept": "a89e39f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Patient is deceased"
+                  },
+                  {
+                    "concept": "b593cef9-0ad8-4393-a6f8-8b3daa25e1cd",
+                    "label": "Patient has been hospitalized"
+                  },
+                  {
+                    "concept": "bbc8f7f3-bf4b-4ed1-b2c0-4ee8245e1021",
+                    "label": "Advised by clinician not handover medication"
+                  },
+                  {
+                    "concept": "a8b03af0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unable to pay for the prescription "
+                  },
+                  {
+                    "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+                    "label": "Medication side effects"
+                  },
+                  {
+                    "concept": "cb85dc6f-86ff-4668-87ea-a1980f91f8cf",
+                    "label": "Stated to have enough medications until next clinical visit"
+                  },
+                  {
+                    "concept": "0a7338a4-d459-45aa-857b-a09635db25af",
+                    "label": "Stated to have bought medications from elsewhere"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "successDelivery !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Others/Elaboration:",
+              "type": "obs",
+              "id": "nonDeliveryOtherReason",
+              "questionOptions": {
+                "concept": "b85de4a8-ed5a-4c7f-bd28-c320c81cd570",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "nonDeliveryReason !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Has the client recieved teleconsultation services today?",
+              "type": "obs",
+              "id": "telecons",
+              "questionOptions": {
+                "concept": "d3b6d223-bab3-494c-a5c1-adac86d2dc69",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(reasonForContact) || (!arrayContains(['554f2668-f64e-4497-abff-af6079089a80','fa5c7b85-d1b5-4dfe-9f00-1aad04d0d114'], reasonForContact) && successDelivery !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Next Peer Follow-Up Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Do you plan to meet with the patient again?",
+              "type": "obs",
+              "id": "planToMeet",
+              "questionOptions": {
+                "concept": "4705b45d-fb6a-4e37-9e12-e65cb14990d7",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": []
+            },
+            {
+              "label": "What is the next peer delivery date?",
+              "type": "obs",
+              "required": "true",
+              "default": "",
+              "id": "nextPeerDelvDate",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [2, 4, 8, 12, 16]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(planToMeet) || planToMeet=='a899b42e-1350-11df-a1f1-0026b9348838'"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

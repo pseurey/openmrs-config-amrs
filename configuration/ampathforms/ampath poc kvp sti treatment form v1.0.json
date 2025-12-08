@@ -1,0 +1,643 @@
+{
+  "name": "AMPATH POC KVP STI Treatment Form v1.0",
+  "version": "1.0",
+  "encounterType": "uuid",
+  "processor": "EncounterFormProcessor",
+  "form": "uuid",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "STI Treatment",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "id": "encDate",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "required": "true",
+              "id": "provider",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "label": "Implementation county:",
+              "type": "obs",
+              "id": "county",
+              "required": "true",
+              "questionOptions": {
+                "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation sub-county:",
+              "type": "obs",
+              "id": "subCounty",
+              "required": "true",
+              "questionOptions": {
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation ward:",
+              "type": "obs",
+              "id": "ward",
+              "required": "true",
+              "questionOptions": {
+                "concept": "0698d8d3-1d0f-487d-af0b-ac7dd76070ca",
+                "rendering": "text"
+              }
+            },
+
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeMale",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+                    "label": "MSM"
+                  },
+                  {
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+                  {
+                    "concept": "1e1af954-4a00-454a-ad55-c5f95c2e30b2",
+                    "label": "Transman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " sex !== 'M'"
+              }
+            },
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+
+                  {
+                    "concept": "add86571-a28f-4464-9f72-eb6ca72c6ee0",
+                    "label": "Transwoman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+
+              "hide": {
+                "hideWhenExpression": " sex !== 'F'"
+              }
+            },
+            {
+              "label": "Vulnerable population type:",
+              "required": "true",
+              "id": "vulntype",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                "answers": [
+                  {
+                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                    "label": "Fisher folks"
+                  },
+                  {
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Truckers"
+                  },
+                  {
+                    "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
+                    "label": "Person in prison"
+                  },
+                  {
+                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Discordant couples"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "KP hotspot/injecting site:",
+              "type": "obs",
+              "id": "hotspotFrequented",
+              "required": "true",
+              "questionOptions": {
+                "concept": "8da0ca52-ebc0-4536-bdb6-69d1dea9f223",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "New client in programme:",
+              "type": "obs",
+              "id": "newClient",
+              "required": "true",
+              "questionOptions": {
+                "concept": "5c1e610c-36f4-456c-be9b-11c106591f7f",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            }
+          ]
+        },
+        {
+          "label": "Type of Syndrome/ Infection",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "STI, detailed",
+              "questionOptions": {
+                "concept": "a38192d1-820f-4856-951e-e6f8d1895249",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Sexually transmitted infections (tick as appropriate)",
+                  "type": "obs",
+                  "id": "sexTransInfect",
+                  "questionOptions": {
+                    "concept": "a899c2fc-1350-11df-a1f1-0026b9348838",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a8982b54-1350-11df-a1f1-0026b9348838",
+                        "label": "Genital ulcer disease"
+                      },
+                      {
+                        "concept": "a8986754-1350-11df-a1f1-0026b9348838",
+                        "label": "Pelvic inflammation disease"
+                      },
+
+                      {
+                        "concept": "a8ad3062-1350-11df-a1f1-0026b9348838",
+                        "label": "Urethral discharge/urethritis"
+                      },
+                      {
+                        "concept": "a89cef0e-1350-11df-a1f1-0026b9348838",
+                        "label": "Genital warts"
+                      },
+                      {
+                        "concept": "a8931cf4-1350-11df-a1f1-0026b9348838",
+                        "label": "Cervicitis"
+                      },
+                      {
+                        "concept": "a8936d62-1350-11df-a1f1-0026b9348838",
+                        "label": "Syphilis"
+                      },
+                      {
+                        "concept": "a89ce8ec-1350-11df-a1f1-0026b9348838",
+                        "label": "Herpes genitalia"
+                      },
+                      {
+                        "concept": "a8932d66-1350-11df-a1f1-0026b9348838",
+                        "label": "Pharyngeal discharge"
+                      },
+                      {
+                        "concept": "a892ea2c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginitis"
+                      },
+                      {
+                        "concept": "a89cef0e-1350-11df-a1f1-0026b9348838",
+                        "label": "Anal warts"
+                      },
+                      {
+                        "concept": "6201b563-716f-4c75-bb61-ec92864d2e53",
+                        "label": "Anal discharge"
+                      },
+                      {
+                        "concept": "eb38e1af-a20f-4ede-9019-348fb58fc3d7",
+                        "label": "Anal rectal ulcer"
+                      },
+                      {
+                        "concept": "6a066554-db3d-430a-8869-4c5bfa787e2a",
+                        "label": "Pharyngeal ulcer"
+                      },
+                      {
+                        "concept": "a89cf850-1350-11df-a1f1-0026b9348838",
+                        "label": "Orchitis"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other(specify)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Other syndrome",
+                  "type": "obs",
+                  "id": "otherSyndrome",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(sexTransInfect) || !arrayContains(sexTransInfect,'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Drug Prescription",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Drug, detailed",
+              "questionOptions": {
+                "concept": "e5d85424-f2a1-47dd-bc76-1fee0b995c6c",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Drug (tick as appropriate) ",
+                  "type": "obs",
+                  "id": "drug",
+                  "questionOptions": {
+                    "concept": "2117b29a-8f7e-4303-8e1a-283f8b27c102",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a893a78c-1350-11df-a1f1-0026b9348838",
+                        "label": "Erythromycin"
+                      },
+                      {
+                        "concept": "a895650e-1350-11df-a1f1-0026b9348838",
+                        "label": "Ceftriaxone"
+                      },
+                      {
+                        "concept": "af4b80f8-8c38-44b4-97bc-9da3a4fbdc47",
+                        "label": "Podophyllin"
+                      },
+                      {
+                        "concept": "a8971836-1350-11df-a1f1-0026b9348838",
+                        "label": "Ciprofloxacin"
+                      },
+                      {
+                        "concept": "a8971174-1350-11df-a1f1-0026b9348838",
+                        "label": "Acyclovir tablets"
+                      },
+                      {
+                        "concept": "a890c3aa-1350-11df-a1f1-0026b9348838",
+                        "label": "Paracetamol"
+                      },
+                      {
+                        "concept": "74123b61-c7f2-4349-90bc-cac63ee5bad1",
+                        "label": "Benzathine"
+                      },
+
+                      {
+                        "concept": "a8989030-1350-11df-a1f1-0026b9348838",
+                        "label": "Brufen"
+                      },
+                      {
+                        "concept": "a898bb5a-1350-11df-a1f1-0026b9348838",
+                        "label": "Cefixime"
+                      },
+                      {
+                        "concept": "a890d02a-1350-11df-a1f1-0026b9348838",
+                        "label": "Inj. gentamycin"
+                      },
+                      {
+                        "concept": "a893a098-1350-11df-a1f1-0026b9348838",
+                        "label": "Amoxycillin"
+                      },
+                      {
+                        "concept": "a890cc42-1350-11df-a1f1-0026b9348838",
+                        "label": "Doxycycline"
+                      },
+                      {
+                        "concept": "a898b8d0-1350-11df-a1f1-0026b9348838",
+                        "label": "Clotrimazole pessaries"
+                      },
+                      {
+                        "concept": "a89713fe-1350-11df-a1f1-0026b9348838",
+                        "label": "Azithromycin"
+                      },
+
+                      {
+                        "concept": "8b6579cf-f8af-4f22-83df-94a69fbe07ab",
+                        "label": "Anusol suppositories"
+                      },
+
+                      {
+                        "concept": "a8937f0a-1350-11df-a1f1-0026b9348838",
+                        "label": "Metronidazole"
+                      },
+                      {
+                        "concept": "a8971e12-1350-11df-a1f1-0026b9348838",
+                        "label": "Fluconazole"
+                      },
+
+                      {
+                        "concept": "fc20c8c5-1bbd-4047-aeec-d737369e9076",
+                        "label": "Acyclovir cream"
+                      },
+                      {
+                        "concept": "a898b8d0-1350-11df-a1f1-0026b9348838",
+                        "label": "Clotrimazole cream"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other (Specify)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Other Drug",
+                  "type": "obs",
+                  "id": "otherDrug",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(drug) || !arrayContains(drug,'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Examination and Referrals",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Client referred for lab investigation?",
+              "type": "obs",
+              "id": "referredLab",
+              "questionOptions": {
+                "concept": "e2486ac1-cac8-4755-ac21-9fa362017c44",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Client referred to other health facility?",
+              "type": "obs",
+              "id": "referredFacility",
+              "questionOptions": {
+                "concept": "54ac5c86-feff-4f8f-a0d9-68cc9f7e98b6",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Given condoms?",
+              "type": "obs",
+              "id": "givenCondoms",
+              "questionOptions": {
+                "concept": "a8b034d8-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Number of condoms:",
+              "type": "obs",
+              "id": "numberOfCondoms",
+              "questionOptions": {
+                "concept": "31faccd3-9134-4aa6-b059-921450ce9e68",
+                "rendering": "number",
+                "max": "100",
+                "min": "1"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "givenCondoms !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Given lubricants?",
+              "type": "obs",
+              "id": "lubricantsGiven",
+              "questionOptions": {
+                "concept": "6b6865e6-71ef-4a22-bd86-46bfa70496ee",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Number of lubricants:",
+              "type": "obs",
+              "id": "numberOfLubricants",
+              "questionOptions": {
+                "concept": "2f2becba-648e-468f-aa2e-2af49b646728",
+                "rendering": "number",
+                "max": "100",
+                "min": "1"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "lubricantsGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Partner referral done?",
+              "type": "obs",
+              "id": "partnerReferral",
+              "questionOptions": {
+                "concept": "a8a4abc2-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Was genital examination done?",
+              "type": "obs",
+              "id": "genitalExam",
+              "questionOptions": {
+                "concept": "a216d251-1600-48d1-98ed-3fc941673932",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+
+        {
+          "label": "Comments and Next Appointment Date",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Clinical provider's comments:",
+              "type": "obs",
+              "id": "clinicalProviderComments",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea"
+              }
+            },
+
+            {
+              "label": "Date of next visit:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+                  "message": "Next visit date should not be in the past."
+                }
+              ],
+              "id": "returnVisitDate",
+              "required": "true"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

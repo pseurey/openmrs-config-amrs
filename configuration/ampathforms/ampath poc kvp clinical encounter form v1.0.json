@@ -1,0 +1,876 @@
+{
+  "name": "AMPATH POC KVP Clinical Encounter Form v1.0",
+  "version": "1.0",
+  "encounterType": "uuid",
+  "processor": "EncounterFormProcessor",
+  "form": "uuid",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Clinical Review",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "id": "encDate",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "required": "true",
+              "id": "provider",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "label": "Implementation county:",
+              "type": "obs",
+              "id": "county",
+              "required": "true",
+              "questionOptions": {
+                "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation sub-county:",
+              "type": "obs",
+              "id": "subCounty",
+              "required": "true",
+              "questionOptions": {
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Implementation ward:",
+              "type": "obs",
+              "id": "ward",
+              "required": "true",
+              "questionOptions": {
+                "concept": "0698d8d3-1d0f-487d-af0b-ac7dd76070ca",
+                "rendering": "text"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Clinical Review",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeMale",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+                    "label": "MSM"
+                  },
+                  {
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+                  {
+                    "concept": "1e1af954-4a00-454a-ad55-c5f95c2e30b2",
+                    "label": "Transman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " sex !== 'M'"
+              }
+            },
+            {
+              "label": "KP type:",
+              "required": "true",
+              "id": "kptypeFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWU"
+                  },
+
+                  {
+                    "concept": "add86571-a28f-4464-9f72-eb6ca72c6ee0",
+                    "label": "Transwoman"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": " sex !== 'F"
+              }
+            },
+            {
+              "label": "Vulnerable population type:",
+              "required": "true",
+              "id": "vulntype",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                "answers": [
+                  {
+                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                    "label": "Fisher folks"
+                  },
+                  {
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Truckers"
+                  },
+                  {
+                    "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
+                    "label": "Person in prison"
+                  },
+                  {
+                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Discordant couples"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Client type:",
+              "type": "obs",
+              "id": "clientType",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a89eea66-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "5c1e610c-36f4-456c-be9b-11c106591f7f",
+                    "label": "New client"
+                  },
+                  {
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                    "label": "Follow up"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Date of enrolment:",
+              "required": "true",
+              "id": "enrolDate",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "0855159f-e34f-4876-9951-c936c9684926"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clientType !== '5c1e610c-36f4-456c-be9b-11c106591f7f'"
+              }
+            },
+            {
+              "label": "TB prophylaxis start date:",
+              "required": "true",
+              "id": "tbProphDate",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "67785e82-c2f7-4417-8ada-cc8e85abbfc1"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clientType !== '5c1e610c-36f4-456c-be9b-11c106591f7f'"
+              }
+            },
+            {
+              "label": "Completion:",
+              "id": "completed",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "2e21597d-a39c-41c8-9ab5-3b6c591b1d06",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clientType !== '5c1e610c-36f4-456c-be9b-11c106591f7f'"
+              }
+            },
+            {
+              "label": "Completion date:",
+              "id": "completeDate",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "d4f18a59-9bb4-4089-8cd6-1410491569a0"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "completed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Vaccination adult:",
+
+              "id": "vaccAdult",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b29b512f-cd46-41ee-a568-bdaafa0bb874",
+                "answers": [
+                  {
+                    "concept": "a897dd84-1350-11df-a1f1-0026b9348838",
+                    "label": "HBV"
+                  },
+
+                  {
+                    "concept": "a6678857-3e09-42ab-ad38-9680335b71cd",
+                    "label": "Covid-19"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clientType !== '5c1e610c-36f4-456c-be9b-11c106591f7f'"
+              }
+            },
+            {
+              "label": "HIV testing results:",
+              "required": "true",
+              "id": "hivResults",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b29b512f-cd46-41ee-a568-bdaafa0bb874",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "On ART:",
+              "required": "true",
+              "id": "onArt",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b29b512f-cd46-41ee-a568-bdaafa0bb874",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "STI- Screened:",
+              "required": "true",
+              "id": "stiScreened",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "STI diagnosis:",
+
+              "id": "stiDiag",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a899c2fc-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "stiScreened !== '5c1e610c-36f4-456c-be9b-11c106591f7f'"
+              }
+            },
+            {
+              "label": "Condom provision:",
+              "id": "condomProv",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "31faccd3-9134-4aa6-b059-921450ce9e68"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Lubricant provision:",
+              "id": "lubeProv",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "2f2becba-648e-468f-aa2e-2af49b646728"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "NSP provision:",
+              "id": "nspProv",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d0ec3716-ced0-49c3-9fb8-c1b45d2c4251"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Hepatitis B  test done:",
+              "id": "hbvDone",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "2a2eca3d-4269-47ef-a2ac-12afca5f4c5c",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Hepatitis B Antigen test:",
+              "id": "hbvAntigen",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c7a4c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hbvDone !== 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Hepatitis B vaccine:",
+              "id": "hbvVaccine",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "4bfa03d0-4d36-4f29-9fba-45f5fddf9c95",
+                "answers": [
+                  {
+                    "concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Hepatitis B PCR confirmatory test:",
+              "required": "true",
+              "id": "hivPcr",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c4bee-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "HBV managed:",
+              "id": "hbvManage",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "099fc1a5-8e91-4a69-86bc-9365ac0f356a",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Hepatitis C test done:",
+              "id": "hcvDone",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9fbf6186-eae2-48f9-bb23-4a34a8c15183",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Hepatitis C Antigen test:",
+              "required": "true",
+              "id": "hcvAntigen",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c4e46-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hcvDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Hepatitis C PCR confirmatory test:",
+              "required": "true",
+              "id": "hcvPcr",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c7b0a-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Hepatitis C treatment:",
+              "id": "hcvTreat",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3f451862-924a-4311-a386-21a0fd5756ae",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hcvPcr !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Clinical Review",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Type of HIV exposure:",
+              "id": "exposure",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a899afec-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8933af4-1350-11df-a1f1-0026b9348838",
+                    "label": "Sexual assault/rape"
+                  },
+                  {
+                    "concept": "a8aa96b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Sexual intercourse with partner"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "PEP status:",
+              "id": "exposure",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "342b69d7-a0d5-4341-9ed6-bad88eb50b7a",
+                "answers": [
+                  {
+                    "concept": "30f09797-96f0-43bc-b522-1630a9a70257",
+                    "label": "Initiated"
+                  },
+                  {
+                    "concept": "a89d26cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Not initiated"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "PEP completion status:",
+              "id": "completionStatus",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e6e061ba-b1bc-4e83-bdac-31c22adfeef6",
+                "answers": [
+                  {
+                    "concept": "1fa9c243-135a-4b31-935e-8046dbac14bb",
+                    "label": "Completed"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not completed"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Screened for anal cancer:",
+              "id": "analCancerScreened",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a1fccc10-c76b-4e39-8b34-c3ff590496a3",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Screening results:",
+              "id": "screeningResults",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "51575e6a-1645-49b2-a0bd-a33593ac0c34",
+                "answers": [
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Suspected"
+                  },
+
+                  {
+                    "concept": "a89c3c08-1350-11df-a1f1-0026b9348838",
+                    "label": "Not suspected"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "analCancerScreened !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Screened for mental health:",
+              "id": "mhScreened",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c5885e6f-6b32-4cff-80fa-a582705ed42b",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Diagnosed mental health:",
+              "id": "mhDiagnosed",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e7db67f1-9d26-413d-b1aa-65dd915227d1"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "mhScreened !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Treated:",
+              "id": "mhTreated",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "2f60256a-3116-4f0f-b1f0-c1a9c3fe3c57",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "mhScreened !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Next Appointment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return to clinic date:",
+              "required": "true",
+              "type": "obs",
+              "id": "rtc",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2','0d608b80-1cb5-4c85-835a-29072683ca27','3c1906a1-6d85-4184-9a43-0912cbac3d74','0becf5b9-0522-47c8-960c-c9d660c56501','9bf3fadd-4938-40fa-a093-4e01bf197876','6bf34991-7414-4b5e-ad75-ca217d4c4939'], visitTypeUuid)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

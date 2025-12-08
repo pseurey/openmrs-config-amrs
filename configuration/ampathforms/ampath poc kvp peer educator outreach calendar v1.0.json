@@ -114,7 +114,10 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+            "hideWhenExpression": " sex !== 'M'"
+          }
             },
             {
               "label": "KP type:",
@@ -145,7 +148,10 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+            "hideWhenExpression": " sex !== 'F'"
+          }
             },
             {
               "label": "Vulnerable population type:",
@@ -345,7 +351,7 @@
                 "rendering": "text"
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "prisonTypologies === '732547c9-934f-4b3a-aa2c-cbfddb637be0'"
               }
             },
             {
@@ -423,7 +429,7 @@
             {
               "label": "Duration in sex work/Injecting/Trucking/Fishing/Since tested DC/incarcerated (Indicate in years):",
               "type": "obs",
-              "id": "needleSyringMonth",
+              "id": "durationSexWork",
               "questionOptions": {
                 "concept": "e6609b4d-2c6c-4c43-8a42-cb95c69ec265",
                 "rendering": "number"
@@ -626,6 +632,9 @@
                     "label": "No"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "expriencedViolence !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
