@@ -1141,6 +1141,7 @@
 					"questions": [
 						{
 							"label": "Have you been vaccinated for HPV?",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9806572c-0225-4b17-b21b-a0f44f9d07f0')) ? undefined : HD.getObject('prevEnc').getValue('9806572c-0225-4b17-b21b-a0f44f9d07f0')",
 							"required": "true",
 							"type": "obs",
 							"questionOptions": {
@@ -1165,6 +1166,7 @@
 						},
 						{
 							"label": "If yes, source of information:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8afc2aa-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8afc2aa-1350-11df-a1f1-0026b9348838')",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -1188,6 +1190,7 @@
 						},
 						{
 							"label": "Dose received:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')) ? undefined : HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')",
 							"id": "dose",
 							"type": "obs",
 							"questionOptions": {
@@ -1217,6 +1220,7 @@
 						},
 						{
 							"label": "Vaccination date:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0a35a6e4-eb93-448e-a3b0-cae66a57beb4')) ? undefined : HD.getObject('prevEnc').getValue('0a35a6e4-eb93-448e-a3b0-cae66a57beb4')",
 							"id": "doseDate",
 							"type": "obs",
 							"questionOptions": {
@@ -2260,36 +2264,56 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
-										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
-										"label": "ABC 120mg/3TC 60mg"
-									},
-									{
-										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
-										"label": "ABC 600mg/3TC 300mg"
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
 										"label": "TDF300mg/3TC300mg/EFV400mg"
 									},
 									{
-										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
-										"label": "ZDV 60mg/3TC 30mg"
+										"concept": "20185c04-9334-11df-8193-000d6014b64c",
+										"label": "ZDV60mg/3TC30mg/NVP50mg"
 									},
 									{
 										"concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
-										"label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
-									},
-									{
-										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
-										"label": "3TC 150mg/ZDV 300mg >25kgs"
-									},
-									{
-										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
-										"label": "3TC 300mg/TDF 300mg >25kgs"
+										"label": "ZDV300mg/3TC150mg/NVP200mg >25kgs"
 									},
 									{
 										"concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
-										"label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+										"label": "TDF300mg/3TC300mg/EFV600mg >35kgs"
+									},
+									{
+										"concept": "a897e608-1350-11df-a1f1-0026b9348838",
+										"label": "NVP200mg/D4T30mg/3TC150mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (>=4 weeks and 3-24.9kg) "
+									},
+									{
+										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+										"label": "ABC60mg/3TC30mg"
+									},
+									{
+										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+										"label": "ABC120mg/3TC60mg"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC600mg/3TC300mg"
+									},
+									{
+										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+										"label": "ZDV60mg/3TC30mg"
+									},
+									{
+										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+										"label": "3TC150mg/ZDV300mg >25kgs"
+									},
+									{
+										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+										"label": "3TC300mg/TDF300mg >25kgs"
 									},
 									{
 										"concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
@@ -2316,6 +2340,26 @@
 										"label": "Emtri200mg/TDF300(Truvada)"
 									},
 									{
+										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "41e57216-3b62-49b1-b0b9-9a9b7de3361d",
+										"label": "Cabotegravir 30mg/Rilpivirine 25mg PO"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (>=12 years and >=40kg)"
+									},
+									{
+										"concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
+										"label": "Nevirapine 100mg"
+									},
+									{
+										"concept": "0485075a-3111-11e0-8090-0026b9348838",
+										"label": "Nevirapine 200mg"
+									},
+									{
 										"concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
 										"label": "Efavirenz 200mg"
 									},
@@ -2334,6 +2378,10 @@
 									{
 										"concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
 										"label": "Efavirenz 400mg"
+									},
+									{
+										"concept": "4677ad3e-3120-11e0-8090-0026b9348838",
+										"label": "Efavirenz 600mg"
 									},
 									{
 										"concept": "d6262526-3113-11e0-8090-0026b9348838",
@@ -3320,6 +3368,108 @@
 					]
 				},
 				{
+					"label": "Third Line Adherence Questions",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Is Patient linked to a support group?",
+							"type": "obs",
+							"required": "true",
+							"id": "patLinked",
+							"questionOptions": {
+								"concept": "ed1e7a5d-a9f4-4adf-a033-4e895409fafe",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						},
+						{
+							"label": "Does the child have a treatment buddy?",
+							"type": "obs",
+							"required": "true",
+							"id": "treatmentBuddy",
+							"questionOptions": {
+								"concept": "5b6e305c-eabf-414d-b85a-193fbb8e39a3",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						},
+						{
+							"label": "Has a home visit been made?",
+							"type": "obs",
+							"required": "true",
+							"id": "homeVisit",
+							"questionOptions": {
+								"concept": "fe6800a2-76f1-42a4-a1c8-553e1fec18e9",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						},
+						{
+							"label": "Is drug storage at home adequate?",
+							"type": "obs",
+							"required": "true",
+							"id": "drugStorage",
+							"questionOptions": {
+								"concept": "6a064ca7-024f-4a0a-b67b-b530287471eb",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
+							}
+						}
+					]
+				},
+				{
 					"label": "PCP Prophylaxis History",
 					"isExpanded": "true",
 					"questions": [
@@ -3503,48 +3653,6 @@
 							"validators": []
 						},
 						{
-							"label": "If yes select drug",
-							"type": "obs",
-							"id": "onTbProphylaxisDrug",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')",
-							"questionOptions": {
-								"concept": "a899e35e-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "162724df-5a66-4ae3-bbf6-5dc6dbba4ebb",
-										"label": "Isoniazid 100mg (6H)"
-									},
-									{
-										"concept": "b150ccdc-e7ec-4f99-b592-6f3fa73b3aea",
-										"label": "Isoniazid 300mg (6H)"
-									},
-									{
-										"concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
-										"label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
-									},
-									{
-										"concept": "177635d0-793b-4a66-8324-976c46f795af",
-										"label": "Rifampicin 150mg and Isonaizid 75mg (3RH)"
-									},
-									{
-										"concept": "e5e24e6d-e6b0-4c81-8f7b-0e366df29426",
-										"label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
-									}
-								],
-								"rendering": "select"
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(onTbProphylaxis) && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-									"message": "Patient  marked as on TB Prophylaxis. Please provide the drug."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "onTbProphylaxis !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
 							"type": "obsGroup",
 							"label": "TB prophylaxis ever",
 							"questionOptions": {
@@ -3574,6 +3682,48 @@
 									"validators": [],
 									"hide": {
 										"hideWhenExpression": "onTbProphylaxis !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "If yes select drug",
+									"type": "obs",
+									"id": "onTbProphylaxisDrug",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a899e35e-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "162724df-5a66-4ae3-bbf6-5dc6dbba4ebb",
+												"label": "Isoniazid 100mg (6H)"
+											},
+											{
+												"concept": "b150ccdc-e7ec-4f99-b592-6f3fa73b3aea",
+												"label": "Isoniazid 300mg (6H)"
+											},
+											{
+												"concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
+												"label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
+											},
+											{
+												"concept": "177635d0-793b-4a66-8324-976c46f795af",
+												"label": "Rifampicin 150mg and Isonaizid 75mg (3RH)"
+											},
+											{
+												"concept": "e5e24e6d-e6b0-4c81-8f7b-0e366df29426",
+												"label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
+											}
+										],
+										"rendering": "select"
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(onTbProphylaxis) && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+											"message": "Patient  marked as on TB Prophylaxis. Please provide the drug."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "onTbProphylaxis !== 'a899b35c-1350-11df-a1f1-0026b9348838' && pastTbProphylaxisDrug !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 									}
 								},
 								{
@@ -4419,108 +4569,6 @@
 									"validators": [],
 									"hide": {
 										"hideWhenExpression": "onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838' || !arrayContains(['a73d20b3-d721-4763-a362-14a0c41a6b5e','fdaf8b47-ea14-4d28-80fa-e1da58a30e8b'], tb_adherence)"
-									}
-								}
-							]
-						},
-						{
-							"label": "Third Line Adherence Questions",
-							"isExpanded": "true",
-							"questions": [
-								{
-									"label": "Is Patient linked to a support group?",
-									"type": "obs",
-									"required": "true",
-									"id": "patLinked",
-									"questionOptions": {
-										"concept": "ed1e7a5d-a9f4-4adf-a033-4e895409fafe",
-										"answers": [
-											{
-												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-												"label": "Yes"
-											},
-											{
-												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-												"label": "No"
-											}
-										],
-										"rendering": "select"
-									},
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
-									}
-								},
-								{
-									"label": "Does the child have a treatment buddy?",
-									"type": "obs",
-									"required": "true",
-									"id": "treatmentBuddy",
-									"questionOptions": {
-										"concept": "5b6e305c-eabf-414d-b85a-193fbb8e39a3",
-										"answers": [
-											{
-												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-												"label": "Yes"
-											},
-											{
-												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-												"label": "No"
-											}
-										],
-										"rendering": "select"
-									},
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
-									}
-								},
-								{
-									"label": "Has a home visit been made?",
-									"type": "obs",
-									"required": "true",
-									"id": "homeVisit",
-									"questionOptions": {
-										"concept": "fe6800a2-76f1-42a4-a1c8-553e1fec18e9",
-										"answers": [
-											{
-												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-												"label": "Yes"
-											},
-											{
-												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-												"label": "No"
-											}
-										],
-										"rendering": "select"
-									},
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
-									}
-								},
-								{
-									"label": "Is drug storage at home adequate?",
-									"type": "obs",
-									"required": "true",
-									"id": "drugStorage",
-									"questionOptions": {
-										"concept": "6a064ca7-024f-4a0a-b67b-b530287471eb",
-										"answers": [
-											{
-												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-												"label": "Yes"
-											},
-											{
-												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-												"label": "No"
-											}
-										],
-										"rendering": "select"
-									},
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "current_arv_line !== 'a90ebdd2-351f-485a-b850-4938fcca2729'"
 									}
 								}
 							]
@@ -6012,7 +6060,7 @@
 					]
 				},
 				{
-					"label": "CD4",
+					"label": "CD4/Crag",
 					"questions": [
 						{
 							"type": "obs",
@@ -6108,6 +6156,46 @@
 									"decimalPlace": 1
 								}
 							]
+						},
+						{
+							"label": "Crag test:",
+							"id": "cragTest",
+							"questionOptions": {
+								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+										"label": "Poor sample quality"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(cragTest)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
 						}
 					]
 				},
@@ -7339,36 +7427,56 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
-										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
-										"label": "ABC 120mg/3TC 60mg"
-									},
-									{
-										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
-										"label": "ABC 600mg/3TC 300mg"
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
 										"label": "TDF300mg/3TC300mg/EFV400mg"
 									},
 									{
-										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
-										"label": "ZDV 60mg/3TC 30mg"
+										"concept": "20185c04-9334-11df-8193-000d6014b64c",
+										"label": "ZDV60mg/3TC30mg/NVP50mg"
 									},
 									{
 										"concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
-										"label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
-									},
-									{
-										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
-										"label": "3TC 150mg/ZDV 300mg >25kgs"
-									},
-									{
-										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
-										"label": "3TC 300mg/TDF 300mg >25kgs"
+										"label": "ZDV300mg/3TC150mg/NVP200mg >25kgs"
 									},
 									{
 										"concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
-										"label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+										"label": "TDF300mg/3TC300mg/EFV600mg >35kgs"
+									},
+									{
+										"concept": "a897e608-1350-11df-a1f1-0026b9348838",
+										"label": "NVP200mg/D4T30mg/3TC150mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (>=4 weeks and 3-24.9kg) "
+									},
+									{
+										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+										"label": "ABC60mg/3TC30mg"
+									},
+									{
+										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+										"label": "ABC120mg/3TC60mg"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC600mg/3TC300mg"
+									},
+									{
+										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+										"label": "ZDV60mg/3TC30mg"
+									},
+									{
+										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+										"label": "3TC150mg/ZDV300mg >25kgs"
+									},
+									{
+										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+										"label": "3TC300mg/TDF300mg >25kgs"
 									},
 									{
 										"concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
@@ -7395,6 +7503,26 @@
 										"label": "Emtri200mg/TDF300(Truvada)"
 									},
 									{
+										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "41e57216-3b62-49b1-b0b9-9a9b7de3361d",
+										"label": "Cabotegravir 30mg/Rilpivirine 25mg PO"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (>=12 years and >=40kg)"
+									},
+									{
+										"concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
+										"label": "Nevirapine 100mg"
+									},
+									{
+										"concept": "0485075a-3111-11e0-8090-0026b9348838",
+										"label": "Nevirapine 200mg"
+									},
+									{
 										"concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
 										"label": "Efavirenz 200mg"
 									},
@@ -7413,6 +7541,10 @@
 									{
 										"concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
 										"label": "Efavirenz 400mg"
+									},
+									{
+										"concept": "4677ad3e-3120-11e0-8090-0026b9348838",
+										"label": "Efavirenz 600mg"
 									},
 									{
 										"concept": "d6262526-3113-11e0-8090-0026b9348838",
@@ -7932,46 +8064,6 @@
 					"label": "Advanced HIV Disease Treatment Plan",
 					"isExpanded": "true",
 					"questions": [
-						{
-							"label": "Crag test:",
-							"id": "cragTest",
-							"questionOptions": {
-								"concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
-										"label": "Poor sample quality"
-									}
-								],
-								"showDate": "true",
-								"rendering": "select",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-											"message": "Date is result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(cragTest)"
-									}
-								}
-							},
-							"type": "obs",
-							"validators": []
-						},
 						{
 							"label": "Cryptococcal meningitis treatment plan:",
 							"type": "obs",
@@ -9339,16 +9431,13 @@
 								},
 								{
 									"label": "Test ordered: Other (specify):",
-									"id": "otherOrders",
 									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
 										"rendering": "text"
 									},
 									"type": "obs",
 									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
-									}
+									"id": "otherTestOrder"
 								},
 								{
 									"label": "CD4 justification:",
@@ -9410,6 +9499,10 @@
 											{
 												"concept": "92a2818f-662c-4dbc-aa20-d9f4edec2654",
 												"label": "Recency"
+											},
+											{
+												"concept": "535f6faa-14bc-4989-a189-7f15de3f65d5",
+												"label": "Repeat viral load after 3rd EAC"
 											},
 											{
 												"concept": "635f446c-bab9-428a-9930-ae4f46363c0c",

@@ -148,10 +148,6 @@
 												"label": "Care taker/Guardian"
 											},
 											{
-												"concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
-												"label": "Self"
-											},
-											{
 												"concept": "a8aaf07c-1350-11df-a1f1-0026b9348838",
 												"label": "Friend/Colleague"
 											},
@@ -216,32 +212,30 @@
 							],
 							"id": "pickingDrugsDetailed"
 						},
-                        {
-									"label": "Individual who picked/picking drugs",
-									"required": "true",
-									"id": "pickDrugsDelivery",
-									"questionOptions": {
-										"concept": "a89cd410-1350-11df-a1f1-0026b9348838",
-										"answers": [
-										
-											{
-												"concept": "517593e9-5f95-47cb-a13c-b64b2a6fec9c",
-												"label": "Peer educator"
-											},
-											{
-												"concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
-												"label": "Health care worker(HCW)"
-											}
-											
-										],
-										"rendering": "select"
+						{
+							"label": "Individual who picked/picking drugs",
+							"required": "true",
+							"id": "pickDrugsDelivery",
+							"questionOptions": {
+								"concept": "a89cd410-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "517593e9-5f95-47cb-a13c-b64b2a6fec9c",
+										"label": "Peer educator"
 									},
-									"type": "obs",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "!arrayContains (['a2a265dc-508d-4f31-94ee-0bf8a58049d7'], visitTypeUuid)"
+									{
+										"concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+										"label": "Health care worker(HCW)"
 									}
-								},
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContains (['a2a265dc-508d-4f31-94ee-0bf8a58049d7'], visitTypeUuid)"
+							}
+						},
 						{
 							"label": "Facility ART refill model:",
 							"required": "true",
@@ -323,6 +317,30 @@
 							}
 						},
 						{
+							"label": "Community ART refill model:",
+							"required": "true",
+							"id": "communityModelCargs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e",
+								"answers": [
+									{
+										"concept": "771b200c-8525-4425-b763-7e1cdca1b01f",
+										"label": "CARG-Community ART group -peer led"
+									},
+									{
+										"concept": "fb36b5af-3f83-460b-a10f-fc7923ed7914",
+										"label": "CARG-Community ART group -HCW led"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContains(['0d608b80-1cb5-4c85-835a-29072683ca27'], visitTypeUuid)"
+							}
+						},
+						{
 							"label": "Patient current care program:",
 							"questionOptions": {
 								"rendering": "select",
@@ -391,19 +409,15 @@
 							},
 							"id": "__tLu0DD9nM"
 						},
-                        {
+						{
 							"label": "Mode of drug delivery:",
 							"questionOptions": {
 								"concept": "5f6c4030-c633-40bd-aab1-906295ec496a",
 								"rendering": "select",
 								"answers": [
-                                    {
-										"concept": "5d1e84a5-cf4b-412b-8e97-6db954c6ff73",
-										"label": "Rider"
-									},
-                                    {
+									{
 										"concept": "daccda68-f5c7-4e47-8e6a-f18590049170",
-										"label": "Courier services"
+										"label": "Courier/rider services"
 									},
 									{
 										"concept": "517593e9-5f95-47cb-a13c-b64b2a6fec9c",
@@ -413,8 +427,6 @@
 										"concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
 										"label": "Health care worker"
 									}
-									
-							
 								]
 							},
 							"type": "obs",
@@ -437,7 +449,6 @@
 							},
 							"id": "peerName"
 						},
-                        	
 						{
 							"label": "Place of drug delivery:",
 							"questionOptions": {
@@ -448,7 +459,7 @@
 										"concept": "a89df17e-1350-11df-a1f1-0026b9348838",
 										"label": "Home"
 									},
-{
+									{
 										"concept": "b4d9b6fa-0219-43e6-bd67-4edeafc53899",
 										"label": "Church"
 									},
@@ -460,12 +471,10 @@
 										"concept": "9c78d916-5ad1-42ba-83c3-e3355e9963e4",
 										"label": "Institution"
 									},
-									
 									{
 										"concept": "a89f0956-1350-11df-a1f1-0026b9348838",
 										"label": "Market"
 									}
-									
 								]
 							},
 							"type": "obs",
@@ -640,44 +649,56 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
-										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
-										"label": "ABC 60mg/3TC 30mg"
-									},
-									{
-										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
-										"label": "ABC 120mg/3TC 60mg"
-									},
-									{
-										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
-										"label": "ABC 600mg/3TC 300mg"
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
 										"label": "TDF300mg/3TC300mg/EFV400mg"
 									},
 									{
-										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
-										"label": "ZDV 60mg/3TC 30mg"
-									},
-									{
 										"concept": "20185c04-9334-11df-8193-000d6014b64c",
-										"label": "ZDV 60mg/3TC 30mg/NVP 50mg"
+										"label": "ZDV60mg/3TC30mg/NVP50mg"
 									},
 									{
 										"concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
-										"label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
-									},
-									{
-										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
-										"label": "3TC 150mg/ZDV 300mg >25kgs"
-									},
-									{
-										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
-										"label": "3TC 300mg/TDF 300mg >25kgs"
+										"label": "ZDV300mg/3TC150mg/NVP200mg >25kgs"
 									},
 									{
 										"concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
-										"label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+										"label": "TDF300mg/3TC300mg/EFV600mg >35kgs"
+									},
+									{
+										"concept": "a897e608-1350-11df-a1f1-0026b9348838",
+										"label": "NVP200mg/D4T30mg/3TC150mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD) "
+									},
+									{
+										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+										"label": "ABC60mg/3TC30mg"
+									},
+									{
+										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+										"label": "ABC120mg/3TC60mg"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC600mg/3TC300mg"
+									},
+									{
+										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+										"label": "ZDV60mg/3TC30mg"
+									},
+									{
+										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+										"label": "3TC150mg/ZDV300mg >25kgs"
+									},
+									{
+										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+										"label": "3TC300mg/TDF300mg >25kgs"
 									},
 									{
 										"concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
@@ -704,16 +725,24 @@
 										"label": "Emtri200mg/TDF300(Truvada)"
 									},
 									{
+										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "41e57216-3b62-49b1-b0b9-9a9b7de3361d",
+										"label": "Cabotegravir 30mg/Rilpivirine 25mg PO"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (DVR/r 400mg/50mg)"
+									},
+									{
 										"concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
 										"label": "Nevirapine 100mg"
 									},
 									{
 										"concept": "0485075a-3111-11e0-8090-0026b9348838",
 										"label": "Nevirapine 200mg"
-									},
-									{
-										"concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
-										"label": "Tenofovir alafenamide 25mg"
 									},
 									{
 										"concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
@@ -839,7 +868,7 @@
 									},
 									{
 										"concept": "6a73f32d-1870-4527-af6e-74443251ded2",
-										"label": "NVP200mg/ZDV300mg/3TC150mg"
+										"label": "NVP200/ZDV300/3TC150"
 									},
 									{
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
@@ -859,15 +888,23 @@
 									},
 									{
 										"concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
-										"label": "Aluvia (Kaletra)200mg/LPV50mg"
+										"label": "Aluvia(Kaletra)200mg/LPV50mg"
 									},
 									{
 										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
-										"label": "Atazanavir300/Ritonavir100"
+										"label": "Atazanavir 300mg/Ritonavir 100mg"
 									},
 									{
 										"concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
 										"label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+									},
+									{
+										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
 									},
 									{
 										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
@@ -886,20 +923,8 @@
 										"label": "Efavirenz 200mg"
 									},
 									{
-										"concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
-										"label": "Efavirenz 400mg"
-									},
-									{
-										"concept": "a89677e6-1350-11df-a1f1-0026b9348838",
-										"label": "Efavirenz 600mg"
-									},
-									{
 										"concept": "a89673f4-1350-11df-a1f1-0026b9348838",
 										"label": "Lamivudine 150mg"
-									},
-									{
-										"concept": "a8967656-1350-11df-a1f1-0026b9348838",
-										"label": "Nevirapine 200mg"
 									},
 									{
 										"concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
@@ -915,11 +940,11 @@
 									},
 									{
 										"concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
-										"label": "Ritonavir 100mg"
+										"label": " Ritonavir 100mg"
 									},
 									{
 										"concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
-										"label": "Ritonavir 80mg"
+										"label": " Ritonavir 80mg"
 									},
 									{
 										"concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
@@ -1804,44 +1829,56 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
-										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
-										"label": "ABC 60mg/3TC 30mg"
-									},
-									{
-										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
-										"label": "ABC 120mg/3TC 60mg"
-									},
-									{
-										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
-										"label": "ABC 600mg/3TC 300mg"
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
 										"label": "TDF300mg/3TC300mg/EFV400mg"
 									},
 									{
-										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
-										"label": "ZDV 60mg/3TC 30mg"
-									},
-									{
 										"concept": "20185c04-9334-11df-8193-000d6014b64c",
-										"label": "ZDV 60mg/3TC 30mg/NVP 50mg"
+										"label": "ZDV60mg/3TC30mg/NVP50mg"
 									},
 									{
 										"concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
-										"label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
-									},
-									{
-										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
-										"label": "3TC 150mg/ZDV 300mg >25kgs"
-									},
-									{
-										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
-										"label": "3TC 300mg/TDF 300mg >25kgs"
+										"label": "ZDV300mg/3TC150mg/NVP200mg >25kgs"
 									},
 									{
 										"concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
-										"label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+										"label": "TDF300mg/3TC300mg/EFV600mg >35kgs"
+									},
+									{
+										"concept": "a897e608-1350-11df-a1f1-0026b9348838",
+										"label": "NVP200mg/D4T30mg/3TC150mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD) "
+									},
+									{
+										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+										"label": "ABC60mg/3TC30mg"
+									},
+									{
+										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+										"label": "ABC120mg/3TC60mg"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC600mg/3TC300mg"
+									},
+									{
+										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+										"label": "ZDV60mg/3TC30mg"
+									},
+									{
+										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+										"label": "3TC150mg/ZDV300mg >25kgs"
+									},
+									{
+										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+										"label": "3TC300mg/TDF300mg >25kgs"
 									},
 									{
 										"concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
@@ -1866,6 +1903,18 @@
 									{
 										"concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
 										"label": "Emtri200mg/TDF300(Truvada)"
+									},
+									{
+										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "41e57216-3b62-49b1-b0b9-9a9b7de3361d",
+										"label": "Cabotegravir 30mg/Rilpivirine 25mg PO"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (DVR/r 400mg/50mg)"
 									},
 									{
 										"concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
@@ -2003,7 +2052,7 @@
 									},
 									{
 										"concept": "6a73f32d-1870-4527-af6e-74443251ded2",
-										"label": "NVP200mg/ZDV300mg/3TC150mg"
+										"label": "NVP200/ZDV300/3TC150"
 									},
 									{
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
@@ -2023,19 +2072,31 @@
 									},
 									{
 										"concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
-										"label": "Aluvia (Kaletra)200mg/LPV50mg"
+										"label": "Aluvia(Kaletra)200mg/LPV50mg"
 									},
 									{
 										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
-										"label": "Atazanavir300/Ritonavir100"
+										"label": "Atazanavir 300mg/Ritonavir 100mg"
 									},
 									{
 										"concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
 										"label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
 									},
 									{
+										"concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+										"label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+									},
+									{
+										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+										"label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
+									},
+									{
 										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
 										"label": "Dolutegravir 50mg"
+									},
+									{
+										"concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
+										"label": "Tenofovir alafenamide 25mg"
 									},
 									{
 										"concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
@@ -2046,20 +2107,8 @@
 										"label": "Efavirenz 200mg"
 									},
 									{
-										"concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
-										"label": "Efavirenz 400mg"
-									},
-									{
-										"concept": "a89677e6-1350-11df-a1f1-0026b9348838",
-										"label": "Efavirenz 600mg"
-									},
-									{
 										"concept": "a89673f4-1350-11df-a1f1-0026b9348838",
 										"label": "Lamivudine 150mg"
-									},
-									{
-										"concept": "a8967656-1350-11df-a1f1-0026b9348838",
-										"label": "Nevirapine 200mg"
 									},
 									{
 										"concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
@@ -2075,11 +2124,11 @@
 									},
 									{
 										"concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
-										"label": "Ritonavir 100mg"
+										"label": " Ritonavir 100mg"
 									},
 									{
 										"concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
-										"label": "Ritonavir 80mg"
+										"label": " Ritonavir 80mg"
 									},
 									{
 										"concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
@@ -2865,7 +2914,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "!arrayContains (['5e304e47-b912-47c5-8cfb-0e795490dbe6','015af4d4-67cb-45a3-9929-8dbd53b1e47c','52fddd42-f9ea-4946-8733-f0e584360780','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','fcc9a836-0200-45f2-81b4-b4a687a10247'], visitTypeUuid)"
+								"hideWhenExpression": "!arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','015af4d4-67cb-45a3-9929-8dbd53b1e47c','5e304e47-b912-47c5-8cfb-0e795490dbe6','52fddd42-f9ea-4946-8733-f0e584360780','18f59064-961e-4d51-9ccf-e950f04b4c66','0bcccab0-59ce-4a25-a158-cc722427ff3f'], visitTypeUuid)"
 							}
 						},
 						{
@@ -2987,7 +3036,6 @@
 						}
 					]
 				},
-				
 				{
 					"label": "Next Appointment",
 					"isExpanded": "true",

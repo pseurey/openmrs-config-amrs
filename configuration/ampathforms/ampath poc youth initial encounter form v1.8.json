@@ -2227,7 +2227,7 @@
 									},
 									{
 										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
-										"label": "ABC60mg/3TC30mg/DTG5mg"
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
 									},
 									{
 										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
@@ -2241,12 +2241,10 @@
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
 										"label": "ABC600mg/3TC300mg"
 									},
-									
 									{
 										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
 										"label": "ZDV60mg/3TC30mg"
 									},
-									
 									{
 										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
 										"label": "3TC150mg/ZDV300mg >25kgs"
@@ -2255,7 +2253,6 @@
 										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
 										"label": "3TC300mg/TDF300mg >25kgs"
 									},
-									
 									{
 										"concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
 										"label": "Lopinavir 80mg/Ritonavir 20mg"
@@ -2290,9 +2287,8 @@
 									},
 									{
 										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
-										"label": "Darunavir 400mg/Ritonavir 50mg (>=12 years and >=40kg)"
+										"label": "Darunavir 400mg/Ritonavir 50mg (DRV/r 400mg/50mg)"
 									},
-							
 									{
 										"concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
 										"label": "Nevirapine 100mg"
@@ -2562,7 +2558,7 @@
 									},
 									{
 										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
-										"label": "ABC60mg/3TC30mg/DTG5mg"
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
 									},
 									{
 										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
@@ -2576,12 +2572,10 @@
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
 										"label": "ABC600mg/3TC300mg"
 									},
-									
 									{
 										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
 										"label": "ZDV60mg/3TC30mg"
 									},
-									
 									{
 										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
 										"label": "3TC150mg/ZDV300mg >25kgs"
@@ -2590,7 +2584,6 @@
 										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
 										"label": "3TC300mg/TDF300mg >25kgs"
 									},
-									
 									{
 										"concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
 										"label": "Lopinavir 80mg/Ritonavir 20mg"
@@ -2625,9 +2618,8 @@
 									},
 									{
 										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
-										"label": "Darunavir 400mg/Ritonavir 50mg (>=12 years and >=40kg)"
+										"label": "Darunavir 400mg/Ritonavir 50mg (DRV/r 400mg/50mg)"
 									},
-							
 									{
 										"concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
 										"label": "Nevirapine 100mg"
@@ -6822,7 +6814,7 @@
 									},
 									{
 										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
-										"label": "ABC60mg/3TC30mg/DTG5mg"
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
 									},
 									{
 										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
@@ -6836,12 +6828,10 @@
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
 										"label": "ABC600mg/3TC300mg"
 									},
-									
 									{
 										"concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
 										"label": "ZDV60mg/3TC30mg"
 									},
-									
 									{
 										"concept": "fd4cd670-3115-11e0-8090-0026b9348838",
 										"label": "3TC150mg/ZDV300mg >25kgs"
@@ -6850,7 +6840,6 @@
 										"concept": "b9da84e8-3127-11e0-8090-0026b9348838",
 										"label": "3TC300mg/TDF300mg >25kgs"
 									},
-									
 									{
 										"concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
 										"label": "Lopinavir 80mg/Ritonavir 20mg"
@@ -6885,9 +6874,8 @@
 									},
 									{
 										"concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
-										"label": "Darunavir 400mg/Ritonavir 50mg (>=12 years and >=40kg)"
+										"label": "Darunavir 400mg/Ritonavir 50mg (DVR/r 400mg/50mg)"
 									},
-							
 									{
 										"concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
 										"label": "Nevirapine 100mg"

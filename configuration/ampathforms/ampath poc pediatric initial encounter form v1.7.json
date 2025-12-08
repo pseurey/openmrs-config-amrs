@@ -2,9 +2,7 @@
 	"name": "AMPATH POC Pediatric Initial Encounter Form v1.7",
 	"uuid": "xxxx",
 	"processor": "EncounterFormProcessor",
-	"referencedForms": [
-	
-	],
+	"referencedForms": [],
 	"pages": [
 		{
 			"label": "Encounter Details",
@@ -60,6 +58,7 @@
 					"questions": [
 						{
 							"label": "Patient covered by SHIF/SHA:",
+							"required": "true",
 							"id": "nhif",
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')) ? undefined : HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')",
 							"questionOptions": {
@@ -98,9 +97,15 @@
 								]
 							},
 							"type": "obs",
-							"validators": [],
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(nhif) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], nhif) && isEmpty(myValue)",
+									"message": "Please indicate SHA status."
+								}
+							],
 							"hide": {
-								"hideWhenExpression": "nhif !== '8b715fed-97f6-4e38-8f6a-c167a42f8923'"
+								"hideWhenExpression": "nhif !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2535,6 +2540,10 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
+									},
+									{
 										"concept": "b58a28d2-36de-11e0-93be-0026b9348838",
 										"label": "ABC 60mg/3TC 30mg"
 									},
@@ -2545,6 +2554,10 @@
 									{
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
 										"label": "ABC 600mg/3TC 300mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
@@ -2824,12 +2837,20 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
+									},
+									{
 										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
 										"label": "ABC 120mg/3TC 60mg"
 									},
 									{
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
 										"label": "ABC 600mg/3TC 300mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
@@ -7545,12 +7566,20 @@
 										"label": "DTG50mg/3TC300mg/TDF300mg"
 									},
 									{
+										"concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+										"label": "TAF25mg/3TC300mg/DTG50mg"
+									},
+									{
 										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
 										"label": "ABC 120mg/3TC 60mg"
 									},
 									{
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
 										"label": "ABC 600mg/3TC 300mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
@@ -9778,6 +9807,10 @@
 									{
 										"concept": "92a2818f-662c-4dbc-aa20-d9f4edec2654",
 										"label": "Recency"
+									},
+									{
+										"concept": "535f6faa-14bc-4989-a189-7f15de3f65d5",
+										"label": "Repeat viral load after 3rd EAC"
 									},
 									{
 										"concept": "635f446c-bab9-428a-9930-ae4f46363c0c",

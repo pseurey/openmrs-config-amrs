@@ -1,0 +1,186 @@
+{
+	"name": "Ampath POC Dermatology Referral Form v1.0",
+	"uuid": "xxxx",
+	"processor": "EncounterFormProcessor",
+	"referencedForms": [
+		{
+			"formName": "component_hpi",
+			"alias": "hpi",
+			"ref": {
+				"uuid": "b91aef27-cd94-4934-94ac-c168ce539cb3",
+				"display": "Hpi Component"
+			}
+		},
+		{
+			"formName": "component_assessment-v1.0",
+			"alias": "ass1",
+			"ref": {
+				"uuid": "b0cbea4c-725a-4a0b-82f3-e5600e5e3086",
+				"display": "Assessment v1.0 Component"
+			}
+		},
+		{
+			"formName": "component_dermatology-image-v1.0",
+			"alias": "dermImage",
+			"ref": {
+				"uuid": "7c0e349c-2408-43a1-944f-01e643514e5e",
+				"display": "Dermatology image Component"
+			}
+		}
+	],
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Dematology Image",
+			"sections": [
+				{
+					"label": "Dermatology Image",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "obsGroup",
+							"label": "Dermatology Image, detailed",
+							"questionOptions": {
+								"concept": "b8100e97-b5b4-42e3-b4fb-a05c63e1e088",
+								"rendering": "repeating"
+							},
+							"questions": [
+								{
+									"label": "An image of a patient's dermatological problem",
+									"type": "obs",
+									"required": "",
+									"default": "",
+									"id": "dermImage",
+									"questionOptions": {
+										"concept": "a37628f8-f046-44cc-8f41-831696da3d7f",
+										"rendering": "file"
+									},
+									"validators": []
+								},
+								{
+									"label": "Describe your image below:",
+									"id": "imageTextOther",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838' ||age<14|| !arrayContains(['a73d20b3-d721-4763-a362-14a0c41a6b5e','fdaf8b47-ea14-4d28-80fa-e1da58a30e8b'], artAdherence) "
+									}
+								}
+							],
+							"id": "__uE7Gwyyq7"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Assessment/Plan",
+			"sections": [
+				{
+					"label": "Assessment Notes",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Please enter the assessment below:",
+							"type": "obs",
+							"required": "true",
+							"id": "assNote",
+							"default": "",
+							"questionOptions": {
+								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+								"rendering": "textarea",
+								"rows": 18
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Next Appointment",
+			"sections": [
+				{
+					"label": "Next Appointment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Return to clinic date:",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date",
+								"weeksList": [
+									2,
+									4,
+									8,
+									12,
+									16
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Return to clinic date should be greater than the encounter date."
+								}
+							],
+							"id": "__6GGKGGqty"
+						}
+					]
+				}
+			]
+		}
+	]
+}

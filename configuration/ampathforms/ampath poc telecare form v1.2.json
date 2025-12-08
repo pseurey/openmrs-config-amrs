@@ -159,302 +159,6 @@
 							}
 						}
 					]
-				},
-				{
-					"label": "Current Patient Location:",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Which country is the patient located:",
-							"type": "obs",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "c95f4285-5707-49aa-85a3-3887c2424b43",
-								"answers": [
-									{
-										"concept": "fba1dcb9-3033-4503-b37e-0727661711ba",
-										"label": "Kenya"
-									},
-									{
-										"concept": "543c8bc2-f411-4ef4-bd94-2c25a1927bc0",
-										"label": "Uganda"
-									},
-									{
-										"concept": "32476a73-a789-4c52-ba1d-e4df4dd6d877",
-										"label": "Tanzania"
-									},
-									{
-										"concept": "cdf42685-8d0e-4dd0-916e-d1425f999a60",
-										"label": "Ethiopia"
-									},
-									{
-										"concept": "53455ab4-15f1-4afb-88c5-c9ddcdbd4e4a",
-										"label": "Rwanda"
-									},
-									{
-										"concept": "038a7e18-f331-4ad6-a5b9-eb4806f4c627",
-										"label": "Burundi"
-									},
-									{
-										"concept": "4f697de6-38e6-4507-b4c5-d54356104b80",
-										"label": "Somalia"
-									},
-									{
-										"concept": "67097ee2-7447-46d9-826f-aaa3cecd640b",
-										"label": "South Sudan"
-									}
-								],
-								"conceptMappings": [
-									{
-										"type": "MCL/CIEL",
-										"value": "165657"
-									},
-									{
-										"type": "local",
-										"value": "11125"
-									}
-								]
-							},
-							"hide": {
-								"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent))"
-							},
-							"id": "locCountry"
-						},
-						{
-							"id": "locCounty",
-							"label": "County:",
-							"type": "obs",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "9d20dbba-4947-412d-8b62-2bff766132d7",
-								"answers": [
-									{
-										"concept": "4532910a-b76b-4846-b905-006aee061bfb",
-										"label": "Uasin Gishu"
-									},
-									{
-										"concept": "1a81fd05-535e-4d5d-991f-5e07082608f6",
-										"label": "Mombasa"
-									},
-									{
-										"concept": "92a21d56-ff39-4e50-bee8-1af924ad8749",
-										"label": "Nairobi"
-									},
-									{
-										"concept": "e2dedf8a-e013-4d5e-8596-484f137a218b",
-										"label": "Nakuru"
-									},
-									{
-										"concept": "6c917467-102b-4268-bbc2-0cfabf6521a8",
-										"label": "Kiambu"
-									},
-									{
-										"concept": "257ac0ea-85c6-4d05-9bce-be66f3ca0054",
-										"label": "Kericho"
-									},
-									{
-										"concept": "251a1427-c85c-484b-a7a3-985f0cb9a92a",
-										"label": "Bomet"
-									},
-									{
-										"concept": "fc38093d-13e0-4d7e-8f5a-18619116c4d9",
-										"label": "Nandi"
-									},
-									{
-										"concept": "27fb861a-8e25-4de9-bd49-48dc762d6cbf",
-										"label": "Trans Nzoia"
-									},
-									{
-										"concept": "ce57b52d-1971-430f-94d9-d11049d9ae0e",
-										"label": "Turkana"
-									},
-									{
-										"concept": "160ced0e-3173-46c7-9300-515adeeaa77e",
-										"label": "Elgeyo Marakwet"
-									},
-									{
-										"concept": "a325268f-33f5-4a60-946d-ff4b69494b3f",
-										"label": "West Pokot"
-									},
-									{
-										"concept": "e08d10b5-456b-4421-aa79-e2dd1017a6da",
-										"label": "Baringo"
-									},
-									{
-										"concept": "4148b3f8-3d84-4d97-ba0d-0187beff4ee0",
-										"label": "Mandera"
-									},
-									{
-										"concept": "d2b7ade5-840b-449a-881c-be9b7e57bd1a",
-										"label": "Kilifi"
-									},
-									{
-										"concept": "df012ba9-edcb-454b-95f5-5688bb85f9c0",
-										"label": "Kwale"
-									},
-									{
-										"concept": "b3cd7e4e-0bd2-4818-87d4-8768ba88e706",
-										"label": "Kisumu"
-									},
-									{
-										"concept": "e6de2549-a86a-44da-be39-1a05f923e233",
-										"label": "Siaya"
-									},
-									{
-										"concept": "4ae1f7ef-ee83-41cd-a8ea-458d6e913924",
-										"label": "Kakamega"
-									},
-									{
-										"concept": "2343557c-1626-4a13-80dd-0fa88d996d1e",
-										"label": "Vihiga"
-									},
-									{
-										"concept": "7d7a869c-979b-4105-983c-e6f610f4dc1e",
-										"label": "Bungoma"
-									},
-									{
-										"concept": "f6b97374-62be-44f3-b266-89a65c827faa",
-										"label": "Tana River"
-									},
-									{
-										"concept": "96b1c753-09ba-4a67-b8e1-385aeb4a941d",
-										"label": "Lamu"
-									},
-									{
-										"concept": "697daf21-c0d9-4627-b906-809abb96a0ed",
-										"label": "Taita Taveta"
-									},
-									{
-										"concept": "46cb59df-c4d7-49c9-99a6-8f8ee1ddc526",
-										"label": "Garissa"
-									},
-									{
-										"concept": "cf42b004-8fc4-48e6-967f-e2a0e41f662c",
-										"label": "Wajir"
-									},
-									{
-										"concept": "d2cc5bcd-820f-4498-9603-b8e737a3b678",
-										"label": "Marsabit"
-									},
-									{
-										"concept": "30d075b7-d340-4f4a-96d7-30bc8fa10164",
-										"label": "Isiolo"
-									},
-									{
-										"concept": "6f13a0a0-72a7-429d-be15-b71c4337dabd",
-										"label": "Meru"
-									},
-									{
-										"concept": "f8449efd-252a-4b61-a2e9-7542d9d26580",
-										"label": "Tharaka Nithi"
-									},
-									{
-										"concept": "e62faad3-b2c3-4e2d-a734-8859ced7f823",
-										"label": "Embu"
-									},
-									{
-										"concept": "ee9fdd32-fa61-4045-a5d3-fbd83c289492",
-										"label": "Kitui"
-									},
-									{
-										"concept": "ad60697d-cfd9-4eb6-9870-84faaa126653",
-										"label": "Machakos"
-									},
-									{
-										"concept": "9eefb3e9-e6e2-4560-9c23-cd27a7034b7d",
-										"label": "Makueni"
-									},
-									{
-										"concept": "8234dc27-5fb0-4ee5-9e58-844b1d5f122e",
-										"label": "Nyandarua"
-									},
-									{
-										"concept": "fa289671-03c9-4852-b0e5-39f63c53fec0",
-										"label": "Nyeri"
-									},
-									{
-										"concept": "24f18c6b-d2bf-47c3-8d8d-d7624680563a",
-										"label": "Kirinyaga"
-									},
-									{
-										"concept": "61a7e6bd-65e9-471d-a81f-e0d2d8641af0",
-										"label": "Murang'a"
-									},
-									{
-										"concept": "6ed55aee-e0e9-4657-98ff-b1fe723b1222",
-										"label": "Samburu"
-									},
-									{
-										"concept": "5d36a389-eb05-4e07-a41d-b6060c990c30",
-										"label": "Laikipia"
-									},
-									{
-										"concept": "2da03c3b-86ff-4ed6-8c82-48f9a95380c0",
-										"label": "Narok"
-									},
-									{
-										"concept": "9bb448c7-a32f-4489-8a9d-a279045581bd",
-										"label": "Kajiado"
-									},
-									{
-										"concept": "efde545c-aa53-49f7-9304-b7337e1b5c64",
-										"label": "Busia"
-									},
-									{
-										"concept": "0c37d31b-6c59-4073-a24e-853594dba6d9",
-										"label": "Homa Bay"
-									},
-									{
-										"concept": "b529c900-9e3e-446e-9fb8-4983b48eb56c",
-										"label": "Migori"
-									},
-									{
-										"concept": "d47d156a-7e4d-42fc-9c66-c7a153125c5f",
-										"label": "Kisii"
-									},
-									{
-										"concept": "05b89a50-29e4-465c-8f76-33f050a100e0",
-										"label": "Nyamira"
-									}
-								],
-								"conceptMappings": [
-									{
-										"type": "local",
-										"value": "11145"
-									}
-								]
-							},
-							"hide": {
-								"hideWhenExpression": "locCountry !== 'fba1dcb9-3033-4503-b37e-0727661711ba'"
-							}
-						},
-						{
-							"label": "Estate/Village",
-							"id": "estateVillage",
-							"type": "obs",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "text",
-								"concept": "5dff52c6-a14a-4893-967f-42c400b98989"
-							},
-							"conceptMappings": [
-								{
-									"type": "local",
-									"value": "11137"
-								},
-								{
-									"type": "MCL/CIEL",
-									"value": "1354"
-								}
-							],
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "locCountry !== 'fba1dcb9-3033-4503-b37e-0727661711ba'"
-							}
-						}
-					]
 				}
 			]
 		},
@@ -538,10 +242,6 @@
 											{
 												"concept": "29a9df4d-808f-4ba0-8b1e-ea05c918f14b",
 												"label": "Multi Month Dispensing(MMD)"
-											},
-											{
-												"concept": "d1c4a2c9-6326-41ab-baae-8239ec697620",
-												"label": "Project beyond"
 											}
 										],
 										"rendering": "select"
@@ -988,24 +688,12 @@
 												"label": "Abdominal pain"
 											},
 											{
-												"concept": "a8a0c084-1350-11df-a1f1-0026b9348838",
-												"label": "Difficulty in breathing"
-											},
-											{
-												"concept": "a8ad1190-1350-11df-a1f1-0026b9348838",
-												"label": "Cough"
-											},
-											{
 												"concept": "245edfef-d05b-48c1-9a72-e4de5d586a33",
 												"label": "Mouth sores"
 											},
 											{
 												"concept": "a8a0c408-1350-11df-a1f1-0026b9348838",
 												"label": "Hotness of the body"
-											},
-											{
-												"concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
-												"label": "Chest pain"
 											},
 											{
 												"concept": "a8a0c2dc-1350-11df-a1f1-0026b9348838",
@@ -1087,6 +775,73 @@
 									}
 								}
 							]
+						}
+					]
+				},
+				{
+					"label": "TB Screening Questions",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "TB Symptoms:",
+							"required": "true",
+							"questionOptions": {
+								"concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									},
+									{
+										"concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
+										"label": "Breathlessness"
+									},
+									{
+										"concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+										"label": "Chest pain"
+									},
+									{
+										"concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+										"label": "Cough of any duration"
+									},
+									{
+										"concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+										"label": "Fever for = 2 weeks"
+									},
+									{
+										"concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
+										"label": "New exposure to household contact with TB"
+									},
+									{
+										"concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+										"label": "Noticeable weight loss"
+									},
+									{
+										"concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+										"label": "Night sweats = 2 weeks"
+									},
+									{
+										"concept": "a8ad462e-1350-11df-a1f1-0026b9348838",
+										"label": "Abdomen swelling"
+									},
+									{
+										"concept": "f218c60e-4b54-475a-a4fa-facab9216da8",
+										"label": "Groin swelling"
+									},
+									{
+										"concept": "a8a774b0-1350-11df-a1f1-0026b9348838",
+										"label": "Joints swelling"
+									},
+									{
+										"concept": "4639388c-ee31-4dcf-abb4-ad71253493bb",
+										"label": "Neck swelling"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__rqHFE1nuD"
 						}
 					]
 				}

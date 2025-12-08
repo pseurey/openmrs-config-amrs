@@ -515,6 +515,7 @@
 					"questions": [
 						{
 							"label": "Have you been vaccinated for HPV?",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9806572c-0225-4b17-b21b-a0f44f9d07f0')) ? undefined : HD.getObject('prevEnc').getValue('9806572c-0225-4b17-b21b-a0f44f9d07f0')",
 							"required": "true",
 							"type": "obs",
 							"questionOptions": {
@@ -539,6 +540,7 @@
 						},
 						{
 							"label": "If yes, source of information:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8afc2aa-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8afc2aa-1350-11df-a1f1-0026b9348838')",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -562,6 +564,7 @@
 						},
 						{
 							"label": "Dose received:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')) ? undefined : HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')",
 							"id": "dose",
 							"type": "obs",
 							"questionOptions": {
@@ -591,6 +594,7 @@
 						},
 						{
 							"label": "Vaccination date:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0a35a6e4-eb93-448e-a3b0-cae66a57beb4')) ? undefined : HD.getObject('prevEnc').getValue('0a35a6e4-eb93-448e-a3b0-cae66a57beb4')",
 							"id": "doseDate",
 							"type": "obs",
 							"questionOptions": {
@@ -1159,6 +1163,10 @@
 									{
 										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
 										"label": "ABC 600mg/3TC 300mg"
+									},
+									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
 									},
 									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
@@ -6206,6 +6214,10 @@
 										"label": "ABC 600mg/3TC 300mg"
 									},
 									{
+										"concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+										"label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+									},
+									{
 										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
 										"label": "TDF300mg/3TC300mg/EFV400mg"
 									},
@@ -8453,6 +8465,10 @@
 									{
 										"concept": "92a2818f-662c-4dbc-aa20-d9f4edec2654",
 										"label": "Recency"
+									},
+									{
+										"concept": "535f6faa-14bc-4989-a189-7f15de3f65d5",
+										"label": "Repeat viral load after 3rd EAC"
 									},
 									{
 										"concept": "635f446c-bab9-428a-9930-ae4f46363c0c",
