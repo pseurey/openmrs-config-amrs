@@ -424,7 +424,6 @@
 					"questions": [
 						{
 							"label": "Within the past 3 months, have you been hit, slapped, kicked or physically hurt by someone in any way?",
-							"required": "true",
 							"id": "physical",
 							"type": "obs",
 							"questionOptions": {
@@ -444,7 +443,6 @@
 						},
 						{
 							"label": "Are you in a relationship with a person who physically hit you?",
-							"required": "true",
 							"id": "domestic",
 							"type": "obs",
 							"questionOptions": {
@@ -464,7 +462,6 @@
 						},
 						{
 							"label": "Are you in a relationship with a person who threatens, frightens or insults you or treats you badly?",
-							"required": "true",
 							"id": "emotional",
 							"type": "obs",
 							"questionOptions": {
@@ -484,7 +481,6 @@
 						},
 						{
 							"label": "Are you in relationship with a person who forces you to participate in sexual activities that make you feel uncomfortable?",
-							"required": "true",
 							"id": "sexual",
 							"type": "obs",
 							"questionOptions": {
@@ -504,7 +500,6 @@
 						},
 						{
 							"label": "Have you ever experienced any of the above with someone you do not have a relationship with?",
-							"required": "true",
 							"id": "nonfamily",
 							"type": "obs",
 							"questionOptions": {

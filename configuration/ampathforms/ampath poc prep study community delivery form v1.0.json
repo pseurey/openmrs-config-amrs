@@ -66,69 +66,58 @@
 							}
 						},
 						{
-							"type": "obsGroup",
-							"label": "Reason drug delivery not successful, detailed:",
-							"id": "successDetailed",
+							"label": "Reason drug delivery not successful:",
+							"type": "obs",
+							"id": "reasonNotSuccess",
 							"questionOptions": {
-								"concept": "4471d514-4110-480e-a7de-ba947033a8d5",
-								"rendering": "group"
-							},
-							"questions": [
-								{
-									"label": "Reason drug delivery not successful:",
-									"type": "obs",
-									"id": "reasonNotSuccess",
-									"questionOptions": {
-										"concept": "ddfbba76-7302-4f6d-865f-6159fcb3831b",
-										"rendering": "select",
-										"answers": [
-											{
-												"concept": "a89def1c-1350-11df-a1f1-0026b9348838",
-												"label": "Not physically contacted"
-											},
-											{
-												"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
-												"label": "Client declined"
-											},
-											{
-												"concept": "d00e4759-b442-4d94-a280-6b35c819936b",
-												"label": "Unfavourable enviroment for delivery"
-											},
-											{
-												"concept": "a89ef826-1350-11df-a1f1-0026b9348838",
-												"label": "Terraine"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
-											}
-										]
+								"concept": "ddfbba76-7302-4f6d-865f-6159fcb3831b",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89def1c-1350-11df-a1f1-0026b9348838",
+										"label": "Not physically contacted"
 									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(successDelivery) && successDelivery === 'a899b42e-1350-11df-a1f1-0026b9348838'",
-											"message": "Please indicate reason delivery not successful."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "successDelivery !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									{
+										"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+										"label": "Client declined"
+									},
+									{
+										"concept": "d00e4759-b442-4d94-a280-6b35c819936b",
+										"label": "Unfavourable enviroment for delivery"
+									},
+									{
+										"concept": "a89ef826-1350-11df-a1f1-0026b9348838",
+										"label": "Terraine"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
 									}
-								},
+								]
+							},
+							"validators": [
 								{
-									"label": "Other reasons, (specify):",
-									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-										"rendering": "text"
-									},
-									"type": "obs",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "!arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],reasonNotSuccess)"
-									},
-									"id": "otherReasonSuccess"
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(successDelivery) && successDelivery === 'a899b42e-1350-11df-a1f1-0026b9348838'",
+									"message": "Please indicate reason delivery not successful."
 								}
-							]
+							],
+							"hide": {
+								"hideWhenExpression": "successDelivery !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Other reasons, (specify):",
+							"questionOptions": {
+								"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+								"rendering": "text"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],reasonNotSuccess)"
+							},
+							"id": "otherReasonSuccess"
 						},
 						{
 							"label": "Individual who received drugs:",

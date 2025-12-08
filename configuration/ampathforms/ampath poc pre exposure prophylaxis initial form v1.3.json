@@ -294,6 +294,29 @@
 						},
 						{
 							"label": "Method:",
+							"id": "prepMethodMaleStudy",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+								"answers": [
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
+									},
+									{
+										"concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+										"label": "CAB-LA"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50'"
+							}
+						},
+						{
+							"label": "Method:",
 							"id": "prepMethodMale",
 							"questionOptions": {
 								"rendering": "select",
@@ -316,7 +339,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== 'a0ee8015-3558-4ac8-9886-285f9b687c2f'"
 							}
 						},
 						{
@@ -354,7 +377,7 @@
 								"concept": "b42438be-5010-4416-8869-4255f6ee7ae0",
 								"answers": [
 									{
-										"concept": "6766ebbc-3298-11e0-8090-0026b9348838",
+										"concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
 										"label": "TDF/FTC"
 									},
 									{
@@ -1040,7 +1063,6 @@
 							"hide": {
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
-                            
 						},
 						{
 							"label": "If negative,vaccine series initiated?",
@@ -1150,7 +1172,7 @@
 								"rendering": "select"
 							},
 							"validators": [],
-                            "hide": {
+							"hide": {
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
@@ -1199,7 +1221,7 @@
 								"rendering": "textarea",
 								"rows": 15
 							},
-                            "hide": {
+							"hide": {
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
 						},
@@ -1379,9 +1401,9 @@
 						},
 						{
 							"label": "Signs/symptoms of acute HIV:",
-                            "required":"true",
+							"required": "true",
 							"type": "obs",
-                            "id": "acuteHiv",
+							"id": "acuteHiv",
 							"questionOptions": {
 								"rendering": "select",
 								"concept": "39220cda-f62a-4514-8d73-013585e59770",
@@ -1397,15 +1419,13 @@
 								]
 							},
 							"validators": [],
-                             "alert": {
+							"alert": {
 								"alertWhenExpression": "!isEmpty(myValue) && acuteHiv === 'a899b35c-1350-11df-a1f1-0026b9348838'",
 								"message": "Suspected HIV infection, please delay prep initiation upto 4 weeks and guide client on other prevention measures."
 							},
-							
 							"hide": {
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
 							}
-                            
 						},
 						{
 							"label": "Contraindications for any drug used for PrEP:",
@@ -1430,7 +1450,6 @@
 							"hide": {
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
-                           
 						},
 						{
 							"label": "Prescribed PrEP at initial visit:",
@@ -1525,7 +1544,30 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== 'a0ee8015-3558-4ac8-9886-285f9b687c2f'"
+							}
+						},
+						{
+							"label": "Dosing strategy:",
+							"id": "doseStrategyStudy",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
+								"answers": [
+									{
+										"concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
+										"label": "Event driven"
+									},
+									{
+										"concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+										"label": "Daily oral prep"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sex !== 'M'|| prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'|| visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50'"
 							}
 						},
 						{
@@ -1555,7 +1597,7 @@
 								"concept": "980b94ab-f64d-4730-b602-c127375014b9",
 								"answers": [
 									{
-										"concept": "6766ebbc-3298-11e0-8090-0026b9348838",
+										"concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
 										"label": "TDF/FTC"
 									},
 									{
@@ -1625,7 +1667,7 @@
 						},
 						{
 							"label": "Next medication pick up location:",
-							"required":"true",
+							"required": "true",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -1641,33 +1683,27 @@
 									}
 								]
 							},
-							"validators": [
-								
-							],
+							"validators": [],
 							"id": "pickupLoc",
-							
-                            "hide": {
+							"hide": {
 								"hideWhenExpression": "visitTypeUuid !== 'a0ee8015-3558-4ac8-9886-285f9b687c2f' || prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
-                        {
+						{
 							"label": "Next medication pick up location:",
 							"type": "obs",
-							"required":"true",
+							"required": "true",
 							"questionOptions": {
 								"rendering": "select",
 								"concept": "62c90e60-ced5-4183-a1b0-092339384d02",
 								"answers": [
-									
 									{
 										"concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
 										"label": "Community"
 									}
 								]
 							},
-							"validators": [
-								
-							],
+							"validators": [],
 							"id": "pickupLocStudy",
 							"hide": {
 								"hideWhenExpression": "visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50' || prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
@@ -1696,7 +1732,7 @@
 								"hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
-                        {
+						{
 							"label": "Client issued with HIV self test kit:",
 							"type": "obs",
 							"questionOptions": {
@@ -1724,7 +1760,6 @@
 							"id": "kitsIssued",
 							"questionOptions": {
 								"concept": "f4a33a46-4e2d-42a4-963a-076c478c69df",
-								
 								"rendering": "number"
 							},
 							"type": "obs",
@@ -1747,7 +1782,6 @@
 										"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
 										"label": "Client declined"
 									}
-									
 								],
 								"rendering": "select"
 							},
