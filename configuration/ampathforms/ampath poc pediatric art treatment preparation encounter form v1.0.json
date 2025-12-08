@@ -1,0 +1,616 @@
+{
+	"name": "AMPATH POC Pediatric ART Treatment Preparation Encounter Form v1.0",
+	"uuid": "xxxx",
+	"processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "At Enrolment",
+			"sections": [
+				{
+					"label": "At Enrolment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "obsGroup",
+							"id": "enroll",
+							"label": "At enrolment:",
+							"questionOptions": {
+								"concept": "69a38ab6-28f5-4a6f-9e38-092b8b0e75a0",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Developmental milestones?",
+									"type": "obs",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89b228c-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a89b228c-1350-11df-a1f1-0026b9348838')",
+									"id": "deveMile",
+									"questionInfo": "Use the tools in Annex 3 of the NASCOP guidelines, ensure to identify growth retardation and/or developmental challenges. Ensure to refer to appropriate care for those in need.",
+									"default": "",
+									"questionOptions": {
+										"concept": "a89b228c-1350-11df-a1f1-0026b9348838",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Appropriate for age",
+												"concept": "7f1ce3ae-2925-4816-9137-9a03ae5fa3b5"
+											},
+											{
+												"label": "Delayed for age",
+												"concept": "a8ad48cc-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Primary care giver identified? (NOTE: Adolescents can have joint or individual sessions with the caregiver.)",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('16fbf8a2-19f8-4b97-8410-9794213b4e74')) ? undefined : HD.getObject('prevEnc').getValue('16fbf8a2-19f8-4b97-8410-9794213b4e74')",
+									"id": "priCaregiver",
+									"required": "true",
+									"default": "",
+									"questionInfo": "In case the adolescent is an emancipated minor (Refer to Emancipated minors SOP), explore whether they are comfortable with having caregiver or not during the session.",
+									"questionOptions": {
+										"concept": "16fbf8a2-19f8-4b97-8410-9794213b4e74",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Name of caregiver:",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('2b0b8aeb-d023-49cc-84cb-8415e1c4a9cd')) ? undefined : HD.getObject('prevEnc').getValue('2b0b8aeb-d023-49cc-84cb-8415e1c4a9cd')",
+									"id": "txname",
+									"questionOptions": {
+										"concept": "2b0b8aeb-d023-49cc-84cb-8415e1c4a9cd",
+										"rendering": "text"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "priCaregiver !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Phone number of caregiver:",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('f3b6f1ed-3686-4ac3-b0d7-cb00c52ebdb1')) ? undefined : HD.getObject('prevEnc').getValue('f3b6f1ed-3686-4ac3-b0d7-cb00c52ebdb1')",
+									"id": "txPhone",
+									"questionOptions": {
+										"concept": "f3b6f1ed-3686-4ac3-b0d7-cb00c52ebdb1",
+										"rendering": "text"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "priCaregiver !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "If no, have you identified a CHV or peer to support and stand in as you liaise with the DCS (Department of Children services/OVC?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('994dba64-b963-4fdd-89a8-ff2211a5f0ca')) ? undefined : HD.getObject('prevEnc').getValue('994dba64-b963-4fdd-89a8-ff2211a5f0ca')",
+									"id": "ovcSupport",
+									"default": "",
+									"questionOptions": {
+										"concept": "994dba64-b963-4fdd-89a8-ff2211a5f0ca",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "priCaregiver !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Have you established the HIV status of the child’s caregiver?",
+									"type": "obs",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ed2fd1ef-2007-4901-976e-fecd797e166b')) ? undefined : HD.getObject('prevEnc').getValue('ed2fd1ef-2007-4901-976e-fecd797e166b')",
+									"id": "caregiverStatus",
+									"questionInfo": "If the adolescent’s caregiver is also infected, enroll in same clinic, and synchronize appointments. This includes any other family member receiving care at the clinic.",
+									"default": "",
+									"questionOptions": {
+										"concept": "ed2fd1ef-2007-4901-976e-fecd797e166b",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Positive",
+												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Negative",
+												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Unknown",
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you provided HIV education to the caregiver and child as appropriate for age?  (Refer to the guide from NASCOP guidelines pg. 5-10, Table 5.2)",
+									"type": "obs",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('74a92606-b426-427c-bd4d-4fc7914b1860')) ? undefined : HD.getObject('prevEnc').getValue('74a92606-b426-427c-bd4d-4fc7914b1860')",
+									"id": "caregiverEducation",
+									"default": "",
+									"questionOptions": {
+										"concept": "74a92606-b426-427c-bd4d-4fc7914b1860",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you identified and established appropriate adherence intervention?",
+									"type": "obs",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ba59a785-2ded-4d8e-9fc6-6f5aee3e1089')) ? undefined : HD.getObject('prevEnc').getValue('ba59a785-2ded-4d8e-9fc6-6f5aee3e1089')",
+									"id": "adhereIntervention",
+									"default": "",
+									"questionOptions": {
+										"concept": "ba59a785-2ded-4d8e-9fc6-6f5aee3e1089",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you linked the caregiver and adolescent as per age to a PSSG?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ed1e7a5d-a9f4-4adf-a033-4e895409fafe')) ? undefined : HD.getObject('prevEnc').getValue('ed1e7a5d-a9f4-4adf-a033-4e895409fafe')",
+									"id": "pssg",
+									"default": "",
+									"questionOptions": {
+										"concept": "ed1e7a5d-a9f4-4adf-a033-4e895409fafe",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you discussed benefits of disclosure of the child’s HIV status?",
+									"type": "obs",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a0aecb37-b5c7-4990-a52d-e3cbe0d9375f')) ? undefined : HD.getObject('prevEnc').getValue('a0aecb37-b5c7-4990-a52d-e3cbe0d9375f')",
+									"id": "discStatus",
+									"default": "",
+									"questionOptions": {
+										"concept": "a0aecb37-b5c7-4990-a52d-e3cbe0d9375f",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "If yes, formulate a disclosure plan for the child:(Use the pediatric disclosure checklist)",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('047018b2-950a-471d-84a7-44c452919d20')) ? undefined : HD.getObject('prevEnc').getValue('047018b2-950a-471d-84a7-44c452919d20')",
+									"id": "discPlan",
+									"default": "",
+									"questionOptions": {
+										"concept": "047018b2-950a-471d-84a7-44c452919d20",
+										"rendering": "textarea",
+										"rows": "5"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "discStatus !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Have you conducted ART readiness assessment?",
+									"type": "obs",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('68da1d89-c7b8-4081-a05a-08f7e30ae193')) ? undefined : HD.getObject('prevEnc').getValue('68da1d89-c7b8-4081-a05a-08f7e30ae193')",
+									"id": "artReady",
+									"questionInfo": "If yes, initiate same day or agreed upon date and review the dosing and timing.",
+									"default": "",
+									"questionOptions": {
+										"concept": "68da1d89-c7b8-4081-a05a-08f7e30ae193",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you identified other needs? (If Yes, Link where appropriate.)",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('4c9137be-44f8-40f2-a7f5-ec25b58970e4')) ? undefined : HD.getObject('prevEnc').getValue('4c9137be-44f8-40f2-a7f5-ec25b58970e4')",
+									"id": "otherNeeds",
+									"default": "",
+									"questionOptions": {
+										"concept": "4c9137be-44f8-40f2-a7f5-ec25b58970e4",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Develop a plan of treatment and follow up plan:",
+									"type": "obs",
+									"required": "true",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('45198f3c-36a1-4dfe-9977-46bf1f75a1ca')) ? undefined : HD.getObject('prevEnc').getValue('45198f3c-36a1-4dfe-9977-46bf1f75a1ca')",
+									"id": "txPlan",
+									"default": "",
+									"questionOptions": {
+										"concept": "45198f3c-36a1-4dfe-9977-46bf1f75a1ca",
+										"rendering": "textarea",
+										"rows": "5"
+									},
+									"validators": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Two Weeks After Initiation",
+			"sections": [
+				{
+					"label": "Two Weeks After Initiation",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "obsGroup",
+							"id": "enroll",
+							"label": "After Intiation:",
+							"questionOptions": {
+								"concept": "793a8dd6-cc9d-483b-b104-6079d2f1c4ff",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Have you reviewed the caregiver's understanding on key HIV messages?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('fb6a7337-043d-4183-b55a-fc43a1f7532d')) ? undefined : HD.getObject('prevEnc').getValue('fb6a7337-043d-4183-b55a-fc43a1f7532d')",
+									"id": "keyMessage",
+									"questionInfo": "Ensure to review and reinforce the messages delivered at enrolment.",
+									"default": "",
+									"questionOptions": {
+										"concept": "fb6a7337-043d-4183-b55a-fc43a1f7532d",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you reviewed ART dosing, timing, and reminders?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('f1c0e09e-9fcb-44d6-a571-a48c1c041f6f')) ? undefined : HD.getObject('prevEnc').getValue('f1c0e09e-9fcb-44d6-a571-a48c1c041f6f')",
+									"id": "reminders",
+									"questionInfo": "NOTE: Ensure to also have the caregiver demonstrate how they measure and administer the ART.",
+									"default": "",
+									"questionOptions": {
+										"concept": "f1c0e09e-9fcb-44d6-a571-a48c1c041f6f",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you explored barriers to adherence?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('76680a75-926d-4af4-bcf1-06ad7ab93922')) ? undefined : HD.getObject('prevEnc').getValue('76680a75-926d-4af4-bcf1-06ad7ab93922')",
+									"id": "adherenceBarr",
+									"questionInfo": "Use the barriers to adherence checklist.",
+									"default": "",
+									"questionOptions": {
+										"concept": "76680a75-926d-4af4-bcf1-06ad7ab93922",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Link to appropriate services of need and document session:",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('25a808fc-15c0-4b97-b9e8-d5cc5d7fcef9')) ? undefined : HD.getObject('prevEnc').getValue('25a808fc-15c0-4b97-b9e8-d5cc5d7fcef9')",
+									"id": "addBarr",
+									"default": "",
+									"questionOptions": {
+										"concept": "25a808fc-15c0-4b97-b9e8-d5cc5d7fcef9",
+										"rendering": "textarea",
+										"rows": "5"
+									},
+									"validators": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Four Weeks After Initiation",
+			"sections": [
+				{
+					"label": "Four Weeks After Initiation And Futher Follow Ups",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "obsGroup",
+							"id": "enroll",
+							"label": "Four Weeks After Intiation:",
+							"questionOptions": {
+								"concept": "f86b7f97-9d99-4276-8c77-88e97b159cbe",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Have you reviewed the caregiver's understanding on key HIV messages?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('fb6a7337-043d-4183-b55a-fc43a1f7532d')) ? undefined : HD.getObject('prevEnc').getValue('fb6a7337-043d-4183-b55a-fc43a1f7532d')",
+									"id": "keyMessage4w",
+									"questionInfo": "Ensure to review and reinforce the messages delivered at enrolment.",
+									"default": "",
+									"questionOptions": {
+										"concept": "fb6a7337-043d-4183-b55a-fc43a1f7532d",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you reviewed ART dosing, timing, and reminders?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('f1c0e09e-9fcb-44d6-a571-a48c1c041f6f')) ? undefined : HD.getObject('prevEnc').getValue('f1c0e09e-9fcb-44d6-a571-a48c1c041f6f')",
+									"id": "reminders4w",
+									"questionInfo": "NOTE: Ensure to also have the caregiver demonstrate how they measure and administer the ART.",
+									"default": "",
+									"questionOptions": {
+										"concept": "f1c0e09e-9fcb-44d6-a571-a48c1c041f6f",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you explored barriers to adherence?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('76680a75-926d-4af4-bcf1-06ad7ab93922')) ? undefined : HD.getObject('prevEnc').getValue('76680a75-926d-4af4-bcf1-06ad7ab93922')",
+									"id": "adherenceBarr4w",
+									"questionInfo": "Use the barriers to adherence checklist, and administer MMAS-4",
+									"default": "",
+									"questionOptions": {
+										"concept": "76680a75-926d-4af4-bcf1-06ad7ab93922",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "Have you reviewed the disclosure and individualized age-appropriate disclosure plan?",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a0aecb37-b5c7-4990-a52d-e3cbe0d9375f')) ? undefined : HD.getObject('prevEnc').getValue('a0aecb37-b5c7-4990-a52d-e3cbe0d9375f')",
+									"id": "apns4",
+									"questionInfo": "",
+									"default": "",
+									"questionOptions": {
+										"concept": "a0aecb37-b5c7-4990-a52d-e3cbe0d9375f",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Yes",
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "No",
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": []
+								},
+								{
+									"label": "If yes, document and support the caregiver by addressing any concerns or fears they might have:",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('047018b2-950a-471d-84a7-44c452919d20')) ? undefined : HD.getObject('prevEnc').getValue('047018b2-950a-471d-84a7-44c452919d20')",
+									"id": "addConcerns",
+									"default": "",
+									"questionOptions": {
+										"concept": "047018b2-950a-471d-84a7-44c452919d20",
+										"rendering": "textarea",
+										"rows": "5"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "apns4 !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Link to appropriate services of need and document session:",
+									"type": "obs",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('25a808fc-15c0-4b97-b9e8-d5cc5d7fcef9')) ? undefined : HD.getObject('prevEnc').getValue('25a808fc-15c0-4b97-b9e8-d5cc5d7fcef9')",
+									"id": "addBarrSer",
+									"default": "",
+									"questionOptions": {
+										"concept": "25a808fc-15c0-4b97-b9e8-d5cc5d7fcef9",
+										"rendering": "textarea",
+										"rows": "5"
+									},
+									"validators": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

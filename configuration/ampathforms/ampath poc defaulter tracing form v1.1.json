@@ -12,7 +12,7 @@
 					"questions": [
 						{
 							"type": "encounterProvider",
-							"label": "Provider",
+							"label": "Provider:",
 							"id": "provider",
 							"required": "true",
 							"default": "",
@@ -21,7 +21,7 @@
 							}
 						},
 						{
-							"label": "Visit date",
+							"label": "Visit date:",
 							"type": "encounterDatetime",
 							"required": "true",
 							"default": "",
@@ -391,6 +391,10 @@
 										"label": "Self transferred"
 									},
 									{
+										"concept": "a89e291e-1350-11df-a1f1-0026b9348838",
+										"label": "Family committment"
+									},
+									{
 										"concept": "a89e2a54-1350-11df-a1f1-0026b9348838",
 										"label": "Work commitments"
 									},
@@ -471,6 +475,129 @@
 							}
 						},
 						{
+							"label": "Which facility did the patient pick drugs from:",
+							"type": "obs",
+							"id": "facilityDrugs",
+							"required": "true",
+							"questionOptions": {
+								"concept": "2de21f17-b9ec-4934-8b79-a6e7baa3a5a0",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
+										"label": "AMRS"
+									},
+									{
+										"concept": "7e381b07-81d5-4425-be84-f188b61b4bd1",
+										"label": "NON AMRS"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Facility MFL code:",
+							"type": "obs",
+							"id": "mfl",
+							"questionOptions": {
+								"concept": "e8ec983c-3d04-48e0-bb86-c4bf03866212",
+								"rendering": "number"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(myValue).length > 5",
+									"message": "MFL code should not have more than 5 digits"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(facilityDrugs) && facilityDrugs === '7e381b07-81d5-4425-be84-f188b61b4bd1'",
+									"message": "Please provide MFL code."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+							}
+						},
+						{
+							"label": "Sub County:",
+							"type": "obs",
+							"id": "subcounty",
+							"default": "",
+							"questionOptions": {
+								"concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+								"rendering": "text"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+							}
+						},
+						{
+							"label": "Facility contact person:",
+							"type": "obs",
+							"id": "facContactPerson",
+							"default": "",
+							"questionOptions": {
+								"concept": "703736b5-0f17-4b96-89fd-76f0093d8d78",
+								"rendering": "text"
+							},
+							"hide": {
+								"hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+							}
+						},
+						{
+							"label": "Facility contact number:",
+							"type": "obs",
+							"id": "facContactNumber",
+							"default": "",
+							"questionOptions": {
+								"concept": "bcb3220f-57b5-467e-ad8a-282df45a3642",
+								"rendering": "number"
+							},
+							"hide": {
+								"hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+							}
+						},
+						{
+							"label": "Days of refill:",
+							"type": "obs",
+							"id": "RefillDays",
+							"default": "",
+							"questionOptions": {
+								"concept": "f57913d6-4452-4b58-9cd8-d264a908d44d",
+								"rendering": "number"
+							},
+							"hide": {
+								"hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+							}
+						},
+						{
+							"label": "Reason for refill:",
+							"type": "obs",
+							"id": "refillReason",
+							"questionOptions": {
+								"concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+										"label": "Follow up"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							},
+							"hide": {
+								"hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+							}
+						},
+						{
 							"label": "Self disengaged due to:",
 							"id": "reasonSelfDis",
 							"type": "obs",
@@ -544,6 +671,10 @@
 									{
 										"concept": "e5c75c26-b894-4741-bfd8-caeafc357c77",
 										"label": "Lateness or no staff"
+									},
+									{
+										"concept": "6de7b478-32db-46fa-8646-166e27bff723",
+										"label": "Incomplete documentation"
 									}
 								],
 								"rendering": "multiCheckbox",
